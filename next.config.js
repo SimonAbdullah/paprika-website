@@ -8,7 +8,7 @@ const translate = nextTranslate();
 
 const antd = withAntdLess({
   modifyVars: {
-    "@primary-color": "#F33",
+    "@primary-color": "#B12116",
     "@border-radius-base": "5%",
   },
 });
