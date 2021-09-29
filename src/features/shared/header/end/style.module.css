@@ -1,0 +1,53 @@
+.headerEnd {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.registerButton {
+  margin: 0 1rem;
+  color: var(--ghost-button-color);
+  letter-spacing: 0.01em;
+}
+
+.registerButton:hover,
+.registerButton:focus {
+  color: var(--ghost-button-hover-color);
+  border-color: var(--ghost-button-hover-color);
+}
+
+.languagesButton {
+  color: var(--ghost-button-color);
+  display: inline-flex;
+  align-items: center;
+  margin-inline-start: 1rem;
+  letter-spacing: 0.01em;
+}
+
+.languagesButton:hover,
+.languagesButton:focus {
+  color: var(--ghost-button-hover-color);
+}
+
+.caretDownIcon {
+  align-self: flex-end;
+}
+
+.localeList {
+  letter-spacing: 0.01em;
+}
+
+@media only screen and (max-width: 576px) {
+  .registerButton {
+    margin: 0 1rem;
+    color: inherit;
+    border-color: inherit;
+  }
+
+  .registerButton:hover,
+  .registerButton:focus {
+    color: initial;
+    border-color: initial;
+    font-weight: normal;
+  }
+}

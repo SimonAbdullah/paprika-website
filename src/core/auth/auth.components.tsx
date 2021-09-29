@@ -1,5 +1,5 @@
 import { useCookies } from "react-cookie";
-import { PagesUrls } from "../app/app.types";
+import { PagesUrls } from "../core";
 import { TOKEN_KEY } from "./auth.constants";
 import { isBrowser } from "./auth.functions";
 

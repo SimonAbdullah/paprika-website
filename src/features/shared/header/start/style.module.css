@@ -1,0 +1,48 @@
+.headerStart {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.logo,
+.logoLink,
+.links {
+  display: flex;
+  align-items: center;
+}
+
+.links {
+  margin-inline-start: 1.5rem;
+}
+
+.homeLink {
+  color: var(--anchor-color);
+  font-weight: bold;
+}
+
+.headerLinks {
+  color: var(--anchor-color);
+  margin: 0 1.5rem;
+}
+
+.headerLinks:hover,
+.headerLinks:focus {
+  color: var(--anchor-hover-color);
+}
+
+@media only screen and (max-width: 992px) {
+  .links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .headerLinks {
+    color: inherit;
+    margin: 0.5rem 0;
+  }
+
+  .headerLinks:hover,
+  .headerLinks:focus {
+    color: initial;
+  }
+}

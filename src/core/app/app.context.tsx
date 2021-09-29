@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import { TOKEN_KEY } from "../auth/auth.constants";
 import { useIsAuthenticated } from "../auth/auth.hooks";
 import { NEXT_LOCALE } from "./app.constants";
-import { PagesUrls } from "./app.types";
+import { PagesUrls } from "../core";
 
 export interface AppContextProviderProps {}
 

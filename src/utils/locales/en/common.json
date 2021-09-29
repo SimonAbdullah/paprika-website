@@ -1,1 +1,19 @@
-{}
+{
+    "home": "Home",
+    "aboutUs": "About us",
+    "reviews": "Reviews",
+    "restaurants": "Restaurants",
+    "registerYourRestaurant": "Register your restaurant",
+    "english": "English",
+    "arabic": "Arabic",
+    "submit": "Submit",
+    "form": {
+        "fields": {
+            "name": "Name",
+            "phoneNumber": "Phone number"
+        },
+        "validation": {
+            "required": "This field is required"
+        }
+    }
+}

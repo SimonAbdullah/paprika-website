@@ -1,4 +1,4 @@
-import Layout from "antd/lib/layout/layout";
+import { Layout } from "antd";
 import { useContext } from "react";
 import { AppContext } from "./app.context";
 import classes from "./style.module.css";
