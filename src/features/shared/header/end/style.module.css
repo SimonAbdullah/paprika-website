@@ -31,6 +31,7 @@
 
 .caretDownIcon {
   align-self: flex-end;
+  margin-inline-start: 0.5rem;
 }
 
 .localeList {

@@ -1,5 +1,4 @@
 import { Modal, ModalProps, Form, Input, FormInstance } from "antd";
-import { useForm } from "antd/lib/form/Form";
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent } from "react";
 import { TranslationFiles } from "../../../core/core";
@@ -19,6 +18,7 @@ const RestaurantRegisterModal: FunctionComponent<RestaurantRegisterModalProps> =
         onOk={() => {
           form?.submit();
         }}
+        cancelText={t("cancel")}
         {...props}
       >
         <Form

@@ -1,0 +1,63 @@
+.foot {
+  font-family: "Work Sans";
+}
+
+.footerStartTitle {
+  color: var(--footer-title-color);
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.footerStartText {
+  color: var(--footer-text-color);
+}
+
+.middleRow {
+  margin-top: 1rem;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--footer-color);
+}
+
+.listTitle {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.listLink {
+  color: var(--footer-color);
+}
+
+.listLink:hover,
+.listLink:focus {
+  color: var(--anchor-hover-color);
+}
+
+.footerEndTitle {
+  margin-top: 0.5rem;
+  color: var(--footer-title-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.googlePlayContainer {
+  margin: -1rem 0;
+  margin-inline-start: -0.5rem;
+  width: 100%;
+}
+
+.appStoreContainer {
+  margin: -1rem 0;
+  width: 100%;
+}
+
+@media only screen and (min-width: 992px) {
+  .foot:dir(rtl) {
+    padding-inline-start: 8rem;
+  }
+}

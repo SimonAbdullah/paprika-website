@@ -25,26 +25,24 @@ const AppContextProvider: React.FC<AppContextProviderProps> = (props) => {
 
   const { locale, defaultLocale } = useRouter();
 
-  const [cookies, setCookies] = useCookies([TOKEN_KEY, NEXT_LOCALE]);
+  const [_cookies, setCookies] = useCookies([TOKEN_KEY, NEXT_LOCALE]);
 
   const { isAuthenticated } = useIsAuthenticated();
 
   useEffect(() => {
-    if (!cookies.NEXT_LOCALE) {
-      if (locale !== defaultLocale) {
-        setCookies(NEXT_LOCALE, locale, {
-          path: PagesUrls.HOME,
-          sameSite: true,
-        });
-      } else {
-        setCookies(NEXT_LOCALE, defaultLocale, {
-          path: PagesUrls.HOME,
-          sameSite: true,
-        });
-      }
+    if (locale !== defaultLocale) {
+      setCookies(NEXT_LOCALE, locale, {
+        path: PagesUrls.HOME,
+        sameSite: true,
+      });
+    } else {
+      setCookies(NEXT_LOCALE, defaultLocale, {
+        path: PagesUrls.HOME,
+        sameSite: true,
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [locale]);
 
   useEffect(() => {
     if (locale === "ar") setDirection("rtl");

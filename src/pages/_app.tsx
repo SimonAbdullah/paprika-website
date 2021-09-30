@@ -5,6 +5,7 @@ import { useState } from "react";
 import AppLayout from "../core/app/app.layout";
 import AppContextProvider from "../core/app/app.context";
 import Header from "../features/shared/header/header.components";
+import Footer from "../features/shared/footer/footer.components";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
@@ -16,6 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <AppLayout>
             <Header />
             <Component {...pageProps} />
+            <Footer />
           </AppLayout>
         </AppContextProvider>
       </Hydrate>

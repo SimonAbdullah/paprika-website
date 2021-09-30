@@ -1,9 +1,12 @@
 :root {
   --icon-color: #f5f5f5;
+  --footer-color: #f5f5f5;
+  --footer-title-color: #ffffff;
+  --footer-text-color: #858585;
   --anchor-color: #f5f5f5;
   --anchor-hover-color: #c5c5c5;
   --ghost-button-color: #f5f5f5;
-  --ghost-button-border-color: #fff;
+  --ghost-button-border-color: #ffffff;
   --ghost-button-hover-color: #c5c5c5;
   --primary-color: #b12116;
 }
