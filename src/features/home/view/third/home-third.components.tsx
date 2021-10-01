@@ -2,19 +2,22 @@ import { Col, Row, Tag } from "antd";
 import Title from "antd/lib/typography/Title";
 import Paragraph from "antd/lib/typography/Paragraph";
 import useTranslation from "next-translate/useTranslation";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useContext } from "react";
 import classes from "./style.module.css";
 import Text from "antd/lib/typography/Text";
 import { TranslationFiles } from "../../../../core/core";
 import Image from "next/image";
+import { AppContext } from "../../../../core/app/app.context";
 
 interface HomeThirdProps {}
 
 const HomeThird: FunctionComponent<HomeThirdProps> = () => {
   const { t } = useTranslation(TranslationFiles.HOME);
 
+  const { direction } = useContext(AppContext);
+
   return (
-    <Row className={classes.thirdContainer}>
+    <Row className={classes.thirdContainer} justify="center">
       <Image
         className={classes.backgroundImage}
         src="/images/home/third-background.png"
@@ -26,7 +29,9 @@ const HomeThird: FunctionComponent<HomeThirdProps> = () => {
       <Col xs={24} lg={12} className={classes.dishContainer}>
         <Image
           className={classes.dishImage}
-          src="/images/home/third-dish.png"
+          src={`/images/home/third-dish${
+            direction === "rtl" ? "-reverse" : ""
+          }.png`}
           alt={t("third.alt.dishImage")}
           layout="fill"
           objectFit="contain"
@@ -47,7 +52,7 @@ const HomeThird: FunctionComponent<HomeThirdProps> = () => {
         </Paragraph>
         <div className={classes.textContainer}>
           <Text className={classes.text}>
-            {t("third.attractNewCustomersToYourRestaurant")}
+            {t("attractNewCustomersToYourRestaurant")}
           </Text>
         </div>
       </Col>

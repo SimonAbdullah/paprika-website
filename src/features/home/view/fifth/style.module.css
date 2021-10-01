@@ -1,0 +1,70 @@
+.fifthContainer {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  padding: 0 5rem;
+}
+
+.contentContainer {
+  margin-top: 7rem;
+  margin-bottom: 2rem;
+}
+
+.title {
+  color: #000000;
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  width: 60%;
+}
+
+.textContainer {
+  margin-bottom: 1rem;
+}
+
+.text {
+  color: #858585;
+  font-size: 1rem;
+}
+
+.paprika {
+  color: #ffffff;
+  background: #f7a800;
+  padding: 0 5px;
+}
+
+.buttonContainer {
+  text-align: end;
+}
+
+@media only screen and (max-width: 1300px) {
+  .title {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .chefWomanImageContainer {
+    display: none;
+  }
+
+  .contentContainer {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .textContainer {
+    text-align: center;
+  }
+
+  .buttonContainer {
+    text-align: center;
+  }
+}

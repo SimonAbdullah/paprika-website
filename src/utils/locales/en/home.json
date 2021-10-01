@@ -1,12 +1,18 @@
 {
     "home": "Home",
+    "paprika": "Paprika",
+    "attractNewCustomersToYourRestaurant": "Attract New Customers To Your Restaurant",
+    "second": {
+        "someTopRestaurantForYourDinner": "Some Top Restaurant For Your Dinner",
+        "upComingEvents": "Up Coming Events",
+        "restaurantsThatHostMusicEvents": "Restaurants That Host Music Events"
+    },
     "third": {
         "theMealYouLikeOnYourTime": "The Meal You Like On Your Time",
         "moreThan": "More Than",
         "1000": "1000",
         "ofTheBestRestaurantAllOverDamascus": "Of The Best Restaurant All Over Damascus",
         "allTheRestaurantAroundYou": "All The Restaurant Around You",
-        "attractNewCustomersToYourRestaurant": "Attract New Customers To Your Restaurant",
         "alt": {
             "backgroundImage": "Background image",
             "dishImage": "Dish image"
@@ -20,6 +26,16 @@
             "diningTableImage": "Dining table image",
             "reservedImage": "Reserved image",
             "appImage": "App image"
+        }
+    },
+    "fifth": {
+        "submitYourRestaurantToOurList": "Submit Your Restaurant To Our List!",
+        "partnerWithPaprikaToday": "Partner With",
+        "todayItsEasyAndYouCanCancelAtAnyTime": "Today, It's Easy And You Can Cancel At Any Time!",
+        "getStarted": "GET STARTED",
+        "alt": {
+            "chefWomanImage": "Chef woman image",
+            "openImage": "Open image"
         }
     }
 }
