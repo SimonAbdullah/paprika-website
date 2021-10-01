@@ -6,6 +6,20 @@
         "1000": "1000",
         "ofTheBestRestaurantAllOverDamascus": "Of The Best Restaurant All Over Damascus",
         "allTheRestaurantAroundYou": "All The Restaurant Around You",
-        "attractNewCustomersToYourRestaurant": "Attract New Customers To Your Restaurant"
+        "attractNewCustomersToYourRestaurant": "Attract New Customers To Your Restaurant",
+        "alt": {
+            "backgroundImage": "Background image",
+            "dishImage": "Dish image"
+        }
+    },
+    "fourth": {
+        "restaurants": "Restaurants",
+        "reservation": "Reservation",
+        "downloads": "Downloads",
+        "alt": {
+            "diningTableImage": "Dining table image",
+            "reservedImage": "Reserved image",
+            "appImage": "App image"
+        }
     }
 }

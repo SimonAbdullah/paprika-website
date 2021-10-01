@@ -1,0 +1,45 @@
+.fourthContainer {
+  background-color: var(--primary-color);
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  text-align: center;
+  padding: 6rem;
+}
+
+.paragraph {
+  color: #ffffff;
+}
+
+.number {
+  font-size: 3rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.text {
+  display: inline-block;
+  color: #ffffff;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+}
+
+@media only screen and (max-width: 1200px) {
+  .column {
+    padding: 5rem;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .column {
+    padding: 2rem;
+  }
+}

@@ -5,15 +5,34 @@ import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent } from "react";
 import classes from "./style.module.css";
 import Text from "antd/lib/typography/Text";
+import { TranslationFiles } from "../../../../core/core";
+import Image from "next/image";
 
 interface HomeThirdProps {}
 
 const HomeThird: FunctionComponent<HomeThirdProps> = () => {
-  const { t } = useTranslation("home");
+  const { t } = useTranslation(TranslationFiles.HOME);
 
   return (
     <Row className={classes.thirdContainer}>
-      <Col xs={24} lg={12} className={classes.dishContainer} />
+      <Image
+        className={classes.backgroundImage}
+        src="/images/home/third-background.png"
+        alt={t("third.alt.backgroundImage")}
+        layout="fill"
+        objectFit="fill"
+        objectPosition="center"
+      />
+      <Col xs={24} lg={12} className={classes.dishContainer}>
+        <Image
+          className={classes.dishImage}
+          src="/images/home/third-dish.png"
+          alt={t("third.alt.dishImage")}
+          layout="fill"
+          objectFit="contain"
+          objectPosition="center"
+        />
+      </Col>
       <Col xs={24} lg={12} className={classes.contentContainer}>
         <Paragraph className={classes.paragraph}>
           {t("third.theMealYouLikeOnYourTime")}

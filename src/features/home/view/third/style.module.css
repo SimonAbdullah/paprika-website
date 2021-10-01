@@ -1,18 +1,15 @@
 .thirdContainer {
   background-color: #ebf3f6;
-  background-image: url("/images/home/third-background.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
   width: 100%;
   min-height: 100vh;
+  position: relative;
+}
+
+.backgroundImage {
+  z-index: 0;
 }
 
 .dishContainer {
-  background-image: url("/images/home/third-dish.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
   padding: 0 2rem;
 }
 
@@ -62,7 +59,7 @@
   }
 
   .contentContainer {
-    margin-top: 5rem;
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
