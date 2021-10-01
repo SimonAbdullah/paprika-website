@@ -3,9 +3,10 @@ import type { NextPage } from "next";
 import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
 import { TranslationFiles } from "../core/core";
+import Home from "../features/home/view/home.components";
 import styles from "../styles/Home.module.css";
 
-const Home: NextPage = () => {
+const HomePage: NextPage = () => {
   const { t } = useTranslation(TranslationFiles.HOME);
   return (
     <>
@@ -13,10 +14,10 @@ const Home: NextPage = () => {
         <title>{t("home")}</title>
       </Head>
       <div className={styles.container}>
-        <Button type="primary">Hello</Button>
+        <Home />
       </div>
     </>
   );
 };
 
-export default Home;
+export default HomePage;

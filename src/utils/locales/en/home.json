@@ -1,3 +1,11 @@
 {
-    "home": "Home"
+    "home": "Home",
+    "third": {
+        "theMealYouLikeOnYourTime": "The Meal You Like On Your Time",
+        "moreThan": "More Than",
+        "1000": "1000",
+        "ofTheBestRestaurantAllOverDamascus": "Of The Best Restaurant All Over Damascus",
+        "allTheRestaurantAroundYou": "All The Restaurant Around You",
+        "attractNewCustomersToYourRestaurant": "Attract New Customers To Your Restaurant"
+    }
 }
