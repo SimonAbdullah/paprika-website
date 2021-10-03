@@ -18,4 +18,7 @@ const antd = withAntdLess({
 module.exports = nextTranslate({
   ...antd,
   reactStrictMode: true,
+  images: {
+    domains: ["api.paprika.inter.itland-sy.com"],
+  },
 });

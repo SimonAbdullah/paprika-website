@@ -1,0 +1,106 @@
+/* First Column */
+
+.firstColumn {
+  background-color: #fafafa;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.title {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  font-weight: bold;
+  width: 30%;
+}
+
+.bottomSpace {
+  margin-bottom: 0rem;
+}
+
+.secondTitle {
+  color: #2d303e;
+  font-size: 1.5rem;
+}
+
+.card {
+  height: 60vh;
+}
+
+.card .coverContainer {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 60vh;
+}
+
+.content {
+  width: 100%;
+  background-color: var(--primary-color);
+  z-index: 0;
+  opacity: 0.8;
+  mix-blend-mode: normal;
+  font-family: "Poppins";
+  padding: 1rem;
+  position: relative;
+}
+
+.cardTitle {
+  color: var(--home-card-title-color);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.rating,
+.reviews {
+  display: inline-block;
+  color: var(--home-card-title-color);
+  font-size: 0.8rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.reviews {
+  margin-inline-start: 3rem;
+}
+
+.address {
+  color: var(--home-card-title-color);
+  font-size: 0.8rem;
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+}
+
+.content .rating > li {
+  margin: 0 0.1rem;
+  color: #f7a800;
+  border-radius: 0.3px;
+  font-size: 1rem;
+}
+
+.plateIcon {
+  position: absolute;
+  inset-block-start: 1rem;
+  inset-inline-end: 1rem;
+}
+
+/* Second Column */
+
+.secondColumn {
+  min-height: 70vh;
+  padding: 0 2rem;
+  margin-top: -2rem;
+}
+
+.secondTitle {
+  color: #2d303e;
+  font-size: 1.7rem;
+}
+
+@media only screen and (max-width: 1200px) {
+  .title {
+    width: 100%;
+  }
+}

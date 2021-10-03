@@ -3,7 +3,19 @@ import Cookies from "universal-cookie";
 import { TOKEN_KEY } from "../../core/auth/auth.constants";
 import RequestConfig from "./request-config";
 
-export interface IBaseApiResponse<T> {}
+export interface IBaseApiResponse<T> {
+  result: T;
+  targetUrl: any | null;
+  success: boolean;
+  error: any | null;
+  unAuthorizedRequest: boolean;
+  __abp: boolean;
+}
+
+export interface PagedResultDto<T> {
+  totalCount: number;
+  items: T[];
+}
 
 export default class ApiProvider {
   private api: AxiosInstance;

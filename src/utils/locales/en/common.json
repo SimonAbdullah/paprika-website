@@ -32,5 +32,10 @@
         "validation": {
             "required": "This field is required"
         }
+    },
+    "alt": {
+        "rightArrow": "Right Arrow",
+        "leftArrow": "Left Arrow",
+        "location": "Location"
     }
 }

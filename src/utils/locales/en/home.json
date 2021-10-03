@@ -5,7 +5,11 @@
     "second": {
         "someTopRestaurantForYourDinner": "Some Top Restaurant For Your Dinner",
         "upComingEvents": "Up Coming Events",
-        "restaurantsThatHostMusicEvents": "Restaurants That Host Music Events"
+        "restaurantsThatHostMusicEvents": "Restaurants That Host Music Events",
+        "reviews": "Reviews",
+        "alt": {
+            "plateImage": "Plate image"
+        }
     },
     "third": {
         "theMealYouLikeOnYourTime": "The Meal You Like On Your Time",
