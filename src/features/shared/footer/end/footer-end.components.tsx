@@ -3,8 +3,7 @@ import Title from "antd/lib/typography/Title";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/dist/client/router";
 import { FunctionComponent } from "react";
-import { PagesUrls, TranslationFiles } from "../../../../core/core";
-import LinkComponent from "../../link/link.components";
+import { TranslationFiles } from "../../../../core/core";
 import classes from "../style.module.css";
 
 interface FooterEndProps {}
@@ -23,11 +22,10 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
           </Title>
           <div>
             <div className={classes.googlePlayContainer}>
-              <LinkComponent
-                linkProps={{ href: PagesUrls.HOME, locale: locale }}
-                anchorProps={{
-                  className: `${classes.googlePlayButton} ${classes.listLink}`,
-                }}
+              <a
+                href="https://play.google.com/store/apps/details?id=com.paprika_sy.customer"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Image
                   src={`/icons/google-play-${locale}.png`}
@@ -36,14 +34,13 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
                   height="4rem"
                   preview={false}
                 />
-              </LinkComponent>
+              </a>
             </div>
             <div className={classes.appStoreContainer}>
-              <LinkComponent
-                linkProps={{ href: PagesUrls.HOME, locale: locale }}
-                anchorProps={{
-                  className: `${classes.appStoreButton} ${classes.listLink}`,
-                }}
+              <a
+                href="https://apps.apple.com/us/app/%D8%A8%D8%A7%D8%A8%D8%B1%D9%8A%D9%83%D8%A7/id1566120897#?platform=iphone"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Image
                   src={`/icons/app-store-${locale}.svg`}
@@ -52,7 +49,7 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
                   height="4rem"
                   preview={false}
                 />
-              </LinkComponent>
+              </a>
             </div>
           </div>
         </Space>

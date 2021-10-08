@@ -3,7 +3,6 @@ import { FunctionComponent } from "react";
 import Image from "next/image";
 import classes from "./style.module.css";
 import { RestaurantSummaryDto } from "../../../places/services/models/restaurant-summary-dto.models";
-import Title from "antd/lib/typography/Title";
 import useTranslation from "next-translate/useTranslation";
 import { TranslationFiles } from "../../../../core/core";
 import Text from "antd/lib/typography/Text";
@@ -30,12 +29,10 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
             objectPosition="center"
           />
           <div className={classes.content}>
-            <Row justify="space-between">
+            <Row>
               <Col span={24}>
                 <Space direction="vertical" size="small">
-                  <Title level={4} className={classes.cardTitle}>
-                    {restaurant?.name}
-                  </Title>
+                  <Text className={classes.cardTitle}>{restaurant?.name}</Text>
                   <div>
                     <Rate
                       className={classes.rating}

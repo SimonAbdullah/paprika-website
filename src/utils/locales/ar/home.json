@@ -1,3 +1,48 @@
 {
-    "home": "الرئيسية"
+  "home": "الرئيسية",
+  "paprika": "بابريكا",
+  "attractNewCustomersToYourRestaurant": "إجذب عملاء جدد إلى مطعمك",
+  "alt": {
+    "backgroundImage": "صورة الخلفية",
+    "dishImage": "صورة طبق"
+  },
+  "first": {
+    "enjoyYourMeal": "استمتع بوجبتك"
+  },
+  "second": {
+    "someTopRestaurantForYourDinner": "بعض أفضل المطاعم من أجل غدائك",
+    "upComingEvents": "الأحداث القادمة",
+    "restaurantsThatHostMusicEvents": "المطاعم التي تقدم حفلات موسيقية",
+    "reviews": "المراجعات",
+    "alt": {
+      "plateImage": "صورة طبق"
+    }
+  },
+  "third": {
+    "theMealYouLikeOnYourTime": "الوجبة التي تحبها في وقتك",
+    "moreThan": "أكثر من",
+    "1000": "1000",
+    "ofTheBestRestaurantAllOverDamascus": "مطعم حول دمشق",
+    "allTheRestaurantAroundYou": "جميع المطاعم حولك"
+  },
+  "fourth": {
+    "restaurants": "المطاعم",
+    "reservation": "الحجوزات",
+    "downloads": "التحميلات",
+    "alt": {
+      "diningTableImage": "صورة طاولة طعام",
+      "reservedImage": "صورة حجز",
+      "appImage": "صورة تطبيق"
+    }
+  },
+  "fifth": {
+    "submitYourRestaurantToOurList": "أرسل مطعمك إلى قائمتنا!",
+    "partnerWithPaprikaToday": "شريك مع",
+    "todayItsEasyAndYouCanCancelAtAnyTime": "اليوم، إنها سهلة ويمكنك الإلغاء في أي وقت",
+    "getStarted": "إبدأ",
+    "alt": {
+      "chefWomanImage": "صورة شيف",
+      "openImage": "صورة حالة"
+    }
+  }
 }

@@ -1,0 +1,58 @@
+.firstContainer {
+  width: 100%;
+  min-height: 90vh;
+  max-height: 90vh;
+  position: relative;
+}
+
+.column {
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: absolute;
+  min-height: 90vh;
+  width: 23%;
+}
+
+.buttons {
+  margin-bottom: 2rem;
+  z-index: 1;
+}
+
+.carouselItem {
+  min-height: 90vh;
+  width: 100%;
+}
+
+.content {
+  padding: 2rem;
+  text-align: start;
+}
+
+.title {
+  color: #000000;
+  font-size: 4rem;
+  font-weight: bold;
+  letter-spacing: 0.01em;
+}
+
+.text {
+  color: #828282;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+}
+
+@media only screen and (max-width: 767px) {
+  .column {
+    width: 30%;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .textContainer {
+    text-align: center;
+  }
+}

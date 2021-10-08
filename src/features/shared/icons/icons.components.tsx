@@ -13,8 +13,8 @@ const RightArrow: FunctionComponent<IconProps> = ({ className }) => {
     <Image
       src="/icons/right-arrow.svg"
       alt={t("alt.rightArrow")}
-      width="64px"
-      height="64px"
+      width="80px"
+      height="80px"
       objectPosition="center"
       className={className}
     />
@@ -27,8 +27,8 @@ const LeftArrow: FunctionComponent<IconProps> = ({ className }) => {
     <Image
       src="/icons/left-arrow.svg"
       alt={t("alt.leftArrow")}
-      width="64px"
-      height="64px"
+      width="80px"
+      height="80px"
       objectPosition="center"
       className={className}
     />

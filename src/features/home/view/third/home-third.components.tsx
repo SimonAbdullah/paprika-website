@@ -1,4 +1,4 @@
-import { Col, Row, Tag } from "antd";
+import { Col, Row } from "antd";
 import Title from "antd/lib/typography/Title";
 import Paragraph from "antd/lib/typography/Paragraph";
 import useTranslation from "next-translate/useTranslation";
@@ -21,9 +21,9 @@ const HomeThird: FunctionComponent<HomeThirdProps> = () => {
       <Image
         className={classes.backgroundImage}
         src="/images/home/third-background.png"
-        alt={t("third.alt.backgroundImage")}
+        alt={t("alt.backgroundImage")}
         layout="fill"
-        objectFit="fill"
+        objectFit="cover"
         objectPosition="center"
       />
       <Col xs={24} lg={12} className={classes.dishContainer}>
@@ -32,7 +32,7 @@ const HomeThird: FunctionComponent<HomeThirdProps> = () => {
           src={`/images/home/third-dish${
             direction === "rtl" ? "-reverse" : ""
           }.png`}
-          alt={t("third.alt.dishImage")}
+          alt={t("alt.dishImage")}
           layout="fill"
           objectFit="contain"
           objectPosition="center"

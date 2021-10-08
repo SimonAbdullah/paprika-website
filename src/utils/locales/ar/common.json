@@ -1,36 +1,41 @@
 {
-    "home": "الرئيسية",
-    "aboutUs": "من نحن",
-    "reviews": "التقييمات",
-    "restaurants": "المطاعم",
-    "registerYourRestaurant": "سجل مطعمك",
-    "english": "الانكليزية",
-    "arabic": "العربية",
-    "submit": "متابعة",
-    "cancel": "الغاء",
-    "paprika": "بابريكا",
-    "socialMediaFollow": "تابعنا على مواقع التواصل الإجتماعي لتعرف أجدد أخبارنا",
-    "aboutPaprika": "عن بابريكا",
-    "whoWeAre": "من نحن؟",
-    "support": "الدعم",
-    "account": "الحساب",
-    "supportCenter": "مركز الدعم",
-    "feedback": "آرائكم",
-    "getInTouch": "كن على تواصل",
-    "appDownload": "حمل تطبيقنا لتجربة أفضل",
-    "facebook": "فيسبوك",
-    "twitter": "تويتر",
-    "instagram": "انستغرام",
-    "whatsApp": "واتس آب",
-    "googlePlay": "متجر غوغل",
-    "appStore": "متجر التطبيقات",
-    "form": {
-        "fields": {
-            "name": "الاسم",
-            "phoneNumber": "رقم الجوال"
-        },
-        "validation": {
-            "required": "هذا الحقل مطلوب"
-        }
+  "home": "الرئيسية",
+  "aboutUs": "من نحن",
+  "reviews": "التقييمات",
+  "restaurants": "المطاعم",
+  "registerYourRestaurant": "سجل مطعمك",
+  "english": "الانكليزية",
+  "arabic": "العربية",
+  "submit": "متابعة",
+  "cancel": "الغاء",
+  "paprika": "بابريكا",
+  "socialMediaFollow": "تابعنا على مواقع التواصل الإجتماعي لتعرف أجدد أخبارنا",
+  "aboutPaprika": "عن بابريكا",
+  "whoWeAre": "من نحن؟",
+  "support": "الدعم",
+  "account": "الحساب",
+  "supportCenter": "مركز الدعم",
+  "feedback": "آرائكم",
+  "getInTouch": "كن على تواصل",
+  "appDownload": "حمل تطبيقنا لتجربة أفضل",
+  "facebook": "فيسبوك",
+  "twitter": "تويتر",
+  "instagram": "انستغرام",
+  "whatsApp": "واتس آب",
+  "googlePlay": "متجر غوغل",
+  "appStore": "متجر التطبيقات",
+  "form": {
+    "fields": {
+      "name": "الاسم",
+      "phoneNumber": "رقم الجوال"
+    },
+    "validation": {
+      "required": "هذا الحقل مطلوب"
     }
+  },
+  "alt": {
+    "rightArrow": "سهم يميني",
+    "leftArrow": "سهم يساري",
+    "location": "المكان"
+  }
 }

@@ -1,41 +1,41 @@
 {
-    "home": "Home",
-    "aboutUs": "About us",
-    "reviews": "Reviews",
-    "restaurants": "Restaurants",
-    "registerYourRestaurant": "Register your restaurant",
-    "english": "English",
-    "arabic": "Arabic",
-    "submit": "Submit",
-    "cancel": "Cancel",
-    "paprika": "Paprika",
-    "socialMediaFollow": "Follow us on social media to know our new news",
-    "aboutPaprika": "About Paprika",
-    "whoWeAre": "Who are we?",
-    "support": "Support",
-    "account": "Account",
-    "supportCenter": "Support Center",
-    "feedback": "Feedback",
-    "getInTouch": "Get In Touch",
-    "appDownload": "Download our app for full experiences",
-    "facebook": "Facebook",
-    "twitter": "Twitter",
-    "instagram": "Instagram",
-    "whatsApp": "WhatsApp",
-    "googlePlay": "Google Play",
-    "appStore": "App Store",
-    "form": {
-        "fields": {
-            "name": "Name",
-            "phoneNumber": "Phone number"
-        },
-        "validation": {
-            "required": "This field is required"
-        }
+  "home": "Home",
+  "aboutUs": "About us",
+  "reviews": "Reviews",
+  "restaurants": "Restaurants",
+  "registerYourRestaurant": "Register your restaurant",
+  "english": "English",
+  "arabic": "Arabic",
+  "submit": "Submit",
+  "cancel": "Cancel",
+  "paprika": "Paprika",
+  "socialMediaFollow": "Follow us on social media to know our new news",
+  "aboutPaprika": "About Paprika",
+  "whoWeAre": "Who are we?",
+  "support": "Support",
+  "account": "Account",
+  "supportCenter": "Support Center",
+  "feedback": "Feedback",
+  "getInTouch": "Get In Touch",
+  "appDownload": "Download our app for full experiences",
+  "facebook": "Facebook",
+  "twitter": "Twitter",
+  "instagram": "Instagram",
+  "whatsApp": "WhatsApp",
+  "googlePlay": "Google Play",
+  "appStore": "App Store",
+  "form": {
+    "fields": {
+      "name": "Name",
+      "phoneNumber": "Phone number"
     },
-    "alt": {
-        "rightArrow": "Right Arrow",
-        "leftArrow": "Left Arrow",
-        "location": "Location"
+    "validation": {
+      "required": "This field is required"
     }
+  },
+  "alt": {
+    "rightArrow": "Right Arrow",
+    "leftArrow": "Left Arrow",
+    "location": "Location"
+  }
 }

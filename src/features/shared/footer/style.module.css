@@ -9,7 +9,9 @@
 }
 
 .footerStartText {
+  display: inline-block;
   color: var(--footer-text-color);
+  width: 60%;
 }
 
 .middleRow {
@@ -56,8 +58,14 @@
   width: 100%;
 }
 
-@media only screen and (min-width: 992px) {
-  .foot:dir(rtl) {
-    padding-inline-start: 8rem;
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .footerStartText {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .footerStartText {
+    width: 100%;
   }
 }

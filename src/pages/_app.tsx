@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import "react-multi-carousel/lib/styles.css";
 import type { AppProps } from "next/app";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AppLayout from "../core/app/app.layout";
 import AppContextProvider from "../core/app/app.context";
 import Header from "../features/shared/header/header.components";

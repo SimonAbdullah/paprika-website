@@ -96,11 +96,12 @@ function CardList<T>({ dataSource, renderItem, itemKey }: CardListProps<T>) {
     ssr: true,
     infinite: true,
     keyBoardControl: true,
-    removeArrowOnDeviceType: ["tablet", "mobile"],
+    draggable: false,
+    swipeable: true,
   };
 
   return (
-    <div style={{ direction: "ltr" }}>
+    <div dir="ltr">
       <Carousel containerClass={classes.carousel} {...carouselProps} />
     </div>
   );

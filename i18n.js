@@ -1,11 +1,11 @@
-const { PagesUrls } = require("./src/core/core");
+const { PagesUrls, TranslationFiles } = require("./src/core/core");
 
 module.exports = {
   locales: ["en", "ar"],
   defaultLocale: "en",
   pages: {
-    "*": ["common"],
-    [PagesUrls.HOME]: ["home"],
+    "*": [TranslationFiles.COMMON],
+    [PagesUrls.HOME]: [TranslationFiles.HOME],
   },
   loadLocaleFrom: (lang, ns) =>
     import(`./src/utils/locales/${lang}/${ns}.json`).then((m) => m.default),
