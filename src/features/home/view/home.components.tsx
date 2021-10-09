@@ -11,11 +11,19 @@ interface HomeProps {}
 const Home: FunctionComponent<HomeProps> = () => {
   return (
     <div className={classes.homeContainer}>
-      <HomeFirst />
+      <div data-sal="zoom-in" data-sal-duration="500" data-sal-delay="200">
+        <HomeFirst />
+      </div>
       <HomeSecond />
-      <HomeThird />
-      <HomeFourth />
-      <HomeFifth />
+      <div data-sal="zoom-out" data-sal-duration="500">
+        <HomeThird />
+      </div>
+      <div data-sal="slide-left" data-sal-duration="500">
+        <HomeFourth />
+      </div>
+      <div data-sal="slide-right" data-sal-duration="500">
+        <HomeFifth />
+      </div>
     </div>
   );
 };

@@ -26,9 +26,10 @@ const FooterStart: FunctionComponent<FooterStartProps> = () => {
             {t("socialMediaFollow")}
           </Text>
           <Space>
-            <LinkComponent
-              linkProps={{ href: PagesUrls.HOME, locale: locale }}
-              anchorProps={{ className: classes.listLink }}
+            <a
+              href="https://www.facebook.com/paprika.sar"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <Image
                 src="/icons/facebook.svg"
@@ -37,10 +38,11 @@ const FooterStart: FunctionComponent<FooterStartProps> = () => {
                 height="32px"
                 preview={false}
               />
-            </LinkComponent>
-            <LinkComponent
-              linkProps={{ href: PagesUrls.HOME, locale: locale }}
-              anchorProps={{ className: classes.listLink }}
+            </a>
+            <a
+              href="https://www.instagram.com/paprika_sy/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <Image
                 src="/icons/instagram.svg"
@@ -49,7 +51,7 @@ const FooterStart: FunctionComponent<FooterStartProps> = () => {
                 height="32px"
                 preview={false}
               />
-            </LinkComponent>
+            </a>
             <LinkComponent
               linkProps={{ href: PagesUrls.HOME, locale: locale }}
               anchorProps={{ className: classes.listLink }}

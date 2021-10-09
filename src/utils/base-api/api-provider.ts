@@ -28,6 +28,8 @@ export default class ApiProvider {
         headers: {
           ...req.headers,
           Authorization: `Bearer ${cookies.get(TOKEN_KEY)}`,
+          "X-Api-Key": process.env.NEXT_PUBLIC_API_KEY,
+          "x-api-scope": "1",
         },
       };
     });
