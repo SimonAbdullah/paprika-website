@@ -25,7 +25,7 @@ module.exports = {
   ...config,
   reactStrictMode: true,
   images: {
-    domains: ["api.paprika.inter.itland-sy.com"],
+    domains: ["api.paprika.inter.itland-sy.com", "prodapi.paprika-sy.com"],
   },
   webpack5: false,
 };
