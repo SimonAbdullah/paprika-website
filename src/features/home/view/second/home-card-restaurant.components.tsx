@@ -2,7 +2,7 @@ import { Card, Col, Rate, Row, Space } from "antd";
 import { FunctionComponent } from "react";
 import Image from "next/image";
 import classes from "./style.module.css";
-import { RestaurantSummaryDto } from "../../../places/services/models/restaurant-summary-dto.models";
+import { RestaurantSummaryDto } from "../../../restaurants/services/models/restaurant-summary-dto.models";
 import useTranslation from "next-translate/useTranslation";
 import { TranslationFiles } from "../../../../core/core";
 import Text from "antd/lib/typography/Text";

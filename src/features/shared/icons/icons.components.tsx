@@ -80,4 +80,26 @@ const LocationIcon: FunctionComponent<IconProps> = ({ className }) => {
   );
 };
 
-export { RightArrow, LeftArrow, ListRightArrow, ListLeftArrow, LocationIcon };
+const LocationBlackIcon: FunctionComponent<IconProps> = ({ className }) => {
+  const { t } = useTranslation(TranslationFiles.COMMON);
+  return (
+    <Image
+      src="/icons/location-black.svg"
+      alt={t("alt.location")}
+      width="24px"
+      height="24px"
+      objectFit="contain"
+      objectPosition="center"
+      className={className}
+    />
+  );
+};
+
+export {
+  RightArrow,
+  LeftArrow,
+  ListRightArrow,
+  ListLeftArrow,
+  LocationIcon,
+  LocationBlackIcon,
+};

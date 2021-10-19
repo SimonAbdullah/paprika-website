@@ -1,0 +1,43 @@
+.space {
+  width: 100%;
+}
+
+.cardTitle {
+  color: #1f1d2b;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Poppins";
+  display: inline-flex;
+}
+
+.addressContainer {
+  font-size: 0.8rem;
+  color: #1f1d2b;
+  display: inline-flex;
+  align-items: center;
+}
+
+.addressRateReviewContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rating {
+  font-size: 1rem;
+}
+
+.reviews {
+  font-size: 0.8rem;
+}
+
+.rating,
+.reviews {
+  margin: 0 0.3rem;
+}
+
+.content .rating > li {
+  margin: 0 0.1rem;
+  color: #f7a800;
+  border-radius: 0.3px;
+  font-size: 1rem;
+}

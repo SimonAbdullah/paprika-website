@@ -1,0 +1,11 @@
+.badge > sup {
+  color: var(--primary-color);
+  font-weight: 600;
+  background-color: #ffe2e0;
+  font-family: "Poppins";
+  margin: 0 0.2rem;
+}
+
+.text {
+  color: #a9a9a9;
+}

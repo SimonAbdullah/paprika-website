@@ -4,5 +4,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #fafafa;
   overflow: hidden;
+  padding: 3rem 0;
+}
+
+.restaurantList {
+  padding: 0 2rem;
 }

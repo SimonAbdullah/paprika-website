@@ -1,26 +1,22 @@
 import "../styles/globals.css";
-import "react-multi-carousel/lib/styles.css";
 import type { AppProps } from "next/app";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AppLayout from "../core/app/app.layout";
 import AppContextProvider from "../core/app/app.context";
 import Header from "../features/shared/header/header.components";
 import Footer from "../features/shared/footer/footer.components";
 import { Content } from "antd/lib/layout/layout";
-import sal from "sal.js";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(
     () =>
       new QueryClient({
-        defaultOptions: { queries: { refetchOnWindowFocus: false } },
+        defaultOptions: {
+          queries: { refetchOnWindowFocus: false, refetchOnMount: true },
+        },
       })
   );
-
-  useEffect(() => {
-    sal();
-  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

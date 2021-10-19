@@ -25,12 +25,18 @@ export default class ApiProvider {
       const cookies = new Cookies(req.headers.cookies);
       return {
         ...req,
-        headers: {
-          ...req.headers,
-          Authorization: `Bearer ${cookies.get(TOKEN_KEY)}`,
-          "X-Api-Key": process.env.NEXT_PUBLIC_API_KEY,
-          "x-api-scope": "1",
-        },
+        headers:
+          process.env.NODE_ENV === "production"
+            ? {
+                ...req.headers,
+                Authorization: `Bearer ${cookies.get(TOKEN_KEY)}`,
+                "X-Api-Key": process.env.NEXT_PUBLIC_API_KEY,
+                "x-api-scope": "1",
+              }
+            : {
+                ...req.headers,
+                Authorization: `Bearer ${cookies.get(TOKEN_KEY)}`,
+              },
       };
     });
     this.api.interceptors.response.use((res: AxiosResponse) => {

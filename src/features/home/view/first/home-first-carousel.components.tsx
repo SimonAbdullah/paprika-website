@@ -25,7 +25,7 @@ const HomeFirstCarousel: FunctionComponent<HomeFirstCarouselProps> = ({
 
   const carouselProps: CarouselProps = {
     responsive: {
-      bla: { breakpoint: { max: 5000, min: 0 }, items: 1 },
+      all: { breakpoint: { max: 5000, min: 0 }, items: 1 },
     },
     children: Array(8)
       .fill(null)
