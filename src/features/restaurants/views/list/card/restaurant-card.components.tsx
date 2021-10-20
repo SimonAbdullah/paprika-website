@@ -3,7 +3,7 @@ import Text from "antd/lib/typography/Text";
 import { FunctionComponent } from "react";
 import { LocationBlackIcon } from "../../../../shared/icons/icons.components";
 import Image from "next/image";
-import { RestaurantSummaryDto } from "../../../services/models/restaurant-summary-dto.models";
+import { RestaurantSummaryDto } from "../../../services/places/models/restaurant-summary-dto.models";
 import classes from "./style.module.css";
 import useTranslation from "next-translate/useTranslation";
 import { TranslationFiles } from "../../../../../core/core";

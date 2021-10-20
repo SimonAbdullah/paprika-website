@@ -6,9 +6,9 @@ import {
 } from "react-query";
 import { PagedResultDto } from "../../../utils/base-api/api-provider";
 import { RESTAURANTS_INITIAL_Places_API_PARAMS } from "../constants/restaurants.constants";
-import { PlacesGetAllParams } from "../services/models/places-get-all-params.models";
-import { RestaurantSummaryDto } from "../services/models/restaurant-summary-dto.models";
-import { placesServices } from "../services/places.services";
+import { PlacesGetAllParams } from "../services/places/models/places-get-all-params.models";
+import { RestaurantSummaryDto } from "../services/places/models/restaurant-summary-dto.models";
+import { placesServices } from "../services/places/places.services";
 
 export const useFeaturedPlaces = (
   params?: PlacesGetAllParams,

@@ -1,8 +1,8 @@
 import {
   IBaseApiResponse,
   PagedResultDto,
-} from "../../../utils/base-api/api-provider";
-import ApiService from "../../../utils/base-api/api-service";
+} from "../../../../utils/base-api/api-provider";
+import ApiService from "../../../../utils/base-api/api-service";
 import { PlacesGetAllParams } from "./models/places-get-all-params.models";
 import { RestaurantSummaryDto } from "./models/restaurant-summary-dto.models";
 
