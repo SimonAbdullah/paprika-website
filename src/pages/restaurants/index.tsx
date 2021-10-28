@@ -3,15 +3,15 @@ import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import type { GetStaticProps, NextPage } from "next";
 import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
-import { TimeInSeconds, TranslationFiles } from "../core/core";
-import { RESTAURANTS_INITIAL_Places_API_PARAMS } from "../features/restaurants/constants/restaurants.constants";
-import { useInfinityPlaces } from "../features/restaurants/hooks/places.hooks";
-import { RestaurantSummaryDto } from "../features/restaurants/services/places/models/restaurant-summary-dto.models";
-import { placesServices } from "../features/restaurants/services/places/places.services";
-import RestaurantsFilter from "../features/restaurants/views/list/filter/restaurants-filter.components";
-import RestaurantList from "../features/restaurants/views/list/restaurant-list.components";
-import styles from "../styles/Restaurants.module.css";
-import { PagedResultDto } from "../utils/base-api/api-provider";
+import { TimeInSeconds, TranslationFiles } from "../../core/core";
+import { RESTAURANTS_INITIAL_Places_API_PARAMS } from "../../features/restaurants/constants/restaurants.constants";
+import { useInfinityPlaces } from "../../features/restaurants/hooks/places.hooks";
+import { RestaurantSummaryDto } from "../../features/restaurants/services/places/models/restaurant-summary-dto.models";
+import { placesServices } from "../../features/restaurants/services/places/places.services";
+import RestaurantsFilter from "../../features/restaurants/views/list/filter/restaurants-filter.components";
+import RestaurantList from "../../features/restaurants/views/list/restaurant-list.components";
+import styles from "../../styles/Restaurants.module.css";
+import { PagedResultDto } from "../../utils/base-api/api-provider";
 
 interface RestaurantsPageProps {
   places: PagedResultDto<RestaurantSummaryDto>;

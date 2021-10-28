@@ -9,6 +9,7 @@ const TranslationFiles = {
   COMMON: "common",
   HOME: "home",
   RESTAURANTS: "restaurants",
+  RESTAURANT: "restaurant",
 };
 
 const TimeInSeconds = {

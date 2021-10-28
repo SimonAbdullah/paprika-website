@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  margin-top: 0.2rem;
+}
+
+.row {
+  width: 100%;
+}
+
+.mainInfo {
+  background-color: white;
+  width: 75%;
+  margin-top: -6rem;
+  height: 6rem;
+  padding: 0.5rem 4%;
+}
+
+.reservationBox {
+  margin-top: -6rem;
+  position: sticky;
+  top: 1rem;
+}
+
+@media only screen and (max-width: 992px) {
+  .mainInfo {
+    margin: 0;
+    width: 100%;
+    padding: 0;
+  }
+
+  .reservationBox {
+    margin: 0;
+  }
+}
