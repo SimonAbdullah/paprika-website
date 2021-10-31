@@ -1,75 +1,13 @@
-import { Descriptions, List, Space } from "antd";
+import { List, Space } from "antd";
 import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent } from "react";
 import { TranslationFiles } from "../../../../../core/core";
 import Image from "next/image";
 import classes from "./style.module.css";
+import { servicesData } from "./services-data";
 
 interface RestaurantServicesProps {}
-
-const data = [
-  {
-    logo: "/images/restaurant/chair.svg",
-    title: "",
-    description: "",
-  },
-  {
-    logo: "/images/restaurant/bed.svg",
-    title: "",
-    description: "",
-  },
-  {
-    logo: "/images/restaurant/meeting.svg",
-    title: "",
-    description: "",
-  },
-  {
-    logo: "/images/restaurant/clock.svg",
-    title: "",
-    description: "",
-  },
-  {
-    logo: "/images/restaurant/dish.svg",
-    title: "",
-    description: "",
-  },
-  {
-    logo: "/images/restaurant/floor.svg",
-    title: "",
-    description: "",
-  },
-  {
-    logo: "/images/restaurant/music.svg",
-    title: "",
-    description: "",
-  },
-  {
-    logo: "/images/restaurant/car.svg",
-    title: "",
-    description: "",
-  },
-  {
-    logo: "/images/restaurant/shisha.svg",
-    title: "",
-    description: "",
-  },
-  {
-    logo: "/images/restaurant/cups.svg",
-    title: "",
-    description: "",
-  },
-  {
-    logo: "/images/restaurant/no-smoking.svg",
-    title: "",
-    description: "",
-  },
-  {
-    logo: "/images/restaurant/table.svg",
-    title: "",
-    description: "",
-  },
-];
 
 const RestaurantServices: FunctionComponent<RestaurantServicesProps> = () => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
@@ -78,14 +16,13 @@ const RestaurantServices: FunctionComponent<RestaurantServicesProps> = () => {
       header={<Text className={classes.title}>{t("howWeCanServeYou")}</Text>}
       split={false}
       grid={{
-        gutter: 64,
+        gutter: 46,
       }}
-      dataSource={data}
+      dataSource={servicesData()}
       renderItem={(item) => {
-        console.log(item);
         return (
-          <List.Item key={item.logo}>
-            <Space direction="vertical">
+          <List.Item key={item.logo} className={classes.item}>
+            <Space direction="vertical" className={classes.space}>
               <Image
                 src={item.logo}
                 width="48px"
@@ -93,6 +30,10 @@ const RestaurantServices: FunctionComponent<RestaurantServicesProps> = () => {
                 objectFit="contain"
                 objectPosition="center"
               />
+              <Text className={classes.itemTitle}>{item.title}</Text>
+              <Text className={classes.itemDescription}>
+                {item.description}
+              </Text>
             </Space>
           </List.Item>
         );

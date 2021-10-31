@@ -15,9 +15,7 @@ const AboutRestaurantCenter: FunctionComponent<AboutRestaurantCenterProps> =
 
     const { data } = useRestaurantDetails();
 
-    //   if (!data?.description) {
-    //     return null;
-    //   }
+    if (!data?.description) return null;
 
     return (
       <Descriptions
@@ -25,14 +23,6 @@ const AboutRestaurantCenter: FunctionComponent<AboutRestaurantCenterProps> =
       >
         <Paragraph className={classes.description}>
           {data?.description}
-          Bethel Convention Centre (BCC) is a conference venue renowned for its
-          excellent facilities and friendly staff, situated just outside of
-          Birmingham.Our venue is as elegant as it is practical and we pride
-          ourselves in supporting our clients with the highest quality service,
-          excellent facilities and a wide range of events packages.Whether you
-          are holding a conference, seminar, meeting, concert, lecture, wedding
-          or exhibition, we consistently stride towards ensuring that our
-          clients are only ever met with a service that exceeds expectation.
         </Paragraph>
       </Descriptions>
     );

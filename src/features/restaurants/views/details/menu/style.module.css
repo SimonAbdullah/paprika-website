@@ -1,0 +1,40 @@
+.title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000000;
+}
+
+.tab > div[class="ant-tabs-nav"]::before {
+  border-bottom: 3px solid #c4c4c4;
+}
+
+.tab div[class*="ant-tabs-nav-list"] > div[class*="ant-tabs-tab"] > div {
+  color: #000000;
+  text-shadow: none;
+}
+
+.tab div[class*="ant-tabs-nav-list"] > div[class*="ant-tabs-ink-bar"] {
+  height: 3px;
+}
+
+/* Card */
+.card {
+  height: 10rem;
+}
+
+.content {
+  width: 100%;
+  background-color: var(--primary-color);
+  opacity: 0.8;
+  mix-blend-mode: normal;
+  font-family: "Poppins";
+  padding: 0.5rem;
+  position: absolute;
+  bottom: 0;
+}
+
+.cardTitle {
+  color: var(--home-card-title-color);
+  font-size: 1rem;
+  font-weight: bold;
+}

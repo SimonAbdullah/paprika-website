@@ -2,10 +2,24 @@
   font-size: 1.2rem;
   font-weight: bold;
   color: #000000;
-  display: block;
-  margin-bottom: 1rem;
 }
 
-.description {
+.item {
+  margin: 1rem 0;
+}
+
+.space {
+  text-align: center;
+}
+
+.itemTitle {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #000000;
+  display: block;
+}
+
+.itemDescription {
+  font-size: 0.7rem;
   color: #000000;
 }

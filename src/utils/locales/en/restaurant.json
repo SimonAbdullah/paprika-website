@@ -8,5 +8,31 @@
   "note": "Note",
   "bookATable": "Book a Table",
   "aboutOurCenter": "About Our Center",
-  "howWeCanServeYou": "How we can serve you"
+  "howWeCanServeYou": "How we can serve you",
+  "capacity": "Capacity",
+  "bedrooms": "Bedrooms",
+  "meeting": "Meeting",
+  "openingHours": "Opening Hours",
+  "serviceAndFacilities": "Service And Facilities",
+  "floorPlan": "Floor Plan",
+  "music": "Music",
+  "valet": "Valet",
+  "hookah": "Hookah",
+  "bear": "Bear",
+  "smoking": "Smoking",
+  "table": "Table",
+  "upTo70Seats": "Up To 70 Seats",
+  "ourSchedule": "Our Schedule",
+  "from": "From",
+  "to": "To",
+  "ourMenu": "Our Menu",
+  "daysOfWeek": {
+    "sunday": "Sunday",
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday"
+  }
 }

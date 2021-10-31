@@ -23,9 +23,12 @@ export const useRestaurantDetails = (
 
   const galleryItems = result.data?.galleryItems;
 
+  const openingTimes = result.data?.openingTimes;
+
   return {
     ...result,
-    galleryItems,
     isLoading: !result.data || !result.error || isFallback,
+    galleryItems,
+    openingTimes,
   };
 };

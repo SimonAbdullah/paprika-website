@@ -1,4 +1,4 @@
-import { Col, Row } from "antd";
+import { Button, Col, Row } from "antd";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { TimeInSeconds } from "../../core/core";
@@ -12,6 +12,8 @@ import RestaurantMainGallery from "../../features/restaurants/views/details/main
 import RestaurantDetails from "../../features/restaurants/views/details/restaurant-details.components";
 import RestaurantMainInfo from "../../features/restaurants/views/details/main-info/restaurant-main-info.components";
 import RestaurantReservationBox from "../../features/restaurants/views/details/reservation-box/restaurant-reservation-box.components";
+import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
+import { PlusCircleOutlined } from "@ant-design/icons";
 
 interface RestaurantPageProps {
   restaurant: RestaurantHomeDto;
@@ -19,6 +21,8 @@ interface RestaurantPageProps {
 
 const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
   const { data } = useRestaurantDetails({}, { initialData: restaurant });
+
+  const { lg } = useBreakpoint();
 
   return (
     <>
@@ -30,7 +34,7 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
           <Col span={24}>
             <RestaurantMainGallery />
           </Col>
-          <Col span={16}>
+          <Col xs={19} sm={21} lg={16}>
             <Row justify="center">
               <Col span={22} lg={24}>
                 <div className={styles.mainInfo}>
@@ -42,10 +46,18 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
               </Col>
             </Row>
           </Col>
-          <Col span={8}>
-            <Row justify="center" className={styles.reservationBox}>
-              <Col span={20}>
-                <RestaurantReservationBox />
+          <Col xs={1} sm={1} lg={8}>
+            <Row className={styles.reservationBox}>
+              <Col span={22}>
+                {lg ? (
+                  <RestaurantReservationBox />
+                ) : (
+                  <Button
+                    type="link"
+                    shape="circle"
+                    icon={<PlusCircleOutlined style={{ fontSize: "2rem" }} />}
+                  />
+                )}
               </Col>
             </Row>
           </Col>
@@ -56,7 +68,7 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
-  const restaurants = await placesServices.getAll();
+  const restaurants = await placesServices.getAll({ MaxResultCount: 1000 });
 
   const paths: PathsType = [];
 

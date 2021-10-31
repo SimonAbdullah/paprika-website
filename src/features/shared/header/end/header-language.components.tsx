@@ -15,13 +15,13 @@ const HeaderLanguageButton: FunctionComponent<HeaderLanguageButtonProps> =
   () => {
     const { t } = useTranslation(TranslationFiles.COMMON);
 
-    const { locale, pathname } = useRouter();
+    const { locale, pathname, query } = useRouter();
 
     const menu = (
       <Menu className={classes.localeList}>
         {Object.entries(LOCALS).map(([locale, value]) => (
           <Menu.Item key={value}>
-            <Link href={{ pathname }} locale={locale} key={value}>
+            <Link href={{ pathname, query }} locale={locale} key={value}>
               <a>{t(value)}</a>
             </Link>
           </Menu.Item>
