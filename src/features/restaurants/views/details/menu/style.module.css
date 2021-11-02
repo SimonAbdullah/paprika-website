@@ -22,6 +22,10 @@
   height: 10rem;
 }
 
+.coverContainer .image {
+  border-radius: 5px;
+}
+
 .content {
   width: 100%;
   background-color: var(--primary-color);
@@ -31,10 +35,23 @@
   padding: 0.5rem;
   position: absolute;
   bottom: 0;
+  border-end-start-radius: 5px;
+  border-end-end-radius: 5px;
 }
 
 .cardTitle {
   color: var(--home-card-title-color);
   font-size: 1rem;
   font-weight: bold;
+}
+
+.showMoreButton {
+  padding: 0 2rem;
+  margin-top: 1rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .showMoreButton {
+    padding: 0 1rem;
+  }
 }

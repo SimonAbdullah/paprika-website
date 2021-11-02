@@ -27,7 +27,7 @@ export const useRestaurantDetails = (
 
   return {
     ...result,
-    isLoading: !result.data || !result.error || isFallback,
+    isLoading: (!result.data && !result.error) || isFallback,
     galleryItems,
     openingTimes,
   };

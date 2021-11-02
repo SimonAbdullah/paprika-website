@@ -1,4 +1,4 @@
-import { Button, Col, Row } from "antd";
+import { Button, Col, Modal, Row } from "antd";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { TimeInSeconds } from "../../core/core";
@@ -14,6 +14,7 @@ import RestaurantMainInfo from "../../features/restaurants/views/details/main-in
 import RestaurantReservationBox from "../../features/restaurants/views/details/reservation-box/restaurant-reservation-box.components";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { PlusCircleOutlined } from "@ant-design/icons";
+import { useState } from "react";
 
 interface RestaurantPageProps {
   restaurant: RestaurantHomeDto;
@@ -23,6 +24,8 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
   const { data } = useRestaurantDetails({}, { initialData: restaurant });
 
   const { lg } = useBreakpoint();
+
+  const [reservationModalVisible, setReservationModalVisible] = useState(false);
 
   return (
     <>
@@ -52,11 +55,22 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
                 {lg ? (
                   <RestaurantReservationBox />
                 ) : (
-                  <Button
-                    type="link"
-                    shape="circle"
-                    icon={<PlusCircleOutlined style={{ fontSize: "2rem" }} />}
-                  />
+                  <>
+                    <Button
+                      size="large"
+                      type="link"
+                      shape="circle"
+                      icon={<PlusCircleOutlined style={{ fontSize: "2rem" }} />}
+                      onClick={() => setReservationModalVisible(true)}
+                    />
+                    <Modal
+                      visible={reservationModalVisible}
+                      onCancel={() => setReservationModalVisible(false)}
+                      footer={null}
+                    >
+                      <RestaurantReservationBox />
+                    </Modal>
+                  </>
                 )}
               </Col>
             </Row>

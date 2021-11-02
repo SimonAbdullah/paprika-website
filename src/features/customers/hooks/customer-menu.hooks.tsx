@@ -23,7 +23,7 @@ export const useRestaurantCategories = (
 
   return {
     ...result,
-    isLoading: !result.data || !result.error || isFallback,
+    isLoading: (!result.data && !result.error) || isFallback,
   };
 };
 
@@ -46,6 +46,6 @@ export const useRestaurantCategoryMeals = (
 
   return {
     ...result,
-    isLoading: !result.data || !result.error || isFallback,
+    isLoading: (!result.data && !result.error) || isFallback,
   };
 };
