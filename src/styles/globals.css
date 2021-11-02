@@ -1,5 +1,5 @@
-@import "../../node_modules/sal.js/dist/sal.css";
 @import "~react-multi-carousel/lib/styles.css";
+@import "~aos/dist/aos.css";
 
 :root {
   --icon-color: #f5f5f5;

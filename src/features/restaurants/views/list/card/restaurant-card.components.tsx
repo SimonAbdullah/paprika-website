@@ -8,6 +8,7 @@ import classes from "./style.module.css";
 import useTranslation from "next-translate/useTranslation";
 import { PagesUrls, TranslationFiles } from "../../../../../core/core";
 import Link from "next/link";
+import { useRouter } from "next/dist/client/router";
 
 interface RestaurantCardProps {
   restaurant: RestaurantSummaryDto;
@@ -18,10 +19,15 @@ const RestaurantCard: FunctionComponent<RestaurantCardProps> = ({
 }) => {
   const { t } = useTranslation(TranslationFiles.COMMON);
 
+  const { push } = useRouter();
+
   return (
     <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.id}`}>
       <a>
         <Card
+          onClick={() => {
+            push(`${PagesUrls.RESTAURANTS}/${restaurant?.id}`);
+          }}
           hoverable
           size="small"
           cover={

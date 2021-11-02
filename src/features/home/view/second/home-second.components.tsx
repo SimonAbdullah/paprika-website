@@ -10,12 +10,12 @@ const HomeSecond: FunctionComponent<HomeSecondProps> = () => {
   return (
     <Row justify="center">
       <Col span={24} className={classes.firstColumn}>
-        <div data-sal="flip-right" data-sal-duration="600">
+        <div data-aos="flip-right" data-aos-duration="600">
           <HomeSecondTopRestaurants />
         </div>
       </Col>
       <Col span={24} className={classes.secondColumn}>
-        <div data-sal="flip-left" data-sal-duration="600">
+        <div data-aos="flip-left" data-aos-duration="600">
           <HomeSecondHostMusicRestaurants />
         </div>
       </Col>

@@ -11,17 +11,17 @@ interface HomeProps {}
 const Home: FunctionComponent<HomeProps> = () => {
   return (
     <div className={classes.homeContainer}>
-      <div data-sal="zoom-in" data-sal-duration="500" data-sal-delay="200">
+      <div data-aos="zoom-in" data-aos-duration="500" data-aos-delay="200">
         <HomeFirst />
       </div>
       <HomeSecond />
-      <div data-sal="zoom-out" data-sal-duration="500">
+      <div data-aos="zoom-out" data-aos-duration="500">
         <HomeThird />
       </div>
-      <div data-sal="slide-left" data-sal-duration="500">
+      <div data-aos="slide-left" data-aos-duration="500">
         <HomeFourth />
       </div>
-      <div data-sal="slide-right" data-sal-duration="500">
+      <div data-aos="slide-right" data-aos-duration="500">
         <HomeFifth />
       </div>
     </div>

@@ -1,18 +1,22 @@
 import { Button, Col, Row } from "antd";
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent, useContext } from "react";
-import { TranslationFiles } from "../../../../core/core";
+import { PagesUrls, TranslationFiles } from "../../../../core/core";
 import classes from "./style.module.css";
 import Image from "next/image";
 import Title from "antd/lib/typography/Title";
 import Text from "antd/lib/typography/Text";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { AppContext } from "../../../../core/app/app.context";
+import Link from "next/link";
+import { useRouter } from "next/dist/client/router";
 
 interface HomeFifthProps {}
 
 const HomeFifth: FunctionComponent<HomeFifthProps> = () => {
   const { t } = useTranslation(TranslationFiles.HOME);
+
+  const { push } = useRouter();
 
   const { lg } = useBreakpoint();
 
@@ -56,9 +60,17 @@ const HomeFifth: FunctionComponent<HomeFifthProps> = () => {
               </Col>
             </Row>
             <div className={classes.buttonContainer}>
-              <Button size="large" type="primary">
-                {t("fifth.getStarted")}
-              </Button>
+              <Link href={PagesUrls.RESTAURANTS}>
+                <a>
+                  <Button
+                    size="large"
+                    type="primary"
+                    onClick={() => push(PagesUrls.RESTAURANTS)}
+                  >
+                    {t("fifth.getStarted")}
+                  </Button>
+                </a>
+              </Link>
             </div>
           </Col>
         </Row>

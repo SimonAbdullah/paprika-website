@@ -8,10 +8,8 @@ import { RestaurantSummaryDto } from "../features/restaurants/services/places/mo
 import { placesServices } from "../features/restaurants/services/places/places.services";
 import styles from "../styles/Home.module.css";
 import { PagedResultDto } from "../utils/base-api/api-provider";
-import Sal from "sal.js";
-import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useEffect } from "react";
-import { useRouter } from "next/dist/client/router";
+import AOS from "aos";
 
 interface HomePageProps {
   places: PagedResultDto<RestaurantSummaryDto>;
@@ -19,12 +17,6 @@ interface HomePageProps {
 
 const HomePage: NextPage<HomePageProps> = ({ places }) => {
   const { t } = useTranslation(TranslationFiles.HOME);
-
-  const { pathname } = useRouter();
-
-  const { xs, sm, md } = useBreakpoint();
-
-  const isMobile = (xs || sm) && !md;
 
   useFeaturedPlaces(
     {},
@@ -34,8 +26,8 @@ const HomePage: NextPage<HomePageProps> = ({ places }) => {
   );
 
   useEffect(() => {
-    Sal({ root: null, disabled: isMobile });
-  }, [pathname, isMobile]);
+    AOS.init({ once: true, disable: "mobile" });
+  }, []);
 
   return (
     <>

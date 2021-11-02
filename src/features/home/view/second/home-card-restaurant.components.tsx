@@ -8,6 +8,7 @@ import { PagesUrls, TranslationFiles } from "../../../../core/core";
 import Text from "antd/lib/typography/Text";
 import { LocationIcon } from "../../../shared/icons/icons.components";
 import Link from "next/link";
+import { useRouter } from "next/dist/client/router";
 
 interface HomeCardRestaurantProps {
   restaurant?: RestaurantSummaryDto;
@@ -18,10 +19,15 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
 }) => {
   const { t } = useTranslation(TranslationFiles.HOME);
 
+  const { push } = useRouter();
+
   return (
     <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.id}`}>
       <a>
         <Card
+          onClick={() => {
+            push(`${PagesUrls.RESTAURANTS}/${restaurant?.id}`);
+          }}
           hoverable
           className={classes.card}
           cover={
