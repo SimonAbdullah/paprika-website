@@ -6,7 +6,7 @@ import { FunctionComponent } from "react";
 import { TranslationFiles } from "../../../../core/core";
 import ItemsCount from "../../../shared/items-count/items-count.components";
 import PagesNumber from "../../../shared/pages-number/pages-number.components";
-import { RESTAURANTS_INITIAL_Places_API_PARAMS } from "../../constants/restaurants.constants";
+import { RESTAURANTS_INITIAL_PLACES_API_PARAMS } from "../../constants/restaurants.constants";
 import { useInfinityPlaces } from "../../hooks/places.hooks";
 import RestaurantCard from "./card/restaurant-card.components";
 import classes from "./style.module.css";
@@ -34,7 +34,7 @@ const RestaurantList: FunctionComponent<RestaurantListProps> = () => {
           <PagesNumber
             itemsTotalCount={data?.pages?.[0].totalCount || 0}
             itemsPerPage={
-              RESTAURANTS_INITIAL_Places_API_PARAMS.MaxRestaurantsPerPage
+              RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage
             }
             currentItemsCount={dataSource?.length}
           />

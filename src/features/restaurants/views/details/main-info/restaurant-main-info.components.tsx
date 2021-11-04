@@ -22,8 +22,13 @@ const RestaurantMainInfo: FunctionComponent<RestaurantMainInfoProps> = () => {
           <Title level={5} className={classes.ourRate}>
             {t("ourRate")}
           </Title>
-          <Text className={classes.rate}>{data.restaurantRate}</Text>
-          <Rate allowHalf disabled value={data.restaurantRate} />
+          <Text className={classes.rateText}>{data.restaurantRate}</Text>
+          <Rate
+            className={classes.rateStars}
+            allowHalf
+            disabled
+            value={data.restaurantRate}
+          />
           <Text className={classes.reviews} type="danger">
             {t("reviews")}
           </Text>

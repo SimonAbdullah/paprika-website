@@ -4,7 +4,7 @@ import type { GetStaticProps, NextPage } from "next";
 import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
 import { TimeInSeconds, TranslationFiles } from "../../core/core";
-import { RESTAURANTS_INITIAL_Places_API_PARAMS } from "../../features/restaurants/constants/restaurants.constants";
+import { RESTAURANTS_INITIAL_PLACES_API_PARAMS } from "../../features/restaurants/constants/restaurants.constants";
 import { useInfinityPlaces } from "../../features/restaurants/hooks/places.hooks";
 import { RestaurantSummaryDto } from "../../features/restaurants/services/places/models/restaurant-summary-dto.models";
 import { placesServices } from "../../features/restaurants/services/places/places.services";
@@ -24,9 +24,9 @@ const RestaurantsPage: NextPage<RestaurantsPageProps> = ({ places }) => {
 
   useInfinityPlaces(
     {
-      SkipCount: RESTAURANTS_INITIAL_Places_API_PARAMS.StartFromRestaurant,
+      SkipCount: RESTAURANTS_INITIAL_PLACES_API_PARAMS.StartFromRestaurant,
       MaxResultCount:
-        RESTAURANTS_INITIAL_Places_API_PARAMS.MaxRestaurantsPerPage,
+        RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage,
     },
     {
       initialData: () => ({
@@ -67,8 +67,8 @@ const RestaurantsPage: NextPage<RestaurantsPageProps> = ({ places }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const places = await placesServices.getAll({
-    SkipCount: RESTAURANTS_INITIAL_Places_API_PARAMS.StartFromRestaurant,
-    MaxResultCount: RESTAURANTS_INITIAL_Places_API_PARAMS.MaxRestaurantsPerPage,
+    SkipCount: RESTAURANTS_INITIAL_PLACES_API_PARAMS.StartFromRestaurant,
+    MaxResultCount: RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage,
   });
 
   return { props: { places: places.result }, revalidate: TimeInSeconds.DAY };

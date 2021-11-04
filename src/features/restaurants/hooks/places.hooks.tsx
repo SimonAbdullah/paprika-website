@@ -5,7 +5,7 @@ import {
   UseQueryOptions,
 } from "react-query";
 import { PagedResultDto } from "../../../utils/base-api/api-provider";
-import { RESTAURANTS_INITIAL_Places_API_PARAMS } from "../constants/restaurants.constants";
+import { RESTAURANTS_INITIAL_PLACES_API_PARAMS } from "../constants/restaurants.constants";
 import { PlacesGetAllParams } from "../services/places/models/places-get-all-params.models";
 import { RestaurantSummaryDto } from "../services/places/models/restaurant-summary-dto.models";
 import { placesServices } from "../services/places/places.services";
@@ -43,12 +43,12 @@ export const useInfinityPlaces = (
         !pageParam || pageParam === 1
           ? 0
           : (pageParam - 1) *
-            RESTAURANTS_INITIAL_Places_API_PARAMS.MaxRestaurantsPerPage;
+            RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage;
 
       const result = await placesServices.getAll({
         SkipCount: skip,
         MaxResultCount:
-          RESTAURANTS_INITIAL_Places_API_PARAMS.MaxRestaurantsPerPage,
+          RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage,
         ...params,
       });
 
@@ -58,7 +58,7 @@ export const useInfinityPlaces = (
       getNextPageParam: (lastPage, allPages) => {
         return lastPage.totalCount >
           allPages.length *
-            RESTAURANTS_INITIAL_Places_API_PARAMS.MaxRestaurantsPerPage
+            RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage
           ? allPages.length + 1
           : undefined;
       },

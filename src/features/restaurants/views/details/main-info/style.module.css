@@ -9,10 +9,15 @@
   color: #25272b;
 }
 
-.rate {
+.rateText {
   font-weight: bold;
   font-size: 1.3rem;
   margin-inline-end: 0.5rem;
+  color: #25272b;
+}
+
+.rateStars {
+  color: #f4b223;
 }
 
 .restaurantRate {

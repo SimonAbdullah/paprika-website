@@ -3,6 +3,7 @@ import { FunctionComponent } from "react";
 import AboutRestaurantCenter from "./about-restaurant-center/about-restaurant-center.components";
 import RestaurantGallery from "./gallery/restaurant-gallery.components";
 import RestaurantMenu from "./menu/restaurant-menu.components";
+import RestaurantReviewsAndRate from "./reviews-and-rate/restaurant-reviews-and-rate.components";
 import RestaurantSchedule from "./schedule/restaurant-schedule.components";
 import RestaurantServices from "./services/restaurant-services.components";
 
@@ -28,7 +29,10 @@ const RestaurantDetails: FunctionComponent<RestaurantDetailsProps> = () => {
       <Col span={22}>
         <RestaurantGallery />
       </Col>
-      <Col span={22}></Col>
+      <Divider />
+      <Col span={22}>
+        <RestaurantReviewsAndRate />
+      </Col>
       <Col span={22}></Col>
       <Col span={22}></Col>
       <Col span={22}></Col>

@@ -1,13 +1,14 @@
-import { Row, List } from "antd";
+import { Row, List, Button } from "antd";
 import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import { TranslationFiles } from "../../../../../core/core";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 import classes from "./style.module.css";
 import RestaurantGalleryItem from "./restaurant-gallery-item.components";
 import { GalleryItemDto } from "../../../../customers/services/customer-restaurant/models/galleryItemDto";
 import { isOdd } from "../../../../../core/functions";
+import { NUMBER_OF_Gallery_Rows_TO_SHOW } from "../../../constants/restaurants.constants";
 
 interface RestaurantGalleryProps {}
 
@@ -15,6 +16,10 @@ const RestaurantGallery: FunctionComponent<RestaurantGalleryProps> = () => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
 
   const { galleryItems, isLoading } = useRestaurantDetails();
+
+  const [numberOfGalleryRowsToShow, setNumberOfGalleryRowsToShow] = useState<
+    number | undefined
+  >(NUMBER_OF_Gallery_Rows_TO_SHOW);
 
   const galleryRows: { [key: string]: GalleryItemDto[][] } = {};
 
@@ -52,6 +57,8 @@ const RestaurantGallery: FunctionComponent<RestaurantGalleryProps> = () => {
     }
   }
 
+  const data = Object.entries(galleryRows);
+
   if (!galleryItems || galleryItems.length === 0) return null;
 
   return (
@@ -59,8 +66,30 @@ const RestaurantGallery: FunctionComponent<RestaurantGalleryProps> = () => {
       <Text className={classes.title}>{t("ourGallery")}</Text>
       <List
         split={false}
-        dataSource={Object.entries(galleryRows)}
+        dataSource={data}
         loading={isLoading}
+        loadMore={
+          data && data.length > NUMBER_OF_Gallery_Rows_TO_SHOW ? (
+            <div style={{ textAlign: "center" }}>
+              <Button
+                size="large"
+                type="primary"
+                onClick={() => {
+                  setNumberOfGalleryRowsToShow(
+                    numberOfGalleryRowsToShow
+                      ? undefined
+                      : NUMBER_OF_Gallery_Rows_TO_SHOW
+                  );
+                }}
+                className={classes.showMoreButton}
+              >
+                {numberOfGalleryRowsToShow ? t("showMore") : t("showLess")}
+              </Button>
+            </div>
+          ) : (
+            <></>
+          )
+        }
         renderItem={([rowNumber, row]) => {
           return (
             <List.Item key={rowNumber} className={classes.galleryRowContainer}>

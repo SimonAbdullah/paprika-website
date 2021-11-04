@@ -1,0 +1,103 @@
+.title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000000;
+}
+
+/* Table rate */
+.tableContainer {
+  margin: 1rem 0;
+  overflow-x: auto;
+  width: 100%;
+}
+
+.table {
+  width: 80%;
+}
+
+.table tr {
+  text-align: center;
+}
+
+.table th {
+  background-color: #f3f3f3;
+}
+
+/* Restaurant rate */
+.rateContainer {
+  margin-top: 3rem;
+}
+
+.rateText {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-inline-end: 0.5rem;
+  color: #25272b;
+}
+
+.rateStars {
+  color: #f4b223;
+}
+
+.rateRow {
+  display: block;
+  word-spacing: 0.2rem;
+}
+
+.progressRateText {
+  font-size: 1rem;
+}
+
+.progress {
+  width: 50%;
+}
+
+.rateContainer .progress div[class="ant-progress-inner"] {
+  border-radius: 0px;
+  height: 1rem;
+  background-color: #efefef;
+}
+
+.rateContainer .progress div[class="ant-progress-bg"] {
+  border-radius: 0;
+  height: 1rem !important;
+  background-color: #f4b223;
+}
+
+/* Restaurant reviews */
+.review .reviewAvatar {
+  border-radius: 0;
+  width: 4rem;
+  height: 4rem;
+}
+
+.reviewAuthor {
+  color: #25272b;
+  font-size: 1.2rem;
+}
+
+.reviewRateStars {
+  color: #f4b223;
+}
+
+.reviewContent {
+  color: #25272b;
+}
+
+.review div[class="ant-comment-content-detail"] {
+  margin-top: 1rem;
+}
+
+.review span[class="ant-comment-content-author-name"] {
+  padding: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .table {
+    width: 100%;
+  }
+
+  .progress {
+    width: 80%;
+  }
+}

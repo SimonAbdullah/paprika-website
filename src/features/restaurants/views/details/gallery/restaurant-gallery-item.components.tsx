@@ -13,7 +13,7 @@ const RestaurantGalleryItem: FunctionComponent<RestaurantGalleryItemProps> = ({
 }) => {
   if (galleryColumn.length === 3) {
     return (
-      <Col span={5} className={classes.column}>
+      <Col xs={11} lg={6} className={classes.column}>
         <Row className={classes.row}>
           <Col span={24} style={{ marginBottom: "0.8rem" }}>
             <Row justify="space-between" className={classes.row}>
@@ -66,7 +66,7 @@ const RestaurantGalleryItem: FunctionComponent<RestaurantGalleryItemProps> = ({
 
   if (galleryColumn.length === 2) {
     return (
-      <Col span={5} className={classes.column}>
+      <Col xs={11} lg={5} className={classes.column}>
         <Row className={classes.row}>
           <Col span={24} style={{ marginBottom: "0.8rem" }}>
             <Image
@@ -100,7 +100,7 @@ const RestaurantGalleryItem: FunctionComponent<RestaurantGalleryItemProps> = ({
   }
 
   return (
-    <Col span={5} className={classes.column}>
+    <Col xs={11} lg={5} className={classes.column}>
       <Image
         src={galleryColumn?.[0]?.image!}
         alt={galleryColumn?.[0]?.title}
