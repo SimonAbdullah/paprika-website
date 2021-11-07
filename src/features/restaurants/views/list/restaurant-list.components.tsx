@@ -62,9 +62,9 @@ const RestaurantList: FunctionComponent<RestaurantListProps> = () => {
         gutter: 16,
         column: 1,
         xxl: 5,
-        xl: 3,
-        lg: 2,
-        md: 2,
+        xl: 4,
+        lg: 3,
+        md: 3,
         sm: 2,
         xs: 1,
       }}

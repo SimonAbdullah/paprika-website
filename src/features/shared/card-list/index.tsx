@@ -56,20 +56,20 @@ function CardList<T>({ dataSource, renderItem, itemKey }: CardListProps<T>) {
     largeDesktop: {
       breakpoint: {
         max: 4000,
-        min: 3000,
+        min: 1200,
       },
       items: 4,
     },
     desktop: {
       breakpoint: {
-        max: 3000,
-        min: 1024,
+        max: 1200,
+        min: 900,
       },
       items: 3,
     },
     tablet: {
       breakpoint: {
-        max: 1024,
+        max: 900,
         min: 678,
       },
       items: 2,
@@ -77,6 +77,14 @@ function CardList<T>({ dataSource, renderItem, itemKey }: CardListProps<T>) {
     mobile: {
       breakpoint: {
         max: 678,
+        min: 550,
+      },
+      items: 1,
+      partialVisibilityGutter: 200,
+    },
+    smallMobile: {
+      breakpoint: {
+        max: 550,
         min: 0,
       },
       items: 1,
@@ -98,6 +106,7 @@ function CardList<T>({ dataSource, renderItem, itemKey }: CardListProps<T>) {
     keyBoardControl: true,
     draggable: false,
     swipeable: true,
+    partialVisible: true,
   };
 
   return (

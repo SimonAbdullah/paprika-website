@@ -60,7 +60,7 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
                           restaurant?.restaurantRate
                         } ${t("second.reviews")}`}</Text>
                       </div>
-                      <Text className={classes.address}>
+                      <Text className={classes.address} ellipsis={true}>
                         <LocationIcon />
                         {restaurant?.address}
                       </Text>
