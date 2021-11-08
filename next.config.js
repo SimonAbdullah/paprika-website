@@ -23,5 +23,4 @@ module.exports = {
   images: {
     domains: ["api.paprika.inter.itland-sy.com", "prodapi.paprika-sy.com"],
   },
-  webpack5: false,
 };

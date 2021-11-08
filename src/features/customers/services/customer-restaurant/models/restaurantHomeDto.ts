@@ -58,9 +58,9 @@ export interface RestaurantHomeDto {
 export namespace RestaurantHomeDto {
   export type NoiseLevelEnum = 1 | 2 | 3;
   export const NoiseLevelEnum = {
-    NUMBER_1: 1 as NoiseLevelEnum,
-    NUMBER_2: 2 as NoiseLevelEnum,
-    NUMBER_3: 3 as NoiseLevelEnum,
+    LOW: 1 as NoiseLevelEnum,
+    MEDIUM: 2 as NoiseLevelEnum,
+    HIGH: 3 as NoiseLevelEnum,
   };
   export type ParkingTypesEnum = 1 | 2 | 4;
   export const ParkingTypesEnum = {

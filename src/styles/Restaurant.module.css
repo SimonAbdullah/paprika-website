@@ -14,15 +14,17 @@
 .mainInfo {
   background-color: white;
   width: 75%;
-  margin-top: -6rem;
   height: 6rem;
   padding: 0.5rem 4%;
 }
 
 .reservationBox {
-  margin-top: -6rem;
   position: sticky;
   top: 4rem;
+}
+
+.marginTopMinus6x {
+  margin-top: -6rem;
 }
 
 @media only screen and (max-width: 992px) {

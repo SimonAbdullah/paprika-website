@@ -15,13 +15,17 @@ import RestaurantReservationBox from "../../features/restaurants/views/details/r
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import { useState } from "react";
+import { isDataEmpty } from "../../core/functions";
 
 interface RestaurantPageProps {
   restaurant: RestaurantHomeDto;
 }
 
 const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
-  const { data } = useRestaurantDetails({}, { initialData: restaurant });
+  const { data, galleryItems } = useRestaurantDetails(
+    {},
+    { initialData: restaurant }
+  );
 
   const { lg } = useBreakpoint();
 
@@ -40,7 +44,11 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
           <Col xs={19} sm={21} lg={16}>
             <Row justify="center">
               <Col span={22} lg={24}>
-                <div className={styles.mainInfo}>
+                <div
+                  className={`${styles.mainInfo} ${
+                    isDataEmpty(galleryItems) ? "" : styles.marginTopMinus6x
+                  }`}
+                >
                   <RestaurantMainInfo />
                 </div>
               </Col>
@@ -50,7 +58,11 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
             </Row>
           </Col>
           <Col xs={1} sm={1} lg={8}>
-            <Row className={styles.reservationBox}>
+            <Row
+              className={`${styles.reservationBox} ${
+                isDataEmpty(galleryItems) ? "" : styles.marginTopMinus6x
+              }`}
+            >
               <Col span={22}>
                 {lg ? (
                   <RestaurantReservationBox />

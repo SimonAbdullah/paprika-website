@@ -5,7 +5,7 @@ import { FunctionComponent } from "react";
 import { TranslationFiles } from "../../../../../core/core";
 import Image from "next/image";
 import classes from "./style.module.css";
-import { servicesData } from "./services-data";
+import { useServicesData } from "./services-data";
 
 interface RestaurantServicesProps {}
 
@@ -18,13 +18,14 @@ const RestaurantServices: FunctionComponent<RestaurantServicesProps> = () => {
       grid={{
         gutter: 46,
       }}
-      dataSource={servicesData()}
+      dataSource={useServicesData()}
       renderItem={(item) => {
         return (
           <List.Item key={item.logo} className={classes.item}>
             <Space direction="vertical" className={classes.space}>
               <Image
                 src={item.logo}
+                alt={item.alt}
                 width="48px"
                 height="48px"
                 objectFit="contain"

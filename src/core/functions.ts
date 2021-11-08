@@ -1,3 +1,7 @@
+export const isDataEmpty = (data?: unknown[]) => {
+  return !data || data.length === 0;
+};
+
 export const getPagesCount = (totalCount: number, pageSize: number) => {
   return Math.ceil(totalCount / pageSize);
 };

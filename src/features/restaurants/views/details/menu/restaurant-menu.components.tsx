@@ -3,6 +3,7 @@ import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent } from "react";
 import { TranslationFiles } from "../../../../../core/core";
+import { isDataEmpty } from "../../../../../core/functions";
 import { useRestaurantCategories } from "../../../../customers/hooks/customer-menu.hooks";
 import RestaurantCategoryMenu from "./restaurant-category-menu.components";
 import classes from "./style.module.css";
@@ -14,7 +15,7 @@ const RestaurantMenu: FunctionComponent<RestaurantMenuProps> = () => {
 
   const { data } = useRestaurantCategories();
 
-  if (!data || data.length === 0) return null;
+  if (isDataEmpty(data)) return null;
 
   return (
     <>
