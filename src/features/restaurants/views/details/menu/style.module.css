@@ -17,6 +17,10 @@
   height: 3px;
 }
 
+.listItem {
+  margin: 0 0.1rem;
+}
+
 /* Card */
 .card {
   height: 10rem;

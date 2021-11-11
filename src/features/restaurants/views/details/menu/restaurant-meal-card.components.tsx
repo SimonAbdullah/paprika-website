@@ -23,7 +23,7 @@ const RestaurantMealCard: FunctionComponent<RestaurantMealCardProps> = ({
         hoverable
         cover={
           <div className={classes.coverContainer}>
-            <div style={{ position: "relative" }}>
+            <div style={{ position: "relative", height: "10rem" }}>
               <Image
                 className={classes.image}
                 src={meal?.image || "/images/home/first-background.png"}

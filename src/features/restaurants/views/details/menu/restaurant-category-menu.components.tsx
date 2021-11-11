@@ -59,7 +59,7 @@ const RestaurantCategoryMenu: FunctionComponent<RestaurantCategoryMenuProps> =
         }
         renderItem={(meal) => {
           return (
-            <List.Item key={meal.id}>
+            <List.Item key={meal.id} className={classes.listItem}>
               <RestaurantMealCard meal={meal} />
             </List.Item>
           );
