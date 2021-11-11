@@ -50,7 +50,36 @@
   margin-top: 1rem;
 }
 
+/* Modal */
+.modalImageContainer {
+  position: relative;
+  height: 20rem;
+}
+
+.modalTitle {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.modalRateStars {
+  color: #f4b223;
+}
+
+.modalDescription {
+  color: #000000;
+}
+
+@media only screen and (max-width: 768px) {
+  .modalImageContainer {
+    height: 15rem;
+  }
+}
+
 @media only screen and (max-width: 576px) {
+  .modalImageContainer {
+    height: 10rem;
+  }
+
   .showMoreButton {
     padding: 0 1rem;
   }

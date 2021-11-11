@@ -3,6 +3,7 @@ import { useQuery, UseQueryOptions } from "react-query";
 import { customerMenuServices } from "../services/customer-menu/customer-menu.components";
 import { CategoryDto } from "../services/customer-menu/models/category-dto.models";
 import { CustomerMenuParams } from "../services/customer-menu/models/customer-menu-params.models";
+import { MealDto } from "../services/customer-menu/models/meal-dto.models";
 
 export const useRestaurantCategories = (
   params?: CustomerMenuParams,
@@ -29,7 +30,7 @@ export const useRestaurantCategories = (
 
 export const useRestaurantCategoryMeals = (
   params: CustomerMenuParams,
-  options?: UseQueryOptions<CategoryDto[], unknown, CategoryDto[]>
+  options?: UseQueryOptions<MealDto[], unknown, MealDto[]>
 ) => {
   const { isFallback } = useRouter();
 

@@ -16,7 +16,13 @@ const RestaurantServices: FunctionComponent<RestaurantServicesProps> = () => {
       header={<Text className={classes.title}>{t("howWeCanServeYou")}</Text>}
       split={false}
       grid={{
-        gutter: 46,
+        column: 2,
+        xxl: 7,
+        xl: 6,
+        lg: 5,
+        md: 5,
+        sm: 4,
+        xs: 2,
       }}
       dataSource={useServicesData()}
       renderItem={(item) => {

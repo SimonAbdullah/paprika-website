@@ -28,7 +28,7 @@ const RestaurantGalleryOfTwoImages: FunctionComponent<RestaurantGalleryOfTwoImag
 
     return (
       <Row className={classes.row}>
-        <Col span={24} style={{ marginBottom: "0.8rem" }}>
+        <Col span={24} style={{ marginBottom: "0.8rem", position: "relative" }}>
           <Image
             src={galleryItems?.[0]?.image!}
             alt={galleryItems?.[0]?.title}
@@ -42,7 +42,7 @@ const RestaurantGalleryOfTwoImages: FunctionComponent<RestaurantGalleryOfTwoImag
           />
         </Col>
         {galleryItems?.[1] && (
-          <Col span={24}>
+          <Col span={24} style={{ position: "relative" }}>
             <Image
               src={galleryItems?.[1]?.image!}
               alt={galleryItems?.[1]?.title}

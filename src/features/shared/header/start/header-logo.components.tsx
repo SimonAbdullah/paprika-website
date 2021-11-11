@@ -1,9 +1,8 @@
 import { FunctionComponent } from "react";
-// import Image from "next/image";
 import classes from "./style.module.css";
 import LinkComponent from "../../link/link.components";
 import { PagesUrls } from "../../../../core/core";
-import { Image } from "antd";
+import Image from "next/image";
 import { useRouter } from "next/dist/client/router";
 
 interface HeaderLogoProps {}
@@ -22,7 +21,7 @@ const HeaderLogo: FunctionComponent<HeaderLogoProps> = () => {
           src="/images/logo/logo.svg"
           width="58px"
           height="58px"
-          preview={false}
+          priority={true}
         />
       </LinkComponent>
     </div>

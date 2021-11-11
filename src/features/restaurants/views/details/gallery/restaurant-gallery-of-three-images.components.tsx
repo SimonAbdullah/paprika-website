@@ -41,7 +41,7 @@ const RestaurantGalleryOfThreeImages: FunctionComponent<RestaurantGalleryOfThree
       <Row className={classes.row}>
         <Col span={24} style={{ marginBottom: "0.8rem" }}>
           <Row justify="space-between" className={classes.row}>
-            <Col span={11}>
+            <Col span={11} style={{ position: "relative" }}>
               <Image
                 src={galleryItems?.[0]?.image!}
                 alt={galleryItems?.[0]?.title}
@@ -55,7 +55,7 @@ const RestaurantGalleryOfThreeImages: FunctionComponent<RestaurantGalleryOfThree
               />
             </Col>
             {galleryItems?.[1] && (
-              <Col span={11}>
+              <Col span={11} style={{ position: "relative" }}>
                 <Image
                   src={galleryItems?.[1]?.image!}
                   alt={galleryItems?.[1]?.title}
@@ -72,7 +72,7 @@ const RestaurantGalleryOfThreeImages: FunctionComponent<RestaurantGalleryOfThree
           </Row>
         </Col>
         {galleryItems?.[2] && (
-          <Col span={24}>
+          <Col span={24} style={{ position: "relative" }}>
             <Image
               src={galleryItems?.[2]?.image!}
               alt={galleryItems?.[2]?.title}

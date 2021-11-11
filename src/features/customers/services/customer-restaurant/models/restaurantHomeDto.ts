@@ -59,51 +59,51 @@ export namespace RestaurantHomeDto {
   export type NoiseLevelEnum = 1 | 2 | 3;
   export const NoiseLevelEnum = {
     LOW: 1 as NoiseLevelEnum,
-    MEDIUM: 2 as NoiseLevelEnum,
+    MODERATE: 2 as NoiseLevelEnum,
     HIGH: 3 as NoiseLevelEnum,
   };
   export type ParkingTypesEnum = 1 | 2 | 4;
   export const ParkingTypesEnum = {
-    NUMBER_1: 1 as ParkingTypesEnum,
-    NUMBER_2: 2 as ParkingTypesEnum,
-    NUMBER_4: 4 as ParkingTypesEnum,
+    GARAGE: 1 as ParkingTypesEnum,
+    VALET: 2 as ParkingTypesEnum,
+    NONE: 4 as ParkingTypesEnum,
   };
   export type AmbianceTypesEnum = 1 | 2 | 4 | 8 | 15;
   export const AmbianceTypesEnum = {
-    NUMBER_1: 1 as AmbianceTypesEnum,
-    NUMBER_2: 2 as AmbianceTypesEnum,
-    NUMBER_4: 4 as AmbianceTypesEnum,
-    NUMBER_8: 8 as AmbianceTypesEnum,
-    NUMBER_15: 15 as AmbianceTypesEnum,
+    COZY: 1 as AmbianceTypesEnum,
+    CLASSIC: 2 as AmbianceTypesEnum,
+    MODERN: 4 as AmbianceTypesEnum,
+    FAMILIAL: 8 as AmbianceTypesEnum,
+    FOLK: 15 as AmbianceTypesEnum,
   };
   export type RestaurantTypesEnum = 1 | 2 | 4 | 8 | 16 | 32 | 64 | 128;
   export const RestaurantTypesEnum = {
-    NUMBER_1: 1 as RestaurantTypesEnum,
-    NUMBER_2: 2 as RestaurantTypesEnum,
-    NUMBER_4: 4 as RestaurantTypesEnum,
-    NUMBER_8: 8 as RestaurantTypesEnum,
-    NUMBER_16: 16 as RestaurantTypesEnum,
-    NUMBER_32: 32 as RestaurantTypesEnum,
-    NUMBER_64: 64 as RestaurantTypesEnum,
-    NUMBER_128: 128 as RestaurantTypesEnum,
+    PIZZA_HOUSE: 1 as RestaurantTypesEnum,
+    RESTAURANT: 2 as RestaurantTypesEnum,
+    CAFE: 4 as RestaurantTypesEnum,
+    FAST_FOOD: 8 as RestaurantTypesEnum,
+    CHOCOLATE: 16 as RestaurantTypesEnum,
+    SWEETS: 32 as RestaurantTypesEnum,
+    PATISSERIE: 64 as RestaurantTypesEnum,
+    BAR: 128 as RestaurantTypesEnum,
   };
   export type MusicTypesEnum = 1 | 2 | 4 | 8;
   export const MusicTypesEnum = {
-    NUMBER_1: 1 as MusicTypesEnum,
-    NUMBER_2: 2 as MusicTypesEnum,
-    NUMBER_4: 4 as MusicTypesEnum,
-    NUMBER_8: 8 as MusicTypesEnum,
+    JAZZ: 1 as MusicTypesEnum,
+    BLUES: 2 as MusicTypesEnum,
+    OLDIES: 4 as MusicTypesEnum,
+    POP: 8 as MusicTypesEnum,
   };
   export type CuisineTypesEnum = 1 | 2 | 4 | 8;
   export const CuisineTypesEnum = {
-    NUMBER_1: 1 as CuisineTypesEnum,
-    NUMBER_2: 2 as CuisineTypesEnum,
-    NUMBER_4: 4 as CuisineTypesEnum,
-    NUMBER_8: 8 as CuisineTypesEnum,
+    CHINESE: 1 as CuisineTypesEnum,
+    ITALIAN: 2 as CuisineTypesEnum,
+    WESTERN: 4 as CuisineTypesEnum,
+    EASTERN: 8 as CuisineTypesEnum,
   };
   export type AmenityTypesEnum = 1 | 2;
   export const AmenityTypesEnum = {
-    NUMBER_1: 1 as AmenityTypesEnum,
-    NUMBER_2: 2 as AmenityTypesEnum,
+    SWINGS: 1 as AmenityTypesEnum,
+    SWIMMING_POOL: 2 as AmenityTypesEnum,
   };
 }

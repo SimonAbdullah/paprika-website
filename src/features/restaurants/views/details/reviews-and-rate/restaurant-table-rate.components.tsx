@@ -1,9 +1,8 @@
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent } from "react";
 import { TranslationFiles } from "../../../../../core/core";
+import { NoiseLevelType } from "../../../../customers/constants/customer-review.constants";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
-import { RestaurantHomeDto } from "../../../../customers/services/customer-restaurant/models/restaurantHomeDto";
-import { useNoiseLevel } from "./noise-level";
 import classes from "./style.module.css";
 
 interface RestaurantTableRateProps {}
@@ -31,7 +30,9 @@ const RestaurantTableRate: FunctionComponent<RestaurantTableRateProps> = () => {
             <td>{data?.serviceRate}</td>
             <td>{data?.shishaRate}</td>
             <td>{data?.ambianceRate}</td>
-            <td>{useNoiseLevel(data?.noiseLevel)}</td>
+            {data?.noiseLevel && (
+              <td>{t(NoiseLevelType?.[data.noiseLevel])}</td>
+            )}
           </tr>
         </tbody>
       </table>

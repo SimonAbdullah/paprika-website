@@ -1,13 +1,12 @@
-import { Button, Card, List } from "antd";
+import { Button, List } from "antd";
 import { FunctionComponent, useState } from "react";
-import Image from "next/image";
 import { useRestaurantCategoryMeals } from "../../../../customers/hooks/customer-menu.hooks";
 import { CategoryDto } from "../../../../customers/services/customer-menu/models/category-dto.models";
 import classes from "./style.module.css";
-import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
 import { TranslationFiles } from "../../../../../core/core";
 import { NUMBER_OF_MEALS_TO_SHOW } from "../../../constants/restaurants.constants";
+import RestaurantMealCard from "./restaurant-meal-card.components";
 
 interface RestaurantCategoryMenuProps {
   category: CategoryDto;
@@ -58,29 +57,10 @@ const RestaurantCategoryMenu: FunctionComponent<RestaurantCategoryMenuProps> =
             <></>
           )
         }
-        renderItem={(item) => {
+        renderItem={(meal) => {
           return (
-            <List.Item key={item.id}>
-              <Card
-                className={classes.card}
-                cover={
-                  <div className={classes.coverContainer}>
-                    <Image
-                      className={classes.image}
-                      src={item?.image || "/images/home/first-background.png"}
-                      alt={item?.name}
-                      blurDataURL={item?.thumbnailImage}
-                      placeholder="blur"
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
-                    />
-                    <div className={classes.content}>
-                      <Text className={classes.cardTitle}>{item?.name}</Text>
-                    </div>
-                  </div>
-                }
-              />
+            <List.Item key={meal.id}>
+              <RestaurantMealCard meal={meal} />
             </List.Item>
           );
         }}

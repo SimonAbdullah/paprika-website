@@ -5,3 +5,9 @@
 .image {
   cursor: pointer;
 }
+
+@media only screen and (max-width: 992px) {
+  .mainGalleryContainer {
+    min-height: 10vh;
+  }
+}
