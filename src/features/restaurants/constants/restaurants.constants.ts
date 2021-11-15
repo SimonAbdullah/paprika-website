@@ -12,3 +12,11 @@ export const GALLERY = {
   NUMBER_OF_IMAGES_IN_SECOND_COLUMN: 2,
   NUMBER_OF_IMAGES_IN_FOURTH_COLUMN: 3,
 };
+
+export const DEFAULT_MAP_VALUES = {
+  CENTER: {
+    lng: 33.5138,
+    lat: 36.2765,
+  },
+  ZOOM: 14,
+};

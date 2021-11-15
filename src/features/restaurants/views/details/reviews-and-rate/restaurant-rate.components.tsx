@@ -16,7 +16,7 @@ const RestaurantRate: FunctionComponent<RestaurantRateProps> = () => {
 
   return (
     <div className={classes.rateContainer}>
-      <Text className={classes.rateText}>{4}</Text>
+      <Text className={classes.rateText}>{data?.restaurantRate}</Text>
       <Rate
         className={classes.rateStars}
         allowHalf

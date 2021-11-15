@@ -2,9 +2,13 @@ import useTranslation from "next-translate/useTranslation";
 import Image from "next/image";
 import { FunctionComponent } from "react";
 import { TranslationFiles } from "../../../core/core";
+import { NextImageLayoutType } from "../../../core/types";
 
 interface IconProps {
   className?: string;
+  width?: string;
+  height?: string;
+  layout?: NextImageLayoutType;
 }
 
 const RightArrow: FunctionComponent<IconProps> = ({ className }) => {
@@ -95,6 +99,27 @@ const LocationBlackIcon: FunctionComponent<IconProps> = ({ className }) => {
   );
 };
 
+const LocationRedIcon: FunctionComponent<IconProps> = ({
+  className,
+  width,
+  height,
+  layout,
+}) => {
+  const { t } = useTranslation(TranslationFiles.COMMON);
+  return (
+    <Image
+      src="/icons/location-red.svg"
+      alt={t("alt.location")}
+      width={width || "32px"}
+      height={height || "32px"}
+      layout={layout || "fixed"}
+      objectFit="contain"
+      objectPosition="center"
+      className={className}
+    />
+  );
+};
+
 export {
   RightArrow,
   LeftArrow,
@@ -102,4 +127,5 @@ export {
   ListLeftArrow,
   LocationIcon,
   LocationBlackIcon,
+  LocationRedIcon,
 };

@@ -6,3 +6,5 @@ export type PathsType =
       params: ParsedUrlQuery;
       locale?: string;
     }[];
+
+export type NextImageLayoutType = "responsive" | "fill" | "fixed" | "intrinsic";
