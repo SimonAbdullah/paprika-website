@@ -9,13 +9,13 @@ export const NoiseLevelType = {
   3: "high",
 };
 
-export const ParkingTypesType = {
+export const ParkingType = {
   1: "garage",
   2: "valet",
   4: "none",
 };
 
-export const AmbianceTypesType = {
+export const AmbianceType = {
   1: "cozy",
   2: "classic",
   4: "modern",
@@ -23,7 +23,7 @@ export const AmbianceTypesType = {
   15: "folk",
 };
 
-export const RestaurantTypesType = {
+export const RestaurantType = {
   1: "pizzaHouse",
   2: "restaurant",
   4: "cafe",
@@ -34,21 +34,19 @@ export const RestaurantTypesType = {
   128: "bar",
 };
 
-export const MusicTypesType = {
+export const MusicType = {
   1: "jazz",
   2: "blues",
   4: "oldies",
   8: "pop",
 };
-export type CuisineTypesEnum = 1 | 2 | 4 | 8;
-export const CuisineTypesEnum = {
+export const CuisineType = {
   1: "chinese",
   2: "italian",
   4: "western",
   8: "eastern",
 };
-export type AmenityTypesEnum = 1 | 2;
-export const AmenityTypesEnum = {
+export const AmenityType = {
   1: "swings",
   2: "swimmingPool",
 };

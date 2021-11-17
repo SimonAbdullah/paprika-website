@@ -1,0 +1,19 @@
+.textContainer {
+  margin-bottom: 1rem;
+}
+
+.title {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 1rem;
+}
+
+.details {
+  font-size: 1rem;
+}
+
+.text {
+  margin-inline-start: 0.5rem;
+}

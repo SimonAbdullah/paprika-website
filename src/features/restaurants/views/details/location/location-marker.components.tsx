@@ -1,5 +1,4 @@
 import { FunctionComponent } from "react";
-import { EnvironmentFilled } from "@ant-design/icons";
 import { LocationRedIcon } from "../../../../shared/icons/icons.components";
 
 interface LocationMarkerProps {

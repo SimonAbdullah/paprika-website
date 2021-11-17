@@ -1,80 +1,72 @@
 import useTranslation from "next-translate/useTranslation";
 import { TranslationFiles } from "../../../../../core/core";
+import {
+  CuisineType,
+  MusicType,
+  ParkingType,
+} from "../../../../customers/constants/customer-review.constants";
+import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 
 export const useServicesData = () => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
+  const { data } = useRestaurantDetails();
+
   return [
     {
       logo: "/images/restaurant/chair.svg",
       title: t("capacity"),
       alt: t("capacity"),
-      description: t("upTo70Seats"),
-    },
-    {
-      logo: "/images/restaurant/bed.svg",
-      title: t("bedrooms"),
-      alt: t("bedrooms"),
-      description: t("upTo70Seats"),
-    },
-    {
-      logo: "/images/restaurant/meeting.svg",
-      title: t("meeting"),
-      alt: t("meeting"),
-      description: t("upTo70Seats"),
-    },
-    {
-      logo: "/images/restaurant/clock.svg",
-      title: t("openingHours"),
-      alt: t("openingHours"),
-      description: t("upTo70Seats"),
+      description: data?.settings?.maxPeopleAllowed
+        ? `${t("upTo")} ${data.settings.maxPeopleAllowed} ${t("seats")}`
+        : null,
     },
     {
       logo: "/images/restaurant/dish.svg",
-      title: t("serviceAndFacilities"),
-      alt: t("serviceAndFacilities"),
-      description: t("upTo70Seats"),
-    },
-    {
-      logo: "/images/restaurant/floor.svg",
-      title: t("floorPlan"),
-      alt: t("floorPlan"),
-      description: t("upTo70Seats"),
+      title: t("cuisine"),
+      alt: t("cuisine"),
+      description: data?.cuisineTypes
+        ? t(CuisineType[data.cuisineTypes])
+        : null,
     },
     {
       logo: "/images/restaurant/music.svg",
       title: t("music"),
       alt: t("music"),
-      description: t("upTo70Seats"),
+      description: data?.musicTypes ? t(MusicType[data.musicTypes]) : null,
     },
     {
       logo: "/images/restaurant/car.svg",
-      title: t("valet"),
-      alt: t("valet"),
-      description: t("upTo70Seats"),
+      title: t("parking"),
+      alt: t("parking"),
+      description: data?.parkingTypes
+        ? t(ParkingType[data.parkingTypes])
+        : null,
     },
     {
       logo: "/images/restaurant/shisha.svg",
       title: t("hookah"),
       alt: t("hookah"),
-      description: t("upTo70Seats"),
+      description: data?.hasShisha ? t("hasShisha") : t("noShisha"),
     },
     {
       logo: "/images/restaurant/cups.svg",
       title: t("bear"),
       alt: t("bear"),
-      description: t("upTo70Seats"),
+      description: data?.isAlcoholFree ? t("alcoholFree") : t("hasAlcohol"),
     },
     {
       logo: "/images/restaurant/no-smoking.svg",
       title: t("smoking"),
       alt: t("smoking"),
-      description: t("upTo70Seats"),
+      description: data?.isSmokeFree ? t("noSmoking") : t("smokeAllowed"),
     },
     {
       logo: "/images/restaurant/table.svg",
-      title: t("table"),
-      alt: t("table"),
-      description: t("upTo70Seats"),
+      title: t("outdoor"),
+      alt: t("outdoor"),
+      description: data?.hasOutdoor
+        ? t("thereIsOutdoor")
+        : t("thereIsNoOutdoor"),
     },
   ];
 };
