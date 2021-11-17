@@ -21,6 +21,7 @@ const RestaurantReviewsList: FunctionComponent<RestaurantReviewsListProps> =
       <List
         dataSource={dataSource}
         loading={isLoading}
+        className={classes.list}
         loadMore={
           hasNextPage ? (
             <Row

@@ -9,7 +9,7 @@ interface LocationComponentProps {}
 const LocationComponent: FunctionComponent<LocationComponentProps> = () => {
   const { data } = useRestaurantDetails();
   return (
-    <div style={{ height: "25rem" }}>
+    <div style={{ height: "25rem", overflow: "hidden" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_API_KEY! }}
         defaultCenter={DEFAULT_MAP_VALUES.CENTER}

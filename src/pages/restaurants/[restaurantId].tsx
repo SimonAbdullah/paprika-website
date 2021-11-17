@@ -115,7 +115,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     Id: Number(params?.restaurantId),
   });
 
-  return { props: { restaurant }, revalidate: TimeInSeconds.DAY };
+  return {
+    props: { restaurant: restaurant.result },
+    revalidate: TimeInSeconds.DAY,
+  };
 };
 
 export default RestaurantPage;
