@@ -5,11 +5,13 @@ import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
 import { TimeInSeconds, TranslationFiles } from "../../core/core";
 import { RESTAURANTS_INITIAL_PLACES_API_PARAMS } from "../../features/restaurants/constants/restaurants.constants";
+import RestaurantsListContextProvider from "../../features/restaurants/contexts/restaurants-list.contexts";
 import { useInfinityPlaces } from "../../features/restaurants/hooks/places.hooks";
 import { RestaurantSummaryDto } from "../../features/restaurants/services/places/models/restaurant-summary-dto.models";
 import { placesServices } from "../../features/restaurants/services/places/places.services";
 import RestaurantsFilter from "../../features/restaurants/views/list/filter/restaurants-filter.components";
-import RestaurantList from "../../features/restaurants/views/list/restaurant-list.components";
+import RestaurantsListHeader from "../../features/restaurants/views/list/header";
+import RestaurantList from "../../features/restaurants/views/list";
 import styles from "../../styles/Restaurants.module.css";
 import { PagedResultDto } from "../../utils/base-api/api-provider";
 
@@ -41,26 +43,33 @@ const RestaurantsPage: NextPage<RestaurantsPageProps> = ({ places }) => {
       <Head>
         <title>{t("restaurants")}</title>
       </Head>
-      <div className={styles.container}>
-        <Row
-          justify={lg ? "start" : "center"}
-          gutter={[16, 16]}
-          className={styles.filter}
-        >
-          <Col xs={20} sm={22} md={20} lg={6}>
-            <RestaurantsFilter />
-          </Col>
-          <Col
-            xs={20}
-            sm={22}
-            md={20}
-            lg={17}
-            className={styles.restaurantList}
+      <RestaurantsListContextProvider>
+        <div className={styles.container}>
+          <Row style={{ width: "100%", marginBottom: "1rem" }} justify="center">
+            <Col xs={20} sm={22} md={20} lg={23}>
+              <RestaurantsListHeader />
+            </Col>
+          </Row>
+          <Row
+            justify={lg ? "start" : "center"}
+            gutter={[16, 16]}
+            className={styles.filter}
           >
-            <RestaurantList />
-          </Col>
-        </Row>
-      </div>
+            <Col xs={20} sm={22} md={20} lg={6}>
+              <RestaurantsFilter />
+            </Col>
+            <Col
+              xs={20}
+              sm={22}
+              md={20}
+              lg={17}
+              className={styles.restaurantList}
+            >
+              <RestaurantList />
+            </Col>
+          </Row>
+        </div>
+      </RestaurantsListContextProvider>
     </>
   );
 };

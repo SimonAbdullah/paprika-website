@@ -1,19 +1,19 @@
-import { DownOutlined } from "@ant-design/icons";
-import { Button, List, Row } from "antd";
-import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
-import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent } from "react";
-import { TranslationFiles } from "../../../../core/core";
-import ItemsCount from "../../../shared/items-count/items-count.components";
+import { Button, List, Row } from "antd";
 import PagesNumber from "../../../shared/pages-number/pages-number.components";
-import { RESTAURANTS_INITIAL_PLACES_API_PARAMS } from "../../constants/restaurants.constants";
+import ItemsCount from "../../../shared/items-count/items-count.components";
 import { useInfinityPlaces } from "../../hooks/places.hooks";
-import RestaurantCard from "./card/restaurant-card.components";
+import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
+import { TranslationFiles } from "../../../../core/core";
+import useTranslation from "next-translate/useTranslation";
 import classes from "./style.module.css";
+import { RESTAURANTS_INITIAL_PLACES_API_PARAMS } from "../../constants/restaurants.constants";
+import { DownOutlined } from "@ant-design/icons";
+import RestaurantCard from "./card/restaurant-card.components";
 
-interface RestaurantListProps {}
+interface RestaurantGridViewProps {}
 
-const RestaurantList: FunctionComponent<RestaurantListProps> = () => {
+const RestaurantGridView: FunctionComponent<RestaurantGridViewProps> = () => {
   const { t } = useTranslation(TranslationFiles.RESTAURANTS);
 
   const { sm } = useBreakpoint();
@@ -77,4 +77,4 @@ const RestaurantList: FunctionComponent<RestaurantListProps> = () => {
   );
 };
 
-export default RestaurantList;
+export default RestaurantGridView;

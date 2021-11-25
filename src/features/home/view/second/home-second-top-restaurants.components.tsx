@@ -13,7 +13,7 @@ const HomeSecondTopRestaurants: FunctionComponent<HomeSecondTopRestaurantsProps>
   () => {
     const { t } = useTranslation(TranslationFiles.HOME);
 
-    const { data } = useFeaturedPlaces({ IsFeatured: true });
+    const { data } = useFeaturedPlaces();
 
     return (
       <>

@@ -120,6 +120,40 @@ const LocationRedIcon: FunctionComponent<IconProps> = ({
   );
 };
 
+const GridViewIcon: FunctionComponent<{ type?: "active" | "inactive" }> = ({
+  type = "active",
+}) => {
+  const { t } = useTranslation(TranslationFiles.RESTAURANTS);
+  return (
+    <Image
+      src={`/images/restaurants/grid-view-${type}.svg`}
+      alt={t("gridView")}
+      width={"18px"}
+      height={"18px"}
+      layout={"fixed"}
+      objectFit="contain"
+      objectPosition="center"
+    />
+  );
+};
+
+const ListViewIcon: FunctionComponent<{ type?: "active" | "inactive" }> = ({
+  type = "active",
+}) => {
+  const { t } = useTranslation(TranslationFiles.RESTAURANTS);
+  return (
+    <Image
+      src={`/images/restaurants/list-view-${type}.svg`}
+      alt={t("listView")}
+      width={"18px"}
+      height={"18px"}
+      layout={"fixed"}
+      objectFit="contain"
+      objectPosition="center"
+    />
+  );
+};
+
 export {
   RightArrow,
   LeftArrow,
@@ -128,4 +162,6 @@ export {
   LocationIcon,
   LocationBlackIcon,
   LocationRedIcon,
+  GridViewIcon,
+  ListViewIcon,
 };

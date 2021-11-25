@@ -1,0 +1,16 @@
+.switchViewButton {
+  cursor: pointer;
+}
+
+.active,
+.inactive {
+  margin-inline-start: 0.2rem;
+}
+
+.active {
+  color: #151515;
+}
+
+.inactive {
+  color: #a9a9a9;
+}

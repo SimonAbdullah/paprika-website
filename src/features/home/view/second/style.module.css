@@ -60,7 +60,7 @@
   opacity: 0.8;
   mix-blend-mode: normal;
   font-family: "Poppins";
-  padding: 1rem;
+  padding: 0.5rem;
   position: relative;
   border-end-start-radius: 5px;
   border-end-end-radius: 5px;
@@ -70,6 +70,14 @@
   color: var(--home-card-title-color);
   font-size: 1.2rem;
   font-weight: bold;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.rateAndReview {
+  height: 2rem;
 }
 
 .rating,
@@ -82,10 +90,11 @@
 }
 
 .reviews {
-  margin-inline-start: 2.5rem;
+  margin-inline-start: 2rem;
 }
 
-.address {
+.address,
+.address span {
   color: var(--home-card-title-color);
   font-size: 0.8rem;
   text-align: center;

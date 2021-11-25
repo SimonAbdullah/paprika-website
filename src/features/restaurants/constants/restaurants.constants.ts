@@ -1,5 +1,5 @@
 export const RESTAURANTS_INITIAL_PLACES_API_PARAMS = {
-  MaxRestaurantsPerPage: 15,
+  MaxRestaurantsPerPage: 24,
   StartFromRestaurant: 0,
 };
 

@@ -13,7 +13,7 @@ const HomeSecondHostMusicRestaurants: FunctionComponent<HomeSecondHostMusicResta
   () => {
     const { t } = useTranslation(TranslationFiles.HOME);
 
-    const { data } = useFeaturedPlaces({ IsFeatured: true });
+    const { data } = useFeaturedPlaces();
 
     return (
       <>

@@ -1,4 +1,7 @@
 {
+  "homePage": "Home Page",
   "restaurants": "Restaurants",
-  "showMore": "Show more"
+  "showMore": "Show more",
+  "gridView": "Grid View",
+  "listView": "ListView"
 }

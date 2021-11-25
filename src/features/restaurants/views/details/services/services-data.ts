@@ -4,7 +4,7 @@ import {
   CuisineType,
   MusicType,
   ParkingType,
-} from "../../../../customers/constants/customer-review.constants";
+} from "../../../../customers/constants/customer-restaurant.constants";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 
 export const useServicesData = () => {

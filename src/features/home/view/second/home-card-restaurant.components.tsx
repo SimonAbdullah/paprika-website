@@ -1,4 +1,4 @@
-import { Card, Col, Rate, Row, Space } from "antd";
+import { Card, Col, Rate, Row } from "antd";
 import { FunctionComponent } from "react";
 import Image from "next/image";
 import classes from "./style.module.css";
@@ -45,26 +45,30 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
               <div className={classes.content}>
                 <Row>
                   <Col span={24}>
-                    <Space direction="vertical" size="small">
-                      <Text className={classes.cardTitle}>
-                        {restaurant?.name}
-                      </Text>
-                      <div>
-                        <Rate
-                          className={classes.rating}
-                          value={restaurant?.restaurantRate}
-                          allowHalf
-                          disabled
-                        />
-                        <Text className={classes.reviews}>{`${
-                          restaurant?.restaurantRate
-                        } ${t("second.reviews")}`}</Text>
-                      </div>
-                      <Text className={classes.address} ellipsis={true}>
-                        <LocationIcon />
-                        {restaurant?.address}
-                      </Text>
-                    </Space>
+                    <Text
+                      ellipsis={{ tooltip: restaurant?.name }}
+                      className={classes.cardTitle}
+                    >
+                      {restaurant?.name}
+                    </Text>
+                    <div className={classes.rateAndReview}>
+                      <Rate
+                        className={classes.rating}
+                        value={restaurant?.restaurantRate}
+                        allowHalf
+                        disabled
+                      />
+                      <Text className={classes.reviews}>{`${
+                        restaurant?.restaurantRate
+                      } ${t("second.reviews")}`}</Text>
+                    </div>
+                    <Text
+                      className={classes.address}
+                      ellipsis={{ tooltip: restaurant?.address }}
+                    >
+                      <LocationIcon />
+                      {restaurant?.address}
+                    </Text>
                   </Col>
                   <div className={classes.plateIcon}>
                     <Image

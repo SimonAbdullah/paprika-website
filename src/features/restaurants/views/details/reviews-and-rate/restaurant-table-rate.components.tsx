@@ -1,7 +1,7 @@
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent } from "react";
 import { TranslationFiles } from "../../../../../core/core";
-import { NoiseLevelType } from "../../../../customers/constants/customer-review.constants";
+import { NoiseLevelType } from "../../../../customers/constants/customer-restaurant.constants";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 import classes from "./style.module.css";
 
