@@ -13,7 +13,7 @@ class CustomerRestaurantServices extends ApiService {
   public getDetails(
     params: CustomerRestaurantParams
   ): Promise<IBaseApiResponse<RestaurantHomeDto>> {
-    return this.get("/Get", { params: params });
+    return this.get("/GetByName", { params: params });
   }
 }
 

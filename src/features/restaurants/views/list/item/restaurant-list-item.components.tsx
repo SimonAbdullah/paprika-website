@@ -20,7 +20,7 @@ const RestaurantListItem: FunctionComponent<RestaurantListItemProps> = ({
     <List.Item>
       <List.Item.Meta
         avatar={
-          <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.id}`}>
+          <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.name}`}>
             <a>
               <Avatar
                 className={classes.avatar}

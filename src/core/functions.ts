@@ -20,3 +20,12 @@ export const percentOfNumber = (
 ) => {
   return (number * options.percentsOf) / options.baseNumber;
 };
+
+export const reverseString = (string: string) => {
+  return string.split("").reverse().join("");
+};
+
+export function IsOfTypeT<T, C extends T>(arg?: T): arg is C {
+  if (typeof arg !== "undefined") return true;
+  return false;
+}

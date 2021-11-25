@@ -9,9 +9,11 @@ import Text from "antd/lib/typography/Text";
 import { LocationIcon } from "../../../shared/icons/icons.components";
 import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
+import { CustomerEventDto } from "../../../customers/services/customer-event/models/customer-event-dto.models";
+import { IsOfTypeT } from "../../../../core/functions";
 
 interface HomeCardRestaurantProps {
-  restaurant?: RestaurantSummaryDto;
+  restaurant?: RestaurantSummaryDto | CustomerEventDto;
 }
 
 const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
@@ -21,12 +23,15 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
 
   const { push } = useRouter();
 
-  return (
-    <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.id}`}>
+  return IsOfTypeT<
+    RestaurantSummaryDto | CustomerEventDto,
+    RestaurantSummaryDto
+  >(restaurant) ? (
+    <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.name}`}>
       <a>
         <Card
           onClick={() => {
-            push(`${PagesUrls.RESTAURANTS}/${restaurant?.id}`);
+            push(`${PagesUrls.RESTAURANTS}/${restaurant?.name}`);
           }}
           hoverable
           className={classes.card}
@@ -38,6 +43,8 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
                   restaurant?.logoImage || "/images/home/first-background.png"
                 }
                 alt={restaurant?.name}
+                blurDataURL={restaurant?.logoImage}
+                placeholder="blur"
                 layout="fill"
                 objectFit="cover"
                 objectPosition="center"
@@ -68,6 +75,75 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
                     >
                       <LocationIcon />
                       {restaurant?.address}
+                    </Text>
+                  </Col>
+                  <div className={classes.plateIcon}>
+                    <Image
+                      src={"/images/home/second-plate.svg"}
+                      alt={t("second.alt.plateImage")}
+                      width="46px"
+                      height="46px"
+                      objectFit="contain"
+                      objectPosition="center"
+                    />
+                  </div>
+                </Row>
+              </div>
+            </div>
+          }
+        />
+      </a>
+    </Link>
+  ) : (
+    <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.restaurantName}`}>
+      <a>
+        <Card
+          onClick={() => {
+            push(`${PagesUrls.RESTAURANTS}/${restaurant?.restaurantName}`);
+          }}
+          hoverable
+          className={classes.card}
+          cover={
+            <div className={classes.coverContainer}>
+              <Image
+                className={classes.image}
+                src={
+                  restaurant?.restaurantImage ||
+                  "/images/home/first-background.png"
+                }
+                alt={restaurant?.name}
+                blurDataURL={restaurant?.restaurantImage}
+                placeholder="blur"
+                layout="fill"
+                objectFit="cover"
+                objectPosition="center"
+              />
+              <div className={classes.content}>
+                <Row>
+                  <Col span={24}>
+                    <Text
+                      ellipsis={{ tooltip: restaurant?.name }}
+                      className={classes.cardTitle}
+                    >
+                      {restaurant?.restaurantName}
+                    </Text>
+                    <div className={classes.rateAndReview}>
+                      <Rate
+                        className={classes.rating}
+                        value={restaurant?.restaurantRate}
+                        allowHalf
+                        disabled
+                      />
+                      <Text className={classes.reviews}>{`${
+                        restaurant?.totalRestaurantRatersCount
+                      } ${t("second.reviews")}`}</Text>
+                    </div>
+                    <Text
+                      className={classes.address}
+                      ellipsis={{ tooltip: restaurant?.restaurantAddress }}
+                    >
+                      <LocationIcon />
+                      {restaurant?.restaurantAddress}
                     </Text>
                   </Col>
                   <div className={classes.plateIcon}>

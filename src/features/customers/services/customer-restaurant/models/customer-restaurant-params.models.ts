@@ -1,3 +1,3 @@
 export interface CustomerRestaurantParams {
-  Id?: number;
+  tenancyName?: string;
 }

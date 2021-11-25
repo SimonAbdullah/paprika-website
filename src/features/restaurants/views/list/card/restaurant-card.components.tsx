@@ -22,11 +22,11 @@ const RestaurantCard: FunctionComponent<RestaurantCardProps> = ({
   const { push } = useRouter();
 
   return (
-    <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.id}`}>
+    <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.name}`}>
       <a>
         <Card
           onClick={() => {
-            push(`${PagesUrls.RESTAURANTS}/${restaurant?.id}`);
+            push(`${PagesUrls.RESTAURANTS}/${restaurant?.name}`);
           }}
           hoverable
           size="small"
@@ -34,6 +34,8 @@ const RestaurantCard: FunctionComponent<RestaurantCardProps> = ({
             <Image
               src={restaurant?.logoImage || "/images/home/first-background.png"}
               alt={restaurant?.name}
+              blurDataURL={restaurant?.logoImage}
+              placeholder="blur"
               layout="responsive"
               width="100%"
               height="60%"

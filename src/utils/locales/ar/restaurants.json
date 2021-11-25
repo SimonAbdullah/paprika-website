@@ -1,4 +1,7 @@
 {
   "restaurants": "المطاعم",
-  "showMore": "عرض المزيد"
+  "showMore": "عرض المزيد",
+  "homePage": "الصفحة الرئيسية",
+  "gridView": "عرض كشبكة",
+  "listView": "عرض كقائمة"
 }

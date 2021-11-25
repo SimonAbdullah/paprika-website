@@ -7,7 +7,9 @@ module.exports = {
     "*": [TranslationFiles.COMMON],
     [PagesUrls.HOME]: [TranslationFiles.HOME],
     [PagesUrls.RESTAURANTS]: [TranslationFiles.RESTAURANTS],
-    [`${PagesUrls.RESTAURANTS}/[restaurantId]`]: [TranslationFiles.RESTAURANT],
+    [`${PagesUrls.RESTAURANTS}/[restaurantName]`]: [
+      TranslationFiles.RESTAURANT,
+    ],
   },
   loadLocaleFrom: (lang, ns) =>
     import(`./src/utils/locales/${lang}/${ns}.json`).then((m) => m.default),

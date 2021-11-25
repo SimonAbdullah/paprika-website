@@ -2,6 +2,7 @@ import Title from "antd/lib/typography/Title";
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent } from "react";
 import { TranslationFiles } from "../../../../core/core";
+import { isDataEmpty } from "../../../../core/functions";
 import { useFeaturedPlaces } from "../../../restaurants/hooks/places.hooks";
 import CardList from "../../../shared/card-list";
 import HomeCardRestaurant from "./home-card-restaurant.components";
@@ -14,6 +15,8 @@ const HomeSecondTopRestaurants: FunctionComponent<HomeSecondTopRestaurantsProps>
     const { t } = useTranslation(TranslationFiles.HOME);
 
     const { data } = useFeaturedPlaces();
+
+    if (isDataEmpty(data?.items)) return null;
 
     return (
       <>

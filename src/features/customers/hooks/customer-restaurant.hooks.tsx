@@ -11,11 +11,11 @@ export const useRestaurantDetails = (
   const { query: urlQuery, isFallback } = useRouter();
 
   const result = useQuery(
-    `restaurantDetails${urlQuery?.restaurantId || params?.Id}`,
+    `restaurantDetails${urlQuery?.restaurantName || params?.tenancyName}`,
     async () =>
       (
         await customerRestaurantServices.getDetails({
-          Id: Number(urlQuery?.restaurantId) || params?.Id,
+          tenancyName: String(urlQuery?.restaurantName) || params?.tenancyName,
         })
       ).result,
     options

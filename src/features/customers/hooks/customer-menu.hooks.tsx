@@ -4,19 +4,22 @@ import { customerMenuServices } from "../services/customer-menu/customer-menu.co
 import { CategoryDto } from "../services/customer-menu/models/category-dto.models";
 import { CustomerMenuParams } from "../services/customer-menu/models/customer-menu-params.models";
 import { MealDto } from "../services/customer-menu/models/meal-dto.models";
+import { useRestaurantDetails } from "./customer-restaurant.hooks";
 
 export const useRestaurantCategories = (
   params?: CustomerMenuParams,
   options?: UseQueryOptions<CategoryDto[], unknown, CategoryDto[]>
 ) => {
-  const { query: urlQuery, isFallback } = useRouter();
+  const { isFallback } = useRouter();
+
+  const { data } = useRestaurantDetails();
 
   const result = useQuery(
-    `restaurantCategories${urlQuery?.restaurantId || params?.Id}`,
+    `restaurantCategories${data?.id || params?.Id}`,
     async () =>
       (
         await customerMenuServices.getRestaurantCategories({
-          Id: Number(urlQuery?.restaurantId) || params?.Id,
+          Id: Number(data?.id) || params?.Id,
         })
       ).result,
     options

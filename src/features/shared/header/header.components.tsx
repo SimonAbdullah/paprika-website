@@ -58,8 +58,8 @@ const Header: FunctionComponent<HeaderProps> = () => {
               onClick={showDrawer}
             />
             <HeaderDrawer visible={visible} onClose={onClose}>
-              <HeaderRegisterRestaurantButton />
               <HeaderLinks />
+              <HeaderRegisterRestaurantButton />
             </HeaderDrawer>
             <HeaderLogo />
           </div>

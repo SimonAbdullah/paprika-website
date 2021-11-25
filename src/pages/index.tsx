@@ -10,12 +10,20 @@ import styles from "../styles/Home.module.css";
 import { PagedResultDto } from "../utils/base-api/api-provider";
 import { useEffect } from "react";
 import AOS from "aos";
+import { customerEventServices } from "../features/customers/services/customer-event/customer-event.services";
+import {
+  InitialUpcomingEventNumber,
+  NumberOfUpcomingEventToShow,
+} from "../features/customers/constants/customer-event.constants";
+import { CustomerEventDto } from "../features/customers/services/customer-event/models/customer-event-dto.models";
+import { useUpcomingEvents } from "../features/customers/hooks/customer-event.hooks";
 
 interface HomePageProps {
   places: PagedResultDto<RestaurantSummaryDto>;
+  upComingEvents: PagedResultDto<CustomerEventDto>;
 }
 
-const HomePage: NextPage<HomePageProps> = ({ places }) => {
+const HomePage: NextPage<HomePageProps> = ({ places, upComingEvents }) => {
   const { t } = useTranslation(TranslationFiles.HOME);
 
   useFeaturedPlaces(
@@ -24,6 +32,8 @@ const HomePage: NextPage<HomePageProps> = ({ places }) => {
       initialData: places,
     }
   );
+
+  useUpcomingEvents({}, { initialData: upComingEvents });
 
   useEffect(() => {
     AOS.init({ once: true, disable: "mobile" });
@@ -44,7 +54,15 @@ const HomePage: NextPage<HomePageProps> = ({ places }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const places = await placesServices.getAll({ IsFeatured: true });
 
-  return { props: { places: places.result }, revalidate: TimeInSeconds.DAY };
+  const upComingEvents = await customerEventServices.getAllUpcomingEvent({
+    SkipCount: InitialUpcomingEventNumber,
+    MaxResultCount: NumberOfUpcomingEventToShow,
+  });
+
+  return {
+    props: { places: places.result, upComingEvents: upComingEvents.result },
+    revalidate: TimeInSeconds.DAY,
+  };
 };
 
 export default HomePage;

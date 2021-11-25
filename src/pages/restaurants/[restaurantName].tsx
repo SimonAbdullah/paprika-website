@@ -101,7 +101,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   restaurants.result.items.forEach((item) => {
     locales?.forEach((locale) => {
       paths.push({
-        params: { restaurantId: String(item.id) },
+        params: { restaurantName: item.name },
         locale: locale,
       });
     });
@@ -112,7 +112,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const restaurant = await customerRestaurantServices.getDetails({
-    Id: Number(params?.restaurantId),
+    tenancyName: String(params?.restaurantName),
   });
 
   return {
