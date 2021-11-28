@@ -65,9 +65,10 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
                         allowHalf
                         disabled
                       />
-                      <Text className={classes.reviews}>{`${
-                        restaurant?.restaurantRate
-                      } ${t("second.reviews")}`}</Text>
+                      <Text className={classes.reviews}>
+                        {restaurant?.totalRestaurantRatersCount}{" "}
+                        {t("second.reviews")}
+                      </Text>
                     </div>
                     <Text
                       className={classes.address}
@@ -134,9 +135,10 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
                         allowHalf
                         disabled
                       />
-                      <Text className={classes.reviews}>{`${
-                        restaurant?.totalRestaurantRatersCount
-                      } ${t("second.reviews")}`}</Text>
+                      <Text className={classes.reviews}>
+                        {restaurant?.totalRestaurantRatersCount}{" "}
+                        {t("second.reviews")}
+                      </Text>
                     </div>
                     <Text
                       className={classes.address}

@@ -4,6 +4,7 @@ import Title from "antd/lib/typography/Title";
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent } from "react";
 import { TranslationFiles } from "../../../../../core/core";
+import { getSumOfObjectValues } from "../../../../../core/functions";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 import classes from "./style.module.css";
 
@@ -30,7 +31,7 @@ const RestaurantMainInfo: FunctionComponent<RestaurantMainInfoProps> = () => {
             value={data.restaurantRate}
           />
           <Text className={classes.reviews} type="danger">
-            {t("reviews")}
+            {getSumOfObjectValues(data.restaurantRaters || {})} {t("reviews")}
           </Text>
         </div>
       )}

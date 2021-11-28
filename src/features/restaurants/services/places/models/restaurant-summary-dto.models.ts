@@ -13,6 +13,7 @@ export interface RestaurantSummaryDto {
   shishaRate?: number;
   ambianceRate?: number;
   noiseLevel?: any;
+  totalRestaurantRatersCount?: number;
   longitude?: number;
   latitude?: number;
   city?: CityDto;

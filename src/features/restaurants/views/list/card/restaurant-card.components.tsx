@@ -73,9 +73,9 @@ const RestaurantCard: FunctionComponent<RestaurantCardProps> = ({
                     allowHalf
                     disabled
                   />
-                  <Text className={classes.reviews}>{`${
-                    restaurant?.restaurantRate
-                  } ${t("reviews")}`}</Text>
+                  <Text className={classes.reviews}>
+                    {restaurant?.totalRestaurantRatersCount} {t("reviews")}
+                  </Text>
                 </Text>
               </Space>
             </Col>

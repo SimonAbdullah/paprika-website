@@ -29,3 +29,10 @@ export function IsOfTypeT<T, C extends T>(arg?: T): arg is C {
   if (typeof arg !== "undefined") return true;
   return false;
 }
+
+export const getSumOfObjectValues = (object: Object) => {
+  return Object.values(object).reduce(
+    (previous, current) => (previous || 0) + (current || 0),
+    0
+  );
+};
