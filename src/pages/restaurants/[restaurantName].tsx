@@ -94,7 +94,7 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
-  const restaurants = await placesServices.getAll({ MaxResultCount: 1000 });
+  const restaurants = await placesServices.getAll({ maxResultCount: 1000 });
 
   const paths: PathsType = [];
 

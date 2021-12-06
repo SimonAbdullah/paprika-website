@@ -52,7 +52,7 @@ const HomePage: NextPage<HomePageProps> = ({ places, upComingEvents }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const places = await placesServices.getAll({ IsFeatured: true });
+  const places = await placesServices.getAll({ isFeatured: true });
 
   const upComingEvents = await customerEventServices.getAllUpcomingEvent({
     SkipCount: InitialUpcomingEventNumber,

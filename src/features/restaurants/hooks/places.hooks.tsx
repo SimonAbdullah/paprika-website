@@ -1,3 +1,4 @@
+import { useRouter } from "next/dist/client/router";
 import {
   useInfiniteQuery,
   UseInfiniteQueryOptions,
@@ -21,7 +22,7 @@ export const useFeaturedPlaces = (
   const result = useQuery(
     "featuredPlaces",
     async () =>
-      (await placesServices.getAll({ IsFeatured: true, ...params })).result,
+      (await placesServices.getAll({ isFeatured: true, ...params })).result,
     options
   );
 
@@ -36,8 +37,10 @@ export const useInfinityPlaces = (
     PagedResultDto<RestaurantSummaryDto>
   >
 ) => {
+  const { query } = useRouter();
+
   const result = useInfiniteQuery(
-    "infinityPlaces",
+    ["infinityPlaces", query],
     async ({ pageParam }) => {
       const skip =
         !pageParam || pageParam === 1
@@ -46,9 +49,10 @@ export const useInfinityPlaces = (
             RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage;
 
       const result = await placesServices.getAll({
-        SkipCount: skip,
-        MaxResultCount:
+        skipCount: skip,
+        maxResultCount:
           RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage,
+        ...query,
         ...params,
       });
 

@@ -3,7 +3,7 @@ import { customerConfigurationServices } from "../services/customer-configuratio
 import { GetInitialConfigurationsParams } from "../services/customer-configuration/models/get-initial-configurations-params.models";
 import { InitializationDto } from "../services/customer-configuration/models/initialization-dto.models";
 
-export const useCustomerConfigurationTypes = (
+export const useCustomerConfiguration = (
   params?: GetInitialConfigurationsParams,
   options?: UseQueryOptions<InitializationDto, unknown, InitializationDto>
 ) => {
@@ -12,9 +12,6 @@ export const useCustomerConfigurationTypes = (
     async () =>
       (
         await customerConfigurationServices.getInitialConfigurations({
-          RegionsHash: 1577890399,
-          CountriesHash: 957836664,
-          CitiesHash: 3796738168,
           ...params,
         })
       ).result,
@@ -23,5 +20,21 @@ export const useCustomerConfigurationTypes = (
     }
   );
 
-  return result;
+  return { ...result, ...result.data };
+};
+
+export const useCities = (countryId?: number) => {
+  const { cities } = useCustomerConfiguration();
+
+  return {
+    cities: cities?.items.filter((city) => city.countryId === countryId),
+  };
+};
+
+export const useRegions = (cityId?: number) => {
+  const { regions } = useCustomerConfiguration();
+
+  return {
+    regions: regions?.items.filter((region) => region.cityId === cityId),
+  };
 };
