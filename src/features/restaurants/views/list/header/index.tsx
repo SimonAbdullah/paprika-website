@@ -16,12 +16,15 @@ import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { FilterOutlined } from "@ant-design/icons";
 import RestaurantsFilter from "../filter";
 import { AppContext } from "../../../../../core/app/app.context";
+import { useRouter } from "next/dist/client/router";
 
 interface RestaurantsListHeaderProps {}
 
 const RestaurantsListHeader: FunctionComponent<RestaurantsListHeaderProps> =
   () => {
     const { t } = useTranslation(TranslationFiles.RESTAURANTS);
+
+    const { locale } = useRouter();
 
     const { direction } = useContext(AppContext);
 
@@ -62,7 +65,7 @@ const RestaurantsListHeader: FunctionComponent<RestaurantsListHeaderProps> =
           <div style={{ padding: "1rem" }}>
             <Breadcrumb>
               <Breadcrumb.Item key={PagesUrls.HOME}>
-                <Link href={PagesUrls.HOME}>
+                <Link href={PagesUrls.HOME} locale={locale}>
                   <a style={{ color: "var(--primary-color)" }}>
                     {t("homePage")}
                   </a>

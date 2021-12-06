@@ -19,10 +19,10 @@ const RestaurantCard: FunctionComponent<RestaurantCardProps> = ({
 }) => {
   const { t } = useTranslation(TranslationFiles.COMMON);
 
-  const { push } = useRouter();
+  const { push, locale } = useRouter();
 
   return (
-    <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.name}`}>
+    <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.name}`} locale={locale}>
       <a>
         <Card
           onClick={() => {

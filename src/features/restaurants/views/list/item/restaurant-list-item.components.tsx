@@ -7,6 +7,7 @@ import useTranslation from "next-translate/useTranslation";
 import { PagesUrls, TranslationFiles } from "../../../../../core/core";
 import { LocationBlackIcon } from "../../../../shared/icons/icons.components";
 import Link from "next/link";
+import { useRouter } from "next/dist/client/router";
 
 interface RestaurantListItemProps {
   restaurant: RestaurantSummaryDto;
@@ -16,11 +17,17 @@ const RestaurantListItem: FunctionComponent<RestaurantListItemProps> = ({
   restaurant,
 }) => {
   const { t } = useTranslation(TranslationFiles.COMMON);
+
+  const { locale } = useRouter();
+
   return (
     <List.Item>
       <List.Item.Meta
         avatar={
-          <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.name}`}>
+          <Link
+            href={`${PagesUrls.RESTAURANTS}/${restaurant?.name}`}
+            locale={locale}
+          >
             <a>
               <Avatar
                 className={classes.avatar}

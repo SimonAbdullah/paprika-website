@@ -21,13 +21,13 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
 }) => {
   const { t } = useTranslation(TranslationFiles.HOME);
 
-  const { push } = useRouter();
+  const { push, locale } = useRouter();
 
   return IsOfTypeT<
     RestaurantSummaryDto | CustomerEventDto,
     RestaurantSummaryDto
   >(restaurant) ? (
-    <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.name}`}>
+    <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.name}`} locale={locale}>
       <a>
         <Card
           onClick={() => {
@@ -96,7 +96,10 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
       </a>
     </Link>
   ) : (
-    <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.restaurantName}`}>
+    <Link
+      href={`${PagesUrls.RESTAURANTS}/${restaurant?.restaurantName}`}
+      locale={locale}
+    >
       <a>
         <Card
           onClick={() => {

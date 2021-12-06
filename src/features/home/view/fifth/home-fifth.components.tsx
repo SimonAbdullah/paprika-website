@@ -16,7 +16,7 @@ interface HomeFifthProps {}
 const HomeFifth: FunctionComponent<HomeFifthProps> = () => {
   const { t } = useTranslation(TranslationFiles.HOME);
 
-  const { push } = useRouter();
+  const { push, locale } = useRouter();
 
   const { lg } = useBreakpoint();
 
@@ -60,7 +60,7 @@ const HomeFifth: FunctionComponent<HomeFifthProps> = () => {
               </Col>
             </Row>
             <div className={classes.buttonContainer}>
-              <Link href={PagesUrls.RESTAURANTS}>
+              <Link href={PagesUrls.RESTAURANTS} locale={locale}>
                 <a>
                   <Button
                     size="large"
