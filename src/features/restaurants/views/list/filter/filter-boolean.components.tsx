@@ -6,6 +6,7 @@ import useTranslation from "next-translate/useTranslation";
 import { TranslationFiles } from "../../../../../core/core";
 import { RestaurantsListContext } from "../../../contexts/restaurants-list.contexts";
 import { CheckboxChangeEvent } from "antd/lib/checkbox";
+import { useRouter } from "next/dist/client/router";
 
 interface FilterBooleanProps {
   name: string;
@@ -18,15 +19,25 @@ const FilterBoolean: FunctionComponent<FilterBooleanProps> = ({
 }) => {
   const { t } = useTranslation(TranslationFiles.RESTAURANTS);
 
+  const { push, pathname } = useRouter();
+
   const { options, setOptions } = useContext(RestaurantsListContext);
 
   const onCheckboxChange = (e: CheckboxChangeEvent, name: string) => {
     if (e.target.checked) {
-      setOptions({ ...options, [name]: true });
+      const result = { ...options, [name]: true };
+
+      setOptions(result);
+
+      push({ pathname: pathname, query: { ...result } });
     } else {
       const { [name]: _, ...optionsWithoutOptionName } = options as any;
 
-      setOptions({ ...(optionsWithoutOptionName || {}) });
+      const result = { ...(optionsWithoutOptionName || {}) };
+
+      setOptions(result);
+
+      push({ pathname: pathname, query: { ...result } });
     }
   };
 

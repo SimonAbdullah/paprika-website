@@ -6,6 +6,7 @@ import { TranslationFiles } from "../../../../../core/core";
 import { useContext } from "react";
 import { RestaurantsListContext } from "../../../contexts/restaurants-list.contexts";
 import { CheckboxChangeEvent } from "antd/lib/checkbox";
+import { useRouter } from "next/dist/client/router";
 
 export interface FilterOptionProps {
   attribute: EnumValue;
@@ -17,6 +18,8 @@ const FilterOption: React.FC<FilterOptionProps> = ({
   optionName,
 }) => {
   const { t } = useTranslation(TranslationFiles.RESTAURANTS);
+
+  const { push, pathname } = useRouter();
 
   const { options, setOptions } = useContext(RestaurantsListContext);
 
@@ -30,7 +33,11 @@ const FilterOption: React.FC<FilterOptionProps> = ({
 
       const newOptions = temp?.join(",");
 
-      setOptions({ ...options, [optionName]: newOptions });
+      const result = { ...options, [optionName]: newOptions };
+
+      setOptions(result);
+
+      push({ pathname: pathname, query: { ...result } });
     } else {
       const temp = (options as any)?.[optionName]
         ? (options as any)?.[optionName].split(",")
@@ -42,11 +49,13 @@ const FilterOption: React.FC<FilterOptionProps> = ({
 
       const { [optionName]: _, ...optionsWithoutOptionName } = options as any;
 
-      setOptions(
-        newOptions
-          ? { ...options, [optionName]: newOptions }
-          : { ...(optionsWithoutOptionName || {}) }
-      );
+      const result = newOptions
+        ? { ...options, [optionName]: newOptions }
+        : { ...(optionsWithoutOptionName || {}) };
+
+      setOptions(result);
+
+      push({ pathname: pathname, query: { ...result } });
     }
   };
 

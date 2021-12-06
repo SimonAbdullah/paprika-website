@@ -1,8 +1,7 @@
 import { Button, Col, Row, Space } from "antd";
-import { FunctionComponent, useContext } from "react";
+import { FunctionComponent } from "react";
 import useTranslation from "next-translate/useTranslation";
 import { TranslationFiles } from "../../../../../core/core";
-import { RestaurantsListContext } from "../../../contexts/restaurants-list.contexts";
 import { useRouter } from "next/dist/client/router";
 import FilterBoolean from "./filter-boolean.components";
 import { otherData, servicesData } from "./data";
@@ -15,8 +14,6 @@ const RestaurantsFilter: FunctionComponent<RestaurantsFilterProps> = () => {
   const { t } = useTranslation(TranslationFiles.RESTAURANTS);
 
   const { push, pathname } = useRouter();
-
-  const { options } = useContext(RestaurantsListContext);
 
   return (
     <aside style={{ backgroundColor: "#fff" }}>
@@ -55,15 +52,6 @@ const RestaurantsFilter: FunctionComponent<RestaurantsFilterProps> = () => {
         <Col span={20}>
           <Space>
             <Button
-              type="primary"
-              onClick={() => {
-                push({ pathname: pathname, query: { ...options } });
-              }}
-            >
-              {t("apply")}
-            </Button>
-            <Button
-              type="text"
               onClick={() => {
                 push(pathname);
               }}
