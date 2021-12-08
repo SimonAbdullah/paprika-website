@@ -6,7 +6,12 @@ import { TranslationFiles } from "../../../../core/core";
 import classes from "./style.module.css";
 import { AppContext } from "../../../../core/app/app.context";
 import Carousel from "react-multi-carousel";
-import { LeftArrow, RightArrow } from "../../../shared/icons/icons.components";
+import {
+  LeftArrow,
+  LeftArrowBlack,
+  RightArrow,
+  RightArrowBlack,
+} from "../../../shared/icons/icons.components";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 
 interface HomeFirstBackgroundProps {
@@ -29,7 +34,19 @@ const HomeFirstBackground: FunctionComponent<HomeFirstBackgroundProps> = ({
         className={classes.rightArrowButton}
         type="link"
         size="large"
-        icon={direction === "ltr" ? <RightArrow /> : <LeftArrow />}
+        icon={
+          md ? (
+            direction === "ltr" ? (
+              <RightArrow />
+            ) : (
+              <LeftArrow />
+            )
+          ) : direction === "ltr" ? (
+            <RightArrowBlack />
+          ) : (
+            <LeftArrowBlack />
+          )
+        }
         onClick={() => {
           carouselRef.current?.next && carouselRef.current?.next(1);
         }}
@@ -44,7 +61,19 @@ const HomeFirstBackground: FunctionComponent<HomeFirstBackgroundProps> = ({
         className={classes.leftArrowButton}
         type="link"
         size="large"
-        icon={direction === "ltr" ? <LeftArrow /> : <RightArrow />}
+        icon={
+          md ? (
+            direction === "ltr" ? (
+              <LeftArrow />
+            ) : (
+              <RightArrow />
+            )
+          ) : direction === "ltr" ? (
+            <LeftArrowBlack />
+          ) : (
+            <RightArrowBlack />
+          )
+        }
         onClick={() => {
           carouselRef.current?.previous && carouselRef.current?.previous(1);
         }}
@@ -60,18 +89,22 @@ const HomeFirstBackground: FunctionComponent<HomeFirstBackgroundProps> = ({
           inset: direction === "ltr" ? "0 0 auto auto" : "0 auto auto 0",
         }}
       >
-        <div className={classes.buttons}>
-          <Space size={md ? "large" : "small"}>
-            <PrevArrow />
-            <NextArrow />
-          </Space>
-        </div>
+        {md && (
+          <div className={classes.buttons}>
+            <Space size={md ? "large" : "small"}>
+              <PrevArrow />
+              <NextArrow />
+            </Space>
+          </div>
+        )}
       </div>
       <Image
-        src="/images/home/first-background.png"
+        src={`/images/home/first-background${
+          direction === "ltr" ? "" : "-reverse"
+        }.png`}
         alt={t("alt.backgroundImage")}
         layout="fill"
-        objectFit="cover"
+        objectFit={md ? "fill" : "cover"}
         objectPosition="center"
       />
     </>

@@ -33,39 +33,72 @@ const HomeFirstCarousel: FunctionComponent<HomeFirstCarouselProps> = ({
         <Row
           key={index}
           align="middle"
-          justify={md ? "start" : "center"}
+          justify="center"
           className={classes.carouselItem}
           dir={direction}
         >
-          {md && (
-            <Image
-              src={`/images/home/first-dish-${index + 1}${
-                direction === "rtl" ? "-reverse" : ""
-              }.png`}
-              alt={t("alt.dishImage")}
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-            />
+          {direction === "ltr" ? (
+            <>
+              <Col xs={24} md={12} className={classes.content}>
+                <Title className={classes.title}>
+                  {t("first.enjoyYourMeal")}
+                </Title>
+                <div className={classes.textContainer}>
+                  <Text className={classes.text}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Dolor facilisi nibh venenatis pellentesque sapien. Et etiam
+                    et et pulvinar dignissim enim nec nulla.
+                  </Text>
+                </div>
+              </Col>
+              {md && (
+                <Col span={10}>
+                  <Image
+                    src={`/images/home/first-dish.png`}
+                    alt={t("alt.dishImage")}
+                    layout="responsive"
+                    width="1rem"
+                    height="1rem"
+                    objectFit="contain"
+                    objectPosition="center"
+                  />
+                </Col>
+              )}
+            </>
+          ) : (
+            <>
+              {md && (
+                <Col span={10}>
+                  <Image
+                    src={`/images/home/first-dish.png`}
+                    alt={t("alt.dishImage")}
+                    layout="responsive"
+                    width="1rem"
+                    height="1rem"
+                    objectFit="contain"
+                    objectPosition="center"
+                  />
+                </Col>
+              )}
+              <Col xs={24} md={12} className={classes.content}>
+                <Title className={classes.title}>
+                  {t("first.enjoyYourMeal")}
+                </Title>
+                <div className={classes.textContainer}>
+                  <Text className={classes.text}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Dolor facilisi nibh venenatis pellentesque sapien. Et etiam
+                    et et pulvinar dignissim enim nec nulla.
+                  </Text>
+                </div>
+              </Col>
+            </>
           )}
-          <Col md={17} lg={13} xl={11} className={classes.content}>
-            <Title className={classes.title}>{t("first.enjoyYourMeal")}</Title>
-            <div className={classes.textContainer}>
-              <Text className={classes.text}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor
-                facilisi nibh venenatis pellentesque sapien. Et etiam et et
-                pulvinar dignissim enim nec nulla.
-              </Text>
-            </div>
-          </Col>
         </Row>
       )),
     arrows: false,
     ssr: true,
     infinite: true,
-    keyBoardControl: true,
-    draggable: false,
-    swipeable: true,
     autoPlay: true,
     autoPlaySpeed: 5000,
     pauseOnHover: true,

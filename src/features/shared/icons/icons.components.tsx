@@ -39,6 +39,34 @@ const LeftArrow: FunctionComponent<IconProps> = ({ className }) => {
   );
 };
 
+const RightArrowBlack: FunctionComponent<IconProps> = ({ className }) => {
+  const { t } = useTranslation(TranslationFiles.COMMON);
+  return (
+    <Image
+      src="/icons/right-arrow-black.svg"
+      alt={t("alt.rightArrow")}
+      width="80px"
+      height="80px"
+      objectPosition="center"
+      className={className}
+    />
+  );
+};
+
+const LeftArrowBlack: FunctionComponent<IconProps> = ({ className }) => {
+  const { t } = useTranslation(TranslationFiles.COMMON);
+  return (
+    <Image
+      src="/icons/left-arrow-black.svg"
+      alt={t("alt.leftArrow")}
+      width="80px"
+      height="80px"
+      objectPosition="center"
+      className={className}
+    />
+  );
+};
+
 const ListRightArrow: FunctionComponent<IconProps> = ({ className }) => {
   const { t } = useTranslation(TranslationFiles.COMMON);
   return (
@@ -157,6 +185,8 @@ const ListViewIcon: FunctionComponent<{ type?: "active" | "inactive" }> = ({
 export {
   RightArrow,
   LeftArrow,
+  RightArrowBlack,
+  LeftArrowBlack,
   ListRightArrow,
   ListLeftArrow,
   LocationIcon,

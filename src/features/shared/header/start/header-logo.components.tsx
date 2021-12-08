@@ -5,9 +5,15 @@ import { PagesUrls } from "../../../../core/core";
 import Image from "next/image";
 import { useRouter } from "next/dist/client/router";
 
-interface HeaderLogoProps {}
+interface HeaderLogoProps {
+  size?: string;
+  type?: "default" | "red";
+}
 
-const HeaderLogo: FunctionComponent<HeaderLogoProps> = () => {
+const HeaderLogo: FunctionComponent<HeaderLogoProps> = ({
+  size,
+  type = "default",
+}) => {
   const { locale } = useRouter();
 
   return (
@@ -18,9 +24,13 @@ const HeaderLogo: FunctionComponent<HeaderLogoProps> = () => {
       >
         <Image
           alt="logo"
-          src="/images/logo/logo.svg"
-          width="58px"
-          height="58px"
+          src={
+            type === "default"
+              ? "/images/logo/logo.svg"
+              : "/images/logo/logo-red.svg"
+          }
+          width={size || "66px"}
+          height={size || "72px"}
           priority={true}
         />
       </LinkComponent>

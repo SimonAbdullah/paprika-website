@@ -1,17 +1,16 @@
 .firstContainer {
   width: 100%;
-  min-height: 90vh;
-  max-height: 90vh;
+  min-height: 36rem;
+  max-height: 36rem;
   position: relative;
 }
 
 .column {
-  background-color: var(--primary-color);
   display: flex;
   justify-content: center;
   align-items: flex-end;
   position: absolute;
-  min-height: 90vh;
+  min-height: 36rem;
   width: 23%;
 }
 
@@ -21,7 +20,7 @@
 }
 
 .carouselItem {
-  min-height: 90vh;
+  min-height: 36rem;
   width: 100%;
   position: relative;
 }
@@ -33,27 +32,64 @@
 
 .title {
   color: #000000;
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: bold;
   letter-spacing: 0.01em;
 }
 
 .text {
-  color: #828282;
+  color: #525252;
   font-size: 1rem;
   letter-spacing: 0.01em;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 991px) {
   .column {
+    width: 20%;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .title {
+    font-size: 2.7rem;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .firstContainer {
+    min-height: 18rem;
+    max-height: 18rem;
+  }
+
+  .column {
+    min-height: 18rem;
     width: 30%;
+  }
+
+  .carouselItem {
+    min-height: 18rem;
   }
 
   .title {
     text-align: center;
+    font-size: 2.5rem;
   }
 
   .textContainer {
     text-align: center;
+  }
+
+  .text {
+    color: #323232;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .title {
+    font-size: 2rem;
   }
 }

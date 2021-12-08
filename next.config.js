@@ -7,7 +7,7 @@ const withAntdLess = require("next-plugin-antd-less");
 const config = nextTranslate(
   withAntdLess({
     modifyVars: {
-      "@primary-color": "#B12116",
+      "@primary-color": "#CE4C42",
       "@layout-body-background": "#FFFFFF",
       "@layout-header-background": "@primary-color",
       "@layout-header-color": "@layout-body-background",

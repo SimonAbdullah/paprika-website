@@ -29,7 +29,7 @@ const PagesNumber: FunctionComponent<PagesNumberProps> = ({
       {Array.from({ length: pagesCount }).map((_, index) => (
         <Text
           key={index}
-          style={{ color: currentPage === index + 1 ? "#B12116" : "#151515" }}
+          style={{ color: currentPage === index + 1 ? "#CE4C42" : "#151515" }}
           className={classes.pageNumber}
         >
           {index + 1}

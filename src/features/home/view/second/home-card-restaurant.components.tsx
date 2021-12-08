@@ -70,12 +70,14 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
                         {t("second.reviews")}
                       </Text>
                     </div>
-                    <Text
-                      className={classes.address}
-                      ellipsis={{ tooltip: restaurant?.address }}
-                    >
+                    <Text className={classes.address}>
                       <LocationIcon />
-                      {restaurant?.address}
+                      <Text
+                        className={classes.address}
+                        ellipsis={{ tooltip: restaurant?.address }}
+                      >
+                        {restaurant?.address}
+                      </Text>
                     </Text>
                   </Col>
                   <div className={classes.plateIcon}>

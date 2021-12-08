@@ -5,6 +5,7 @@ import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/dist/client/router";
 import { FunctionComponent } from "react";
 import { PagesUrls, TranslationFiles } from "../../../../core/core";
+import HeaderLogo from "../../header/start/header-logo.components";
 import LinkComponent from "../../link/link.components";
 import classes from "../style.module.css";
 
@@ -19,9 +20,7 @@ const FooterStart: FunctionComponent<FooterStartProps> = () => {
     <Row gutter={[16, 16]}>
       <Col>
         <Space direction="vertical" size="middle">
-          <Title level={4} className={classes.footerStartTitle}>
-            {t("paprika")}
-          </Title>
+          <HeaderLogo size="92px" />
           <Text className={classes.footerStartText}>
             {t("socialMediaFollow")}
           </Text>
