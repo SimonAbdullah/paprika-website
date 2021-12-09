@@ -26,7 +26,7 @@ const RestaurantMealCard: FunctionComponent<RestaurantMealCardProps> = ({
             <div style={{ position: "relative", height: "10rem" }}>
               <Image
                 className={classes.image}
-                src={meal?.image || "/images/home/first-background.png"}
+                src={meal?.image || "/images/home/fallback-image.png"}
                 alt={meal?.name}
                 blurDataURL={meal?.thumbnailImage}
                 placeholder="blur"

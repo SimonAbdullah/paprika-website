@@ -31,7 +31,7 @@ const RestaurantMealModal: FunctionComponent<RestaurantMealModalProps> = ({
       <Row gutter={[16, 16]}>
         <Col span={24} className={classes.modalImageContainer}>
           <Image
-            src={meal?.image || "/images/home/first-background.png"}
+            src={meal?.image || "/images/home/fallback-image.png"}
             alt={meal?.name}
             blurDataURL={meal?.thumbnailImage}
             placeholder="blur"

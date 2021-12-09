@@ -21,27 +21,22 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
 }) => {
   const { t } = useTranslation(TranslationFiles.HOME);
 
-  const { push, locale } = useRouter();
+  const { locale } = useRouter();
 
   return IsOfTypeT<
     RestaurantSummaryDto | CustomerEventDto,
     RestaurantSummaryDto
   >(restaurant) ? (
     <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.name}`} locale={locale}>
-      <a>
+      <a style={{ display: "block", position: "relative" }}>
         <Card
-          onClick={() => {
-            push(`${PagesUrls.RESTAURANTS}/${restaurant?.name}`);
-          }}
           hoverable
           className={classes.card}
           cover={
             <div className={classes.coverContainer}>
               <Image
                 className={classes.image}
-                src={
-                  restaurant?.logoImage || "/images/home/first-background.png"
-                }
+                src={restaurant?.logoImage || "/images/home/fallback-image.png"}
                 alt={restaurant?.name}
                 blurDataURL={restaurant?.logoImage}
                 placeholder="blur"
@@ -102,11 +97,8 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
       href={`${PagesUrls.RESTAURANTS}/${restaurant?.restaurantName}`}
       locale={locale}
     >
-      <a>
+      <a style={{ display: "block", position: "relative" }}>
         <Card
-          onClick={() => {
-            push(`${PagesUrls.RESTAURANTS}/${restaurant?.restaurantName}`);
-          }}
           hoverable
           className={classes.card}
           cover={
@@ -115,7 +107,7 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
                 className={classes.image}
                 src={
                   restaurant?.restaurantImage ||
-                  "/images/home/first-background.png"
+                  "/images/home/fallback-image.png"
                 }
                 alt={restaurant?.name}
                 blurDataURL={restaurant?.restaurantImage}

@@ -1,9 +1,11 @@
-import { Button } from "antd";
+import { Button, notification } from "antd";
 import { useForm } from "antd/lib/form/Form";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent, useState } from "react";
 import { TranslationFiles } from "../../../../core/core";
+import { customerVisitorServices } from "../../../customers/services/customer-visitor/services/customer-visitor.services";
+import { CreateVisitorContactInfoDto } from "../../../customers/services/customer-visitor/services/models/create-visitor-contact-info-dto.models";
 import RestaurantRegisterModal from "../../restaurant-register-modal/restaurant-register-modal.components";
 import classes from "./style.module.css";
 
@@ -36,6 +38,24 @@ const HeaderRegisterRestaurantButton: FunctionComponent<HeaderRegisterRestaurant
             setVisible(false);
           }}
           form={form}
+          onFinish={async (values: CreateVisitorContactInfoDto) => {
+            await customerVisitorServices
+              .create(values)
+              .then((result) => {
+                if (result.success) {
+                  notification.success({
+                    message: t("yourRequestHasBeenSubmit"),
+                  });
+                  form.resetFields();
+                  setVisible(false);
+                } else {
+                  notification.error({ message: result.error.message });
+                }
+              })
+              .catch((error) => {
+                notification.error({ message: error.message });
+              });
+          }}
         />
       </>
     );

@@ -1,8 +1,6 @@
 import { useRouter } from "next/dist/client/router";
 import { createContext, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import { TOKEN_KEY } from "../auth/auth.constants";
-import { useIsAuthenticated } from "../auth/auth.hooks";
 import { NEXT_LOCALE } from "./app.constants";
 import { PagesUrls } from "../core";
 
@@ -12,12 +10,10 @@ export type Directions = "rtl" | "ltr";
 
 export interface AppContextProps {
   direction: Directions;
-  isAuthenticated: boolean;
 }
 
 export const AppContext = createContext<AppContextProps>({
   direction: "ltr",
-  isAuthenticated: false,
 });
 
 const AppContextProvider: React.FC<AppContextProviderProps> = (props) => {
@@ -25,9 +21,7 @@ const AppContextProvider: React.FC<AppContextProviderProps> = (props) => {
 
   const { locale, defaultLocale } = useRouter();
 
-  const [_cookies, setCookies] = useCookies([TOKEN_KEY, NEXT_LOCALE]);
-
-  const { isAuthenticated } = useIsAuthenticated();
+  const [_cookies, setCookies] = useCookies([NEXT_LOCALE]);
 
   useEffect(() => {
     if (locale !== defaultLocale) {
@@ -53,7 +47,6 @@ const AppContextProvider: React.FC<AppContextProviderProps> = (props) => {
     <AppContext.Provider
       value={{
         direction,
-        isAuthenticated,
       }}
     >
       {props.children}

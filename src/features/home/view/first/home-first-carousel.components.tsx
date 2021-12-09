@@ -27,7 +27,7 @@ const HomeFirstCarousel: FunctionComponent<HomeFirstCarouselProps> = ({
     responsive: {
       all: { breakpoint: { max: 5000, min: 0 }, items: 1 },
     },
-    children: Array(8)
+    children: Array(5)
       .fill(null)
       .map((_, index) => (
         <Row
@@ -37,62 +37,28 @@ const HomeFirstCarousel: FunctionComponent<HomeFirstCarouselProps> = ({
           className={classes.carouselItem}
           dir={direction}
         >
-          {direction === "ltr" ? (
-            <>
-              <Col xs={24} md={12} className={classes.content}>
-                <Title className={classes.title}>
-                  {t("first.enjoyYourMeal")}
-                </Title>
-                <div className={classes.textContainer}>
-                  <Text className={classes.text}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Dolor facilisi nibh venenatis pellentesque sapien. Et etiam
-                    et et pulvinar dignissim enim nec nulla.
-                  </Text>
-                </div>
-              </Col>
-              {md && (
-                <Col span={10}>
-                  <Image
-                    src={`/images/home/first-dish.png`}
-                    alt={t("alt.dishImage")}
-                    layout="responsive"
-                    width="1rem"
-                    height="1rem"
-                    objectFit="contain"
-                    objectPosition="center"
-                  />
-                </Col>
-              )}
-            </>
-          ) : (
-            <>
-              {md && (
-                <Col span={10}>
-                  <Image
-                    src={`/images/home/first-dish.png`}
-                    alt={t("alt.dishImage")}
-                    layout="responsive"
-                    width="1rem"
-                    height="1rem"
-                    objectFit="contain"
-                    objectPosition="center"
-                  />
-                </Col>
-              )}
-              <Col xs={24} md={12} className={classes.content}>
-                <Title className={classes.title}>
-                  {t("first.enjoyYourMeal")}
-                </Title>
-                <div className={classes.textContainer}>
-                  <Text className={classes.text}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Dolor facilisi nibh venenatis pellentesque sapien. Et etiam
-                    et et pulvinar dignissim enim nec nulla.
-                  </Text>
-                </div>
-              </Col>
-            </>
+          <Col xs={24} md={12} className={classes.content}>
+            <Title className={classes.title}>{t("first.enjoyYourMeal")}</Title>
+            <div className={classes.textContainer}>
+              <Text className={classes.text}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor
+                facilisi nibh venenatis pellentesque sapien. Et etiam et et
+                pulvinar dignissim enim nec nulla.
+              </Text>
+            </div>
+          </Col>
+          {md && (
+            <Col span={10}>
+              <Image
+                src={`/images/home/first-dish-${index}.png`}
+                alt={t("alt.dishImage")}
+                layout="responsive"
+                width="1rem"
+                height="1rem"
+                objectFit="contain"
+                objectPosition="center"
+              />
+            </Col>
           )}
         </Row>
       )),

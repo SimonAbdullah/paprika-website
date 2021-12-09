@@ -25,13 +25,15 @@
   "whatsApp": "WhatsApp",
   "googlePlay": "Google Play",
   "appStore": "App Store",
+  "yourRequestHasBeenSubmit": "Your request has been submit we will contact with you as soon as possible",
   "form": {
     "fields": {
       "name": "Name",
       "phoneNumber": "Phone number"
     },
     "validation": {
-      "required": "This field is required"
+      "required": "This field is required",
+      "range": "This field must not contain more than 128 characters"
     }
   },
   "alt": {

@@ -25,13 +25,15 @@
   "whatsApp": "واتس آب",
   "googlePlay": "متجر غوغل",
   "appStore": "متجر التطبيقات",
+  "yourRequestHasBeenSubmit": "طلبك قد تم بنجاح سنقوم بالتواصل معك قريبا",
   "form": {
     "fields": {
       "name": "الاسم",
       "phoneNumber": "رقم الجوال"
     },
     "validation": {
-      "required": "هذا الحقل مطلوب"
+      "required": "هذا الحقل مطلوب",
+      "range": "هذا الحقل لا يجب أن يحتوي على أكثر من 128 محرف"
     }
   },
   "alt": {

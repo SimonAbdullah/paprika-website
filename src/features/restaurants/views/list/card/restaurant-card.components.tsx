@@ -19,20 +19,17 @@ const RestaurantCard: FunctionComponent<RestaurantCardProps> = ({
 }) => {
   const { t } = useTranslation(TranslationFiles.COMMON);
 
-  const { push, locale } = useRouter();
+  const { locale } = useRouter();
 
   return (
     <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.name}`} locale={locale}>
-      <a>
+      <a style={{ display: "block", position: "relative" }}>
         <Card
-          onClick={() => {
-            push(`${PagesUrls.RESTAURANTS}/${restaurant?.name}`);
-          }}
           hoverable
           size="small"
           cover={
             <Image
-              src={restaurant?.logoImage || "/images/home/first-background.png"}
+              src={restaurant?.logoImage || "/images/home/fallback-image.png"}
               alt={restaurant?.name}
               blurDataURL={restaurant?.logoImage}
               placeholder="blur"
