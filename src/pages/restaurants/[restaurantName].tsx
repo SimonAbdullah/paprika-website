@@ -1,7 +1,7 @@
 import { Button, Col, Modal, Row } from "antd";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import { TimeInSeconds } from "../../core/core";
+import { TimeInSeconds, TranslationFiles } from "../../core/core";
 import { placesServices } from "../../features/restaurants/services/places/places.services";
 import styles from "../../styles/Restaurant.module.css";
 import { PathsType } from "../../core/types";
@@ -13,15 +13,17 @@ import RestaurantDetails from "../../features/restaurants/views/details/restaura
 import RestaurantMainInfo from "../../features/restaurants/views/details/main-info/restaurant-main-info.components";
 import RestaurantReservationBox from "../../features/restaurants/views/details/reservation-box/restaurant-reservation-box.components";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
-import { PlusCircleOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import { isDataEmpty } from "../../core/functions";
+import useTranslation from "next-translate/useTranslation";
 
 interface RestaurantPageProps {
   restaurant: RestaurantHomeDto;
 }
 
 const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
+  const { t } = useTranslation(TranslationFiles.RESTAURANT);
+
   const { data, galleryItems } = useRestaurantDetails(
     {},
     { initialData: restaurant }
@@ -57,24 +59,25 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
               </Col>
             </Row>
           </Col>
-          <Col xs={1} sm={1} lg={8}>
+          <Col xs={24} lg={8}>
             <Row
               className={`${styles.reservationBox} ${
                 isDataEmpty(galleryItems) ? "" : styles.marginTopMinus6x
               }`}
+              justify="center"
             >
-              <Col span={22}>
+              <Col xs={24} lg={22}>
                 {lg ? (
                   <RestaurantReservationBox />
                 ) : (
                   <>
                     <Button
-                      size="large"
-                      type="link"
-                      shape="circle"
-                      icon={<PlusCircleOutlined style={{ fontSize: "2rem" }} />}
+                      type="primary"
+                      style={{ width: "50%", margin: "0.5rem" }}
                       onClick={() => setReservationModalVisible(true)}
-                    />
+                    >
+                      {t("reserveNow")}
+                    </Button>
                     <Modal
                       visible={reservationModalVisible}
                       onCancel={() => setReservationModalVisible(false)}

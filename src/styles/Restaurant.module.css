@@ -27,7 +27,7 @@
   margin-top: -6rem;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 991px) {
   .mainInfo {
     margin: 0;
     width: 100%;
@@ -36,11 +36,17 @@
 
   .reservationBox {
     margin: 0;
-    top: 85%;
+    position: fixed;
+    top: auto;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    background-color: #ffffff;
+    z-index: 1;
   }
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 575px) {
   .mainInfo {
     height: 10rem;
   }
