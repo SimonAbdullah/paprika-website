@@ -1,4 +1,5 @@
 import { Button } from "antd";
+import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import React, { ReactNode, useContext } from "react";
 import Carousel, {
   CarouselProps,
@@ -21,6 +22,8 @@ function CardList<T>({ dataSource, renderItem, itemKey }: CardListProps<T>) {
   const keyInter = itemKey ?? ((_item, index) => index);
 
   const { direction } = useContext(AppContext);
+
+  const { md } = useBreakpoint();
 
   const NextArrow = (props: ArrowProps) => {
     return (
@@ -104,9 +107,11 @@ function CardList<T>({ dataSource, renderItem, itemKey }: CardListProps<T>) {
     ssr: true,
     infinite: true,
     keyBoardControl: true,
-    draggable: false,
-    swipeable: true,
+    draggable: !md,
     partialVisible: true,
+    autoPlay: true,
+    autoPlaySpeed: 5000,
+    pauseOnHover: true,
   };
 
   return (

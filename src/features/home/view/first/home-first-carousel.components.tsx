@@ -66,6 +66,8 @@ const HomeFirstCarousel: FunctionComponent<HomeFirstCarouselProps> = ({
     ssr: true,
     infinite: true,
     autoPlay: true,
+    keyBoardControl: true,
+    draggable: !md,
     autoPlaySpeed: 5000,
     pauseOnHover: true,
   };
