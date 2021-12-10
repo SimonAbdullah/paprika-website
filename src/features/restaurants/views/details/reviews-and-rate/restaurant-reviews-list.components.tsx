@@ -5,6 +5,7 @@ import classes from "./style.module.css";
 import useTranslation from "next-translate/useTranslation";
 import { TranslationFiles } from "../../../../../core/core";
 import RestaurantReviewDetails from "./restaurant-review-details.components";
+import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 
 interface RestaurantReviewsListProps {}
 
@@ -15,6 +16,8 @@ const RestaurantReviewsList: FunctionComponent<RestaurantReviewsListProps> =
     const { data, fetchNextPage, hasNextPage, isFetching, isLoading } =
       useInfinityRestaurantReviews();
 
+    const { hasReservation } = useRestaurantDetails();
+
     const dataSource = data?.pages?.flatMap((page) => page.items);
 
     return (
@@ -22,6 +25,16 @@ const RestaurantReviewsList: FunctionComponent<RestaurantReviewsListProps> =
         dataSource={dataSource}
         loading={isLoading}
         className={classes.list}
+        grid={
+          hasReservation
+            ? undefined
+            : {
+                column: 1,
+                xxl: 3,
+                xl: 2,
+                lg: 2,
+              }
+        }
         loadMore={
           hasNextPage ? (
             <Row

@@ -51,6 +51,7 @@
   color: var(--home-card-title-color);
   font-size: 1rem;
   font-weight: bold;
+  display: block;
 }
 
 .showMoreButton {

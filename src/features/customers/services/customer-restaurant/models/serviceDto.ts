@@ -3,3 +3,9 @@ export interface ServiceDto {
   name: string;
   code: string;
 }
+
+export enum ServicesCodeEnum {
+  RESERVATION = "reservation",
+  DELIVERY = "delivery",
+  PICKUP = "pickup",
+}

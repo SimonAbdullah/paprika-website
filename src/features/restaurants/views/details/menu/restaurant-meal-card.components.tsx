@@ -36,7 +36,12 @@ const RestaurantMealCard: FunctionComponent<RestaurantMealCardProps> = ({
               />
             </div>
             <div className={classes.content}>
-              <Text className={classes.cardTitle}>{meal?.name}</Text>
+              <Text
+                className={classes.cardTitle}
+                ellipsis={{ tooltip: meal?.name }}
+              >
+                {meal?.name}
+              </Text>
             </div>
           </div>
         }

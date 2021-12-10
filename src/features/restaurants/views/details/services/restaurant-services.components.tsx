@@ -6,20 +6,24 @@ import { TranslationFiles } from "../../../../../core/core";
 import Image from "next/image";
 import classes from "./style.module.css";
 import { useServicesData } from "./services-data";
+import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 
 interface RestaurantServicesProps {}
 
 const RestaurantServices: FunctionComponent<RestaurantServicesProps> = () => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
+
+  const { hasReservation } = useRestaurantDetails();
+
   return (
     <List
       header={<Text className={classes.title}>{t("howWeCanServeYou")}</Text>}
       split={false}
       grid={{
         column: 2,
-        xxl: 7,
-        xl: 6,
-        lg: 5,
+        xxl: hasReservation ? 7 : 9,
+        xl: hasReservation ? 6 : 8,
+        lg: hasReservation ? 5 : 7,
         md: 5,
         sm: 4,
         xs: 2,

@@ -3,6 +3,7 @@ import { useQuery, UseQueryOptions } from "react-query";
 import { customerRestaurantServices } from "../services/customer-restaurant/customer-restaurant.services";
 import { CustomerRestaurantParams } from "../services/customer-restaurant/models/customer-restaurant-params.models";
 import { RestaurantHomeDto } from "../services/customer-restaurant/models/restaurantHomeDto";
+import { ServicesCodeEnum } from "../services/customer-restaurant/models/serviceDto";
 
 export const useRestaurantDetails = (
   params?: CustomerRestaurantParams,
@@ -25,10 +26,16 @@ export const useRestaurantDetails = (
 
   const openingTimes = result.data?.openingTimes;
 
+  const hasReservation =
+    result.data?.settings?.services?.findIndex(
+      (service) => service.code === ServicesCodeEnum.RESERVATION
+    ) !== -1;
+
   return {
     ...result,
     isLoading: (!result.data && !result.error) || isFallback,
     galleryItems,
     openingTimes,
+    hasReservation,
   };
 };

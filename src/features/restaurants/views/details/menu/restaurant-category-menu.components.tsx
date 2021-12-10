@@ -7,6 +7,7 @@ import useTranslation from "next-translate/useTranslation";
 import { TranslationFiles } from "../../../../../core/core";
 import { NUMBER_OF_MEALS_TO_SHOW } from "../../../constants/restaurants.constants";
 import RestaurantMealCard from "./restaurant-meal-card.components";
+import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 
 interface RestaurantCategoryMenuProps {
   category: CategoryDto;
@@ -17,6 +18,8 @@ const RestaurantCategoryMenu: FunctionComponent<RestaurantCategoryMenuProps> =
     const { t } = useTranslation(TranslationFiles.RESTAURANT);
 
     const { data, isLoading } = useRestaurantCategoryMeals({ Id: category.id });
+
+    const { hasReservation } = useRestaurantDetails();
 
     const [numberOfMealsToShow, setNumberOfMealsToShow] = useState<
       number | undefined
@@ -29,9 +32,9 @@ const RestaurantCategoryMenu: FunctionComponent<RestaurantCategoryMenuProps> =
         }
         grid={{
           gutter: 16,
-          xxl: 4,
-          xl: 3,
-          lg: 2,
+          xxl: hasReservation ? 4 : 6,
+          xl: hasReservation ? 3 : 5,
+          lg: hasReservation ? 2 : 4,
           md: 3,
           sm: 2,
           xs: 1,

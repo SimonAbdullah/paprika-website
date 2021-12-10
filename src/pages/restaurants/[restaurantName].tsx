@@ -24,7 +24,7 @@ interface RestaurantPageProps {
 const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
 
-  const { data, galleryItems } = useRestaurantDetails(
+  const { data, galleryItems, hasReservation } = useRestaurantDetails(
     {},
     { initialData: restaurant }
   );
@@ -43,7 +43,7 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
           <Col span={24}>
             <RestaurantMainGallery />
           </Col>
-          <Col xs={19} sm={21} lg={16}>
+          <Col xs={22} lg={hasReservation ? 16 : 22}>
             <Row justify="center">
               <Col span={22} lg={24}>
                 <div
@@ -59,37 +59,39 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
               </Col>
             </Row>
           </Col>
-          <Col xs={24} lg={8}>
-            <Row
-              className={`${styles.reservationBox} ${
-                isDataEmpty(galleryItems) ? "" : styles.marginTopMinus6x
-              }`}
-              justify="center"
-            >
-              <Col xs={24} lg={22}>
-                {lg ? (
-                  <RestaurantReservationBox />
-                ) : (
-                  <>
-                    <Button
-                      type="primary"
-                      style={{ width: "50%", margin: "0.5rem" }}
-                      onClick={() => setReservationModalVisible(true)}
-                    >
-                      {t("reserveNow")}
-                    </Button>
-                    <Modal
-                      visible={reservationModalVisible}
-                      onCancel={() => setReservationModalVisible(false)}
-                      footer={null}
-                    >
-                      <RestaurantReservationBox />
-                    </Modal>
-                  </>
-                )}
-              </Col>
-            </Row>
-          </Col>
+          {hasReservation && (
+            <Col xs={24} lg={8}>
+              <Row
+                className={`${styles.reservationBox} ${
+                  isDataEmpty(galleryItems) ? "" : styles.marginTopMinus6x
+                }`}
+                justify="center"
+              >
+                <Col xs={24} lg={22}>
+                  {lg ? (
+                    <RestaurantReservationBox />
+                  ) : (
+                    <>
+                      <Button
+                        type="primary"
+                        style={{ width: "50%", margin: "0.5rem" }}
+                        onClick={() => setReservationModalVisible(true)}
+                      >
+                        {t("reserveNow")}
+                      </Button>
+                      <Modal
+                        visible={reservationModalVisible}
+                        onCancel={() => setReservationModalVisible(false)}
+                        footer={null}
+                      >
+                        <RestaurantReservationBox />
+                      </Modal>
+                    </>
+                  )}
+                </Col>
+              </Row>
+            </Col>
+          )}
         </Row>
       </div>
     </>
