@@ -26,6 +26,7 @@
   "googlePlay": "Google Play",
   "appStore": "App Store",
   "yourRequestHasBeenSubmit": "Your request has been submit we will contact with you as soon as possible",
+  "youShouldEnterValidNameAndPhoneNumber": "You should enter a valid name and phone number",
   "form": {
     "fields": {
       "name": "Name",

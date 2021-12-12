@@ -7,6 +7,7 @@ import Title from "antd/lib/typography/Title";
 import { MealDto } from "../../../../customers/services/customer-menu/models/meal-dto.models";
 import Paragraph from "antd/lib/typography/Paragraph";
 import classes from "./style.module.css";
+import Text from "antd/lib/typography/Text";
 
 interface RestaurantMealModalProps {
   meal: MealDto;
@@ -42,9 +43,14 @@ const RestaurantMealModal: FunctionComponent<RestaurantMealModalProps> = ({
         </Col>
         <Col span={24}>
           <Space direction="vertical">
-            <Title level={4} className={classes.modalTitle}>
-              {meal.name}
-            </Title>
+            <Space>
+              <Title level={4} className={classes.modalTitle}>
+                {meal.name}
+              </Title>
+              {meal.price && (
+                <Text className={classes.mealPrice}>{`${meal.price}SYP`}</Text>
+              )}
+            </Space>
             <Rate
               className={classes.modalRateStars}
               disabled

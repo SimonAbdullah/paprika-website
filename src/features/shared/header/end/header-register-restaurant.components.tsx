@@ -52,8 +52,10 @@ const HeaderRegisterRestaurantButton: FunctionComponent<HeaderRegisterRestaurant
                   notification.error({ message: result.error.message });
                 }
               })
-              .catch((error) => {
-                notification.error({ message: error.message });
+              .catch((_error) => {
+                notification.error({
+                  message: t("youShouldEnterValidNameAndPhoneNumber"),
+                });
               });
           }}
         />
