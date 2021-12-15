@@ -70,14 +70,15 @@
   color: var(--home-card-title-color);
   font-size: 1.2rem;
   font-weight: bold;
-  height: 1.5rem;
+  height: 1.4rem;
   display: flex;
   align-items: center;
   vertical-align: middle;
 }
 
 .rateAndReview {
-  height: 2rem;
+  height: 1.4rem;
+  text-align: start;
 }
 
 .rating,
@@ -86,11 +87,10 @@
   color: var(--home-card-title-color);
   font-size: 0.8rem;
   text-align: center;
-  vertical-align: middle;
 }
 
 .reviews {
-  margin-inline-start: 2rem;
+  margin-inline-start: 1rem;
 }
 
 .address,
@@ -101,14 +101,14 @@
   vertical-align: middle;
   display: flex;
   align-items: center;
-  height: 1.5rem;
+  height: 1.4rem;
 }
 
 .content .rating > li {
   margin: 0 0.1rem;
   color: #f7a800;
   border-radius: 0.3px;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .plateIcon {

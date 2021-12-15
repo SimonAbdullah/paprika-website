@@ -66,9 +66,9 @@ const RestaurantListItem: FunctionComponent<RestaurantListItemProps> = ({
                 disabled
               />
               <Text className={classes.reviews}>{`${
-                restaurant?.restaurantRate
+                restaurant?.totalRestaurantRatersCount
               } ${t("reviews")}`}</Text>
-            </Text>{" "}
+            </Text>
           </>
         }
       />

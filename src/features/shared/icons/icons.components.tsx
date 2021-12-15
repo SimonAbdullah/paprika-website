@@ -103,8 +103,8 @@ const LocationIcon: FunctionComponent<IconProps> = ({ className }) => {
     <Image
       src="/icons/location.svg"
       alt={t("alt.location")}
-      width="24px"
-      height="24px"
+      width="16px"
+      height="16px"
       objectFit="contain"
       objectPosition="center"
       className={className}

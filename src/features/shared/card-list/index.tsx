@@ -17,7 +17,7 @@ export interface CardListProps<T> {
 }
 
 function CardList<T>({ dataSource, renderItem, itemKey }: CardListProps<T>) {
-  const dataSourceInter = dataSource?.reverse() ?? [];
+  const dataSourceInter = dataSource ?? [];
   const renderItemInter = renderItem ?? ((_item, _index) => null);
   const keyInter = itemKey ?? ((_item, index) => index);
 
@@ -109,7 +109,7 @@ function CardList<T>({ dataSource, renderItem, itemKey }: CardListProps<T>) {
     keyBoardControl: true,
     draggable: !md,
     partialVisible: true,
-    autoPlay: true,
+    autoPlay: false,
     autoPlaySpeed: 5000,
     pauseOnHover: true,
   };

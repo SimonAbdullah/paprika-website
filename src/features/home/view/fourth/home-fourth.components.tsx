@@ -13,7 +13,12 @@ const HomeFourth: FunctionComponent<HomeFourthProps> = () => {
   const { t } = useTranslation(TranslationFiles.HOME);
 
   return (
-    <Row className={classes.fourthContainer} justify="center" align="middle">
+    <Row
+      className={classes.fourthContainer}
+      justify="center"
+      align="middle"
+      id="statistics"
+    >
       <Col md={8} className={classes.column}>
         <Image
           src="/images/home/fourth-dining-table.svg"

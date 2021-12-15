@@ -1,8 +1,6 @@
 import { Badge, Row } from "antd";
 import Text from "antd/lib/typography/Text";
-import { FunctionComponent, useContext } from "react";
-import { AppContext } from "../../../core/app/app.context";
-import { reverseString } from "../../../core/functions";
+import { FunctionComponent } from "react";
 import classes from "./style.module.css";
 
 interface ItemsCountProps {
@@ -16,13 +14,11 @@ const ItemsCount: FunctionComponent<ItemsCountProps> = ({
   text,
   backgroundColor,
 }) => {
-  const { direction } = useContext(AppContext);
-
   return (
     <Row align="middle" className={classes.itemsCount}>
       <Badge
         className={classes.badge}
-        count={direction === "ltr" ? count : reverseString(String(count))}
+        count={count}
         style={{ background: backgroundColor }}
       />
       <Text className={classes.text}>{text}</Text>

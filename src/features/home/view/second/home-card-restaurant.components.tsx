@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
 import { CustomerEventDto } from "../../../customers/services/customer-event/models/customer-event-dto.models";
 import { IsOfTypeT } from "../../../../core/functions";
+import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 
 interface HomeCardRestaurantProps {
   restaurant?: RestaurantSummaryDto | CustomerEventDto;
@@ -20,6 +21,8 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
   restaurant,
 }) => {
   const { t } = useTranslation(TranslationFiles.HOME);
+
+  const { sm } = useBreakpoint();
 
   const { locale } = useRouter();
 
@@ -75,16 +78,18 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
                       </Text>
                     </Text>
                   </Col>
-                  <div className={classes.plateIcon}>
-                    <Image
-                      src={"/images/home/second-plate.svg"}
-                      alt={t("second.alt.plateImage")}
-                      width="46px"
-                      height="46px"
-                      objectFit="contain"
-                      objectPosition="center"
-                    />
-                  </div>
+                  {sm && (
+                    <div className={classes.plateIcon}>
+                      <Image
+                        src={"/images/home/second-plate.svg"}
+                        alt={t("second.alt.plateImage")}
+                        width="36px"
+                        height="36px"
+                        objectFit="contain"
+                        objectPosition="center"
+                      />
+                    </div>
+                  )}
                 </Row>
               </div>
             </div>
