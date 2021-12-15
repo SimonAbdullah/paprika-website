@@ -1,7 +1,7 @@
 import { Button, Col, Modal, Row } from "antd";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import { TimeInSeconds, TranslationFiles } from "../../core/core";
+import { PagesUrls, TimeInSeconds, TranslationFiles } from "../../core/core";
 import { placesServices } from "../../features/restaurants/services/places/places.services";
 import styles from "../../styles/Restaurant.module.css";
 import { PathsType } from "../../core/types";
@@ -16,6 +16,7 @@ import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useState } from "react";
 import { isDataEmpty } from "../../core/functions";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/dist/client/router";
 
 interface RestaurantPageProps {
   restaurant: RestaurantHomeDto;
@@ -23,6 +24,8 @@ interface RestaurantPageProps {
 
 const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
+
+  const { locale } = useRouter();
 
   const { data, galleryItems, hasReservation } = useRestaurantDetails(
     {},
@@ -37,6 +40,14 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
     <>
       <Head>
         <title>{data?.name}</title>
+        <meta property="og:title" content={data?.name} />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content={`https://paprika-sy.com${PagesUrls.RESTAURANTS}/${restaurant.name}`}
+        />
+        <meta property="og:image" content={restaurant.logoImage} />
+        <meta property="og:locale" content={locale} />
       </Head>
       <div className={styles.container}>
         <Row className={styles.row} justify="center" gutter={[0, 16]}>

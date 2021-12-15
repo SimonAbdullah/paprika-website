@@ -3,7 +3,7 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 class MyDocument extends Document {
   render() {
     return (
-      <Html>
+      <Html prefix="og: https://ogp.me/ns#">
         <Head>
           <link href="/icons/icon.ico" rel="icon" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
