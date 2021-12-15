@@ -49,9 +49,9 @@ const RestaurantMealModal: FunctionComponent<RestaurantMealModalProps> = ({
           <Space direction="vertical">
             <Space>
               <Title level={4} className={classes.modalTitle}>
-                {meal.name}
+                {meal?.name}
               </Title>
-              {meal.price && (
+              {meal?.price && (
                 <Text className={classes.mealPrice}>
                   {currencyFormatter(
                     direction === "ltr" ? "en-SY" : "ar-SY"
@@ -63,10 +63,10 @@ const RestaurantMealModal: FunctionComponent<RestaurantMealModalProps> = ({
               className={classes.modalRateStars}
               disabled
               allowHalf
-              value={meal.mealRate}
+              value={meal?.mealRate}
             />
             <Paragraph className={classes.modalDescription}>
-              {meal.description}
+              {meal?.description}
             </Paragraph>
           </Space>
         </Col>

@@ -49,7 +49,7 @@ const RestaurantCard: FunctionComponent<RestaurantCardProps> = ({
               >
                 <Text
                   className={classes.cardTitle}
-                  ellipsis={{ tooltip: restaurant.name }}
+                  ellipsis={{ tooltip: restaurant?.name }}
                 >
                   {restaurant?.name}
                 </Text>

@@ -44,9 +44,11 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content={`https://paprika-sy.com${PagesUrls.RESTAURANTS}/${restaurant.name}`}
+          content={`https://paprika-sy.com${PagesUrls.RESTAURANTS}/${data?.name}`}
         />
-        <meta property="og:image" content={restaurant.logoImage} />
+        <meta property="og:image" content={data?.logoImage} />
+        <meta property="og:image:secure_url" content={data?.logoImage} />
+        <meta property="og:image:alt" content={data?.name} />
         <meta property="og:locale" content={locale} />
       </Head>
       <div className={styles.container}>

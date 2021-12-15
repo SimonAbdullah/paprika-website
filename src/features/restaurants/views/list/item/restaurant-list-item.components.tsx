@@ -33,7 +33,7 @@ const RestaurantListItem: FunctionComponent<RestaurantListItemProps> = ({
                 className={classes.avatar}
                 size="large"
                 src={restaurant.logoImage}
-                alt={restaurant.name}
+                alt={restaurant?.name}
               />
             </a>
           </Link>
@@ -41,9 +41,9 @@ const RestaurantListItem: FunctionComponent<RestaurantListItemProps> = ({
         title={
           <Text
             className={classes.title}
-            ellipsis={{ tooltip: restaurant.name }}
+            ellipsis={{ tooltip: restaurant?.name }}
           >
-            {restaurant.name}
+            {restaurant?.name}
           </Text>
         }
         description={
