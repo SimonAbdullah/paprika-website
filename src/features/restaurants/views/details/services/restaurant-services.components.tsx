@@ -20,13 +20,14 @@ const RestaurantServices: FunctionComponent<RestaurantServicesProps> = () => {
       header={<Text className={classes.title}>{t("howWeCanServeYou")}</Text>}
       split={false}
       grid={{
+        gutter: 8,
         column: 2,
-        xxl: hasReservation ? 7 : 9,
-        xl: hasReservation ? 6 : 8,
-        lg: hasReservation ? 5 : 7,
-        md: 5,
-        sm: 4,
-        xs: 2,
+        xxl: hasReservation ? 10 : 10,
+        xl: hasReservation ? 10 : 10,
+        lg: hasReservation ? 10 : 10,
+        md: 7,
+        sm: 6,
+        xs: 4,
       }}
       dataSource={useServicesData()}
       renderItem={(item) => {
@@ -36,8 +37,8 @@ const RestaurantServices: FunctionComponent<RestaurantServicesProps> = () => {
               <Image
                 src={item.logo}
                 alt={item.alt}
-                width="48px"
-                height="48px"
+                width="38px"
+                height="38px"
                 objectFit="contain"
                 objectPosition="center"
               />

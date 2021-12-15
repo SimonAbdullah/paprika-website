@@ -1,7 +1,8 @@
 .title {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: #000000;
+  margin-inline-end: 1rem;
 }
 
 .ourRate {

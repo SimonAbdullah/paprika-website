@@ -13,6 +13,18 @@ export const useServicesData = () => {
 
   return [
     {
+      logo: "/images/restaurant/mobile.svg",
+      title: t("mobile"),
+      alt: t("mobile"),
+      description: data?.phoneNumber ? data.phoneNumber : null,
+    },
+    {
+      logo: "/images/restaurant/phone.svg",
+      title: t("phone"),
+      alt: t("phone"),
+      description: data?.tel ? data.tel : null,
+    },
+    {
       logo: "/images/restaurant/chair.svg",
       title: t("capacity"),
       alt: t("capacity"),
