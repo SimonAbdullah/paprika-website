@@ -4,9 +4,6 @@ import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
 import { useState } from "react";
 import AppLayout from "../core/app/app.layout";
 import AppContextProvider from "../core/app/app.context";
-import Header from "../features/shared/header/header.components";
-import Footer from "../features/shared/footer/footer.components";
-import { Content } from "antd/lib/layout/layout";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(
@@ -23,11 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Hydrate state={pageProps.dehydratedState}>
         <AppContextProvider>
           <AppLayout>
-            <Header />
-            <Content>
-              <Component {...pageProps} />
-            </Content>
-            <Footer />
+            <Component {...pageProps} />
           </AppLayout>
         </AppContextProvider>
       </Hydrate>

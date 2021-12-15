@@ -1,6 +1,6 @@
 import { Col, Modal, Rate, Row, Space } from "antd";
 import useTranslation from "next-translate/useTranslation";
-import { Dispatch, FunctionComponent, SetStateAction } from "react";
+import { Dispatch, FunctionComponent, SetStateAction, useContext } from "react";
 import { TranslationFiles } from "../../../../../core/core";
 import Image from "next/image";
 import Title from "antd/lib/typography/Title";
@@ -8,6 +8,8 @@ import { MealDto } from "../../../../customers/services/customer-menu/models/mea
 import Paragraph from "antd/lib/typography/Paragraph";
 import classes from "./style.module.css";
 import Text from "antd/lib/typography/Text";
+import { currencyFormatter } from "../../../../../core/functions";
+import { AppContext } from "../../../../../core/app/app.context";
 
 interface RestaurantMealModalProps {
   meal: MealDto;
@@ -21,6 +23,8 @@ const RestaurantMealModal: FunctionComponent<RestaurantMealModalProps> = ({
   setVisible,
 }) => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
+
+  const { direction } = useContext(AppContext);
 
   return (
     <Modal
@@ -48,7 +52,11 @@ const RestaurantMealModal: FunctionComponent<RestaurantMealModalProps> = ({
                 {meal.name}
               </Title>
               {meal.price && (
-                <Text className={classes.mealPrice}>{`${meal.price}SYP`}</Text>
+                <Text className={classes.mealPrice}>
+                  {currencyFormatter(
+                    direction === "ltr" ? "en-SY" : "ar-SY"
+                  ).format(meal.price)}
+                </Text>
               )}
             </Space>
             <Rate

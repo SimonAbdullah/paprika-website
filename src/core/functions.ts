@@ -36,3 +36,12 @@ export const getSumOfObjectValues = (object: Object) => {
     0
   );
 };
+
+export const currencyFormatter = (
+  locales: "en-SY" | "ar-SY" = "en-SY",
+  options: Intl.NumberFormatOptions = { style: "currency", currency: "SYP" }
+) => {
+  return new Intl.NumberFormat(locales, {
+    ...options,
+  });
+};
