@@ -1,3 +1,6 @@
+import { CustomerEventDto } from "../features/customers/services/customer-event/models/customer-event-dto.models";
+import { RestaurantSummaryDto } from "../features/restaurants/services/places/models/restaurant-summary-dto.models";
+
 export const isDataEmpty = (data?: unknown[]) => {
   return !data || data.length === 0;
 };
@@ -25,9 +28,10 @@ export const reverseString = (string: string) => {
   return string.split("").reverse().join("");
 };
 
-export function IsOfTypeT<T, C extends T>(arg?: T): arg is C {
-  if (typeof arg !== "undefined") return true;
-  return false;
+export function IsCustomerEvent(
+  arg?: RestaurantSummaryDto | CustomerEventDto
+): arg is CustomerEventDto {
+  return (arg as CustomerEventDto).restaurantName !== undefined;
 }
 
 export const getSumOfObjectValues = (object: Object) => {

@@ -10,7 +10,7 @@ import { LocationIcon } from "../../../shared/icons/icons.components";
 import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
 import { CustomerEventDto } from "../../../customers/services/customer-event/models/customer-event-dto.models";
-import { IsOfTypeT } from "../../../../core/functions";
+import { IsCustomerEvent } from "../../../../core/functions";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 
 interface HomeCardRestaurantProps {
@@ -26,10 +26,7 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
 
   const { locale } = useRouter();
 
-  return IsOfTypeT<
-    RestaurantSummaryDto | CustomerEventDto,
-    RestaurantSummaryDto
-  >(restaurant) ? (
+  return !IsCustomerEvent(restaurant) ? (
     <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.name}`} locale={locale}>
       <a style={{ display: "block", position: "relative" }}>
         <Card

@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 import { isDataEmpty } from "../../../../core/functions";
 import { useUpcomingEvents } from "../../../customers/hooks/customer-event.hooks";
 import { useFeaturedPlaces } from "../../../restaurants/hooks/places.hooks";
-import HomeSecondHostMusicRestaurants from "./home-second-host-music-restaurants.components";
+import HomeSecondRestaurantsHostEvents from "./home-second-restaurants-host-events.components";
 import HomeSecondTopRestaurants from "./home-second-top-restaurants.components";
 import classes from "./style.module.css";
 
@@ -29,7 +29,7 @@ const HomeSecond: FunctionComponent<HomeSecondProps> = () => {
       {!isDataEmpty(upComingEvents?.items) && (
         <Col span={24} className={classes.secondColumn}>
           <div data-aos="flip-left" data-aos-duration="600">
-            <HomeSecondHostMusicRestaurants />
+            <HomeSecondRestaurantsHostEvents />
           </div>
         </Col>
       )}

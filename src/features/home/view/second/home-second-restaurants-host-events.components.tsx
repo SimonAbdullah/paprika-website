@@ -4,14 +4,13 @@ import { FunctionComponent } from "react";
 import { TranslationFiles } from "../../../../core/core";
 import { isDataEmpty } from "../../../../core/functions";
 import { useUpcomingEvents } from "../../../customers/hooks/customer-event.hooks";
-import { useFeaturedPlaces } from "../../../restaurants/hooks/places.hooks";
 import CardList from "../../../shared/card-list";
 import HomeCardRestaurant from "./home-card-restaurant.components";
 import classes from "./style.module.css";
 
 interface HomeSecondHostMusicRestaurantsProps {}
 
-const HomeSecondHostMusicRestaurants: FunctionComponent<HomeSecondHostMusicRestaurantsProps> =
+const HomeSecondRestaurantsHostEvents: FunctionComponent<HomeSecondHostMusicRestaurantsProps> =
   () => {
     const { t } = useTranslation(TranslationFiles.HOME);
 
@@ -24,9 +23,6 @@ const HomeSecondHostMusicRestaurants: FunctionComponent<HomeSecondHostMusicResta
         <Title level={3} className={classes.title}>
           {t("second.upComingEvents")}
         </Title>
-        <Title level={4} className={classes.secondTitle}>
-          {t("second.restaurantsThatHostMusicEvents")}
-        </Title>
         <CardList
           dataSource={data?.items}
           itemKey={(item) => item.id}
@@ -38,4 +34,4 @@ const HomeSecondHostMusicRestaurants: FunctionComponent<HomeSecondHostMusicResta
     );
   };
 
-export default HomeSecondHostMusicRestaurants;
+export default HomeSecondRestaurantsHostEvents;
