@@ -31,7 +31,10 @@ export const reverseString = (string: string) => {
 export function IsCustomerEvent(
   arg?: RestaurantSummaryDto | CustomerEventDto
 ): arg is CustomerEventDto {
-  return (arg as CustomerEventDto).restaurantName !== undefined;
+  return (
+    (arg as CustomerEventDto)?.restaurantId !== undefined &&
+    (arg as CustomerEventDto)?.restaurantName !== undefined
+  );
 }
 
 export const getSumOfObjectValues = (object: Object) => {

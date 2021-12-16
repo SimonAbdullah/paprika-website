@@ -1,11 +1,12 @@
 import { FunctionComponent } from "react";
-import { Button, List, Row } from "antd";
+import { Button, Empty, List, Row } from "antd";
 import { useInfinityRestaurantReviews } from "../../../../customers/hooks/customer-review.hooks";
 import classes from "./style.module.css";
 import useTranslation from "next-translate/useTranslation";
 import { TranslationFiles } from "../../../../../core/core";
 import RestaurantReviewDetails from "./restaurant-review-details.components";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
+import { isDataEmpty } from "../../../../../core/functions";
 
 interface RestaurantReviewsListProps {}
 
@@ -19,6 +20,15 @@ const RestaurantReviewsList: FunctionComponent<RestaurantReviewsListProps> =
     const { hasReservation } = useRestaurantDetails();
 
     const dataSource = data?.pages?.flatMap((page) => page.items);
+
+    if (isDataEmpty(dataSource)) {
+      return (
+        <>
+          <br />
+          <br />
+        </>
+      );
+    }
 
     return (
       <List

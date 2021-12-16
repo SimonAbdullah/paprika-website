@@ -151,8 +151,8 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
                     <Image
                       src={"/images/home/second-plate.svg"}
                       alt={t("second.alt.plateImage")}
-                      width="46px"
-                      height="46px"
+                      width="36px"
+                      height="36px"
                       objectFit="contain"
                       objectPosition="center"
                     />
