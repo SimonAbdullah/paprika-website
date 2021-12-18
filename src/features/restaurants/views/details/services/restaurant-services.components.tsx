@@ -28,7 +28,9 @@ const RestaurantServices: FunctionComponent<RestaurantServicesProps> = () => {
         sm: 6,
         xs: 3,
       }}
-      dataSource={useServicesData()}
+      dataSource={useServicesData().filter(
+        (service) => service.description !== null
+      )}
       renderItem={(item) => {
         return (
           <List.Item key={item.logo} className={classes.item}>
