@@ -25,6 +25,8 @@ interface RestaurantPageProps {
 const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
 
+  const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
+
   const { locale } = useRouter();
 
   const { data, galleryItems, hasReservation } = useRestaurantDetails(
@@ -39,16 +41,20 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
   return (
     <>
       <Head>
-        <title>{data?.name}</title>
-        <meta property="og:title" content={data?.name} />
-        <meta property="og:type" content="website" />
+        <title>{`${data?.name} | ${tCommon("paprika")}`}</title>
         <meta
           property="og:url"
-          content={`https://paprika-sy.com${PagesUrls.RESTAURANTS}/${data?.name}`}
+          content={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.RESTAURANTS}/${data?.name}`}
         />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={data?.name} />
+        <meta property="og:description" content={data?.description} />
         <meta property="og:image" content={data?.logoImage} />
         <meta property="og:image:secure_url" content={data?.logoImage} />
         <meta property="og:image:alt" content={data?.name} />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="600" />
+        <meta property="og:image:height" content="600" />
         <meta property="og:locale" content={locale} />
       </Head>
       <div className={styles.container}>

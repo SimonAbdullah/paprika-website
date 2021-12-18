@@ -17,6 +17,7 @@ import {
 } from "../features/customers/constants/customer-event.constants";
 import { CustomerEventDto } from "../features/customers/services/customer-event/models/customer-event-dto.models";
 import { useUpcomingEvents } from "../features/customers/hooks/customer-event.hooks";
+import { useRouter } from "next/dist/client/router";
 
 interface HomePageProps {
   places: PagedResultDto<RestaurantSummaryDto>;
@@ -25,6 +26,10 @@ interface HomePageProps {
 
 const HomePage: NextPage<HomePageProps> = ({ places, upComingEvents }) => {
   const { t } = useTranslation(TranslationFiles.HOME);
+
+  const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
+
+  const { locale } = useRouter();
 
   useFeaturedPlaces(
     {},
@@ -42,7 +47,27 @@ const HomePage: NextPage<HomePageProps> = ({ places, upComingEvents }) => {
   return (
     <>
       <Head>
-        <title>{t("home")}</title>
+        <title>{t("paprika")}</title>
+        <meta
+          property="og:url"
+          content={process.env.NEXT_PUBLIC_BASE_CLIENT_URL}
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={tCommon("paprika")} />
+        <meta property="og:description" content={tCommon("metaDescription")} />
+        <meta
+          property="og:image"
+          content={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}/images/logo/paprika.png`}
+        />
+        <meta
+          property="og:image:secure_url"
+          content={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}/images/logo/paprika.png`}
+        />
+        <meta property="og:image:alt" content={tCommon("paprika")} />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="600" />
+        <meta property="og:image:height" content="600" />
+        <meta property="og:locale" content={locale} />
       </Head>
       <div className={styles.container}>
         <Home />
