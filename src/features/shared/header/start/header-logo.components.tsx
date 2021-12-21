@@ -8,11 +8,13 @@ import { useRouter } from "next/dist/client/router";
 interface HeaderLogoProps {
   size?: string;
   type?: "default" | "red";
+  image?: string;
 }
 
 const HeaderLogo: FunctionComponent<HeaderLogoProps> = ({
   size,
   type = "default",
+  image,
 }) => {
   const { locale } = useRouter();
 
@@ -25,9 +27,10 @@ const HeaderLogo: FunctionComponent<HeaderLogoProps> = ({
         <Image
           alt="logo"
           src={
-            type === "default"
+            image ||
+            (type === "default"
               ? "/images/logo/logo.svg"
-              : "/images/logo/logo-red.svg"
+              : "/images/logo/logo-red.svg")
           }
           width={size || "66px"}
           height={size || "72px"}

@@ -15,7 +15,7 @@ const FooterStart: FunctionComponent<FooterStartProps> = () => {
     <Row gutter={[16, 16]}>
       <Col>
         <Space direction="vertical" size="middle">
-          <HeaderLogo size="92px" />
+          <HeaderLogo size="92px" image="/images/logo/paprika.png" />
           <Text className={classes.footerStartText}>
             {t("socialMediaFollow")}
           </Text>
