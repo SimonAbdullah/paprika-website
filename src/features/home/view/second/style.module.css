@@ -2,7 +2,7 @@
 
 .firstColumn {
   background-color: #fafafa;
-  min-height: 35rem;
+  min-height: 30rem;
   padding: 2rem;
 }
 
@@ -10,7 +10,6 @@
   color: var(--primary-color);
   font-size: 2.5rem;
   font-weight: bold;
-  width: 30%;
 }
 
 .bottomSpace {
@@ -25,7 +24,7 @@
 /* Second Column */
 
 .secondColumn {
-  min-height: 25rem;
+  min-height: 30rem;
   padding: 0 2rem;
   margin-top: -2rem;
 }
@@ -115,10 +114,4 @@
   position: absolute;
   inset-block-start: 1rem;
   inset-inline-end: 1rem;
-}
-
-@media only screen and (max-width: 1200px) {
-  .title {
-    width: 100%;
-  }
 }

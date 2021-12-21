@@ -21,7 +21,7 @@ const HomeSecondTopRestaurants: FunctionComponent<HomeSecondTopRestaurantsProps>
     return (
       <>
         <Title level={3} className={`${classes.title} ${classes.bottomSpace}`}>
-          {t("second.someTopRestaurantForYourDinner")}
+          {t("second.topRestaurants")}
         </Title>
         <CardList
           dataSource={data?.items}
