@@ -12,10 +12,12 @@ import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 
 interface HomeFirstCarouselProps {
   carouselRef: RefObject<Carousel>;
+  pause?: boolean;
 }
 
 const HomeFirstCarousel: FunctionComponent<HomeFirstCarouselProps> = ({
   carouselRef,
+  pause,
 }) => {
   const { t } = useTranslation(TranslationFiles.HOME);
 
@@ -65,11 +67,11 @@ const HomeFirstCarousel: FunctionComponent<HomeFirstCarouselProps> = ({
     arrows: false,
     ssr: true,
     infinite: true,
-    autoPlay: true,
+    autoPlay: !pause,
     keyBoardControl: true,
     draggable: !md,
     autoPlaySpeed: 5000,
-    pauseOnHover: true,
+    pauseOnHover: false,
   };
   return <Carousel ref={carouselRef} {...carouselProps} />;
 };

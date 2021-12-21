@@ -1,4 +1,10 @@
-import { FunctionComponent, RefObject, useContext } from "react";
+import {
+  Dispatch,
+  FunctionComponent,
+  RefObject,
+  SetStateAction,
+  useContext,
+} from "react";
 import { Button, Space } from "antd";
 import Image from "next/image";
 import useTranslation from "next-translate/useTranslation";
@@ -16,10 +22,12 @@ import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 
 interface HomeFirstBackgroundProps {
   carouselRef: RefObject<Carousel>;
+  setPause?: Dispatch<SetStateAction<boolean>>;
 }
 
 const HomeFirstBackground: FunctionComponent<HomeFirstBackgroundProps> = ({
   carouselRef,
+  setPause,
 }) => {
   const { t } = useTranslation(TranslationFiles.HOME);
 
@@ -50,6 +58,8 @@ const HomeFirstBackground: FunctionComponent<HomeFirstBackgroundProps> = ({
         onClick={() => {
           carouselRef.current?.next && carouselRef.current?.next(1);
         }}
+        onMouseEnter={() => setPause && setPause(true)}
+        onMouseLeave={() => setPause && setPause(false)}
       />
     );
   };
@@ -77,6 +87,8 @@ const HomeFirstBackground: FunctionComponent<HomeFirstBackgroundProps> = ({
         onClick={() => {
           carouselRef.current?.previous && carouselRef.current?.previous(1);
         }}
+        onMouseEnter={() => setPause && setPause(true)}
+        onMouseLeave={() => setPause && setPause(false)}
       />
     );
   };
