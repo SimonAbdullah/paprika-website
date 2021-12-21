@@ -27,11 +27,11 @@
   "whatsApp": "WhatsApp",
   "googlePlay": "Google Play",
   "appStore": "App Store",
-  "yourRequestHasBeenSubmit": "Your request has been submit we will contact with you as soon as possible",
+  "yourRequestHasBeenSubmit": "Thank you. We will contact you within 48 hour",
   "youShouldEnterValidNameAndPhoneNumber": "You should enter a valid name and phone number",
   "form": {
     "fields": {
-      "name": "Name",
+      "restaurantName": "Restaurant Name",
       "phoneNumber": "Phone number"
     },
     "validation": {

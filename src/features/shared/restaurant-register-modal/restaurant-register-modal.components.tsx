@@ -30,7 +30,7 @@ const RestaurantRegisterModal: FunctionComponent<RestaurantRegisterModalProps> =
           onFinish={onFinish}
         >
           <Form.Item
-            label={t("form.fields.name")}
+            label={t("form.fields.restaurantName")}
             name="name"
             rules={[
               { required: true },

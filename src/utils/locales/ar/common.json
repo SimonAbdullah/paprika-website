@@ -1,5 +1,6 @@
 {
   "home": "الرئيسية",
+  "metaDescription": "حجز، اكل، متعة، تكرار...",
   "page": "الصفحة",
   "aboutUs": "من نحن",
   "statistics": "الإحصائيات",
@@ -26,11 +27,11 @@
   "whatsApp": "واتس آب",
   "googlePlay": "متجر غوغل",
   "appStore": "متجر التطبيقات",
-  "yourRequestHasBeenSubmit": "طلبك قد تم بنجاح سنقوم بالتواصل معك قريبا",
+  "yourRequestHasBeenSubmit": "شكراً لك. سنقوم بالتواصل معك خلال 48 ساعة",
   "youShouldEnterValidNameAndPhoneNumber": "يرجى ادخال اسم ورقم صحيحين",
   "form": {
     "fields": {
-      "name": "الاسم",
+      "restaurantName": "اسم المطعم",
       "phoneNumber": "رقم الجوال"
     },
     "validation": {
