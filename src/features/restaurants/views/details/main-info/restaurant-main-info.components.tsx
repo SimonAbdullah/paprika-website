@@ -31,7 +31,7 @@ const RestaurantMainInfo: FunctionComponent<RestaurantMainInfoProps> = () => {
             value={data.restaurantRate}
           />
           <Text className={classes.reviews} type="danger">
-            {getSumOfObjectValues(data.restaurantRaters || {})} {t("reviews")}
+            {t("ratedBy")} {getSumOfObjectValues(data.restaurantRaters || {})}
           </Text>
         </div>
       )}

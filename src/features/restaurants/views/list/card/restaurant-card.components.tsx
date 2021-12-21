@@ -71,7 +71,7 @@ const RestaurantCard: FunctionComponent<RestaurantCardProps> = ({
                     disabled
                   />
                   <Text className={classes.reviews}>
-                    {restaurant?.totalRestaurantRatersCount} {t("reviews")}
+                    {t("ratedBy")} {restaurant?.totalRestaurantRatersCount}
                   </Text>
                 </Text>
               </Space>

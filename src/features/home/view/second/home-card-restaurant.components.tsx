@@ -61,8 +61,8 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
                         disabled
                       />
                       <Text className={classes.reviews}>
-                        {restaurant?.totalRestaurantRatersCount}{" "}
-                        {t("second.reviews")}
+                        {t("second.ratedBy")}{" "}
+                        {restaurant?.totalRestaurantRatersCount}
                       </Text>
                     </div>
                     <Text className={classes.address}>
@@ -136,7 +136,7 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
                       />
                       <Text className={classes.reviews}>
                         {restaurant?.totalRestaurantRatersCount}{" "}
-                        {t("second.reviews")}
+                        {t("second.ratedBy")}
                       </Text>
                     </div>
                     <Text
