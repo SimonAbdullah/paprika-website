@@ -1,8 +1,6 @@
 import classes from "./style.module.css";
 import { Checkbox } from "antd";
 import { EnumValue } from "../../../../customers/services/customer-configuration/models/enum-value.models";
-import useTranslation from "next-translate/useTranslation";
-import { TranslationFiles } from "../../../../../core/core";
 import { useContext } from "react";
 import { RestaurantsListContext } from "../../../contexts/restaurants-list.contexts";
 import { CheckboxChangeEvent } from "antd/lib/checkbox";
@@ -17,8 +15,6 @@ const FilterOption: React.FC<FilterOptionProps> = ({
   attribute,
   optionName,
 }) => {
-  const { t } = useTranslation(TranslationFiles.RESTAURANTS);
-
   const { push, pathname } = useRouter();
 
   const { options, setOptions } = useContext(RestaurantsListContext);
@@ -69,7 +65,7 @@ const FilterOption: React.FC<FilterOptionProps> = ({
           .includes(String(attribute.value))}
         onChange={onCheckboxChange}
       >
-        {attribute.name && t(attribute.name)}
+        {attribute.name}
       </Checkbox>
     </p>
   );
