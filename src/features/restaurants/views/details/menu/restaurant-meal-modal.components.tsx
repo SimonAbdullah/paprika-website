@@ -58,12 +58,14 @@ const RestaurantMealModal: FunctionComponent<RestaurantMealModalProps> = ({
                   </Text>
                 )}
               </Space>
-              <Rate
-                className={classes.modalRateStars}
-                disabled
-                allowHalf
-                value={meal?.mealRate}
-              />
+              <div>
+                <Rate
+                  className={classes.modalRateStars}
+                  disabled
+                  allowHalf
+                  value={meal?.mealRate}
+                />
+              </div>
             </div>
             <Paragraph className={classes.modalDescription}>
               {meal?.description}

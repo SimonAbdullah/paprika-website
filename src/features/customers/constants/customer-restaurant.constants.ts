@@ -40,7 +40,6 @@ export const CuisineType = {
   2: "italian",
   4: "western",
   8: "eastern",
-  12: "westernEastern",
 };
 export const AmenityType = {
   1: "swings",

@@ -1,6 +1,8 @@
 import { CustomerEventDto } from "../features/customers/services/customer-event/models/customer-event-dto.models";
 import { RestaurantSummaryDto } from "../features/restaurants/services/places/models/restaurant-summary-dto.models";
 
+export const isBrowser = () => typeof window !== "undefined";
+
 export const isDataEmpty = (data?: unknown[]) => {
   return !data || data.length === 0;
 };

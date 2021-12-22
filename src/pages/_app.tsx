@@ -1,12 +1,15 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AppLayout from "../core/app/app.layout";
 import AppContextProvider from "../core/app/app.context";
 import Head from "next/head";
+import { useRouter } from "next/dist/client/router";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const { locale } = useRouter();
+
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -15,6 +18,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         },
       })
   );
+
+  useEffect(() => {
+    queryClient.refetchQueries();
+  }, [locale, queryClient]);
 
   return (
     <QueryClientProvider client={queryClient}>
