@@ -15,8 +15,8 @@ export const GALLERY = {
 
 export const DEFAULT_MAP_VALUES = {
   CENTER: {
-    lng: 33.5138,
-    lat: 36.2765,
+    lat: 33.5138,
+    lng: 36.2765,
   },
   ZOOM: 14,
 };

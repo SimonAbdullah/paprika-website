@@ -138,8 +138,8 @@ const LocationRedIcon: FunctionComponent<IconProps> = ({
     <Image
       src="/icons/location-red.svg"
       alt={t("alt.location")}
-      width={width || "32px"}
-      height={height || "32px"}
+      width={width || "36px"}
+      height={height || "36px"}
       layout={layout || "fixed"}
       objectFit="contain"
       objectPosition="center"
