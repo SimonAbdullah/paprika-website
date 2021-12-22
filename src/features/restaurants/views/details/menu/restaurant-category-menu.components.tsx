@@ -1,4 +1,4 @@
-import { Button, List } from "antd";
+import { Button, Empty, List } from "antd";
 import { FunctionComponent, useState } from "react";
 import { useRestaurantCategoryMeals } from "../../../../customers/hooks/customer-menu.hooks";
 import { CategoryDto } from "../../../../customers/services/customer-menu/models/category-dto.models";
@@ -8,6 +8,7 @@ import { TranslationFiles } from "../../../../../core/core";
 import { NUMBER_OF_MEALS_TO_SHOW } from "../../../constants/restaurants.constants";
 import RestaurantMealCard from "./restaurant-meal-card.components";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
+import { isDataEmpty } from "../../../../../core/functions";
 
 interface RestaurantCategoryMenuProps {
   category: CategoryDto;
@@ -24,6 +25,14 @@ const RestaurantCategoryMenu: FunctionComponent<RestaurantCategoryMenuProps> =
     const [numberOfMealsToShow, setNumberOfMealsToShow] = useState<
       number | undefined
     >(NUMBER_OF_MEALS_TO_SHOW);
+
+    if (isDataEmpty(data) && !isLoading)
+      return (
+        <Empty
+          image={Empty.PRESENTED_IMAGE_SIMPLE}
+          description={t("noMeals")}
+        />
+      );
 
     return (
       <List

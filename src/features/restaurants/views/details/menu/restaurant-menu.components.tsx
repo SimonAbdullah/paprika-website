@@ -18,7 +18,13 @@ const RestaurantMenu: FunctionComponent<RestaurantMenuProps> = () => {
 
   const { data } = useRestaurantCategories();
 
-  if (isDataEmpty(data)) return null;
+  if (isDataEmpty(data))
+    return (
+      <>
+        <Text className={classes.title}>{t("ourMenu")}</Text>{" "}
+        <Text>{t("notAvailable")}</Text>
+      </>
+    );
 
   return (
     <>

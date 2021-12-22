@@ -33,7 +33,7 @@ const RestaurantMealModal: FunctionComponent<RestaurantMealModalProps> = ({
       cancelText={t("close")}
       okButtonProps={{ hidden: true }}
     >
-      <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]} className={classes.modalBodyContainer}>
         <Col span={24} className={classes.modalImageContainer}>
           <Image
             src={meal?.image || "/images/home/fallback-image.png"}
@@ -47,26 +47,31 @@ const RestaurantMealModal: FunctionComponent<RestaurantMealModalProps> = ({
         </Col>
         <Col span={24}>
           <Space direction="vertical">
-            <Space>
-              <Title level={4} className={classes.modalTitle}>
-                {meal?.name}
-              </Title>
-              {meal?.price && (
-                <Text className={classes.mealPrice}>
-                  {currencyFormatter(
-                    direction === "ltr" ? "en-SY" : "ar-SY"
-                  ).format(meal.price)}
-                </Text>
-              )}
-            </Space>
-            <Rate
-              className={classes.modalRateStars}
-              disabled
-              allowHalf
-              value={meal?.mealRate}
-            />
+            <div>
+              <Space>
+                <Text className={classes.modalTitle}>{meal?.name}</Text>
+                {meal?.price && (
+                  <Text className={classes.mealPrice}>
+                    {currencyFormatter(
+                      direction === "ltr" ? "en-SY" : "ar-SY"
+                    ).format(meal.price)}
+                  </Text>
+                )}
+              </Space>
+              <Rate
+                className={classes.modalRateStars}
+                disabled
+                allowHalf
+                value={meal?.mealRate}
+              />
+            </div>
             <Paragraph className={classes.modalDescription}>
               {meal?.description}
+            </Paragraph>
+            <Paragraph className={classes.modalDescription}>
+              {meal.ingredients
+                ?.map((ingredient) => ingredient.name)
+                .join(", ")}
             </Paragraph>
           </Space>
         </Col>

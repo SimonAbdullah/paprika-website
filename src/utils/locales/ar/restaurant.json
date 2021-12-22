@@ -81,6 +81,8 @@
   "reserveNow": "احجز الآن",
   "mobile": "موبايل",
   "phone": "هاتف",
+  "notAvailable": "غير محدد",
+  "noMeals": "لا يوجد وجبات",
   "daysOfWeek": {
     "sunday": "الأحد",
     "monday": "الإثنين",

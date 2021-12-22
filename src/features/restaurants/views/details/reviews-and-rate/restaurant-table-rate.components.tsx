@@ -30,9 +30,11 @@ const RestaurantTableRate: FunctionComponent<RestaurantTableRateProps> = () => {
             <td>{data?.serviceRate}</td>
             <td>{data?.shishaRate}</td>
             <td>{data?.ambianceRate}</td>
-            {data?.noiseLevel && (
-              <td>{t(NoiseLevelType?.[data.noiseLevel])}</td>
-            )}
+            <td>
+              {data?.noiseLevel
+                ? t(NoiseLevelType?.[data.noiseLevel])
+                : t("notAvailable")}
+            </td>
           </tr>
         </tbody>
       </table>

@@ -16,13 +16,13 @@ export const useServicesData = () => {
       logo: "/images/restaurant/mobile.svg",
       title: t("mobile"),
       alt: t("mobile"),
-      description: data?.phoneNumber ? data.phoneNumber : null,
+      description: data?.phoneNumber ? data.phoneNumber : t("notAvailable"),
     },
     {
       logo: "/images/restaurant/phone.svg",
       title: t("phone"),
       alt: t("phone"),
-      description: data?.tel ? data.tel : null,
+      description: data?.tel ? data.tel : t("notAvailable"),
     },
     {
       logo: "/images/restaurant/chair.svg",
@@ -30,7 +30,7 @@ export const useServicesData = () => {
       alt: t("capacity"),
       description: data?.settings?.maxPeopleAllowed
         ? `${t("upTo")} ${data.settings.maxPeopleAllowed} ${t("seats")}`
-        : null,
+        : t("notAvailable"),
     },
     {
       logo: "/images/restaurant/dish.svg",
@@ -38,13 +38,15 @@ export const useServicesData = () => {
       alt: t("cuisine"),
       description: data?.cuisineTypes
         ? t(CuisineType[data.cuisineTypes])
-        : null,
+        : t("notAvailable"),
     },
     {
       logo: "/images/restaurant/music.svg",
       title: t("music"),
       alt: t("music"),
-      description: data?.musicTypes ? t(MusicType[data.musicTypes]) : null,
+      description: data?.musicTypes
+        ? t(MusicType[data.musicTypes])
+        : t("notAvailable"),
     },
     {
       logo: "/images/restaurant/car.svg",
@@ -52,7 +54,7 @@ export const useServicesData = () => {
       alt: t("parking"),
       description: data?.parkingTypes
         ? t(ParkingType[data.parkingTypes])
-        : null,
+        : t("notAvailable"),
     },
     {
       logo: "/images/restaurant/shisha.svg",

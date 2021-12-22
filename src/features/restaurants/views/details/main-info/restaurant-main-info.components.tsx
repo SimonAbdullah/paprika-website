@@ -18,7 +18,7 @@ const RestaurantMainInfo: FunctionComponent<RestaurantMainInfoProps> = () => {
   return (
     <Row justify="space-between">
       <Title className={classes.title}>{data?.name}</Title>
-      {data?.restaurantRate && (
+      {data?.restaurantRate !== undefined && data?.restaurantRate !== null && (
         <div>
           <Title level={5} className={classes.ourRate}>
             {t("ourRate")}

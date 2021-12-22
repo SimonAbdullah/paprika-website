@@ -4,6 +4,7 @@ import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent } from "react";
 import { DaysOfWeek } from "../../../../../core/constants";
 import { TranslationFiles } from "../../../../../core/core";
+import { isDataEmpty } from "../../../../../core/functions";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 import classes from "./style.module.css";
 
@@ -12,9 +13,15 @@ interface RestaurantScheduleProps {}
 const RestaurantSchedule: FunctionComponent<RestaurantScheduleProps> = () => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
 
-  const { openingTimes } = useRestaurantDetails();
+  const { openingTimes, data } = useRestaurantDetails();
 
-  if (!openingTimes || openingTimes.length === 0) return null;
+  if (isDataEmpty(openingTimes) || data?.is24Hour)
+    return (
+      <>
+        <Text className={classes.title}>{t("ourSchedule")}</Text>{" "}
+        <Text>{t("notAvailable")}</Text>
+      </>
+    );
 
   return (
     <>

@@ -60,6 +60,11 @@
 }
 
 /* Modal */
+
+.modalBodyContainer {
+  padding-top: 1rem;
+}
+
 .modalImageContainer {
   position: relative;
   height: 20rem;
@@ -81,6 +86,7 @@
 
 .modalRateStars {
   color: #f4b223;
+  display: block;
 }
 
 .modalDescription {

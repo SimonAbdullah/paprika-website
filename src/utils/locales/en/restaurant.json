@@ -80,6 +80,8 @@
   "reserveNow": "Reserve Now",
   "mobile": "Mobile",
   "phone": "Phone",
+  "notAvailable": "Not Available",
+  "noMeals": "No Meals",
   "daysOfWeek": {
     "sunday": "Sunday",
     "monday": "Monday",
