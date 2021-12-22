@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent } from "react";
 import GoogleMapReact from "google-map-react";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 import LocationMarker from "./location-marker.components";
@@ -17,22 +17,6 @@ const LocationComponent: FunctionComponent<LocationComponentProps> = () => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
 
   const { data } = useRestaurantDetails();
-
-  // const [locationOptions, setLocationOptions] = useState({
-  //   lat: DEFAULT_MAP_VALUES.CENTER.lat,
-  //   lng: DEFAULT_MAP_VALUES.CENTER.lng,
-  // });
-
-  // useEffect(() => {
-  //   if (data?.latitude && data?.longitude) {
-  //     setLocationOptions({ lat: data.latitude, lng: data.longitude });
-  //   } else if (data?.latitude) {
-  //     setLocationOptions({ ...locationOptions, lat: data.latitude });
-  //   } else if (data?.longitude) {
-  //     setLocationOptions({ ...locationOptions, lng: data.longitude });
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [data?.latitude, data?.longitude]);
 
   return (
     <>
