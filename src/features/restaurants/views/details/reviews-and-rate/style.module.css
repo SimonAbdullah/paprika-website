@@ -96,6 +96,10 @@
   margin-bottom: 2rem;
 }
 
+.listItem {
+  margin-top: 1rem;
+}
+
 .loadMoreContainer {
   margin-top: 2rem;
 }

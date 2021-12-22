@@ -46,8 +46,12 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
           property="og:url"
           content={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.RESTAURANTS}/${data?.name}`}
         />
+        <meta property="og:site_name" content={tCommon("paprika")} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={data?.name} />
+        <meta
+          property="og:title"
+          content={`${data?.name} | ${tCommon("paprika")}`}
+        />
         <meta property="og:description" content={data?.description} />
         <meta property="og:image" content={data?.logoImage} />
         <meta property="og:image:secure_url" content={data?.logoImage} />

@@ -1,9 +1,12 @@
 import { Progress, Rate } from "antd";
 import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { TranslationFiles } from "../../../../../core/core";
-import { percentOfNumber } from "../../../../../core/functions";
+import {
+  getSumOfObjectValues,
+  percentOfNumber,
+} from "../../../../../core/functions";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 import classes from "./style.module.css";
 
@@ -13,6 +16,13 @@ const RestaurantRate: FunctionComponent<RestaurantRateProps> = () => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
 
   const { data } = useRestaurantDetails();
+
+  const [totalRatersCount, setTotalRatersCount] = useState(1);
+
+  useEffect(() => {
+    const result = getSumOfObjectValues(data?.restaurantRaters || {});
+    setTotalRatersCount(result);
+  }, [data?.restaurantRaters]);
 
   return (
     <div className={classes.rateContainer}>
@@ -31,7 +41,10 @@ const RestaurantRate: FunctionComponent<RestaurantRateProps> = () => {
           className={classes.progress}
           type="line"
           showInfo={false}
-          percent={percentOfNumber(data?.restaurantRaters?.fiveStars || 0)}
+          percent={percentOfNumber(
+            data?.restaurantRaters?.fiveStars || 0,
+            totalRatersCount
+          )}
         />
       </Text>
       <Text className={classes.rateRow}>
@@ -42,7 +55,10 @@ const RestaurantRate: FunctionComponent<RestaurantRateProps> = () => {
           className={classes.progress}
           type="line"
           showInfo={false}
-          percent={percentOfNumber(data?.restaurantRaters?.fourStars || 0)}
+          percent={percentOfNumber(
+            data?.restaurantRaters?.fourStars || 0,
+            totalRatersCount
+          )}
         />
       </Text>
       <Text className={classes.rateRow}>
@@ -53,7 +69,10 @@ const RestaurantRate: FunctionComponent<RestaurantRateProps> = () => {
           className={classes.progress}
           type="line"
           showInfo={false}
-          percent={percentOfNumber(data?.restaurantRaters?.threeStars || 0)}
+          percent={percentOfNumber(
+            data?.restaurantRaters?.threeStars || 0,
+            totalRatersCount
+          )}
         />
       </Text>
       <Text className={classes.rateRow}>
@@ -64,7 +83,10 @@ const RestaurantRate: FunctionComponent<RestaurantRateProps> = () => {
           className={classes.progress}
           type="line"
           showInfo={false}
-          percent={percentOfNumber(data?.restaurantRaters?.twoStars || 0)}
+          percent={percentOfNumber(
+            data?.restaurantRaters?.twoStars || 0,
+            totalRatersCount
+          )}
         />
       </Text>
       <Text className={classes.rateRow}>
@@ -75,7 +97,10 @@ const RestaurantRate: FunctionComponent<RestaurantRateProps> = () => {
           className={classes.progress}
           type="line"
           showInfo={false}
-          percent={percentOfNumber(data?.restaurantRaters?.oneStar || 0)}
+          percent={percentOfNumber(
+            data?.restaurantRaters?.oneStar || 0,
+            totalRatersCount
+          )}
         />
       </Text>
     </div>

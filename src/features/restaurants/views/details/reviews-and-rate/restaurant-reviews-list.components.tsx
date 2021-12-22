@@ -37,12 +37,13 @@ const RestaurantReviewsList: FunctionComponent<RestaurantReviewsListProps> =
         className={classes.list}
         grid={
           hasReservation
-            ? undefined
+            ? { column: 1, xxl: 3, xl: 2, lg: 1, md: 2 }
             : {
                 column: 1,
                 xxl: 3,
                 xl: 2,
                 lg: 2,
+                md: 2,
               }
         }
         loadMore={
@@ -70,7 +71,7 @@ const RestaurantReviewsList: FunctionComponent<RestaurantReviewsListProps> =
           )
         }
         renderItem={(review, index) => (
-          <List.Item key={index}>
+          <List.Item key={index} className={classes.listItem}>
             <RestaurantReviewDetails review={review} />
           </List.Item>
         )}

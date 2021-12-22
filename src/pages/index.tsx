@@ -52,6 +52,7 @@ const HomePage: NextPage<HomePageProps> = ({ places, upComingEvents }) => {
           property="og:url"
           content={process.env.NEXT_PUBLIC_BASE_CLIENT_URL}
         />
+        <meta property="og:site_name" content={tCommon("paprika")} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={tCommon("paprika")} />
         <meta property="og:description" content={tCommon("metaDescription")} />
