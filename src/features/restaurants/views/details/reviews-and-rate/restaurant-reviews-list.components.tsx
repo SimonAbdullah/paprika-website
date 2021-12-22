@@ -37,8 +37,9 @@ const RestaurantReviewsList: FunctionComponent<RestaurantReviewsListProps> =
         className={classes.list}
         grid={
           hasReservation
-            ? { column: 1, xxl: 3, xl: 2, lg: 1, md: 2 }
+            ? { gutter: 24, column: 1, xxl: 3, xl: 2, lg: 1, md: 2 }
             : {
+                gutter: 24,
                 column: 1,
                 xxl: 3,
                 xl: 2,
