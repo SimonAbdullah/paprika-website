@@ -42,15 +42,21 @@ const FilterLocation: FunctionComponent<FilterLocationProps> = () => {
       </Text>
       <Space direction="vertical" style={{ width: "100%" }}>
         <SelectSearchable
+          allowClear
           placeholder={t("country")}
           value={options.countryId}
           onChange={(value) => {
             const result = {
               ...options,
               countryId: value,
-              cityId: undefined,
-              regionId: undefined,
             };
+
+            if (!value) {
+              delete result.countryId;
+            }
+
+            delete result.cityId;
+            delete result.regionId;
 
             setOptions(result);
 
@@ -64,11 +70,21 @@ const FilterLocation: FunctionComponent<FilterLocationProps> = () => {
           ))}
         </SelectSearchable>
         <SelectSearchable
+          allowClear
           placeholder={t("city")}
           disabled={options.countryId ? false : true}
           value={options.cityId}
           onChange={(value) => {
-            const result = { ...options, cityId: value, regionId: undefined };
+            const result = {
+              ...options,
+              cityId: value,
+            };
+
+            if (!value) {
+              delete result.cityId;
+            }
+
+            delete result.regionId;
 
             setOptions(result);
 
@@ -82,11 +98,16 @@ const FilterLocation: FunctionComponent<FilterLocationProps> = () => {
           ))}
         </SelectSearchable>
         <SelectSearchable
+          allowClear
           placeholder={t("region")}
           disabled={options.cityId ? false : true}
           value={options.regionId}
           onChange={(value) => {
             const result = { ...options, regionId: value };
+
+            if (!value) {
+              delete result.regionId;
+            }
 
             setOptions(result);
 

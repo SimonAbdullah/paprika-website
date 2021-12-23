@@ -8,6 +8,7 @@ import {
   useState,
 } from "react";
 import { INIT_FUNCTION } from "../../../core/app/app.constants";
+import { useCustomerConfiguration } from "../../customers/hooks/customer-configuration.hooks";
 import { PlacesGetAllParams } from "../services/places/models/places-get-all-params.models";
 
 interface RestaurantsListContextProps {
@@ -35,14 +36,19 @@ const RestaurantsListContextProvider: FunctionComponent<RestaurantsListContextPr
 
     const [options, setOptions] = useState<PlacesGetAllParams>({});
 
+    const { types } = useCustomerConfiguration();
+
     useEffect(() => {
-      if (query)
-        setOptions({
+      if (query) {
+        const result: any = {
           ...query,
-          countryId: query.countryId ? Number(query.countryId) : undefined,
-          cityId: query.cityId ? Number(query.cityId) : undefined,
-          regionId: query.regionId ? Number(query.regionId) : undefined,
-        });
+          ...(query.countryId ? { countryId: Number(query.countryId) } : {}),
+          ...(query.cityId ? { cityId: Number(query.cityId) } : {}),
+          ...(query.regionId ? { regionId: Number(query.regionId) } : {}),
+        };
+
+        setOptions(result);
+      }
     }, [query]);
 
     return (

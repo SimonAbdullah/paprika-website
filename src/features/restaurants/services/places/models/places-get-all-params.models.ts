@@ -1,12 +1,12 @@
 import { RestaurantHomeDto } from "../../../../customers/services/customer-restaurant/models/restaurantHomeDto";
 
 export interface PlacesGetAllParams {
-  parkingType?: RestaurantHomeDto.ParkingTypesEnum;
-  ambianceType?: RestaurantHomeDto.AmbianceTypesEnum;
-  musicType?: RestaurantHomeDto.MusicTypesEnum;
-  cuisineTypes?: RestaurantHomeDto.CuisineTypesEnum;
-  amenityTypes?: RestaurantHomeDto.AmenityTypesEnum;
-  restaurantTypes?: RestaurantHomeDto.RestaurantTypesEnum;
+  parkingType?: number;
+  ambianceType?: number;
+  musicType?: number;
+  cuisineTypes?: number;
+  amenityTypes?: number;
+  restaurantTypes?: number;
   isFeatured?: boolean;
   isSmokeFree?: boolean;
   isAlcoholFree?: boolean;

@@ -68,7 +68,7 @@ export namespace RestaurantHomeDto {
     VALET: 2 as ParkingTypesEnum,
     NONE: 4 as ParkingTypesEnum,
   };
-  export type AmbianceTypesEnum = 1 | 2 | 4 | 8 | 15;
+  export type AmbianceTypesEnum = 1 | 2 | 4 | 8 | 16;
   export const AmbianceTypesEnum = {
     COZY: 1 as AmbianceTypesEnum,
     CLASSIC: 2 as AmbianceTypesEnum,

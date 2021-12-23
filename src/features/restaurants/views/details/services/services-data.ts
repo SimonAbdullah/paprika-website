@@ -1,5 +1,6 @@
 import useTranslation from "next-translate/useTranslation";
 import { TranslationFiles } from "../../../../../core/core";
+import { bitwiseAnd } from "../../../../../core/functions";
 import {
   CuisineType,
   MusicType,
@@ -37,7 +38,12 @@ export const useServicesData = () => {
       title: t("cuisine"),
       alt: t("cuisine"),
       description: data?.cuisineTypes
-        ? t(CuisineType[data.cuisineTypes])
+        ? Object.entries(CuisineType)
+            .filter(([key]: any) => {
+              return bitwiseAnd(key, data?.cuisineTypes!) > 0;
+            })
+            .map(([_, value]) => t(value))
+            .join(", ")
         : t("notAvailable"),
     },
     {
@@ -45,7 +51,12 @@ export const useServicesData = () => {
       title: t("music"),
       alt: t("music"),
       description: data?.musicTypes
-        ? t(MusicType[data.musicTypes])
+        ? Object.entries(MusicType)
+            .filter(([key]: any) => {
+              return bitwiseAnd(key, data?.musicTypes!) > 0;
+            })
+            .map(([_, value]) => t(value))
+            .join(", ")
         : t("notAvailable"),
     },
     {
@@ -53,7 +64,12 @@ export const useServicesData = () => {
       title: t("parking"),
       alt: t("parking"),
       description: data?.parkingTypes
-        ? t(ParkingType[data.parkingTypes])
+        ? Object.entries(ParkingType)
+            .filter(([key]: any) => {
+              return bitwiseAnd(key, data?.parkingTypes!) > 0;
+            })
+            .map(([_, value]) => t(value))
+            .join(", ")
         : t("notAvailable"),
     },
     {

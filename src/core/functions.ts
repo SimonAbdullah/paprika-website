@@ -49,3 +49,15 @@ export const currencyFormatter = (
     ...options,
   });
 };
+
+export const bitwiseOr = (number1: number, number2: number) => {
+  return number1 | number2;
+};
+
+export const bitwiseXOr = (number1: number, number2: number) => {
+  return number1 ^ number2;
+};
+
+export const bitwiseAnd = (number1: number, number2: number) => {
+  return number1 & number2;
+};

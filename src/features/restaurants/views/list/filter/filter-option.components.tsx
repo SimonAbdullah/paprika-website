@@ -5,6 +5,11 @@ import { useContext } from "react";
 import { RestaurantsListContext } from "../../../contexts/restaurants-list.contexts";
 import { CheckboxChangeEvent } from "antd/lib/checkbox";
 import { useRouter } from "next/dist/client/router";
+import {
+  bitwiseAnd,
+  bitwiseOr,
+  bitwiseXOr,
+} from "../../../../../core/functions";
 
 export interface FilterOptionProps {
   attribute: EnumValue;
@@ -21,13 +26,9 @@ const FilterOption: React.FC<FilterOptionProps> = ({
 
   const onCheckboxChange = (e: CheckboxChangeEvent) => {
     if (e.target.checked) {
-      const temp = (options as any)?.[optionName]
-        ? (options as any)?.[optionName].split(",")
-        : [];
-
-      temp?.push(String(attribute.value));
-
-      const newOptions = temp?.join(",");
+      const newOptions = (options as any)?.[optionName]
+        ? bitwiseOr(Number((options as any)?.[optionName]), e.target.value)
+        : e.target.value;
 
       const result = { ...options, [optionName]: newOptions };
 
@@ -35,13 +36,9 @@ const FilterOption: React.FC<FilterOptionProps> = ({
 
       push({ pathname: pathname, query: { ...result } });
     } else {
-      const temp = (options as any)?.[optionName]
-        ? (options as any)?.[optionName].split(",")
-        : [];
-
-      temp?.splice(temp.indexOf(String(attribute.value)), 1);
-
-      const newOptions = temp?.join(",");
+      const newOptions = (options as any)?.[optionName]
+        ? bitwiseXOr(Number((options as any)?.[optionName]), e.target.value)
+        : 0;
 
       const { [optionName]: _, ...optionsWithoutOptionName } = options as any;
 
@@ -60,10 +57,16 @@ const FilterOption: React.FC<FilterOptionProps> = ({
       <Checkbox
         style={{ width: "100%" }}
         className={classes.checkbox}
-        checked={(options as any)?.[optionName]
-          ?.split(",")
-          .includes(String(attribute.value))}
+        checked={
+          (options as any)?.[optionName]
+            ? bitwiseAnd(
+                Number((options as any)?.[optionName]),
+                attribute.value || 0
+              ) > 0
+            : false
+        }
         onChange={onCheckboxChange}
+        value={attribute.value}
       >
         {attribute.name}
       </Checkbox>
