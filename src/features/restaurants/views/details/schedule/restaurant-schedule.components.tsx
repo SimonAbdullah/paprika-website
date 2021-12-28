@@ -15,7 +15,9 @@ const RestaurantSchedule: FunctionComponent<RestaurantScheduleProps> = () => {
 
   const { openingTimes, data } = useRestaurantDetails();
 
-  if (isDataEmpty(openingTimes) || data?.is24Hour)
+  if (data?.is24Hour) return null;
+
+  if (isDataEmpty(openingTimes))
     return (
       <>
         <Text className={classes.title}>{t("ourSchedule")}</Text>{" "}

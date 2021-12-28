@@ -1,10 +1,11 @@
-export interface CreateReservationDto {
+export interface CreateReservationForGuestDto {
   restaurantId: number;
   numberOfPeople: number;
-  time: string;
-  date: string;
+  dateAndTime: string;
   customerAdditionalInfo: string;
   phoneNumber: string;
   occasionType: number;
   personName: string;
+  verficationCode: string;
+  key: string;
 }

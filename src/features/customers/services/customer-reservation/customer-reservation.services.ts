@@ -1,6 +1,6 @@
 import { IBaseApiResponse } from "../../../../utils/base-api/api-provider";
 import ApiService from "../../../../utils/base-api/api-service";
-import { CreateReservationDto } from "./models/create-reservation-dto.models";
+import { CreateReservationForGuestDto } from "./models/create-reservation-for-guest-dto.models";
 import { MassageDto } from "./models/massage-dto";
 
 class CustomerReservationServices extends ApiService {
@@ -10,10 +10,10 @@ class CustomerReservationServices extends ApiService {
     });
   }
 
-  public create(
-    data: CreateReservationDto
+  public createForGuest(
+    data: CreateReservationForGuestDto
   ): Promise<IBaseApiResponse<MassageDto>> {
-    return this.post("/CreateReservation", data);
+    return this.post("/CreateForGuest", data);
   }
 }
 

@@ -18,3 +18,8 @@
 .submitButton {
   padding: 0 1.5rem;
 }
+
+.textInfo {
+  font-size: 0.7rem;
+  color: gray;
+}

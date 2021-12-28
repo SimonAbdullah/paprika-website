@@ -1,5 +1,7 @@
 import { CustomerEventDto } from "../features/customers/services/customer-event/models/customer-event-dto.models";
 import { RestaurantSummaryDto } from "../features/restaurants/services/places/models/restaurant-summary-dto.models";
+import { v4 as uuidV4 } from "uuid";
+import aesJs from "aes-js";
 
 export const isBrowser = () => typeof window !== "undefined";
 
@@ -54,10 +56,33 @@ export const bitwiseOr = (number1: number, number2: number) => {
   return number1 | number2;
 };
 
-export const bitwiseXOr = (number1: number, number2: number) => {
+export const bitwiseXor = (number1: number, number2: number) => {
   return number1 ^ number2;
 };
 
 export const bitwiseAnd = (number1: number, number2: number) => {
   return number1 & number2;
+};
+
+export const generateUuid = () => {
+  return uuidV4();
+};
+
+export const aesEncodeWithBase64AndKeyConcat = () => {
+  let uuid = generateUuid();
+
+  const uuidBytes = aesJs.utils.utf8.toBytes(uuid);
+
+  const data = aesJs.padding.pkcs7.pad(uuidBytes);
+
+  const aesCbc = new aesJs.ModeOfOperation.cbc(
+    JSON.parse(process.env.NEXT_PUBLIC_KEY || "[]"),
+    JSON.parse(process.env.NEXT_PUBLIC_IV || "[]")
+  );
+
+  const encryptedBytes = aesCbc.encrypt(data);
+
+  const encryptedBase64 = Buffer.from(encryptedBytes).toString("base64");
+
+  return `${uuid}.${encryptedBase64}`;
 };

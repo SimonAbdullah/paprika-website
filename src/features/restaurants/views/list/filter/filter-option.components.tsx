@@ -8,7 +8,7 @@ import { useRouter } from "next/dist/client/router";
 import {
   bitwiseAnd,
   bitwiseOr,
-  bitwiseXOr,
+  bitwiseXor,
 } from "../../../../../core/functions";
 
 export interface FilterOptionProps {
@@ -37,7 +37,7 @@ const FilterOption: React.FC<FilterOptionProps> = ({
       push({ pathname: pathname, query: { ...result } });
     } else {
       const newOptions = (options as any)?.[optionName]
-        ? bitwiseXOr(Number((options as any)?.[optionName]), e.target.value)
+        ? bitwiseXor(Number((options as any)?.[optionName]), e.target.value)
         : 0;
 
       const { [optionName]: _, ...optionsWithoutOptionName } = options as any;

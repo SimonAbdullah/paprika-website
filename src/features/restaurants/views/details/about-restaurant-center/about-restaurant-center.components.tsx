@@ -1,5 +1,4 @@
 import { Descriptions } from "antd";
-import Paragraph from "antd/lib/typography/Paragraph";
 import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent } from "react";
@@ -15,15 +14,21 @@ const AboutRestaurantCenter: FunctionComponent<AboutRestaurantCenterProps> =
 
     const { data } = useRestaurantDetails();
 
-    if (!data?.description) return null;
+    if (!data?.description)
+      return (
+        <>
+          <Text className={classes.title}>{t("aboutOurCenter")}</Text>{" "}
+          <Text>{t("notAvailable")}</Text>
+        </>
+      );
 
     return (
       <Descriptions
         title={<Text className={classes.title}>{t("aboutOurCenter")}</Text>}
       >
-        <Paragraph className={classes.description}>
+        <Descriptions.Item className={classes.description}>
           {data?.description}
-        </Paragraph>
+        </Descriptions.Item>
       </Descriptions>
     );
   };

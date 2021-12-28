@@ -34,6 +34,12 @@ export const useServicesData = () => {
         : t("notAvailable"),
     },
     {
+      logo: "/images/restaurant/clock.svg",
+      title: t("schedule"),
+      alt: t("schedule"),
+      description: data?.is24Hour ? t("Is24Hour") : null,
+    },
+    {
       logo: "/images/restaurant/dish.svg",
       title: t("cuisine"),
       alt: t("cuisine"),

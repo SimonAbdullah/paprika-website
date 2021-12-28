@@ -67,7 +67,7 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
             <RestaurantMainGallery />
           </Col>
           <Col xs={22} lg={hasReservation ? 16 : 22}>
-            <Row justify="center">
+            <Row justify="center" gutter={[0, 32]}>
               <Col span={22} lg={24}>
                 <div
                   className={`${styles.mainInfo} ${
