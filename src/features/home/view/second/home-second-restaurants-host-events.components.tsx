@@ -5,7 +5,7 @@ import { TranslationFiles } from "../../../../core/core";
 import { isDataEmpty } from "../../../../core/functions";
 import { useUpcomingEvents } from "../../../customers/hooks/customer-event.hooks";
 import CardList from "../../../shared/card-list";
-import HomeCardRestaurant from "./home-card-restaurant.components";
+import HomeCardEvent from "./home-card-event.components";
 import classes from "./style.module.css";
 
 interface HomeSecondHostMusicRestaurantsProps {}
@@ -26,9 +26,7 @@ const HomeSecondRestaurantsHostEvents: FunctionComponent<HomeSecondHostMusicRest
         <CardList
           dataSource={data?.items}
           itemKey={(item) => item.id}
-          renderItem={(item) => (
-            <HomeCardRestaurant key={item.id} restaurant={item} />
-          )}
+          renderItem={(item) => <HomeCardEvent key={item.id} event={item} />}
         />
       </>
     );

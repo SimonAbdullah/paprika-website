@@ -9,12 +9,10 @@ import Text from "antd/lib/typography/Text";
 import { LocationIcon } from "../../../shared/icons/icons.components";
 import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
-import { CustomerEventDto } from "../../../customers/services/customer-event/models/customer-event-dto.models";
-import { IsCustomerEvent } from "../../../../core/functions";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 
 interface HomeCardRestaurantProps {
-  restaurant?: RestaurantSummaryDto | CustomerEventDto;
+  restaurant?: RestaurantSummaryDto;
 }
 
 const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
@@ -26,7 +24,7 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
 
   const { locale } = useRouter();
 
-  return !IsCustomerEvent(restaurant) ? (
+  return (
     <Link href={`${PagesUrls.RESTAURANTS}/${restaurant?.name}`} locale={locale}>
       <a style={{ display: "block", position: "relative" }}>
         <Card
@@ -87,76 +85,6 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
                       />
                     </div>
                   )}
-                </Row>
-              </div>
-            </div>
-          }
-        />
-      </a>
-    </Link>
-  ) : (
-    <Link
-      href={`${PagesUrls.RESTAURANTS}/${restaurant?.restaurantName}`}
-      locale={locale}
-    >
-      <a style={{ display: "block", position: "relative" }}>
-        <Card
-          hoverable
-          className={classes.card}
-          cover={
-            <div className={classes.coverContainer}>
-              <Image
-                className={classes.image}
-                src={
-                  restaurant?.restaurantImage ||
-                  "/images/home/fallback-image.png"
-                }
-                alt={restaurant?.name}
-                blurDataURL={restaurant?.restaurantImage}
-                placeholder="blur"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-              <div className={classes.content}>
-                <Row>
-                  <Col span={24}>
-                    <Text
-                      ellipsis={{ tooltip: restaurant?.name }}
-                      className={classes.cardTitle}
-                    >
-                      {restaurant?.restaurantName}
-                    </Text>
-                    <div className={classes.rateAndReview}>
-                      <Rate
-                        className={classes.rating}
-                        value={restaurant?.restaurantRate}
-                        allowHalf
-                        disabled
-                      />
-                      <Text className={classes.reviews}>
-                        {restaurant?.totalRestaurantRatersCount}{" "}
-                        {t("second.ratedBy")}
-                      </Text>
-                    </div>
-                    <Text
-                      className={classes.address}
-                      ellipsis={{ tooltip: restaurant?.restaurantAddress }}
-                    >
-                      <LocationIcon />
-                      {restaurant?.restaurantAddress}
-                    </Text>
-                  </Col>
-                  <div className={classes.plateIcon}>
-                    <Image
-                      src={"/images/home/second-plate.svg"}
-                      alt={t("second.alt.plateImage")}
-                      width="36px"
-                      height="36px"
-                      objectFit="contain"
-                      objectPosition="center"
-                    />
-                  </div>
                 </Row>
               </div>
             </div>

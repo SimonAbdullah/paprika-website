@@ -29,7 +29,7 @@ const RestaurantSchedule: FunctionComponent<RestaurantScheduleProps> = () => {
     <>
       <Text className={classes.title}>{t("ourSchedule")}</Text>
       <div className={classes.tableContainer}>
-        <table cellPadding={"16rem"} className={classes.table}>
+        <table cellPadding={"12rem"} className={classes.table}>
           <thead>
             <tr>
               <th className={classes.emptyTh}></th>

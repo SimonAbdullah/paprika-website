@@ -6,6 +6,8 @@ import AppLayout from "../core/app/app.layout";
 import AppContextProvider from "../core/app/app.context";
 import Head from "next/head";
 import { useRouter } from "next/dist/client/router";
+import moment from "moment";
+import "moment/locale/ar";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { locale } = useRouter();
@@ -21,6 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     queryClient.refetchQueries();
+    moment.locale(locale);
   }, [locale, queryClient]);
 
   return (

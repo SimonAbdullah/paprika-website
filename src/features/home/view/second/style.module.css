@@ -34,7 +34,7 @@
   font-size: 1.7rem;
 }
 
-/* Card */
+/* Restaurant Card */
 
 .card {
   height: 15rem;
@@ -80,12 +80,13 @@
   text-align: start;
 }
 
-.rating,
-.reviews {
+.rateAndReview .rating,
+.rateAndReview .reviews {
   display: inline-block;
   color: var(--home-card-title-color);
   font-size: 0.8rem;
   text-align: center;
+  vertical-align: middle;
 }
 
 .reviews {
@@ -114,4 +115,120 @@
   position: absolute;
   inset-block-start: 1rem;
   inset-inline-end: 1rem;
+}
+
+/* Event Card */
+.eventCard {
+  height: 15rem;
+}
+
+.eventCard .eventCoverContainer {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 15rem;
+}
+
+.eventCoverContainer .eventImage {
+  border-radius: 5px;
+}
+
+.eventContent {
+  width: 100%;
+  background-color: var(--primary-color);
+  z-index: 0;
+  opacity: 0.8;
+  mix-blend-mode: normal;
+  font-family: "Poppins";
+  padding: 0.5rem;
+  position: relative;
+  border-end-start-radius: 5px;
+  border-end-end-radius: 5px;
+}
+
+.eventCardTitle {
+  color: var(--home-card-title-color);
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.eventCardRestaurantName {
+  display: block;
+  font-size: 1rem;
+  color: var(--home-card-title-color);
+  font-weight: bold;
+  line-height: 1rem;
+}
+
+.eventCardRestaurantName:hover,
+.eventCardRestaurantName:focus {
+  color: #e1e1e1;
+}
+
+.eventTime {
+  height: 1.4rem;
+  text-align: start;
+  display: block;
+  color: var(--home-card-title-color);
+  font-size: 0.8rem;
+}
+
+.eventDescription,
+.eventDescription span {
+  color: var(--home-card-title-color);
+  font-size: 0.8rem;
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  height: 1.4rem;
+}
+
+.eventRestaurantAvatarContainer {
+  position: absolute;
+  inset-block-start: 1rem;
+  inset-inline-end: 1rem;
+}
+
+/* Event Modal */
+.modalBodyContainer {
+  padding-top: 1rem;
+}
+
+.modalImageContainer {
+  position: relative;
+  height: 20rem;
+}
+
+.modalAvatar {
+  width: 48px;
+  height: 48px;
+}
+
+.modalTitle {
+  color: var(--primary-color);
+  display: inline-block;
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+.modalRestaurantName {
+  display: inline-block;
+  font-size: 1rem;
+  vertical-align: middle;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.modalRestaurantName:hover,
+.modalRestaurantName:focus {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.modalTime {
+  display: block;
+  color: var(--primary-color);
 }

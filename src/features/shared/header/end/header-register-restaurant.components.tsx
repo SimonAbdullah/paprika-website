@@ -41,20 +41,16 @@ const HeaderRegisterRestaurantButton: FunctionComponent<HeaderRegisterRestaurant
           onFinish={async (values: CreateVisitorContactInfoDto) => {
             await customerVisitorServices
               .create(values)
-              .then((result) => {
-                if (result.success) {
-                  notification.success({
-                    message: t("yourRequestHasBeenSubmit"),
-                  });
-                  form.resetFields();
-                  setVisible(false);
-                } else {
-                  notification.error({ message: result.error.message });
-                }
+              .then(() => {
+                notification.success({
+                  message: t("yourRequestHasBeenSubmit"),
+                });
+                form.resetFields();
+                setVisible(false);
               })
-              .catch((_error) => {
+              .catch((error) => {
                 notification.error({
-                  message: t("youShouldEnterValidNameAndPhoneNumber"),
+                  message: error.response.data.error.message,
                 });
               });
           }}

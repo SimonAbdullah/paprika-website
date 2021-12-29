@@ -2,6 +2,7 @@
   "home": "Home",
   "paprika": "Paprika",
   "attractNewCustomersToYourRestaurant": "Attract New Customers To Your Restaurant",
+  "close": "Close",
   "alt": {
     "backgroundImage": "Background image",
     "dishImage": "Dish image"
@@ -14,6 +15,8 @@
     "upComingEvents": "Up Coming Events",
     "restaurantsThatHostMusicEvents": "Restaurants That Host Music Events",
     "ratedBy": "Rated by",
+    "at": "at",
+    "description": "Description",
     "alt": {
       "plateImage": "Plate image"
     }

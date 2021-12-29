@@ -3,7 +3,6 @@ import useTranslation from "next-translate/useTranslation";
 import { Dispatch, FunctionComponent, SetStateAction, useContext } from "react";
 import { TranslationFiles } from "../../../../../core/core";
 import Image from "next/image";
-import Title from "antd/lib/typography/Title";
 import { MealDto } from "../../../../customers/services/customer-menu/models/meal-dto.models";
 import Paragraph from "antd/lib/typography/Paragraph";
 import classes from "./style.module.css";
@@ -32,6 +31,7 @@ const RestaurantMealModal: FunctionComponent<RestaurantMealModalProps> = ({
       onCancel={() => setVisible && setVisible(false)}
       cancelText={t("close")}
       okButtonProps={{ hidden: true }}
+      centered
     >
       <Row gutter={[16, 16]} className={classes.modalBodyContainer}>
         <Col span={24} className={classes.modalImageContainer}>

@@ -2,6 +2,7 @@
   "home": "الرئيسية",
   "paprika": "بابريكا",
   "attractNewCustomersToYourRestaurant": "إجذب عملاء جدد إلى مطعمك",
+  "close": "إغلاق",
   "alt": {
     "backgroundImage": "صورة الخلفية",
     "dishImage": "صورة طبق"
@@ -14,6 +15,8 @@
     "upComingEvents": "الأحداث القادمة",
     "restaurantsThatHostMusicEvents": "المطاعم التي تقدم حفلات موسيقية",
     "ratedBy": "التقييمات",
+    "at": "في",
+    "description": "الوصف",
     "alt": {
       "plateImage": "صورة طبق"
     }
