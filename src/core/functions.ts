@@ -2,6 +2,7 @@ import { CustomerEventDto } from "../features/customers/services/customer-event/
 import { RestaurantSummaryDto } from "../features/restaurants/services/places/models/restaurant-summary-dto.models";
 import { v4 as uuidV4 } from "uuid";
 import aesJs from "aes-js";
+import moment, { Moment } from "moment";
 
 export const isBrowser = () => typeof window !== "undefined";
 
@@ -85,4 +86,23 @@ export const aesEncodeWithBase64AndKeyConcat = () => {
   const encryptedBase64 = Buffer.from(encryptedBytes).toString("base64");
 
   return `${uuid}.${encryptedBase64}`;
+};
+
+const range = (start: number, end: number) => {
+  const result = [];
+  for (let i = start; i < end; i++) {
+    result.push(i);
+  }
+  return result;
+};
+
+export const disabledDate = (current: Moment) => {
+  return current && current < moment().startOf("day");
+};
+
+export const disabledDateTime = () => {
+  return {
+    disabledHours: () =>
+      range(0, 24).slice(0, moment().endOf("hour").hour() + 1),
+  };
 };

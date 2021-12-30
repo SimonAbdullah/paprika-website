@@ -14,7 +14,11 @@ import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent, useEffect, useState } from "react";
 import { TranslationFiles } from "../../../../../core/core";
-import { aesEncodeWithBase64AndKeyConcat } from "../../../../../core/functions";
+import {
+  aesEncodeWithBase64AndKeyConcat,
+  disabledDate,
+  disabledDateTime,
+} from "../../../../../core/functions";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 import { CreateReservationForGuestDto } from "../../../../customers/services/customer-reservation/models/create-reservation-for-guest-dto.models";
 import { sendAndResendVerificationCode } from "../../../../guest/functions";
@@ -52,12 +56,17 @@ const RestaurantReservationBox: FunctionComponent<RestaurantReservationBoxProps>
           validateMessages={{ required: tCommon("form.validation.required") }}
           onFinish={(values) => {
             let key = createReservationData?.key;
-            if (!key) key = aesEncodeWithBase64AndKeyConcat();
-
-            setCreateReservationData({ ...values, key: key });
+            if (
+              !key ||
+              createReservationData?.phoneNumber !== values?.phoneNumber
+            )
+              key = aesEncodeWithBase64AndKeyConcat();
 
             if (values?.phoneNumber && key) {
-              if (countDown === 0) {
+              if (
+                countDown === 0 ||
+                createReservationData?.phoneNumber !== values?.phoneNumber
+              ) {
                 sendAndResendVerificationCode(values.phoneNumber, key).catch(
                   (error) => {
                     notification.error({
@@ -67,6 +76,7 @@ const RestaurantReservationBox: FunctionComponent<RestaurantReservationBoxProps>
                 );
                 setCountDown(Date.now() + 1000 * 60 * 5);
               }
+              setCreateReservationData({ ...values, key: key });
               setVisible(true);
             }
           }}
@@ -116,8 +126,14 @@ const RestaurantReservationBox: FunctionComponent<RestaurantReservationBoxProps>
               >
                 <DatePicker
                   showTime
+                  showSecond={false}
+                  minuteStep={15}
+                  use12Hours
+                  showNow={false}
                   placeholder={t("selectDateAndTime")}
+                  disabledDate={disabledDate}
                   className={classes.dateTimePicker}
+                  format="YYYY/MM/DD hh:mm a"
                 />
               </Form.Item>
             </Col>

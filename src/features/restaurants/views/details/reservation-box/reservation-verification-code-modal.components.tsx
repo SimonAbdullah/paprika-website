@@ -54,8 +54,8 @@ const ReservationVerificationCodeModal: FunctionComponent<ReservationVerificatio
               restaurantId: restaurant?.id,
             })
               .then((result) => {
-                notification.success({
-                  message: result.result.message,
+                Modal.success({
+                  title: result.result.message,
                 });
                 setCountDown(0);
                 setData(undefined);

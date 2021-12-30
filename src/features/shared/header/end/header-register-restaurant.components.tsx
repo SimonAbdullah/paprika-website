@@ -1,4 +1,4 @@
-import { Button, notification } from "antd";
+import { Button, Modal, notification } from "antd";
 import { useForm } from "antd/lib/form/Form";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import useTranslation from "next-translate/useTranslation";
@@ -42,8 +42,8 @@ const HeaderRegisterRestaurantButton: FunctionComponent<HeaderRegisterRestaurant
             await customerVisitorServices
               .create(values)
               .then(() => {
-                notification.success({
-                  message: t("yourRequestHasBeenSubmit"),
+                Modal.success({
+                  title: t("yourRequestHasBeenSubmit"),
                 });
                 form.resetFields();
                 setVisible(false);
