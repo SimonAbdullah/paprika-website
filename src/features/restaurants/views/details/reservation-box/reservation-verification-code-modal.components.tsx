@@ -42,12 +42,21 @@ const ReservationVerificationCodeModal: FunctionComponent<ReservationVerificatio
 
     const [resendEnabled, setResendEnabled] = useState(countDown === 0);
 
+    const [isCreateReservationLoading, setIsCreateReservationLoading] =
+      useState(false);
+
+    const [
+      isSendAndResendVerificationCodeLoading,
+      setIsSendAndResendVerificationCodeLoading,
+    ] = useState(false);
+
     return (
       <Modal visible={visible} onCancel={() => setVisible(false)} footer={null}>
         <Form
           layout="vertical"
           validateMessages={{ required: tCommon("form.validation.required") }}
           onFinish={(values) => {
+            setIsCreateReservationLoading(true);
             createReservation({
               ...data,
               ...values,
@@ -57,6 +66,7 @@ const ReservationVerificationCodeModal: FunctionComponent<ReservationVerificatio
                 Modal.success({
                   title: result.result.message,
                 });
+                setIsCreateReservationLoading(false);
                 setCountDown(0);
                 setData(undefined);
                 form.resetFields();
@@ -66,6 +76,7 @@ const ReservationVerificationCodeModal: FunctionComponent<ReservationVerificatio
                 notification.error({
                   message: error.response.data.error.message,
                 });
+                setIsCreateReservationLoading(false);
               });
           }}
         >
@@ -98,8 +109,10 @@ const ReservationVerificationCodeModal: FunctionComponent<ReservationVerificatio
                     disabled={!resendEnabled}
                     type="link"
                     icon={<ReloadOutlined />}
+                    loading={isSendAndResendVerificationCodeLoading}
                     onClick={() => {
-                      if (data?.phoneNumber && data?.key)
+                      if (data?.phoneNumber && data?.key) {
+                        setIsSendAndResendVerificationCodeLoading(true);
                         sendAndResendVerificationCode(
                           data.phoneNumber,
                           data.key
@@ -108,6 +121,7 @@ const ReservationVerificationCodeModal: FunctionComponent<ReservationVerificatio
                             notification.success({
                               message: t("resendVerificationCodeSuccessfully"),
                             });
+                            setIsSendAndResendVerificationCodeLoading(false);
                             setResendEnabled(false);
                             setCountDown(Date.now() + 1000 * 60 * 5);
                           })
@@ -115,7 +129,9 @@ const ReservationVerificationCodeModal: FunctionComponent<ReservationVerificatio
                             notification.error({
                               message: error.response.data.error.message,
                             });
+                            setIsSendAndResendVerificationCodeLoading(false);
                           });
+                      }
                     }}
                   />
                 </Tooltip>
@@ -124,7 +140,11 @@ const ReservationVerificationCodeModal: FunctionComponent<ReservationVerificatio
             />
           </Form.Item>
           <Form.Item>
-            <Button htmlType="submit" type="primary">
+            <Button
+              htmlType="submit"
+              type="primary"
+              loading={isCreateReservationLoading}
+            >
               {t("reserve")}
             </Button>
           </Form.Item>

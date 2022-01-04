@@ -150,7 +150,7 @@ const RestaurantReservationBox: FunctionComponent<RestaurantReservationBoxProps>
                   size="large"
                   className={classes.submitButton}
                 >
-                  {t("reserve")}
+                  {t("bookATable")}
                 </Button>
               </Form.Item>
             </Col>

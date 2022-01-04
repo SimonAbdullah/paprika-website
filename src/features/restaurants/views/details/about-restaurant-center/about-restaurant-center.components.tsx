@@ -14,13 +14,7 @@ const AboutRestaurantCenter: FunctionComponent<AboutRestaurantCenterProps> =
 
     const { data } = useRestaurantDetails();
 
-    if (!data?.description)
-      return (
-        <>
-          <Text className={classes.title}>{t("aboutOurCenter")}</Text>{" "}
-          <Text>{t("notAvailable")}</Text>
-        </>
-      );
+    if (!data?.description) return null;
 
     return (
       <Descriptions

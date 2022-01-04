@@ -8,7 +8,14 @@
     "dishImage": "Dish image"
   },
   "first": {
-    "enjoyYourMeal": "Enjoy your meal"
+    "first-title-0": "Spicy Experience",
+    "first-description-0": "Paprika enriches your experience in visiting restaurants and ordering food. You can book a table at your favorite restaurant and deliver your delicious meals to you on time",
+    "first-title-1": "Sweet Journey Full of Colors",
+    "first-description-1": "Look up the best restaurant of your choice. You can find restaurants which play the music you like and serve the food you want, get their news, and a lot more",
+    "first-title-2": "Hot Menus and Ingredients",
+    "first-description-2": "View restaurants' menus, with images, description, prices, and customer rates",
+    "first-title-3": "Salty Time",
+    "first-description-3": "With Paprika Inside, you will have a much better time when visiting you favorite restaurant"
   },
   "second": {
     "topRestaurants": "Top Restaurants",
