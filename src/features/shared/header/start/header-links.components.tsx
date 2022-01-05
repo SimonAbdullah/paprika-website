@@ -24,7 +24,7 @@ const HeaderLinks: FunctionComponent<HeaderLinksProps> = () => {
       </LinkComponent>
       <LinkComponent
         anchorProps={{ className: classes.headerLinks }}
-        linkProps={{ href: PagesUrls.HOME, locale: locale }}
+        linkProps={{ href: `${PagesUrls.HOME}#aboutUs`, locale: locale }}
       >
         {t("aboutUs")}
       </LinkComponent>

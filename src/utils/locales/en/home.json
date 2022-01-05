@@ -9,13 +9,13 @@
   },
   "first": {
     "first-title-0": "Spicy Experience",
-    "first-description-0": "Paprika enriches your experience in visiting restaurants and ordering food. You can book a table at your favorite restaurant and deliver your delicious meals to you on time",
+    "first-description-0": "Paprika enriches your experience in visiting restaurants and ordering food. You can book a table at your favorite restaurant and deliver your delicious meals to you on time.",
     "first-title-1": "Sweet Journey Full of Colors",
-    "first-description-1": "Look up the best restaurant of your choice. You can find restaurants which play the music you like and serve the food you want, get their news, and a lot more",
+    "first-description-1": "Look up the best restaurant of your choice. You can find restaurants which play the music you like and serve the food you want, get their news, and a lot more.",
     "first-title-2": "Hot Menus and Ingredients",
-    "first-description-2": "View restaurants' menus, with images, description, prices, and customer rates",
+    "first-description-2": "View restaurants' menus, with images, description, prices, and customer rates.",
     "first-title-3": "Salty Time",
-    "first-description-3": "With Paprika Inside, you will have a much better time when visiting you favorite restaurant"
+    "first-description-3": "With Paprika Inside, you will have a much better time when visiting you favorite restaurant."
   },
   "second": {
     "topRestaurants": "Top Restaurants",
@@ -29,11 +29,8 @@
     }
   },
   "third": {
-    "theMealYouLikeOnYourTime": "The Meal You Like On Your Time",
-    "moreThan": "More Than",
-    "1000": "1000",
-    "ofTheBestRestaurantAllOverDamascus": "Of The Best Restaurant All Over Damascus",
-    "allTheRestaurantAroundYou": "All The Restaurant Around You"
+    "aboutUs": "About us",
+    "aboutUsDescription": "For some, it is just a normal business or application, but for us it is a passion to change the pattern of dealing with and within restaurants, and an inspiration to create a unique experience of enjoying a meal or an evening."
   },
   "fourth": {
     "restaurants": "Restaurants",

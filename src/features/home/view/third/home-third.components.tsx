@@ -1,6 +1,5 @@
 import { Col, Row } from "antd";
 import Title from "antd/lib/typography/Title";
-import Paragraph from "antd/lib/typography/Paragraph";
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent, useContext } from "react";
 import classes from "./style.module.css";
@@ -17,7 +16,7 @@ const HomeThird: FunctionComponent<HomeThirdProps> = () => {
   const { direction } = useContext(AppContext);
 
   return (
-    <Row className={classes.thirdContainer} justify="center">
+    <Row className={classes.thirdContainer} justify="center" id="aboutUs">
       <Image
         className={classes.backgroundImage}
         src="/images/home/third-background.png"
@@ -39,21 +38,11 @@ const HomeThird: FunctionComponent<HomeThirdProps> = () => {
         />
       </Col>
       <Col xs={24} lg={12} className={classes.contentContainer}>
-        <Paragraph className={classes.paragraph}>
-          {t("third.theMealYouLikeOnYourTime")}
-        </Paragraph>
         <Title level={3} className={classes.title}>
-          {t("third.moreThan")}
-          <span className={classes.titleNumber}>{t("third.1000")}</span>
-          {t("third.ofTheBestRestaurantAllOverDamascus")}
+          {t("third.aboutUs")}
         </Title>
-        <Paragraph className={classes.paragraph}>
-          {t("third.allTheRestaurantAroundYou")}
-        </Paragraph>
         <div className={classes.textContainer}>
-          <Text className={classes.text}>
-            {t("attractNewCustomersToYourRestaurant")}
-          </Text>
+          <Text className={classes.text}>{t("third.aboutUsDescription")}</Text>
         </div>
       </Col>
     </Row>

@@ -19,12 +19,6 @@
   padding: 0 2rem;
 }
 
-.paragraph {
-  color: #858585;
-  font-weight: bold;
-  font-size: 2rem;
-}
-
 .title {
   color: #000000;
   font-weight: bold;
@@ -32,25 +26,14 @@
   margin: 1rem 0;
 }
 
-.titleNumber {
-  display: inline-block;
-  color: #b02524;
-  border: 4px solid #b02524;
-  padding: 0 0.1rem;
-  margin: 0 0.2rem;
-  box-sizing: border-box;
-  border-radius: 13px;
-}
-
 .textContainer {
-  text-align: center;
   margin: 1rem 0;
   padding-inline-end: 3rem;
 }
 
 .text {
-  color: #858585;
-  font-size: 1.2rem;
+  color: #656565;
+  font-size: 1.4rem;
 }
 
 @media only screen and (max-width: 992px) {
@@ -64,10 +47,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-
-  .paragraph {
-    text-align: center;
   }
 
   .title {
