@@ -11,6 +11,7 @@ import HeaderLogo from "./start/header-logo.components";
 import HeaderLanguageButton from "./end/header-language.components";
 import HeaderRegisterRestaurantButton from "./end/header-register-restaurant.components";
 import HeaderLinks from "./start/header-links.components";
+import HeaderDownloadBanner from "./download-banner/header-download-banner.components";
 
 interface HeaderProps {}
 
@@ -28,47 +29,50 @@ const Header: FunctionComponent<HeaderProps> = () => {
   };
 
   return (
-    <Head className={classes.head}>
-      {lg ? (
-        <>
-          <HeaderStart />
-          <HeaderEnd />
-        </>
-      ) : sm ? (
-        <>
-          <div className={classes.mobileHeaderStart}>
-            <Button
-              size="large"
-              type="link"
-              icon={<MenuOutlined className={classes.menuIcon} />}
-              onClick={showDrawer}
-            />
-            <HeaderDrawer visible={visible} onClose={onClose} />
-            <HeaderLogo />
-          </div>
-          <HeaderEnd />
-        </>
-      ) : (
-        <>
-          <div className={classes.mobileHeaderStart}>
-            <Button
-              size="large"
-              type="link"
-              icon={<MenuOutlined className={classes.menuIcon} />}
-              onClick={showDrawer}
-            />
-            <HeaderDrawer visible={visible} onClose={onClose}>
-              <div className={classes.drawerContent}>
-                <HeaderLinks />
-                <HeaderRegisterRestaurantButton />
-              </div>
-            </HeaderDrawer>
-            <HeaderLogo />
-          </div>
-          <HeaderLanguageButton />
-        </>
-      )}
-    </Head>
+    <>
+      <HeaderDownloadBanner />
+      <Head className={classes.head}>
+        {lg ? (
+          <>
+            <HeaderStart />
+            <HeaderEnd />
+          </>
+        ) : sm ? (
+          <>
+            <div className={classes.mobileHeaderStart}>
+              <Button
+                size="large"
+                type="link"
+                icon={<MenuOutlined className={classes.menuIcon} />}
+                onClick={showDrawer}
+              />
+              <HeaderDrawer visible={visible} onClose={onClose} />
+              <HeaderLogo />
+            </div>
+            <HeaderEnd />
+          </>
+        ) : (
+          <>
+            <div className={classes.mobileHeaderStart}>
+              <Button
+                size="large"
+                type="link"
+                icon={<MenuOutlined className={classes.menuIcon} />}
+                onClick={showDrawer}
+              />
+              <HeaderDrawer visible={visible} onClose={onClose}>
+                <div className={classes.drawerContent}>
+                  <HeaderLinks />
+                  <HeaderRegisterRestaurantButton />
+                </div>
+              </HeaderDrawer>
+              <HeaderLogo />
+            </div>
+            <HeaderLanguageButton />
+          </>
+        )}
+      </Head>
+    </>
   );
 };
 

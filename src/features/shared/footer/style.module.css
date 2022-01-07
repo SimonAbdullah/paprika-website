@@ -44,6 +44,10 @@
   width: 100%;
 }
 
+.directLinkContainer {
+  width: 100%;
+}
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .footerStartText {
     width: 80%;

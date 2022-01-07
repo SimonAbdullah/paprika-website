@@ -28,7 +28,7 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
               <Image
                 src={`/icons/google-play.svg`}
                 alt={t("googlePlay")}
-                width="100px"
+                width="97px"
                 height="33px"
                 layout="fixed"
               />
@@ -43,7 +43,7 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
               <Image
                 src={`/icons/app-store.svg`}
                 alt={t("appStore")}
-                width="100px"
+                width="97px"
                 height="33px"
                 layout="fixed"
               />
@@ -57,8 +57,8 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
             >
               <Image
                 src={`/icons/direct-link.svg`}
-                alt={t("appStore")}
-                width="100px"
+                alt={t("directLink")}
+                width="97px"
                 height="33px"
                 layout="fixed"
               />
