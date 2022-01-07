@@ -2,36 +2,23 @@
 
 .firstColumn {
   background-color: #fafafa;
-  min-height: 30rem;
-  padding: 2rem;
+  min-height: 26rem;
+  padding: 0 2rem;
 }
 
 .title {
   color: var(--primary-color);
   font-size: 2.5rem;
   font-weight: bold;
-}
-
-.bottomSpace {
-  margin-bottom: -1rem;
-}
-
-.secondTitle {
-  color: #2d303e;
-  font-size: 1.5rem;
+  margin-bottom: 0rem;
 }
 
 /* Second Column */
 
 .secondColumn {
-  min-height: 30rem;
+  min-height: 26rem;
   padding: 0 2rem;
   margin-top: -2rem;
-}
-
-.secondTitle {
-  color: #2d303e;
-  font-size: 1.7rem;
 }
 
 /* Restaurant Card */

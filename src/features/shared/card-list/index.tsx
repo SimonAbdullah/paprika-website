@@ -80,14 +80,13 @@ function CardList<T>({ dataSource, renderItem, itemKey }: CardListProps<T>) {
     mobile: {
       breakpoint: {
         max: 678,
-        min: 550,
+        min: 500,
       },
-      items: 1,
-      partialVisibilityGutter: 200,
+      items: 1.5,
     },
     smallMobile: {
       breakpoint: {
-        max: 550,
+        max: 500,
         min: 0,
       },
       items: 1,
@@ -105,7 +104,6 @@ function CardList<T>({ dataSource, renderItem, itemKey }: CardListProps<T>) {
     customRightArrow: direction === "ltr" ? <NextArrow /> : <PrevArrow />,
     customLeftArrow: direction === "ltr" ? <PrevArrow /> : <NextArrow />,
     ssr: true,
-    infinite: true,
     keyBoardControl: true,
     draggable: !md,
     partialVisible: true,

@@ -91,6 +91,7 @@ const HomeCardEvent: FunctionComponent<HomeCardEventProps> = ({ event }) => {
             </div>
           </div>
         }
+        bodyStyle={{ display: "none" }}
       />
       {visible && (
         <HomeEventModal

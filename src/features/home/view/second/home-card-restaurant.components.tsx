@@ -89,6 +89,7 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
               </div>
             </div>
           }
+          bodyStyle={{ display: "none" }}
         />
       </a>
     </Link>

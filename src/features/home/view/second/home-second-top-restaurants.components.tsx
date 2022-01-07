@@ -10,28 +10,29 @@ import classes from "./style.module.css";
 
 interface HomeSecondTopRestaurantsProps {}
 
-const HomeSecondTopRestaurants: FunctionComponent<HomeSecondTopRestaurantsProps> =
-  () => {
-    const { t } = useTranslation(TranslationFiles.HOME);
+const HomeSecondTopRestaurants: FunctionComponent<
+  HomeSecondTopRestaurantsProps
+> = () => {
+  const { t } = useTranslation(TranslationFiles.HOME);
 
-    const { data } = useFeaturedPlaces();
+  const { data } = useFeaturedPlaces();
 
-    if (isDataEmpty(data?.items)) return null;
+  if (isDataEmpty(data?.items)) return null;
 
-    return (
-      <>
-        <Title level={3} className={`${classes.title} ${classes.bottomSpace}`}>
-          {t("second.topRestaurants")}
-        </Title>
-        <CardList
-          dataSource={data?.items}
-          itemKey={(item) => item.id}
-          renderItem={(item) => (
-            <HomeCardRestaurant key={item.id} restaurant={item} />
-          )}
-        />
-      </>
-    );
-  };
+  return (
+    <>
+      <Title level={3} className={classes.title}>
+        {t("second.topRestaurants")}
+      </Title>
+      <CardList
+        dataSource={data?.items}
+        itemKey={(item) => item.id}
+        renderItem={(item) => (
+          <HomeCardRestaurant key={item.id} restaurant={item} />
+        )}
+      />
+    </>
+  );
+};
 
 export default HomeSecondTopRestaurants;

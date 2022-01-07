@@ -45,12 +45,15 @@ const RestaurantMealCard: FunctionComponent<RestaurantMealCardProps> = ({
             </div>
           </div>
         }
+        bodyStyle={{ display: "none" }}
       />
-      <RestaurantMealModal
-        meal={meal}
-        visible={visible}
-        setVisible={setVisible}
-      />
+      {visible && (
+        <RestaurantMealModal
+          meal={meal}
+          visible={visible}
+          setVisible={setVisible}
+        />
+      )}
     </>
   );
 };
