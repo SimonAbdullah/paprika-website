@@ -28,7 +28,7 @@ const FooterMiddle: FunctionComponent<FooterMiddleProps> = () => {
               info@paprika-sy.com
             </LinkComponent>
           </li>
-          <li>
+          <li dir="ltr">
             <LinkComponent
               linkProps={{ href: "tel:+963 9356 85210", locale: locale }}
               anchorProps={{ className: classes.listLink }}
@@ -50,7 +50,7 @@ const FooterMiddle: FunctionComponent<FooterMiddleProps> = () => {
       </Col>
       <Col xs={24} sm={12}>
         <ul className={classes.list}>
-          <Text className={classes.listTitle}>Follow Us</Text>
+          <Text className={classes.listTitle}>{t("followUs")}</Text>
           <li>
             <Space>
               <a

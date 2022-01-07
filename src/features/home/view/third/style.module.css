@@ -29,11 +29,17 @@
 .textContainer {
   margin: 1rem 0;
   padding-inline-end: 3rem;
+  width: 100%;
 }
 
 .text {
   color: #656565;
   font-size: 1.4rem;
+}
+
+.icon {
+  border-radius: 5px;
+  background-color: #656565;
 }
 
 @media only screen and (max-width: 992px) {
@@ -43,6 +49,13 @@
 
   .contentContainer {
     margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .row {
     display: flex;
     flex-direction: column;
     justify-content: center;
