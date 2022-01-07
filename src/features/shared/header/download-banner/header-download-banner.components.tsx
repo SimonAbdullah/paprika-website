@@ -30,14 +30,10 @@ const HeaderDownloadBanner: FunctionComponent<
           setVisible(false);
         }}
       />
-      <Space direction="vertical">
-        <div className={classes.textContainer}>
-          <Text className={classes.text}>
-            {"Don't have Paprika on your device..."}
-          </Text>
-          <br />
-          <Text className={classes.title}>Download Now!</Text>
-        </div>
+      <div className={classes.textContainer}>
+        <Text className={classes.title}>{t("downloadNow")}</Text>
+      </div>
+      <Space className={classes.imagesContainer}>
         <div className={classes.googlePlayContainer}>
           <a
             href="https://play.google.com/store/apps/details?id=com.paprika_sy.customer"
@@ -45,11 +41,12 @@ const HeaderDownloadBanner: FunctionComponent<
             rel="noopener noreferrer"
           >
             <Image
-              src={`/icons/google-play.svg`}
+              src={`/icons/google-play-circle.png`}
               alt={t("googlePlay")}
-              width="100%"
-              height="33px"
-              layout="responsive"
+              width="48px"
+              height="48px"
+              layout="fixed"
+              className={classes.image}
             />
           </a>
         </div>
@@ -60,11 +57,12 @@ const HeaderDownloadBanner: FunctionComponent<
             rel="noopener noreferrer"
           >
             <Image
-              src={`/icons/app-store.svg`}
+              src={`/icons/app-store-circle.png`}
               alt={t("appStore")}
-              width="100%"
-              height="33px"
-              layout="responsive"
+              width="48px"
+              height="48px"
+              layout="fixed"
+              className={classes.image}
             />
           </a>
         </div>
@@ -75,11 +73,12 @@ const HeaderDownloadBanner: FunctionComponent<
             rel="noopener noreferrer"
           >
             <Image
-              src={`/icons/direct-link.svg`}
+              src={`/icons/direct-link-circle.png`}
               alt={t("directLink")}
-              width="100%"
-              height="33px"
-              layout="responsive"
+              width="48px"
+              height="48px"
+              layout="fixed"
+              className={classes.image}
             />
           </a>
         </div>
