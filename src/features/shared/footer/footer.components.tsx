@@ -13,21 +13,21 @@ interface FooterProps {}
 const Footer: FunctionComponent<FooterProps> = () => {
   const { direction } = useContext(AppContext);
 
-  const { lg } = useBreakpoint();
+  const { lg, xl } = useBreakpoint();
 
   return (
     <Foot
       className={classes.foot}
       style={direction === "rtl" && lg ? { paddingInlineStart: "8rem" } : {}}
     >
-      <Row justify="space-between" gutter={[16, 16]}>
-        <Col xs={24} md={12} lg={6}>
+      <Row justify={xl ? "center" : "space-between"} gutter={[16, 16]}>
+        <Col xs={24} md={12} lg={4}>
           <FooterStart />
         </Col>
-        <Col xs={24} md={{ order: 2 }} lg={{ span: 12, order: 0 }}>
+        <Col xs={24} md={12} lg={10} xl={8}>
           <FooterMiddle />
         </Col>
-        <Col xs={24} md={12} lg={6}>
+        <Col xs={24} md={24} lg={10} xl={8}>
           <FooterEnd />
         </Col>
       </Row>

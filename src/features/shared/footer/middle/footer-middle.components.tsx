@@ -1,10 +1,11 @@
-import { Col, Row } from "antd";
+import { Col, Row, Space } from "antd";
 import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/dist/client/router";
 import { FunctionComponent } from "react";
-import { PagesUrls, TranslationFiles } from "../../../../core/core";
+import { TranslationFiles } from "../../../../core/core";
 import LinkComponent from "../../link/link.components";
+import Image from "next/image";
 import classes from "../style.module.css";
 
 interface FooterMiddleProps {}
@@ -15,66 +16,16 @@ const FooterMiddle: FunctionComponent<FooterMiddleProps> = () => {
   const { locale } = useRouter();
 
   return (
-    <Row className={classes.middleRow} gutter={[16, 16]}>
-      <Col xs={24} sm={8}>
-        <ul className={classes.list}>
-          <Text className={classes.listTitle}>{t("aboutPaprika")}</Text>
-          <li>
-            <LinkComponent
-              linkProps={{ href: PagesUrls.HOME, locale: locale }}
-              anchorProps={{ className: classes.listLink }}
-            >
-              {t("whoWeAre")}
-            </LinkComponent>
-          </li>
-          <li>
-            <LinkComponent
-              linkProps={{ href: PagesUrls.HOME, locale: locale }}
-              anchorProps={{ className: classes.listLink }}
-            >
-              {t("registerYourRestaurant")}
-            </LinkComponent>
-          </li>
-        </ul>
-      </Col>
-      <Col xs={24} sm={8}>
-        <ul className={classes.list}>
-          <Text className={classes.listTitle}>{t("support")}</Text>
-          <li>
-            <LinkComponent
-              linkProps={{ href: PagesUrls.HOME, locale: locale }}
-              anchorProps={{ className: classes.listLink }}
-            >
-              {t("account")}
-            </LinkComponent>
-          </li>
-          <li>
-            <LinkComponent
-              linkProps={{ href: PagesUrls.HOME, locale: locale }}
-              anchorProps={{ className: classes.listLink }}
-            >
-              {t("supportCenter")}
-            </LinkComponent>
-          </li>
-          <li>
-            <LinkComponent
-              linkProps={{ href: PagesUrls.HOME, locale: locale }}
-              anchorProps={{ className: classes.listLink }}
-            >
-              {t("feedback")}
-            </LinkComponent>
-          </li>
-        </ul>
-      </Col>
-      <Col xs={24} sm={8}>
+    <Row gutter={[16, 16]}>
+      <Col xs={24} sm={12}>
         <ul className={classes.list}>
           <Text className={classes.listTitle}>{t("getInTouch")}</Text>
           <li>
             <LinkComponent
-              linkProps={{ href: "mailto:info@parpika.com", locale: locale }}
+              linkProps={{ href: "mailto:info@paprika-sy.com", locale: locale }}
               anchorProps={{ className: classes.listLink }}
             >
-              info@parpika.com
+              info@paprika-sy.com
             </LinkComponent>
           </li>
           <li>
@@ -84,6 +35,53 @@ const FooterMiddle: FunctionComponent<FooterMiddleProps> = () => {
             >
               +963 9356 85210
             </LinkComponent>
+          </li>
+          <li>
+            <a
+              href="https://paprika-sy.com/paprika-privacy-policy.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={classes.listLink}
+            >
+              {t("privacyPolicy")}
+            </a>
+          </li>
+        </ul>
+      </Col>
+      <Col xs={24} sm={12}>
+        <ul className={classes.list}>
+          <Text className={classes.listTitle}>Follow Us</Text>
+          <li>
+            <Space>
+              <a
+                href="https://www.facebook.com/paprika.sar"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={classes.listLink}
+              >
+                <Image
+                  src="/icons/facebook.svg"
+                  alt={t("facebook")}
+                  width="32px"
+                  height="32px"
+                  layout="fixed"
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/paprika_sy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={classes.listLink}
+              >
+                <Image
+                  src="/icons/instagram.svg"
+                  alt={t("instagram")}
+                  width="32px"
+                  height="32px"
+                  layout="fixed"
+                />
+              </a>
+            </Space>
           </li>
         </ul>
       </Col>
