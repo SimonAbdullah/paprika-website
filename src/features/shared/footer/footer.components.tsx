@@ -18,16 +18,22 @@ const Footer: FunctionComponent<FooterProps> = () => {
   return (
     <Foot
       className={classes.foot}
-      style={direction === "rtl" && lg ? { paddingInlineStart: "8rem" } : {}}
+      style={
+        xl
+          ? { paddingInlineStart: "6rem" }
+          : lg
+          ? { paddingInlineStart: "3rem" }
+          : {}
+      }
     >
-      <Row justify={xl ? "center" : "space-between"} gutter={[16, 16]}>
+      <Row justify="space-between" gutter={[16, 16]}>
         <Col xs={24} md={12} lg={4}>
           <FooterStart />
         </Col>
-        <Col xs={24} md={12} lg={10} xl={8}>
+        <Col xs={24} md={{ order: 2 }} lg={{ span: 12, order: 0 }}>
           <FooterMiddle />
         </Col>
-        <Col xs={24} md={24} lg={10} xl={8}>
+        <Col xs={24} md={12} lg={8}>
           <FooterEnd />
         </Col>
       </Row>

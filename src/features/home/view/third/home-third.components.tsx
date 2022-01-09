@@ -13,6 +13,8 @@ interface HomeThirdProps {}
 const HomeThird: FunctionComponent<HomeThirdProps> = () => {
   const { t } = useTranslation(TranslationFiles.HOME);
 
+  const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
+
   const { direction } = useContext(AppContext);
 
   return (
@@ -62,7 +64,7 @@ const HomeThird: FunctionComponent<HomeThirdProps> = () => {
               >
                 <Image
                   src="/icons/facebook.svg"
-                  alt={t("facebook")}
+                  alt={tCommon("facebook")}
                   width="32px"
                   height="32px"
                   layout="fixed"
@@ -77,7 +79,7 @@ const HomeThird: FunctionComponent<HomeThirdProps> = () => {
               >
                 <Image
                   src="/icons/instagram.svg"
-                  alt={t("instagram")}
+                  alt={tCommon("instagram")}
                   width="32px"
                   height="32px"
                   layout="fixed"

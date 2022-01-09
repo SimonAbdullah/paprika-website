@@ -38,11 +38,12 @@ const RestaurantMealModal: FunctionComponent<RestaurantMealModalProps> = ({
           <Image
             src={meal?.image || "/images/home/fallback-image.png"}
             alt={meal?.name}
-            blurDataURL={meal?.thumbnailImage}
-            placeholder="blur"
             layout="fill"
             objectFit="cover"
             objectPosition="center"
+            {...(meal?.thumbnailImage
+              ? { blurDataURL: meal?.thumbnailImage, placeholder: "blur" }
+              : {})}
           />
         </Col>
         <Col span={24}>

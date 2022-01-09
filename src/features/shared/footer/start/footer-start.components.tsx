@@ -8,7 +8,7 @@ const FooterStart: FunctionComponent<FooterStartProps> = () => {
   return (
     <Row gutter={[16, 16]}>
       <Col>
-        <HeaderLogo size="90px" image="/images/logo/paprika.png" />
+        <HeaderLogo size="100px" image="/images/logo/paprika.png" />
       </Col>
     </Row>
   );

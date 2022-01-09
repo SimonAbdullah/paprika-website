@@ -31,6 +31,8 @@ const HeaderDownloadBanner: FunctionComponent<
         }}
       />
       <div className={classes.textContainer}>
+        <Text className={classes.text}>{t("dontHavePaprikaOnYourDevice")}</Text>
+        <br />
         <Text className={classes.title}>{t("downloadNow")}</Text>
       </div>
       <Space className={classes.imagesContainer}>
@@ -43,8 +45,8 @@ const HeaderDownloadBanner: FunctionComponent<
             <Image
               src={`/icons/google-play-circle.png`}
               alt={t("googlePlay")}
-              width="48px"
-              height="48px"
+              width="54px"
+              height="54px"
               layout="fixed"
               className={classes.image}
             />
@@ -59,8 +61,8 @@ const HeaderDownloadBanner: FunctionComponent<
             <Image
               src={`/icons/app-store-circle.png`}
               alt={t("appStore")}
-              width="48px"
-              height="48px"
+              width="54px"
+              height="54px"
               layout="fixed"
               className={classes.image}
             />
@@ -75,8 +77,8 @@ const HeaderDownloadBanner: FunctionComponent<
             <Image
               src={`/icons/direct-link-circle.png`}
               alt={t("directLink")}
-              width="48px"
-              height="48px"
+              width="54px"
+              height="54px"
               layout="fixed"
               className={classes.image}
             />

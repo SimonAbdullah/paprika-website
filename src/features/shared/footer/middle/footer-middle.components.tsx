@@ -3,7 +3,7 @@ import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/dist/client/router";
 import { FunctionComponent } from "react";
-import { TranslationFiles } from "../../../../core/core";
+import { PagesUrls, TranslationFiles } from "../../../../core/core";
 import LinkComponent from "../../link/link.components";
 import Image from "next/image";
 import classes from "../style.module.css";
@@ -17,7 +17,36 @@ const FooterMiddle: FunctionComponent<FooterMiddleProps> = () => {
 
   return (
     <Row gutter={[16, 16]}>
-      <Col xs={24} sm={12}>
+      <Col xs={24} sm={8}>
+        <ul className={classes.list}>
+          <Text className={classes.listTitle}>{t("aboutPaprika")}</Text>
+          <li>
+            <LinkComponent
+              linkProps={{ href: PagesUrls.RESTAURANTS, locale: locale }}
+              anchorProps={{ className: classes.listLink }}
+            >
+              {t("restaurants")}
+            </LinkComponent>
+          </li>
+          <li>
+            <LinkComponent
+              linkProps={{ href: `${PagesUrls.HOME}#services`, locale: locale }}
+              anchorProps={{ className: classes.listLink }}
+            >
+              {t("ourServices")}
+            </LinkComponent>
+          </li>
+          <li>
+            <LinkComponent
+              linkProps={{ href: `${PagesUrls.HOME}#aboutUs`, locale: locale }}
+              anchorProps={{ className: classes.listLink }}
+            >
+              {t("aboutUs")}
+            </LinkComponent>
+          </li>
+        </ul>
+      </Col>
+      <Col xs={24} sm={8}>
         <ul className={classes.list}>
           <Text className={classes.listTitle}>{t("getInTouch")}</Text>
           <li>
@@ -48,7 +77,7 @@ const FooterMiddle: FunctionComponent<FooterMiddleProps> = () => {
           </li>
         </ul>
       </Col>
-      <Col xs={24} sm={12}>
+      <Col xs={24} sm={8}>
         <ul className={classes.list}>
           <Text className={classes.listTitle}>{t("followUs")}</Text>
           <li>

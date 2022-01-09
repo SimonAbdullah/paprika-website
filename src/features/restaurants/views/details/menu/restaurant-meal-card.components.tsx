@@ -28,11 +28,12 @@ const RestaurantMealCard: FunctionComponent<RestaurantMealCardProps> = ({
                 className={classes.image}
                 src={meal?.image || "/images/home/fallback-image.png"}
                 alt={meal?.name}
-                blurDataURL={meal?.thumbnailImage}
-                placeholder="blur"
                 layout="fill"
                 objectFit="cover"
                 objectPosition="center"
+                {...(meal?.thumbnailImage
+                  ? { blurDataURL: meal?.thumbnailImage, placeholder: "blur" }
+                  : {})}
               />
             </div>
             <div className={classes.content}>

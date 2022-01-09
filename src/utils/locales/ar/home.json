@@ -34,14 +34,16 @@
     "aboutUsDescription": "بالنسبة للبعض، بابريكا هو تطبيق جميل جديد. أما بالنبسة لفريق بابريكا، هو رؤية وطموح لتحسين تجربة زوار المطاعم، وبناء نظام عمل متكامل يساعد أصحاب المطاعم في تقديم أفضل الخدمات لزبائنهم."
   },
   "fourth": {
-    "restaurants": "المطاعم",
-    "reservation": "الحجوزات",
-    "downloads": "التحميلات",
-    "alt": {
-      "diningTableImage": "صورة طاولة طعام",
-      "reservedImage": "صورة حجز",
-      "appImage": "صورة تطبيق"
-    }
+    "title": "ماذا يمكن أن تقدم لك بابريكا؟",
+    "discoverRestaurants": "اكتشف المطاعم",
+    "discoverRestaurantsDescription": "ابحث عن المطاعم الجديدة واعرض جميع تفاصيلها، مثل الموسيقى والمأكولات والقائمة وتعليقات العملاء.",
+    "reservations": "الحجوزات",
+    "reservationDescription": "احجز طاولة في أي وقت لك ولأحبائك في مطعم من اختيارك.",
+    "pickupAndDelivery": "الاستلام والتسليم",
+    "pickupAndDeliveryDescription": "اطلب الطعام مباشرة من المطعم الذي تفضله، وبعد ذلك يمكنك استلام طلبك في أي وقت أو توصيله لك.",
+    "paprikaInside": "بابريكا بالداخل",
+    "paprikaInsideDescription": "افتح وتتبع طلبك واعرض فاتورتك عندما تزور مطعمًا.",
+    "learnMore": "اعرف المزيد"
   },
   "fifth": {
     "submitYourRestaurantToOurList": "أضف مطعمك إلى قائمتنا!",

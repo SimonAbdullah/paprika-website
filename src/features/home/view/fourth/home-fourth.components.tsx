@@ -3,80 +3,50 @@ import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent } from "react";
 import { TranslationFiles } from "../../../../core/core";
 import classes from "./style.module.css";
-import Image from "next/image";
-import Paragraph from "antd/lib/typography/Paragraph";
-import Text from "antd/lib/typography/Text";
+import Title from "antd/lib/typography/Title";
+import HomeFourthServiceColumn from "./home-fourth-service-column.components";
+import { useFourthData } from "./fourth-data";
+import HomeFourthServiceCard from "./home-fourth-service-card.components";
 
 interface HomeFourthProps {}
 
 const HomeFourth: FunctionComponent<HomeFourthProps> = () => {
   const { t } = useTranslation(TranslationFiles.HOME);
 
+  const data = useFourthData();
+
   return (
-    <Row
-      className={classes.fourthContainer}
-      justify="center"
-      align="middle"
-      id="statistics"
-    >
-      <Col md={8} className={classes.column}>
-        <Image
-          src="/images/home/fourth-dining-table.svg"
-          alt={t("fourth.alt.diningTableImage")}
-          width="80px"
-          height="80px"
-          objectPosition="center"
-        />
-        <Paragraph className={`${classes.paragraph} ${classes.number}`}>
-          200
-        </Paragraph>
-        <Paragraph className={`${classes.paragraph} ${classes.title}`}>
-          {t("fourth.restaurants")}
-        </Paragraph>
-        <Text className={classes.text}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non a, netus
-          urna enim tristique.
-        </Text>
-      </Col>
-      <Col md={8} className={classes.column}>
-        <Image
-          src="/images/home/fourth-reserved.svg"
-          alt={t("fourth.alt.diningTableImage")}
-          width="80px"
-          height="80px"
-          objectPosition="center"
-        />
-        <Paragraph className={`${classes.paragraph} ${classes.number}`}>
-          200
-        </Paragraph>
-        <Paragraph className={`${classes.paragraph} ${classes.title}`}>
-          {t("fourth.reservation")}
-        </Paragraph>
-        <Text className={classes.text}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non a, netus
-          urna enim tristique.
-        </Text>
-      </Col>
-      <Col md={8} className={classes.column}>
-        <Image
-          src="/images/home/fourth-app.svg"
-          alt={t("fourth.alt.diningTableImage")}
-          width="80px"
-          height="80px"
-          objectPosition="center"
-        />
-        <Paragraph className={`${classes.paragraph} ${classes.number}`}>
-          20K
-        </Paragraph>
-        <Paragraph className={`${classes.paragraph} ${classes.title}`}>
-          {t("fourth.downloads")}
-        </Paragraph>
-        <Text className={classes.text}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non a, netus
-          urna enim tristique.
-        </Text>
-      </Col>
-    </Row>
+    <>
+      <Row className={classes.fourthContainer} justify="center" id="services">
+        <Col span={24}>
+          <Title level={3} className={classes.mainTitle}>
+            {t("fourth.title")}
+          </Title>
+        </Col>
+        {data.map((item, index) => (
+          <HomeFourthServiceColumn
+            key={index}
+            image={item.image}
+            title={item.title}
+            description={item.description}
+            learnMoreHref={item.learnMoreHref}
+          />
+        ))}
+      </Row>
+      <Row
+        justify="center"
+        gutter={[0, 48]}
+        className={classes.fourthSecondContainer}
+      >
+        {data.map((item, index) => (
+          <HomeFourthServiceCard
+            key={index}
+            data={item}
+            isContentRight={index % 2 !== 0}
+          />
+        ))}
+      </Row>
+    </>
   );
 };
 

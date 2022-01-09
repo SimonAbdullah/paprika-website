@@ -34,14 +34,16 @@
     "aboutUsDescription": "For some, it is just a normal business or application, but for us it is a passion to change the pattern of dealing with and within restaurants, and an inspiration to create a unique experience of enjoying a meal or an evening."
   },
   "fourth": {
-    "restaurants": "Restaurants",
-    "reservation": "Reservation",
-    "downloads": "Downloads",
-    "alt": {
-      "diningTableImage": "Dining table image",
-      "reservedImage": "Reserved image",
-      "appImage": "App image"
-    }
+    "title": "What Paprika can do for you?",
+    "discoverRestaurants": "Discover Restaurants",
+    "discoverRestaurantsDescription": "Search for new restaurants and view all of their details, like music, cuisine, menu, and customer reviews.",
+    "reservations": "Reservations",
+    "reservationDescription": "Book a table at any time for you and your beloved ones in a restaurant of your choice.",
+    "pickupAndDelivery": "Pickup and Delivery",
+    "pickupAndDeliveryDescription": "Order food directly from the restaurant you prefer, and then you can pickup your order at any time or deliver it to you.",
+    "paprikaInside": "Paprika Inside",
+    "paprikaInsideDescription": "Open, track your order, and view your invoice when you visit a restaurant.",
+    "learnMore": "Learn More"
   },
   "fifth": {
     "submitYourRestaurantToOurList": "Submit Your Restaurant To Our List!",

@@ -38,7 +38,7 @@
   letter-spacing: 0.01em;
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 575px) {
   .registerButton {
     margin: 0 1rem;
     color: inherit;

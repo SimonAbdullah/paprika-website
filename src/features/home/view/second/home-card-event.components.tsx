@@ -36,12 +36,13 @@ const HomeCardEvent: FunctionComponent<HomeCardEventProps> = ({ event }) => {
               className={classes.eventImage}
               src={event?.image || "/images/home/fallback-image.png"}
               alt={event?.name}
-              blurDataURL={event?.thumbnailImage}
-              placeholder="blur"
               layout="fill"
               objectFit="cover"
               objectPosition="center"
               onClick={() => setVisible(true)}
+              {...(event?.thumbnailImage
+                ? { blurDataURL: event?.thumbnailImage, placeholder: "blur" }
+                : {})}
             />
             <div className={classes.eventContent}>
               <Row>

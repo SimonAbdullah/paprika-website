@@ -39,11 +39,12 @@ const HomeEventModal: FunctionComponent<HomeEventModalProps> = ({
           <Image
             src={event?.image || "/images/home/fallback-image.png"}
             alt={event?.name}
-            blurDataURL={event?.thumbnailImage}
-            placeholder="blur"
             layout="fill"
             objectFit="cover"
             objectPosition="center"
+            {...(event?.thumbnailImage
+              ? { blurDataURL: event?.thumbnailImage, placeholder: "blur" }
+              : {})}
           />
         </Col>
         <Col span={24}>

@@ -1,23 +1,33 @@
 .fourthContainer {
-  background-color: var(--primary-color);
+  background-color: #3c1816;
   width: 100%;
   min-height: 30rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 2rem 0;
+}
+
+.fourthSecondContainer {
+  padding: 3rem 0;
+}
+
+.mainTitle {
+  color: white;
+  text-align: center;
+  letter-spacing: 0.01em;
+  font-weight: bold;
+  font-size: 2.5rem;
 }
 
 .column {
   text-align: center;
-  padding: 6rem;
+  padding: 1.5rem;
+}
+
+.columnContent {
+  min-height: 13rem;
 }
 
 .paragraph {
   color: #ffffff;
-}
-
-.number {
-  font-size: 3rem;
 }
 
 .title {
@@ -28,18 +38,39 @@
 .text {
   display: inline-block;
   color: #ffffff;
-  font-size: 0.8rem;
-  margin-top: 1rem;
 }
 
-@media only screen and (max-width: 1200px) {
+.learnMore {
+  color: var(--primary-color);
+  font-size: 1rem;
+}
+
+/* Card */
+
+.fourthSecondContainer .cardContainer .card {
+  background-color: #ededed;
+}
+
+.cardTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  color: black;
+}
+
+.cardText {
+  font-size: 1rem;
+  color: black;
+  display: inline-block;
+}
+
+@media only screen and (max-width: 1199px) {
   .column {
-    padding: 5rem;
+    padding: 2rem;
   }
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 991px) {
   .column {
-    padding: 2rem;
+    padding: 2.5rem;
   }
 }

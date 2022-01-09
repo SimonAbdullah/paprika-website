@@ -92,13 +92,13 @@
   color: #000000;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .modalImageContainer {
     height: 15rem;
   }
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 575px) {
   .modalImageContainer {
     height: 10rem;
   }

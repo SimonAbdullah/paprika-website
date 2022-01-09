@@ -31,12 +31,13 @@ const RestaurantCard: FunctionComponent<RestaurantCardProps> = ({
             <Image
               src={restaurant?.logoImage || "/images/home/fallback-image.png"}
               alt={restaurant?.name}
-              blurDataURL={restaurant?.logoImage}
-              placeholder="blur"
               layout="responsive"
               width="100%"
               height="60%"
               objectFit="cover"
+              {...(restaurant?.logoImage
+                ? { blurDataURL: restaurant?.logoImage, placeholder: "blur" }
+                : {})}
             />
           }
         >

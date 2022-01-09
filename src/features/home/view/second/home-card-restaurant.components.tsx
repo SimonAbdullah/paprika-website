@@ -36,11 +36,12 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
                 className={classes.image}
                 src={restaurant?.logoImage || "/images/home/fallback-image.png"}
                 alt={restaurant?.name}
-                blurDataURL={restaurant?.logoImage}
-                placeholder="blur"
                 layout="fill"
                 objectFit="cover"
                 objectPosition="center"
+                {...(restaurant?.logoImage
+                  ? { blurDataURL: restaurant?.logoImage, placeholder: "blur" }
+                  : {})}
               />
               <div className={classes.content}>
                 <Row>
