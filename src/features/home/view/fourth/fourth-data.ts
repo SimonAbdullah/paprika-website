@@ -14,6 +14,7 @@ export interface HomeFourthData {
   title: string;
   description: string;
   learnMoreHref: string;
+  animationType: string;
 }
 
 export const useFourthData = (): HomeFourthData[] => {
@@ -32,6 +33,7 @@ export const useFourthData = (): HomeFourthData[] => {
       title: t("fourth.discoverRestaurants"),
       description: t("fourth.discoverRestaurantsDescription"),
       learnMoreHref: "#discoverRestaurants",
+      animationType: "slide-right",
     },
     {
       id: "reservations",
@@ -46,6 +48,7 @@ export const useFourthData = (): HomeFourthData[] => {
       title: t("fourth.reservations"),
       description: t("fourth.reservationDescription"),
       learnMoreHref: "#reservations",
+      animationType: "slide-left",
     },
     {
       id: "pickupAndDelivery",
@@ -60,6 +63,7 @@ export const useFourthData = (): HomeFourthData[] => {
       title: t("fourth.pickupAndDelivery"),
       description: t("fourth.pickupAndDeliveryDescription"),
       learnMoreHref: "#pickupAndDelivery",
+      animationType: "slide-right",
     },
     {
       id: "paprikaInside",
@@ -74,6 +78,7 @@ export const useFourthData = (): HomeFourthData[] => {
       title: t("fourth.paprikaInside"),
       description: t("fourth.paprikaInsideDescription"),
       learnMoreHref: "#paprikaInside",
+      animationType: "slide-left",
     },
   ];
 };

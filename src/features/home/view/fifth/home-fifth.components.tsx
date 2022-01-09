@@ -1,26 +1,30 @@
-import { Button, Col, Row } from "antd";
+import { Button, Col, Form, Input, Modal, notification, Row } from "antd";
 import useTranslation from "next-translate/useTranslation";
-import { FunctionComponent, useContext } from "react";
-import { PagesUrls, TranslationFiles } from "../../../../core/core";
+import { FunctionComponent, useContext, useState } from "react";
+import { TranslationFiles } from "../../../../core/core";
 import classes from "./style.module.css";
 import Image from "next/image";
 import Title from "antd/lib/typography/Title";
 import Text from "antd/lib/typography/Text";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { AppContext } from "../../../../core/app/app.context";
-import Link from "next/link";
-import { useRouter } from "next/dist/client/router";
+import { customerVisitorServices } from "../../../customers/services/customer-visitor/services/customer-visitor.services";
+import { useForm } from "antd/lib/form/Form";
 
 interface HomeFifthProps {}
 
 const HomeFifth: FunctionComponent<HomeFifthProps> = () => {
   const { t } = useTranslation(TranslationFiles.HOME);
 
-  const { push, locale } = useRouter();
+  const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
 
   const { lg } = useBreakpoint();
 
   const { direction } = useContext(AppContext);
+
+  const [loading, setLoading] = useState(false);
+
+  const [form] = useForm();
 
   return (
     <Row className={classes.fifthContainer} justify="center">
@@ -59,19 +63,72 @@ const HomeFifth: FunctionComponent<HomeFifthProps> = () => {
                 </div>
               </Col>
             </Row>
-            <div className={classes.buttonContainer}>
-              <Link href={PagesUrls.RESTAURANTS} locale={locale}>
-                <a>
-                  <Button
-                    size="large"
-                    type="primary"
-                    onClick={() => push(PagesUrls.RESTAURANTS)}
+            <Form
+              form={form}
+              style={{ margin: "1.5rem 0" }}
+              validateMessages={{
+                required: tCommon("form.validation.required"),
+              }}
+              onFinish={async (values) => {
+                setLoading(true);
+                await customerVisitorServices
+                  .create(values)
+                  .then(() => {
+                    Modal.success({
+                      title: tCommon("yourRequestHasBeenSubmit"),
+                    });
+                    setLoading(false);
+                    form.resetFields();
+                  })
+                  .catch((error) => {
+                    notification.error({
+                      message: error.response.data.error.message,
+                    });
+                    setLoading(false);
+                  });
+              }}
+            >
+              <Row gutter={[16, 16]}>
+                <Col xs={24} lg={12}>
+                  <Form.Item
+                    name="name"
+                    rules={[
+                      { required: true },
+                      { max: 128, message: tCommon("form.validation.range") },
+                    ]}
+                    required
                   >
-                    {t("fifth.getStarted")}
-                  </Button>
-                </a>
-              </Link>
-            </div>
+                    <Input
+                      placeholder={tCommon("form.fields.restaurantName")}
+                    />
+                  </Form.Item>
+                </Col>
+                <Col xs={24} lg={12}>
+                  <Form.Item
+                    name="emailOrPhoneNumber"
+                    rules={[
+                      { required: true },
+                      { max: 128, message: tCommon("form.validation.range") },
+                    ]}
+                    required
+                  >
+                    <Input placeholder={tCommon("form.fields.phoneNumber")} />
+                  </Form.Item>
+                </Col>
+                <Col span={24} style={{ textAlign: lg ? "end" : "center" }}>
+                  <Form.Item>
+                    <Button
+                      size="large"
+                      htmlType="submit"
+                      type="primary"
+                      loading={loading}
+                    >
+                      {tCommon("joinToPaprika")}
+                    </Button>
+                  </Form.Item>
+                </Col>
+              </Row>
+            </Form>
           </Col>
         </Row>
       </Col>

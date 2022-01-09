@@ -19,40 +19,42 @@ const HomeFourthServiceCard: FunctionComponent<HomeFourthServiceCardProps> = ({
   const { md } = useBreakpoint();
   return (
     <Col span={22} id={data.id} className={classes.cardContainer}>
-      <Card className={classes.card}>
-        <Row
-          justify={!md ? "center" : "space-around"}
-          align="middle"
-          gutter={[0, 16]}
-        >
-          <Col
-            xs={22}
-            md={11}
-            order={md ? (isContentRight ? 1 : 0) : 0}
-            style={{ textAlign: !md ? "center" : "inherit" }}
+      <div data-aos={data.animationType} data-aos-duration="500">
+        <Card className={classes.card}>
+          <Row
+            justify={!md ? "center" : "space-around"}
+            align="middle"
+            gutter={[0, 16]}
           >
-            <Title level={3} className={classes.cardTitle}>
-              {data.title}
-            </Title>
-            <br />
-            <Text className={classes.cardText}>{data.description}</Text>
-          </Col>
-          <Col
-            xs={22}
-            md={11}
-            style={{ position: "relative", minHeight: "16rem" }}
-          >
-            <Image
-              className={classes.cardImage}
-              src={data.backgroundImage.src}
-              alt={data.backgroundImage.alt}
-              layout="fill"
-              objectFit="contain"
-              objectPosition="center"
-            />
-          </Col>
-        </Row>
-      </Card>
+            <Col
+              xs={22}
+              md={11}
+              order={md ? (isContentRight ? 1 : 0) : 0}
+              style={{ textAlign: !md ? "center" : "inherit" }}
+            >
+              <Title level={3} className={classes.cardTitle}>
+                {data.title}
+              </Title>
+              <br />
+              <Text className={classes.cardText}>{data.description}</Text>
+            </Col>
+            <Col
+              xs={22}
+              md={11}
+              style={{ position: "relative", minHeight: "16rem" }}
+            >
+              <Image
+                className={classes.cardImage}
+                src={data.backgroundImage.src}
+                alt={data.backgroundImage.alt}
+                layout="fill"
+                objectFit="contain"
+                objectPosition="center"
+              />
+            </Col>
+          </Row>
+        </Card>
+      </div>
     </Col>
   );
 };

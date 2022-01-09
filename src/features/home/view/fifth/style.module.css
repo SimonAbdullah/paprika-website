@@ -33,11 +33,6 @@
   padding: 0 5px;
 }
 
-.buttonContainer {
-  text-align: end;
-  font-family: "Roboto";
-}
-
 @media only screen and (max-width: 1300px) {
   .title {
     width: 100%;
@@ -66,10 +61,6 @@
   }
 
   .textContainer {
-    text-align: center;
-  }
-
-  .buttonContainer {
     text-align: center;
   }
 }

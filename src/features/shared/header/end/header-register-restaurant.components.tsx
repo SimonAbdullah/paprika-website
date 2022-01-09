@@ -11,52 +11,59 @@ import classes from "./style.module.css";
 
 interface HeaderRegisterRestaurantButtonProps {}
 
-const HeaderRegisterRestaurantButton: FunctionComponent<HeaderRegisterRestaurantButtonProps> =
-  () => {
-    const { t } = useTranslation(TranslationFiles.COMMON);
+const HeaderRegisterRestaurantButton: FunctionComponent<
+  HeaderRegisterRestaurantButtonProps
+> = () => {
+  const { t } = useTranslation(TranslationFiles.COMMON);
 
-    const { sm } = useBreakpoint();
+  const { sm } = useBreakpoint();
 
-    const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
 
-    const [form] = useForm();
+  const [loading, setLoading] = useState(false);
 
-    return (
-      <>
-        <Button
-          className={classes.registerButton}
-          size={sm ? "large" : "middle"}
-          type="ghost"
-          onClick={() => setVisible(true)}
-        >
-          {t("registerYourRestaurant")}
-        </Button>
-        <RestaurantRegisterModal
-          visible={visible}
-          onCancel={() => {
-            form.resetFields();
-            setVisible(false);
-          }}
-          form={form}
-          onFinish={async (values: CreateVisitorContactInfoDto) => {
-            await customerVisitorServices
-              .create(values)
-              .then(() => {
-                Modal.success({
-                  title: t("yourRequestHasBeenSubmit"),
-                });
-                form.resetFields();
-                setVisible(false);
-              })
-              .catch((error) => {
-                notification.error({
-                  message: error.response.data.error.message,
-                });
+  const [form] = useForm();
+
+  return (
+    <>
+      <Button
+        className={classes.registerButton}
+        size={sm ? "large" : "middle"}
+        type="ghost"
+        onClick={() => setVisible(true)}
+      >
+        {t("registerYourRestaurant")}
+      </Button>
+      <RestaurantRegisterModal
+        visible={visible}
+        onCancel={() => {
+          form.resetFields();
+          setVisible(false);
+        }}
+        form={form}
+        onFinish={async (values: CreateVisitorContactInfoDto) => {
+          setLoading(true);
+          await customerVisitorServices
+            .create(values)
+            .then(() => {
+              Modal.success({
+                title: t("yourRequestHasBeenSubmit"),
               });
-          }}
-        />
-      </>
-    );
-  };
+              setLoading(false);
+              form.resetFields();
+              setVisible(false);
+            })
+            .catch((error) => {
+              notification.error({
+                message: error.response.data.error.message,
+              });
+              setLoading(false);
+            });
+        }}
+        loading={loading}
+      />
+    </>
+  );
+};
 
 export default HeaderRegisterRestaurantButton;

@@ -7,53 +7,56 @@ import { CreateVisitorContactInfoDto } from "../../customers/services/customer-v
 interface RestaurantRegisterModalProps extends ModalProps {
   form?: FormInstance;
   onFinish?: (values: CreateVisitorContactInfoDto) => void;
+  loading?: boolean;
 }
 
-const RestaurantRegisterModal: FunctionComponent<RestaurantRegisterModalProps> =
-  ({ form, onFinish, ...props }) => {
-    const { t } = useTranslation(TranslationFiles.COMMON);
+const RestaurantRegisterModal: FunctionComponent<
+  RestaurantRegisterModalProps
+> = ({ form, onFinish, loading, ...props }) => {
+  const { t } = useTranslation(TranslationFiles.COMMON);
 
-    return (
-      <Modal
-        keyboard
-        okText={t("submit")}
-        onOk={() => {
-          form?.submit();
-        }}
-        cancelText={t("cancel")}
-        {...props}
+  return (
+    <Modal
+      keyboard
+      okText={t("submit")}
+      okButtonProps={{ loading: loading }}
+      onOk={() => {
+        form?.submit();
+      }}
+      cancelText={t("cancel")}
+      {...props}
+    >
+      <Form
+        form={form}
+        layout="vertical"
+        validateMessages={{ required: t("form.validation.required") }}
+        onFinish={onFinish}
       >
-        <Form
-          form={form}
-          layout="vertical"
-          validateMessages={{ required: t("form.validation.required") }}
-          onFinish={onFinish}
+        <Form.Item
+          label={t("form.fields.restaurantName")}
+          name="name"
+          rules={[
+            { required: true },
+            { max: 128, message: t("form.validation.range") },
+          ]}
+          required
         >
-          <Form.Item
-            label={t("form.fields.restaurantName")}
-            name="name"
-            rules={[
-              { required: true },
-              { max: 128, message: t("form.validation.range") },
-            ]}
-            required
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label={t("form.fields.phoneNumber")}
-            name="emailOrPhoneNumber"
-            rules={[
-              { required: true },
-              { max: 128, message: t("form.validation.range") },
-            ]}
-            required
-          >
-            <Input />
-          </Form.Item>
-        </Form>
-      </Modal>
-    );
-  };
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label={t("form.fields.phoneNumber")}
+          name="emailOrPhoneNumber"
+          rules={[
+            { required: true },
+            { max: 128, message: t("form.validation.range") },
+          ]}
+          required
+        >
+          <Input />
+        </Form.Item>
+      </Form>
+    </Modal>
+  );
+};
 
 export default RestaurantRegisterModal;

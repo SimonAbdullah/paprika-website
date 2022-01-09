@@ -18,9 +18,7 @@ const Home: FunctionComponent<HomeProps> = () => {
       <div data-aos="zoom-out" data-aos-duration="500">
         <HomeThird />
       </div>
-      <div data-aos="slide-left" data-aos-duration="500">
-        <HomeFourth />
-      </div>
+      <HomeFourth />
       <div data-aos="slide-right" data-aos-duration="500">
         <HomeFifth />
       </div>

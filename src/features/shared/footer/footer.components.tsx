@@ -1,18 +1,15 @@
-import { FunctionComponent, useContext } from "react";
+import { FunctionComponent } from "react";
 import { Footer as Foot } from "antd/lib/layout/layout";
 import classes from "./style.module.css";
 import FooterStart from "./start/footer-start.components";
 import { Col, Row } from "antd";
 import FooterEnd from "./end/footer-end.components";
 import FooterMiddle from "./middle/footer-middle.components";
-import { AppContext } from "../../../core/app/app.context";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 
 interface FooterProps {}
 
 const Footer: FunctionComponent<FooterProps> = () => {
-  const { direction } = useContext(AppContext);
-
   const { lg, xl } = useBreakpoint();
 
   return (
