@@ -31,7 +31,7 @@ const HomeThird: FunctionComponent<HomeThirdProps> = () => {
         <div
           data-aos="slide-left"
           data-aos-duration="500"
-          style={{ height: "100%", width: "100%" }}
+          style={{ height: "100%", width: "100%", position: "relative" }}
         >
           <Image
             className={classes.dishImage}

@@ -5,6 +5,7 @@ import HomeFourth from "./fourth/home-fourth.components";
 import HomeFifth from "./fifth/home-fifth.components";
 import HomeSecond from "./second/home-second.components";
 import HomeFirst from "./first/home-first.components";
+import HomeSixth from "./sixth/home-sixth.components";
 
 interface HomeProps {}
 
@@ -17,8 +18,11 @@ const Home: FunctionComponent<HomeProps> = () => {
       <HomeSecond />
       <HomeThird />
       <HomeFourth />
-      <div data-aos="slide-right" data-aos-duration="500">
+      <div data-aos="fade-up" data-aos-duration="500">
         <HomeFifth />
+      </div>
+      <div data-aos="fade-down" data-aos-duration="500">
+        <HomeSixth />
       </div>
     </div>
   );

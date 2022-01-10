@@ -1,0 +1,91 @@
+.sixthContainer {
+  width: 100%;
+  min-height: 22rem;
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.backgroundImage {
+  z-index: 1;
+}
+
+.contentRow {
+  width: 100%;
+  min-height: 16rem;
+  position: relative;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+.contentColumn {
+  background-color: #b12116;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentContainer {
+  z-index: 2;
+}
+
+.firstSentence,
+.secondSentence {
+  display: block;
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+  font-family: "Inter";
+  margin-bottom: 2rem;
+}
+
+.buttonText {
+  color: #b12116;
+}
+
+@media only screen and (max-width: 991px) {
+  .firstSentence,
+  .secondSentence {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .sixthContainer {
+    min-height: 18rem;
+  }
+
+  .contentRow {
+    min-height: 12.5rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .firstSentence,
+  .secondSentence {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .sixthContainer {
+    min-height: 14rem;
+  }
+
+  .contentRow {
+    min-height: 10rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .contentContainer {
+    padding: 0.5rem 1rem;
+  }
+
+  .firstSentence,
+  .secondSentence {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+}

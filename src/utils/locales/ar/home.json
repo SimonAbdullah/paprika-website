@@ -53,5 +53,10 @@
       "chefWomanImage": "صورة شيف",
       "openImage": "صورة حالة"
     }
+  },
+  "sixth": {
+    "startSuccess": "ابدأ عملك معنا بنجاح",
+    "weHaveALotOfRestaurants": "لدينا العديد من المطاعم المميزة، تحقق منهم الآن.",
+    "restaurantList": "قائمة المطاعم"
   }
 }

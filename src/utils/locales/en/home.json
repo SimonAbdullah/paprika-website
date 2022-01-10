@@ -53,5 +53,10 @@
       "chefWomanImage": "Chef woman image",
       "openImage": "Open image"
     }
+  },
+  "sixth": {
+    "startSuccess": "Start the success of your Business with us",
+    "weHaveALotOfRestaurants": "We have a lot of great restaurant. Check them now.",
+    "restaurantList": "Restaurant List"
   }
 }

@@ -28,6 +28,7 @@
 
 .paragraph {
   color: #ffffff;
+  font-family: "Inter";
 }
 
 .title {
@@ -38,6 +39,7 @@
 .text {
   display: inline-block;
   color: #ffffff;
+  font-family: "Inter";
 }
 
 .learnMore {
