@@ -29,27 +29,29 @@ const HomeFourthServiceColumn: FunctionComponent<
 
   return (
     <Col md={12} lg={8} xl={6} className={classes.column}>
-      <div className={classes.columnContent}>
-        <Image
-          src={image.src}
-          alt={image.alt}
-          width="80px"
-          height="80px"
-          objectPosition="center"
-        />
-        <Paragraph className={`${classes.paragraph} ${classes.title}`}>
-          {title}
-        </Paragraph>
-        <Text className={classes.text}>{description}</Text>
+      <div data-aos="zoom-out" data-aos-duration="500">
+        <div className={classes.columnContent}>
+          <Image
+            src={image.src}
+            alt={image.alt}
+            width="80px"
+            height="80px"
+            objectPosition="center"
+          />
+          <Paragraph className={`${classes.paragraph} ${classes.title}`}>
+            {title}
+          </Paragraph>
+          <Text className={classes.text}>{description}</Text>
+        </div>
+        <Text className={`${classes.text} ${classes.learnMore}`}>
+          <Link href={learnMoreHref}>
+            <a>
+              {t("fourth.learnMore")}{" "}
+              {direction === "ltr" ? <RightOutlined /> : <LeftOutlined />}
+            </a>
+          </Link>
+        </Text>
       </div>
-      <Text className={`${classes.text} ${classes.learnMore}`}>
-        <Link href={learnMoreHref}>
-          <a>
-            {t("fourth.learnMore")}{" "}
-            {direction === "ltr" ? <RightOutlined /> : <LeftOutlined />}
-          </a>
-        </Link>
-      </Text>
     </Col>
   );
 };

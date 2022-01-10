@@ -17,24 +17,22 @@ const HomeFourth: FunctionComponent<HomeFourthProps> = () => {
 
   return (
     <>
-      <div data-aos="slide-left" data-aos-duration="500">
-        <Row className={classes.fourthContainer} justify="center" id="services">
-          <Col span={24}>
-            <Title level={3} className={classes.mainTitle}>
-              {t("fourth.title")}
-            </Title>
-          </Col>
-          {data.map((item, index) => (
-            <HomeFourthServiceColumn
-              key={index}
-              image={item.image}
-              title={item.title}
-              description={item.description}
-              learnMoreHref={item.learnMoreHref}
-            />
-          ))}
-        </Row>
-      </div>
+      <Row className={classes.fourthContainer} justify="center" id="services">
+        <Col span={24}>
+          <Title level={3} className={classes.mainTitle}>
+            {t("fourth.title")}
+          </Title>
+        </Col>
+        {data.map((item, index) => (
+          <HomeFourthServiceColumn
+            key={index}
+            image={item.image}
+            title={item.title}
+            description={item.description}
+            learnMoreHref={item.learnMoreHref}
+          />
+        ))}
+      </Row>
       <Row
         justify="center"
         gutter={[0, 48]}

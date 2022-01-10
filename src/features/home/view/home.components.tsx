@@ -15,9 +15,7 @@ const Home: FunctionComponent<HomeProps> = () => {
         <HomeFirst />
       </div>
       <HomeSecond />
-      <div data-aos="zoom-out" data-aos-duration="500">
-        <HomeThird />
-      </div>
+      <HomeThird />
       <HomeFourth />
       <div data-aos="slide-right" data-aos-duration="500">
         <HomeFifth />

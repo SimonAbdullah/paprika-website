@@ -28,67 +28,75 @@ const HomeThird: FunctionComponent<HomeThirdProps> = () => {
         objectPosition="center"
       />
       <Col xs={24} lg={12} className={classes.dishContainer}>
-        <Image
-          className={classes.dishImage}
-          src={`/images/home/third-dish${
-            direction === "rtl" ? "-reverse" : ""
-          }.png`}
-          alt={t("alt.dishImage")}
-          layout="fill"
-          objectFit="contain"
-          objectPosition="center"
-        />
+        <div
+          data-aos="slide-left"
+          data-aos-duration="500"
+          style={{ height: "100%", width: "100%" }}
+        >
+          <Image
+            className={classes.dishImage}
+            src={`/images/home/third-dish${
+              direction === "rtl" ? "-reverse" : ""
+            }.png`}
+            alt={t("alt.dishImage")}
+            layout="fill"
+            objectFit="contain"
+            objectPosition="center"
+          />
+        </div>
       </Col>
       <Col xs={24} lg={12} className={classes.contentContainer}>
-        <Row className={classes.row}>
-          <Title level={3} className={classes.title}>
-            {t("third.aboutUs")}
-          </Title>
-          <div className={classes.textContainer}>
-            <Text className={classes.text}>
-              {t("third.aboutUsDescription")}
-            </Text>
-          </div>
-        </Row>
-        <Row className={classes.row}>
-          <Title level={3} className={classes.title}>
-            {t("third.followUs")}
-          </Title>
-          <div className={classes.textContainer}>
-            <Space>
-              <a
-                href="https://www.facebook.com/paprika.sar"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={classes.listLink}
-              >
-                <Image
-                  src="/icons/facebook.svg"
-                  alt={tCommon("facebook")}
-                  width="32px"
-                  height="32px"
-                  layout="fixed"
-                  className={classes.icon}
-                />
-              </a>
-              <a
-                href="https://www.instagram.com/paprika_sy/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={classes.listLink}
-              >
-                <Image
-                  src="/icons/instagram.svg"
-                  alt={tCommon("instagram")}
-                  width="32px"
-                  height="32px"
-                  layout="fixed"
-                  className={classes.icon}
-                />
-              </a>
-            </Space>
-          </div>
-        </Row>
+        <div data-aos="slide-right" data-aos-duration="500">
+          <Row className={classes.row}>
+            <Title level={3} className={classes.title}>
+              {t("third.aboutUs")}
+            </Title>
+            <div className={classes.textContainer}>
+              <Text className={classes.text}>
+                {t("third.aboutUsDescription")}
+              </Text>
+            </div>
+          </Row>
+          <Row className={classes.row}>
+            <Title level={3} className={classes.title}>
+              {t("third.followUs")}
+            </Title>
+            <div className={classes.textContainer}>
+              <Space>
+                <a
+                  href="https://www.facebook.com/paprika.sar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={classes.listLink}
+                >
+                  <Image
+                    src="/icons/facebook.svg"
+                    alt={tCommon("facebook")}
+                    width="32px"
+                    height="32px"
+                    layout="fixed"
+                    className={classes.icon}
+                  />
+                </a>
+                <a
+                  href="https://www.instagram.com/paprika_sy/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={classes.listLink}
+                >
+                  <Image
+                    src="/icons/instagram.svg"
+                    alt={tCommon("instagram")}
+                    width="32px"
+                    height="32px"
+                    layout="fixed"
+                    className={classes.icon}
+                  />
+                </a>
+              </Space>
+            </div>
+          </Row>
+        </div>
       </Col>
     </Row>
   );
