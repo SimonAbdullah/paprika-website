@@ -2,8 +2,7 @@ import { Card, Col, Row, Avatar } from "antd";
 import { FunctionComponent, useState } from "react";
 import Image from "next/image";
 import classes from "./style.module.css";
-import useTranslation from "next-translate/useTranslation";
-import { PagesUrls, TranslationFiles } from "../../../../core/core";
+import { PagesUrls } from "../../../../core/core";
 import Text from "antd/lib/typography/Text";
 import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
@@ -17,8 +16,6 @@ interface HomeCardEventProps {
 }
 
 const HomeCardEvent: FunctionComponent<HomeCardEventProps> = ({ event }) => {
-  const { t } = useTranslation(TranslationFiles.HOME);
-
   const { sm } = useBreakpoint();
 
   const { locale } = useRouter();

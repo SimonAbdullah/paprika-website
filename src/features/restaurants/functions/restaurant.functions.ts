@@ -1,6 +1,5 @@
 import { CityDto } from "../services/places/models/city-dto.models";
 import { CountryDto } from "../services/places/models/country-dto";
-import { PlacesGetAllParams } from "../services/places/models/places-get-all-params.models";
 import { RegionDto } from "../services/places/models/region-dto";
 
 export const restaurantAddressDetails = ({

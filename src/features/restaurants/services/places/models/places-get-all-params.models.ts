@@ -1,5 +1,3 @@
-import { RestaurantHomeDto } from "../../../../customers/services/customer-restaurant/models/restaurantHomeDto";
-
 export interface PlacesGetAllParams {
   parkingType?: number;
   ambianceType?: number;

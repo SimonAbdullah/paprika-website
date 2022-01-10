@@ -7,7 +7,7 @@ import { useRestaurantDetails } from "../../../../customers/hooks/customer-resta
 import classes from "./style.module.css";
 import RestaurantGalleryItem from "./restaurant-gallery-item.components";
 import { GalleryItemDto } from "../../../../customers/services/customer-restaurant/models/galleryItemDto";
-import { isDataEmpty, isOdd } from "../../../../../core/functions";
+import { isDataEmpty } from "../../../../../core/functions";
 import { GALLERY } from "../../../constants/restaurants.constants";
 import ImagesPreview from "../../../../shared/images-preview/images-preview.components";
 

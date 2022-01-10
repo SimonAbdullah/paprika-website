@@ -8,7 +8,6 @@ import {
   useState,
 } from "react";
 import { INIT_FUNCTION } from "../../../core/app/app.constants";
-import { useCustomerConfiguration } from "../../customers/hooks/customer-configuration.hooks";
 import { PlacesGetAllParams } from "../services/places/models/places-get-all-params.models";
 
 interface RestaurantsListContextProps {
@@ -28,41 +27,40 @@ export const RestaurantsListContext =
 
 interface RestaurantsListContextProviderProps {}
 
-const RestaurantsListContextProvider: FunctionComponent<RestaurantsListContextProviderProps> =
-  (props) => {
-    const { query } = useRouter();
+const RestaurantsListContextProvider: FunctionComponent<
+  RestaurantsListContextProviderProps
+> = (props) => {
+  const { query } = useRouter();
 
-    const [isGridView, setIsGridView] = useState(true);
+  const [isGridView, setIsGridView] = useState(true);
 
-    const [options, setOptions] = useState<PlacesGetAllParams>({});
+  const [options, setOptions] = useState<PlacesGetAllParams>({});
 
-    const { types } = useCustomerConfiguration();
+  useEffect(() => {
+    if (query) {
+      const result: any = {
+        ...query,
+        ...(query.countryId ? { countryId: Number(query.countryId) } : {}),
+        ...(query.cityId ? { cityId: Number(query.cityId) } : {}),
+        ...(query.regionId ? { regionId: Number(query.regionId) } : {}),
+      };
 
-    useEffect(() => {
-      if (query) {
-        const result: any = {
-          ...query,
-          ...(query.countryId ? { countryId: Number(query.countryId) } : {}),
-          ...(query.cityId ? { cityId: Number(query.cityId) } : {}),
-          ...(query.regionId ? { regionId: Number(query.regionId) } : {}),
-        };
+      setOptions(result);
+    }
+  }, [query]);
 
-        setOptions(result);
-      }
-    }, [query]);
-
-    return (
-      <RestaurantsListContext.Provider
-        value={{
-          isGridView: isGridView,
-          setIsGridView: setIsGridView,
-          options: options,
-          setOptions: setOptions,
-        }}
-      >
-        {props.children}
-      </RestaurantsListContext.Provider>
-    );
-  };
+  return (
+    <RestaurantsListContext.Provider
+      value={{
+        isGridView: isGridView,
+        setIsGridView: setIsGridView,
+        options: options,
+        setOptions: setOptions,
+      }}
+    >
+      {props.children}
+    </RestaurantsListContext.Provider>
+  );
+};
 
 export default RestaurantsListContextProvider;

@@ -1,6 +1,4 @@
-import { useCookies } from "react-cookie";
 import { useQuery, UseQueryOptions } from "react-query";
-import { PagesUrls } from "../../../core/core";
 import { customerConfigurationServices } from "../services/customer-configuration/customer-configuration.services";
 import { GetInitialConfigurationsParams } from "../services/customer-configuration/models/get-initial-configurations-params.models";
 import { InitializationDto } from "../services/customer-configuration/models/initialization-dto.models";
