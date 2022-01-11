@@ -5,20 +5,17 @@ import { FunctionComponent } from "react";
 import { TranslationFiles } from "../../../../core/core";
 import Image from "next/image";
 import classes from "../style.module.css";
-import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 
 interface FooterEndProps {}
 
 const FooterEnd: FunctionComponent<FooterEndProps> = () => {
   const { t } = useTranslation(TranslationFiles.COMMON);
 
-  const { sm } = useBreakpoint();
-
   return (
     <Row>
       <Space direction="vertical" size="middle">
         <Text className={classes.footerEndTitle}>{t("appDownload")}</Text>
-        <Space direction={sm ? "horizontal" : "vertical"}>
+        <Row>
           <div className={classes.googlePlayContainer}>
             <a
               href="https://play.google.com/store/apps/details?id=com.paprika_sy.customer"
@@ -28,8 +25,8 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
               <Image
                 src={`/icons/google-play.svg`}
                 alt={t("googlePlay")}
-                width="97px"
-                height="33px"
+                width="120px"
+                height="40px"
                 layout="fixed"
               />
             </a>
@@ -43,8 +40,8 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
               <Image
                 src={`/icons/app-store.svg`}
                 alt={t("appStore")}
-                width="97px"
-                height="33px"
+                width="120px"
+                height="40px"
                 layout="fixed"
               />
             </a>
@@ -58,13 +55,13 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
               <Image
                 src={`/icons/direct-link.svg`}
                 alt={t("directLink")}
-                width="97px"
-                height="33px"
+                width="120px"
+                height="40px"
                 layout="fixed"
               />
             </a>
           </div>
-        </Space>
+        </Row>
       </Space>
     </Row>
   );

@@ -21,6 +21,16 @@ const FooterMiddle: FunctionComponent<FooterMiddleProps> = () => {
         <ul className={classes.list}>
           <Text className={classes.listTitle}>{t("aboutPaprika")}</Text>
           <li>
+            <a
+              href="https://paprika-sy.com/paprika-privacy-policy.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={classes.listLink}
+            >
+              {t("privacyPolicy")}
+            </a>
+          </li>
+          <li>
             <LinkComponent
               linkProps={{ href: PagesUrls.RESTAURANTS, locale: locale }}
               anchorProps={{ className: classes.listLink }}
@@ -34,14 +44,6 @@ const FooterMiddle: FunctionComponent<FooterMiddleProps> = () => {
               anchorProps={{ className: classes.listLink }}
             >
               {t("ourServices")}
-            </LinkComponent>
-          </li>
-          <li>
-            <LinkComponent
-              linkProps={{ href: `${PagesUrls.HOME}#aboutUs`, locale: locale }}
-              anchorProps={{ className: classes.listLink }}
-            >
-              {t("aboutUs")}
             </LinkComponent>
           </li>
         </ul>
@@ -64,16 +66,6 @@ const FooterMiddle: FunctionComponent<FooterMiddleProps> = () => {
             >
               +963 9356 85210
             </LinkComponent>
-          </li>
-          <li>
-            <a
-              href="https://paprika-sy.com/paprika-privacy-policy.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={classes.listLink}
-            >
-              {t("privacyPolicy")}
-            </a>
           </li>
         </ul>
       </Col>

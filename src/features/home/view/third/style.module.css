@@ -23,11 +23,11 @@
   color: #000000;
   font-weight: bold;
   font-size: 2.5rem;
-  margin: 1rem 0;
+  margin-bottom: 0.5rem;
 }
 
 .textContainer {
-  margin: 1rem 0;
+  margin-bottom: 1rem;
   padding-inline-end: 3rem;
   width: 100%;
 }

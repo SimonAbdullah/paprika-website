@@ -8,13 +8,13 @@
   "restaurants": "Restaurants",
   "registerYourRestaurant": "Register your restaurant",
   "english": "English",
-  "arabic": "Arabic",
+  "arabic": "العربية",
   "submit": "Submit",
   "cancel": "Cancel",
   "paprika": "Paprika",
   "followUs": "Follow Us",
   "aboutPaprika": "About Paprika",
-  "getInTouch": "Get In Touch",
+  "getInTouch": "Get in Touch",
   "appDownload": "Download our app for full experiences",
   "facebook": "Facebook",
   "twitter": "Twitter",
@@ -26,13 +26,13 @@
   "dontHavePaprikaOnYourDevice": "Don't have Paprika on your device...",
   "downloadNow": "Download Now!",
   "privacyPolicy": "Privacy Policy",
-  "joinToPaprika": "Join to Paprika",
+  "joinToPaprika": "Join Paprika",
   "yourRequestHasBeenSubmit": "Thank you. We will contact you within 48 hour",
   "youShouldEnterValidNameAndPhoneNumber": "You should enter a valid name and phone number",
   "form": {
     "fields": {
       "restaurantName": "Restaurant Name",
-      "phoneNumber": "Phone number"
+      "phoneNumber": "Phone Number"
     },
     "validation": {
       "required": "This field is required",

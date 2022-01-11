@@ -1,7 +1,7 @@
 {
   "home": "الرئيسية",
   "paprika": "بابريكا",
-  "attractNewCustomersToYourRestaurant": "إجذب عملاء جدد إلى مطعمك",
+  "attractNewCustomersToYourRestaurant": "اجذب عملاء جدد إلى مطعمك",
   "close": "إغلاق",
   "alt": {
     "backgroundImage": "صورة الخلفية",
@@ -46,11 +46,14 @@
     "learnMore": "اعرف المزيد"
   },
   "fifth": {
-    "submitYourRestaurantToOurList": "أضف مطعمك إلى قائمتنا!",
+    "getYourGuests": "أضف مطعمك إلى قائمتنا",
     "partnerWithPaprikaToday": "شريك مع",
     "todayItsEasyAndYouCanCancelAtAnyTime": "اليوم، إنها سهلة ويمكنك الإلغاء في أي وقت",
+    "joinThePartner": "انضم الآن الى بابريكا، الشريك الأفضل لمساعدة",
+    "guests": "زبائن",
+    "toKnowYou": "مطعمك.",
     "alt": {
-      "chefWomanImage": "صورة شيف",
+      "groupImage": "صورة مجموعة",
       "openImage": "صورة حالة"
     }
   },

@@ -1,7 +1,7 @@
 {
   "home": "Home",
   "paprika": "Paprika",
-  "attractNewCustomersToYourRestaurant": "Attract New Customers To Your Restaurant",
+  "attractNewCustomersToYourRestaurant": "Attract new customers to your restaurant",
   "close": "Close",
   "alt": {
     "backgroundImage": "Background image",
@@ -46,17 +46,20 @@
     "learnMore": "Learn More"
   },
   "fifth": {
-    "submitYourRestaurantToOurList": "Submit Your Restaurant To Our List!",
-    "partnerWithPaprikaToday": "Partner With",
-    "todayItsEasyAndYouCanCancelAtAnyTime": "Today, It's Easy And You Can Cancel At Any Time!",
+    "getYourGuests": "Get your guests to your front door.",
+    "partnerWithPaprikaToday": "Partner with",
+    "todayItsEasyAndYouCanCancelAtAnyTime": "today, it's easy and you can cancel at any time!",
+    "joinThePartner": "Join the partner you need to help your",
+    "guests": "Guests",
+    "toKnowYou": "to know you more.",
     "alt": {
-      "chefWomanImage": "Chef woman image",
+      "groupImage": "Group image",
       "openImage": "Open image"
     }
   },
   "sixth": {
     "startSuccess": "Start the success of your Business with us",
-    "weHaveALotOfRestaurants": "We have a lot of great restaurant. Check them now.",
-    "restaurantList": "Restaurant List"
+    "weHaveALotOfRestaurants": "We have a lot of great restaurants. Check them now.",
+    "restaurantsList": "Restaurants List"
   }
 }

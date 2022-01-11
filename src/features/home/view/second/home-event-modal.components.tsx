@@ -65,14 +65,13 @@ const HomeEventModal: FunctionComponent<HomeEventModalProps> = ({
             </Link>
             <div>
               <Text className={classes.modalTitle}>{event?.name}</Text>{" "}
+              <Text className={classes.at}>{t("second.at")} </Text>
               <Link
                 href={`${PagesUrls.RESTAURANTS}/${event?.restaurantName}`}
                 locale={locale}
               >
                 <a className={classes.modalRestaurantName}>
-                  <Text>
-                    {t("second.at")} {event?.restaurantName}
-                  </Text>
+                  <Text>{event?.restaurantName}</Text>
                 </a>
               </Link>
             </div>

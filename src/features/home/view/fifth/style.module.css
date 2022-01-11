@@ -1,8 +1,8 @@
 .fifthContainer {
   width: 100%;
-  min-height: 40rem;
+  min-height: 35rem;
   position: relative;
-  padding: 0 5rem;
+  padding: 0 4.5rem;
 }
 
 .contentContainer {
@@ -29,8 +29,57 @@
 
 .paprika {
   color: #ffffff;
-  background: #f7a800;
+  background: var(--primary-color);
   padding: 0 5px;
+  margin: 0 0.1rem;
+}
+
+.joinText {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000000;
+}
+
+.guestContainer {
+  display: inline-block;
+  position: relative;
+  padding: 0 0.3rem;
+}
+
+.red {
+  position: absolute;
+  inset: 0;
+  transform: skewX(15deg);
+  transform-origin: top;
+  background-color: var(--primary-color);
+  z-index: 1;
+}
+
+.black {
+  inset: 0;
+  position: absolute;
+  z-index: 0;
+  background-color: #000000;
+  transform: skewX(-15deg);
+  transform-origin: top;
+}
+
+.guest {
+  position: relative;
+  color: white;
+  inset-inline-end: 0;
+  z-index: 3;
+  padding-inline-start: 0.5rem;
+}
+
+.red:lang(ar) {
+  transform: skewX(-15deg);
+}
+
+.black:lang(ar) {
+  transform: skewX(15deg);
 }
 
 @media only screen and (max-width: 1300px) {

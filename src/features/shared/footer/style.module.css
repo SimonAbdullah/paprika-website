@@ -36,16 +36,11 @@
   font-weight: bold;
 }
 
-.googlePlayContainer {
-  width: 100%;
-}
-
-.appStoreContainer {
-  width: 100%;
-}
-
+.googlePlayContainer,
+.appStoreContainer,
 .directLinkContainer {
-  width: 100%;
+  margin-inline-end: 0.5rem;
+  display: inline-block;
 }
 
 @media only screen and (max-width: 1199px) {

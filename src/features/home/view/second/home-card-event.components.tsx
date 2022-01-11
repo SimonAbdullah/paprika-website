@@ -59,13 +59,6 @@ const HomeCardEvent: FunctionComponent<HomeCardEventProps> = ({ event }) => {
                   >
                     {moment(event?.time).format("YYYY/MM/DD hh:mm a")}
                   </Text>
-                  <Text
-                    className={classes.eventDescription}
-                    ellipsis={{ tooltip: event?.description }}
-                    onClick={() => setVisible(true)}
-                  >
-                    {event?.description}
-                  </Text>
                 </Col>
                 {sm && (
                   <div className={classes.eventRestaurantAvatarContainer}>

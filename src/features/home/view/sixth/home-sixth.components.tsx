@@ -34,17 +34,14 @@ const HomeSixth: FunctionComponent<HomeSixthProps> = () => {
         <Row justify="center" className={classes.contentRow}>
           <Col span={24} className={classes.contentColumn}>
             <div className={classes.contentContainer}>
-              <Text className={classes.firstSentence}>
-                {t("sixth.startSuccess")}
-              </Text>
-              <Text className={classes.secondSentence}>
+              <Text className={classes.title}>
                 {t("sixth.weHaveALotOfRestaurants")}
               </Text>
               <Link href={PagesUrls.RESTAURANTS} locale={locale}>
                 <a>
                   <Button>
                     <Text className={classes.buttonText}>
-                      {t("sixth.restaurantList")}
+                      {t("sixth.restaurantsList")}
                     </Text>
                   </Button>
                 </a>

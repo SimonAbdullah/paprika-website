@@ -30,11 +30,11 @@ const HomeFifth: FunctionComponent<HomeFifthProps> = () => {
     <Row className={classes.fifthContainer} justify="center">
       <Col xs={24} lg={15} className={classes.contentContainer}>
         <Title level={3} className={classes.title}>
-          {t("fifth.submitYourRestaurantToOurList")}
+          {t("fifth.getYourGuests")}
         </Title>
         <Row justify={lg ? "start" : "center"}>
           <Col>
-            <Row justify={lg ? "start" : "center"}>
+            <Row justify={lg ? "start" : "center"} gutter={16}>
               <Col>
                 <Image
                   className={classes.chefWomanImage}
@@ -63,6 +63,17 @@ const HomeFifth: FunctionComponent<HomeFifthProps> = () => {
                 </div>
               </Col>
             </Row>
+            <Text className={classes.joinText}>
+              {t("fifth.joinThePartner")}
+              &nbsp; &nbsp;
+              <div className={classes.guestContainer}>
+                <div className={classes.red} />
+                <div className={classes.black} />
+                <Text className={classes.guest}>{t("fifth.guests")}</Text>
+              </div>
+              &nbsp; &nbsp;
+              {t("fifth.toKnowYou")}
+            </Text>
             <Form
               form={form}
               style={{ margin: "1.5rem 0" }}
@@ -135,7 +146,7 @@ const HomeFifth: FunctionComponent<HomeFifthProps> = () => {
       <Col xs={24} lg={9} className={classes.chefWomanImageContainer}>
         <Image
           className={classes.chefWomanImage}
-          src={`/images/home/fifth-chef-woman${
+          src={`/images/home/fifth-group-picture${
             direction === "rtl" ? "-reverse" : ""
           }.png`}
           alt={t("fifth.alt.chefWomanImage")}

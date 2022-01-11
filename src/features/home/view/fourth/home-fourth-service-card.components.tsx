@@ -35,7 +35,6 @@ const HomeFourthServiceCard: FunctionComponent<HomeFourthServiceCardProps> = ({
               <Title level={3} className={classes.cardTitle}>
                 {data.title}
               </Title>
-              <br />
               <Text className={classes.cardText}>{data.description}</Text>
             </Col>
             <Col

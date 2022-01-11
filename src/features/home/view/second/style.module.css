@@ -151,17 +151,6 @@
   line-height: 1.1rem;
 }
 
-.eventDescription,
-.eventDescription span {
-  color: var(--home-card-title-color);
-  font-size: 0.8rem;
-  text-align: center;
-  vertical-align: middle;
-  display: flex;
-  align-items: center;
-  line-height: 1.1rem;
-}
-
 .eventRestaurantAvatarContainer {
   position: absolute;
   inset-block-start: 1rem;
@@ -184,9 +173,14 @@
 }
 
 .modalTitle {
-  color: var(--primary-color);
+  color: rgba(0, 0, 0, 0.85);
   display: inline-block;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.at {
   vertical-align: middle;
 }
 
@@ -194,7 +188,7 @@
   display: inline-block;
   font-size: 1rem;
   vertical-align: middle;
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--primary-color);
 }
 
 .modalRestaurantName:hover,
