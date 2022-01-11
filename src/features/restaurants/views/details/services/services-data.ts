@@ -80,14 +80,14 @@ export const useServicesData = () => {
     },
     {
       logo: "/images/restaurant/shisha.svg",
-      title: t("hookah"),
-      alt: t("hookah"),
+      title: t("shisha"),
+      alt: t("shisha"),
       description: data?.hasShisha ? t("hasShisha") : t("noShisha"),
     },
     {
       logo: "/images/restaurant/cups.svg",
-      title: t("bear"),
-      alt: t("bear"),
+      title: t("alcohol"),
+      alt: t("alcohol"),
       description: data?.isAlcoholFree ? t("alcoholFree") : t("hasAlcohol"),
     },
     {

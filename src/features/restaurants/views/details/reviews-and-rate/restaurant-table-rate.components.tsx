@@ -19,7 +19,7 @@ const RestaurantTableRate: FunctionComponent<RestaurantTableRateProps> = () => {
           <tr>
             <th>{t("food")}</th>
             <th>{t("service")}</th>
-            <th>{t("hookah")}</th>
+            <th>{t("shisha")}</th>
             <th>{t("ambiance")}</th>
             <th>{t("noiseLevel")}</th>
           </tr>

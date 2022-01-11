@@ -23,7 +23,7 @@ const HeaderDownloadBanner: FunctionComponent<
     <Row justify="center" className={classes.container}>
       <Button
         type="link"
-        size="small"
+        size="large"
         icon={<CloseOutlined />}
         className={classes.closeButton}
         onClick={() => {

@@ -3,9 +3,10 @@ import Text from "antd/lib/typography/Text";
 import Title from "antd/lib/typography/Title";
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent } from "react";
-import { TranslationFiles } from "../../../../../core/core";
+import { PagesUrls, TranslationFiles } from "../../../../../core/core";
 import { getSumOfObjectValues } from "../../../../../core/functions";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
+import Link from "next/link";
 import classes from "./style.module.css";
 
 interface RestaurantMainInfoProps {}
@@ -30,9 +31,14 @@ const RestaurantMainInfo: FunctionComponent<RestaurantMainInfoProps> = () => {
             disabled
             value={data.restaurantRate}
           />
-          <Text className={classes.reviews} type="danger">
-            {t("ratedBy")} {getSumOfObjectValues(data.restaurantRaters || {})}
-          </Text>
+          <Link href={`${PagesUrls.RESTAURANTS}/${data.name}#reviewsAndRate`}>
+            <a className={classes.reviews}>
+              <Text>
+                {t("ratedBy")}{" "}
+                {getSumOfObjectValues(data.restaurantRaters || {})}
+              </Text>
+            </a>
+          </Link>
         </div>
       )}
     </Row>

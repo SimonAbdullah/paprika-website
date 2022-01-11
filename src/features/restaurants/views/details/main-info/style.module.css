@@ -27,6 +27,12 @@
 
 .reviews {
   margin-inline-start: 0.5rem;
+  color: #25272b;
+}
+
+.reviews:hover,
+.reviews:focus {
+  color: gray;
 }
 
 @media only screen and (max-width: 991px) {

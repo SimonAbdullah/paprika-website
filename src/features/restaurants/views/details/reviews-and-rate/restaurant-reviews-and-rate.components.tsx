@@ -9,18 +9,19 @@ import classes from "./style.module.css";
 
 interface RestaurantReviewsAndRateProps {}
 
-const RestaurantReviewsAndRate: FunctionComponent<RestaurantReviewsAndRateProps> =
-  () => {
-    const { t } = useTranslation(TranslationFiles.RESTAURANT);
+const RestaurantReviewsAndRate: FunctionComponent<
+  RestaurantReviewsAndRateProps
+> = () => {
+  const { t } = useTranslation(TranslationFiles.RESTAURANT);
 
-    return (
-      <>
-        <Text className={classes.title}>{t("reviewsAndRate")}</Text>
-        <RestaurantTableRate />
-        <RestaurantRate />
-        <RestaurantReviewsList />
-      </>
-    );
-  };
+  return (
+    <div id="reviewsAndRate">
+      <Text className={classes.title}>{t("reviewsAndRate")}</Text>
+      <RestaurantTableRate />
+      <RestaurantRate />
+      <RestaurantReviewsList />
+    </div>
+  );
+};
 
 export default RestaurantReviewsAndRate;
