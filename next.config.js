@@ -21,6 +21,10 @@ module.exports = {
   ...config,
   reactStrictMode: true,
   images: {
-    domains: ["api.paprika.inter.itland-sy.com", "prodapi.paprika-sy.com"],
+    domains: [
+      "api.paprika.inter.itland-sy.com",
+      "paprika-testing-api.azurewebsites.net",
+      "prodapi.paprika-sy.com",
+    ],
   },
 };

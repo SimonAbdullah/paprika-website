@@ -143,25 +143,12 @@
   vertical-align: middle;
 }
 
-.eventCardRestaurantName {
-  display: block;
-  font-size: 1rem;
-  color: var(--home-card-title-color);
-  font-weight: bold;
-  line-height: 1rem;
-}
-
-.eventCardRestaurantName:hover,
-.eventCardRestaurantName:focus {
-  color: #e1e1e1;
-}
-
 .eventTime {
-  height: 1.4rem;
   text-align: start;
   display: block;
   color: var(--home-card-title-color);
   font-size: 0.8rem;
+  line-height: 1.1rem;
 }
 
 .eventDescription,
@@ -172,7 +159,7 @@
   vertical-align: middle;
   display: flex;
   align-items: center;
-  height: 1.4rem;
+  line-height: 1.1rem;
 }
 
 .eventRestaurantAvatarContainer {

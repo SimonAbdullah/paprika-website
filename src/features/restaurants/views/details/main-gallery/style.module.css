@@ -1,4 +1,5 @@
 .mainGalleryContainer {
+  aspect-ratio: 21/7;
   min-height: 60vh;
 }
 
