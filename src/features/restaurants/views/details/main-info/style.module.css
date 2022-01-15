@@ -2,27 +2,26 @@
   font-size: 3rem;
   font-weight: bold;
   color: #000000;
-  margin-inline-end: 1rem;
+  margin-inline-end: 10rem;
+}
+
+.rateContainer {
+  position: absolute;
+  inset-inline-end: 0;
+  inset-block-start: 0.5rem;
 }
 
 .ourRate {
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: #25272b;
+  margin-bottom: 0;
 }
 
 .rateText {
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   margin-inline-end: 0.5rem;
   color: #25272b;
-}
-
-.rateStars {
-  color: #f4b223;
-}
-
-.restaurantRate {
-  margin: 0.5rem 0;
 }
 
 .reviews {
@@ -44,5 +43,10 @@
 @media only screen and (max-width: 575px) {
   .title {
     font-size: 2rem;
+    margin-inline-end: 0;
+  }
+
+  .rateContainer {
+    position: relative;
   }
 }
