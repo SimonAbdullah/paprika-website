@@ -149,7 +149,7 @@ const HomeFifth: FunctionComponent<HomeFifthProps> = () => {
           src={`/images/home/fifth-group-picture${
             direction === "rtl" ? "-reverse" : ""
           }.png`}
-          alt={t("fifth.alt.chefWomanImage")}
+          alt={t("fifth.alt.groupImage")}
           layout="fill"
           objectFit="contain"
           objectPosition="center"
