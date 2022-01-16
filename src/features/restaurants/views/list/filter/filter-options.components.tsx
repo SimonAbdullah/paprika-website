@@ -2,6 +2,7 @@ import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent } from "react";
 import { TranslationFiles } from "../../../../../core/core";
+import { mapFromCustomerConfigurationTypesDtoToGetAllPlacesParamsDto } from "../../../../customers/functions";
 import { useCustomerConfiguration } from "../../../../customers/hooks/customer-configuration.hooks";
 import { EnumValue } from "../../../../customers/services/customer-configuration/models/enum-value.models";
 import FilterOption from "./filter-option.components";
@@ -34,7 +35,9 @@ const FilterOptions: FunctionComponent<FilterOptionsProps> = ({
         <FilterOption
           key={attribute.name}
           attribute={attribute}
-          optionName={optionName}
+          optionName={mapFromCustomerConfigurationTypesDtoToGetAllPlacesParamsDto(
+            optionName as any
+          )}
         />
       ))}
     </>

@@ -24,13 +24,13 @@ const Footer: FunctionComponent<FooterProps> = () => {
       }
     >
       <Row justify="space-between" gutter={[16, 16]}>
-        <Col xs={24} md={12} lg={4}>
+        <Col xs={24} md={7} lg={4}>
           <FooterStart />
         </Col>
-        <Col xs={24} md={{ order: 2 }} lg={{ span: 12, order: 0 }}>
+        <Col xs={24} md={17} lg={12}>
           <FooterMiddle />
         </Col>
-        <Col xs={24} md={12} lg={8}>
+        <Col xs={24} lg={8}>
           <FooterEnd />
         </Col>
       </Row>
