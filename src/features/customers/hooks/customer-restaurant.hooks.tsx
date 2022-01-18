@@ -24,7 +24,13 @@ export const useRestaurantDetails = (
 
   const galleryItems = result.data?.galleryItems;
 
-  const openingTimes = result.data?.openingTimes;
+  const openingTimes = result.data?.openingTimes?.sort((a, b) => {
+    if ((a.dayOfWeek || 0) > (b.dayOfWeek || 0)) {
+      return 1;
+    } else if ((a.dayOfWeek || 0) < (b.dayOfWeek || 0)) {
+      return -1;
+    } else return 0;
+  });
 
   const hasReservation =
     result.data?.settings?.services?.findIndex(

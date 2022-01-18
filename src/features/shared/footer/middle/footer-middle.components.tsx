@@ -53,18 +53,24 @@ const FooterMiddle: FunctionComponent<FooterMiddleProps> = () => {
           <Text className={classes.listTitle}>{t("getInTouch")}</Text>
           <li>
             <LinkComponent
-              linkProps={{ href: "mailto:info@paprika-sy.com", locale: locale }}
+              linkProps={{
+                href: `mailto:${process?.env?.NEXT_PUBLIC_EMAIL_ADDRESS}`,
+                locale: locale,
+              }}
               anchorProps={{ className: classes.listLink }}
             >
-              info@paprika-sy.com
+              {process?.env?.NEXT_PUBLIC_EMAIL_ADDRESS}
             </LinkComponent>
           </li>
           <li dir="ltr">
             <LinkComponent
-              linkProps={{ href: "tel:+963 9356 85210", locale: locale }}
+              linkProps={{
+                href: `tel:${process?.env?.NEXT_PUBLIC_PHONE_NUMBER}`,
+                locale: locale,
+              }}
               anchorProps={{ className: classes.listLink }}
             >
-              +963 9356 85210
+              {process?.env?.NEXT_PUBLIC_PHONE_NUMBER}
             </LinkComponent>
           </li>
         </ul>
