@@ -8,6 +8,7 @@ import Head from "next/head";
 import { useRouter } from "next/dist/client/router";
 import moment from "moment";
 import "moment/locale/ar";
+import BackToTopButton from "../features/shared/back-to-top-button/back-to-top-button";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { locale } = useRouter();
@@ -37,6 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             />
           </Head>
           <AppLayout>
+            <BackToTopButton />
             <Component {...pageProps} />
           </AppLayout>
         </AppContextProvider>
