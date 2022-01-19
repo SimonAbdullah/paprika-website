@@ -28,5 +28,6 @@ a {
 }
 
 * {
+  scroll-behavior: smooth;
   box-sizing: border-box;
 }
