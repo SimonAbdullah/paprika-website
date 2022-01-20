@@ -19,8 +19,7 @@ const BackToTopButton: FunctionComponent<BackToTopButtonProps> = () => {
     >
       <div
         style={{
-          backgroundColor: "var(--primary-color)",
-          opacity: "0.9",
+          backgroundColor: "rgba(206, 76, 66, 0.9)",
           color: "white",
           display: "flex",
           alignItems: "center",
