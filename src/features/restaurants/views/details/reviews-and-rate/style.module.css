@@ -113,3 +113,11 @@
     width: 80%;
   }
 }
+
+@media only screen and (max-width: 575px) {
+  .table tbody tr td,
+  .table tbody tr th {
+    border-top: 1px solid #c2c2c2;
+    border-bottom: 1px solid #c2c2c2;
+  }
+}
