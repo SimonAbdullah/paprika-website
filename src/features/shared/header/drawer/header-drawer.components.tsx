@@ -1,11 +1,13 @@
 import { Drawer, DrawerProps } from "antd";
-import { FunctionComponent, useContext } from "react";
+import { Dispatch, FunctionComponent, SetStateAction, useContext } from "react";
 import { AppContext } from "../../../../core/app/app.context";
 import HeaderLinks from "../start/header-links.components";
 import HeaderLogo from "../start/header-logo.components";
 import classes from "./style.module.css";
 
-interface HeaderDrawerProps extends DrawerProps {}
+interface HeaderDrawerProps extends DrawerProps {
+  setVisible?: Dispatch<SetStateAction<boolean>>;
+}
 
 const HeaderDrawer: FunctionComponent<HeaderDrawerProps> = (props) => {
   const { direction } = useContext(AppContext);
@@ -21,7 +23,7 @@ const HeaderDrawer: FunctionComponent<HeaderDrawerProps> = (props) => {
     >
       {props.children ?? (
         <>
-          <HeaderLinks />
+          <HeaderLinks setVisible={props?.setVisible} />
         </>
       )}
     </Drawer>

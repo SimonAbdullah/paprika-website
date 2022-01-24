@@ -46,7 +46,11 @@ const Header: FunctionComponent<HeaderProps> = () => {
                 icon={<MenuOutlined className={classes.menuIcon} />}
                 onClick={showDrawer}
               />
-              <HeaderDrawer visible={visible} onClose={onClose} />
+              <HeaderDrawer
+                visible={visible}
+                onClose={onClose}
+                setVisible={setVisible}
+              />
               <HeaderLogo />
             </div>
             <HeaderEnd />
@@ -62,7 +66,7 @@ const Header: FunctionComponent<HeaderProps> = () => {
               />
               <HeaderDrawer visible={visible} onClose={onClose}>
                 <div className={classes.drawerContent}>
-                  <HeaderLinks />
+                  <HeaderLinks setVisible={setVisible} />
                   <HeaderRegisterRestaurantButton />
                 </div>
               </HeaderDrawer>
