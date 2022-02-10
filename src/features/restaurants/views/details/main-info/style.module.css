@@ -5,6 +5,12 @@
   margin-inline-end: 10rem;
 }
 
+.avatar {
+  width: 64px;
+  height: 64px;
+  margin-inline-end: 0.5em;
+}
+
 .rateContainer {
   position: absolute;
   inset-inline-end: 0;

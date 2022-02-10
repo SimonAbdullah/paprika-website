@@ -1,4 +1,4 @@
-import { Row } from "antd";
+import { Avatar, Row } from "antd";
 import Text from "antd/lib/typography/Text";
 import Title from "antd/lib/typography/Title";
 import useTranslation from "next-translate/useTranslation";
@@ -19,7 +19,15 @@ const RestaurantMainInfo: FunctionComponent<RestaurantMainInfoProps> = () => {
 
   return (
     <Row justify="space-between" align="top" style={{ position: "relative" }}>
-      <Title className={classes.title}>{data?.name}</Title>
+      <Title className={classes.title}>
+        <Avatar
+          className={classes.avatar}
+          size="large"
+          src={data?.logoImage}
+          alt={data?.name}
+        />
+        {data?.name}
+      </Title>
       {data?.restaurantRate !== undefined && data?.restaurantRate !== null && (
         <div className={classes.rateContainer}>
           <Title level={5} className={classes.ourRate}>
