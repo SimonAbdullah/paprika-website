@@ -1,11 +1,13 @@
+import dynamic from "next/dynamic";
 import { FunctionComponent } from "react";
-import HomeThird from "./third/home-third.components";
 import classes from "./style.module.css";
-import HomeFourth from "./fourth/home-fourth.components";
-import HomeFifth from "./fifth/home-fifth.components";
 import HomeSecond from "./second/home-second.components";
 import HomeFirst from "./first/home-first.components";
-import HomeSixth from "./sixth/home-sixth.components";
+
+const HomeFourth = dynamic(() => import("./fourth/home-fourth.components"));
+const HomeFifth = dynamic(() => import("./fifth/home-fifth.components"));
+const HomeSixth = dynamic(() => import("./sixth/home-sixth.components"));
+const HomeThird = dynamic(() => import("./third/home-third.components"));
 
 interface HomeProps {}
 

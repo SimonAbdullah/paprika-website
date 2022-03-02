@@ -77,6 +77,7 @@ const ListRightArrow: FunctionComponent<IconProps> = ({ className }) => {
       height="64px"
       objectFit="contain"
       objectPosition="center"
+      priority
       className={className}
     />
   );
@@ -92,6 +93,7 @@ const ListLeftArrow: FunctionComponent<IconProps> = ({ className }) => {
       height="64px"
       objectFit="contain"
       objectPosition="center"
+      priority
       className={className}
     />
   );

@@ -57,8 +57,7 @@
   font-size: 1.2rem;
   font-weight: bold;
   height: 1.4rem;
-  display: flex;
-  align-items: center;
+  display: inline-block;
   vertical-align: middle;
 }
 
