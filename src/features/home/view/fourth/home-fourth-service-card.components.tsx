@@ -1,4 +1,4 @@
-import { Card, Col, Row } from "antd";
+import { Button, Card, Col, Row } from "antd";
 import Text from "antd/lib/typography/Text";
 import Title from "antd/lib/typography/Title";
 import { FunctionComponent } from "react";
@@ -6,6 +6,10 @@ import { HomeFourthData } from "./fourth-data";
 import Image from "next/image";
 import classes from "./style.module.css";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
+import Link from "next/link";
+import { PagesUrls, TranslationFiles } from "../../../../core/core";
+import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
 
 interface HomeFourthServiceCardProps {
   data: HomeFourthData;
@@ -17,6 +21,11 @@ const HomeFourthServiceCard: FunctionComponent<HomeFourthServiceCardProps> = ({
   isContentRight,
 }) => {
   const { md } = useBreakpoint();
+
+  const { locale } = useRouter();
+
+  const { t } = useTranslation(TranslationFiles.HOME);
+
   return (
     <Col span={22} id={data.id} className={classes.cardContainer}>
       <div data-aos={data.animationType} data-aos-duration="500">
@@ -34,6 +43,24 @@ const HomeFourthServiceCard: FunctionComponent<HomeFourthServiceCardProps> = ({
             >
               <Title level={3} className={classes.cardTitle}>
                 {data.title}
+                {data.id === "discoverRestaurants" ? (
+                  <>
+                    <Link href={PagesUrls.RESTAURANTS} locale={locale}>
+                      <a>
+                        <Button
+                          size="middle"
+                          type="primary"
+                          style={{
+                            margin: "0px 20px",
+                            verticalAlign: "middle",
+                          }}
+                        >
+                          <Text>{t("fourth.restaurantsList")}</Text>
+                        </Button>
+                      </a>
+                    </Link>
+                  </>
+                ) : null}
               </Title>
               <Text className={classes.cardText}>{data.description}</Text>
             </Col>
