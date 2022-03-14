@@ -20,7 +20,7 @@ const HomeFourthServiceCard: FunctionComponent<HomeFourthServiceCardProps> = ({
   data,
   isContentRight,
 }) => {
-  const { md } = useBreakpoint();
+  const { xs, md } = useBreakpoint();
 
   const { locale } = useRouter();
 
@@ -42,7 +42,9 @@ const HomeFourthServiceCard: FunctionComponent<HomeFourthServiceCardProps> = ({
               style={{ textAlign: !md ? "center" : "inherit" }}
             >
               <Title level={3} className={classes.cardTitle}>
-                {data.title}
+                <Text style={{ marginInlineEnd: !xs ? "20px" : "1px" }}>
+                  {data.title}
+                </Text>
                 {data.id === "discoverRestaurants" ? (
                   <>
                     <Link href={PagesUrls.RESTAURANTS} locale={locale}>
@@ -51,7 +53,6 @@ const HomeFourthServiceCard: FunctionComponent<HomeFourthServiceCardProps> = ({
                           size="middle"
                           type="primary"
                           style={{
-                            margin: "0px 20px",
                             verticalAlign: "middle",
                           }}
                         >
