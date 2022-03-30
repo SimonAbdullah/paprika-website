@@ -13,18 +13,23 @@ import RestaurantDetails from "../../features/restaurants/views/details/restaura
 import RestaurantMainInfo from "../../features/restaurants/views/details/main-info/restaurant-main-info.components";
 import RestaurantReservationBox from "../../features/restaurants/views/details/reservation-box/restaurant-reservation-box.components";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { isDataEmpty } from "../../core/functions";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/dist/client/router";
-import { RestaurantDto } from "../../features/restaurants/services/links/models/restaurant-dto";
+import { useRestaurantLinkInformation } from "../../features/customers/hooks/links-for-restaurant.hooks";
 import { linksServices } from "../../features/restaurants/services/links/links.services";
+import { RestaurantDto } from "../../features/restaurants/services/links/models/restaurant-dto";
 
 interface RestaurantPageProps {
   restaurant: RestaurantHomeDto;
+  restaurantLinkInfo: RestaurantDto;
 }
 
-const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
+const RestaurantPage: NextPage<RestaurantPageProps> = ({
+  restaurant,
+  restaurantLinkInfo,
+}) => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
 
   const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
@@ -40,23 +45,12 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
 
   const [reservationModalVisible, setReservationModalVisible] = useState(false);
 
-  //const { data: restaurantLinkInformation } = useRestaurantLinkInformation();
-
-  const [restaurantLinkInformation, setRestaurantLinkInformation] =
-    useState<RestaurantDto>({} as RestaurantDto);
-  useEffect(() => {
-    (async () => {
-      console.log(data);
-      try {
-        let result = await linksServices.getForRestaurant({
-          restaurantId: data?.id,
-        });
-        setRestaurantLinkInformation(result.result);
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, [data]);
+  const { data: restaurantLinkInformation } = useRestaurantLinkInformation(
+    data?.id,
+    {
+      initialData: restaurantLinkInfo,
+    }
+  );
 
   return (
     <>
@@ -170,12 +164,23 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const restaurant = await customerRestaurantServices.getDetails({
-    tenancyName: String(params?.restaurantName),
-  });
+  const restaurant = (
+    await customerRestaurantServices.getDetails({
+      tenancyName: String(params?.restaurantName),
+    })
+  ).result;
+
+  const restaurantLinkInfo = (
+    await linksServices.getForRestaurant({
+      restaurantId: restaurant.id,
+    })
+  ).result;
 
   return {
-    props: { restaurant: restaurant.result },
+    props: {
+      restaurant: restaurant,
+      restaurantLinkInfo: restaurantLinkInfo,
+    },
     revalidate: TimeInSeconds.DAY,
   };
 };
