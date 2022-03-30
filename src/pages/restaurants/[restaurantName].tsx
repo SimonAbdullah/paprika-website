@@ -16,25 +16,15 @@ import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useState } from "react";
 import { isDataEmpty } from "../../core/functions";
 import useTranslation from "next-translate/useTranslation";
-import { useRouter } from "next/dist/client/router";
-import { useRestaurantLinkInformation } from "../../features/customers/hooks/links-for-restaurant.hooks";
-import { linksServices } from "../../features/restaurants/services/links/links.services";
-import { RestaurantDto } from "../../features/restaurants/services/links/models/restaurant-dto";
 
 interface RestaurantPageProps {
   restaurant: RestaurantHomeDto;
-  restaurantLinkInfo: RestaurantDto;
 }
 
-const RestaurantPage: NextPage<RestaurantPageProps> = ({
-  restaurant,
-  restaurantLinkInfo,
-}) => {
+const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
 
   const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
-
-  const { locale } = useRouter();
 
   const { data, galleryItems, hasReservation } = useRestaurantDetails(
     {},
@@ -45,12 +35,11 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({
 
   const [reservationModalVisible, setReservationModalVisible] = useState(false);
 
-  const { data: restaurantLinkInformation } = useRestaurantLinkInformation(
-    data?.id,
-    {
-      initialData: restaurantLinkInfo,
-    }
-  );
+  let ogDescription = "";
+  if (data?.country?.name) ogDescription += data?.country?.name + ", ";
+  if (data?.city?.name) ogDescription += data?.city?.name + ", ";
+  if (data?.region?.name) ogDescription += data?.region?.name + ", ";
+  if (data?.address) ogDescription += data?.address + ".";
 
   return (
     <>
@@ -60,31 +49,14 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({
           property="og:url"
           content={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.RESTAURANTS}/${data?.name}`}
         />
-        <meta property="og:site_name" content={tCommon("paprika")} />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:title"
-          content={`${restaurantLinkInformation?.title} | ${tCommon(
-            "paprika"
-          )}`}
-        />
-        <meta
-          property="og:description"
-          content={restaurantLinkInformation?.description}
-        />
-        <meta
-          property="og:image"
-          content={restaurantLinkInformation?.imageUrl}
-        />
-        <meta
-          property="og:image:secure_url"
-          content={restaurantLinkInformation?.imageUrl}
-        />
-        <meta property="og:image:alt" content={data?.name} />
+        <meta property="og:site_name" content={"Paprika"} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={`${data?.name} | Paprika`} />
+        <meta property="og:description" content={ogDescription} />
+        <meta property="og:image" content={data?.logoImage} />
         <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:width" content="600" />
-        <meta property="og:image:height" content="600" />
-        <meta property="og:locale" content={locale} />
+        <meta property="og:image:width" content="480" />
+        <meta property="og:image:height" content="360" />
       </Head>
       <div className={styles.container}>
         <Row className={styles.row} justify="center" gutter={[0, 16]}>
@@ -170,16 +142,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     })
   ).result;
 
-  const restaurantLinkInfo = (
-    await linksServices.getForRestaurant({
-      restaurantId: restaurant.id,
-    })
-  ).result;
-
   return {
     props: {
       restaurant: restaurant,
-      restaurantLinkInfo: restaurantLinkInfo,
     },
     revalidate: TimeInSeconds.DAY,
   };
