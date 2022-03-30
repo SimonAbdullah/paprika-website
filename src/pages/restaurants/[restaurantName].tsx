@@ -13,10 +13,12 @@ import RestaurantDetails from "../../features/restaurants/views/details/restaura
 import RestaurantMainInfo from "../../features/restaurants/views/details/main-info/restaurant-main-info.components";
 import RestaurantReservationBox from "../../features/restaurants/views/details/reservation-box/restaurant-reservation-box.components";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { isDataEmpty } from "../../core/functions";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/dist/client/router";
+import { RestaurantDto } from "../../features/restaurants/services/links/models/restaurant-dto";
+import { linksServices } from "../../features/restaurants/services/links/links.services";
 
 interface RestaurantPageProps {
   restaurant: RestaurantHomeDto;
@@ -38,6 +40,24 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
 
   const [reservationModalVisible, setReservationModalVisible] = useState(false);
 
+  //const { data: restaurantLinkInformation } = useRestaurantLinkInformation();
+
+  const [restaurantLinkInformation, setRestaurantLinkInformation] =
+    useState<RestaurantDto>({} as RestaurantDto);
+  useEffect(() => {
+    (async () => {
+      console.log(data);
+      try {
+        let result = await linksServices.getForRestaurant({
+          restaurantId: data?.id,
+        });
+        setRestaurantLinkInformation(result.result);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, [data]);
+
   return (
     <>
       <Head>
@@ -50,11 +70,22 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
         <meta property="og:type" content="website" />
         <meta
           property="og:title"
-          content={`${data?.name} | ${tCommon("paprika")}`}
+          content={`${restaurantLinkInformation?.title} | ${tCommon(
+            "paprika"
+          )}`}
         />
-        <meta property="og:description" content={data?.description} />
-        <meta property="og:image" content={data?.logoImage} />
-        <meta property="og:image:secure_url" content={data?.logoImage} />
+        <meta
+          property="og:description"
+          content={restaurantLinkInformation?.description}
+        />
+        <meta
+          property="og:image"
+          content={restaurantLinkInformation?.imageUrl}
+        />
+        <meta
+          property="og:image:secure_url"
+          content={restaurantLinkInformation?.imageUrl}
+        />
         <meta property="og:image:alt" content={data?.name} />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="600" />
