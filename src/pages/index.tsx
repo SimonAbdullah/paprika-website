@@ -17,7 +17,6 @@ import {
 } from "../features/customers/constants/customer-event.constants";
 import { CustomerEventDto } from "../features/customers/services/customer-event/models/customer-event-dto.models";
 import { useUpcomingEvents } from "../features/customers/hooks/customer-event.hooks";
-import { useRouter } from "next/dist/client/router";
 import { HomeMetaData } from "../core/constants";
 
 interface HomePageProps {
@@ -27,10 +26,6 @@ interface HomePageProps {
 
 const HomePage: NextPage<HomePageProps> = ({ places, upComingEvents }) => {
   const { t } = useTranslation(TranslationFiles.HOME);
-
-  const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
-
-  const { locale } = useRouter();
 
   useFeaturedPlaces(
     {},
@@ -50,29 +45,14 @@ const HomePage: NextPage<HomePageProps> = ({ places, upComingEvents }) => {
       <Head>
         <title>{t("paprika")}</title>
         <meta property="og:url" content={HomeMetaData.url} />
-        <meta
-          property="og:site_name"
-          content={tCommon(HomeMetaData.siteName)}
-        />
+        <meta property="og:site_name" content={HomeMetaData.siteName} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={tCommon(HomeMetaData.title)} />
-        <meta
-          property="og:description"
-          content={tCommon(HomeMetaData.description)}
-        />
+        <meta property="og:title" content={HomeMetaData.title} />
+        <meta property="og:description" content={HomeMetaData.description} />
         <meta property="og:image" content={HomeMetaData.image} />
-        <meta
-          property="og:image:secure_url"
-          content={HomeMetaData.imageSecureUrl}
-        />
-        <meta
-          property="og:image:alt"
-          content={tCommon(HomeMetaData.imageAlt)}
-        />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content={HomeMetaData.imageWidth} />
         <meta property="og:image:height" content={HomeMetaData.imageHeight} />
-        <meta property="og:locale" content={locale} />
       </Head>
       <div className={styles.container}>
         <Home />
