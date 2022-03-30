@@ -26,5 +26,6 @@
   "location": "Location",
   "country": "Country",
   "city": "City",
-  "region": "Region"
+  "region": "Region",
+  "restaurantName": "Restaurant Name"
 }

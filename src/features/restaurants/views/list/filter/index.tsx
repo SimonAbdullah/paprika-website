@@ -7,6 +7,7 @@ import FilterBoolean from "./filter-boolean.components";
 import { otherData, servicesData } from "./data";
 import FilterLocation from "./filter-location.components";
 import FilterOptions from "./filter-options.components";
+import FilterRestaurantName from "./filter-restaurant-name.components";
 
 interface RestaurantsFilterProps {}
 
@@ -22,6 +23,9 @@ const RestaurantsFilter: FunctionComponent<RestaurantsFilterProps> = () => {
         gutter={[0, 24]}
         style={{ padding: "1rem 0" }}
       >
+        <Col span={20}>
+          <FilterRestaurantName />
+        </Col>
         <Col span={20}>
           <FilterBoolean name={t("services")} data={servicesData} />
         </Col>
