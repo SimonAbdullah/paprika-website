@@ -12,6 +12,9 @@ module.exports = {
     ],
     [`${PagesUrls.EVENT}/[eventId]`]: [TranslationFiles.HOME],
     [`${PagesUrls.Post}/[postId]`]: [TranslationFiles.HOME],
+    [`${PagesUrls.Meal}/[restaurantId]/[categoryId]/[mealId]`]: [
+      TranslationFiles.HOME,
+    ],
   },
   loadLocaleFrom: (lang, ns) =>
     import(`./src/utils/locales/${lang}/${ns}.json`).then((m) => m.default),

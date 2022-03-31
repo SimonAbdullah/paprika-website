@@ -1,20 +1,24 @@
 import Aos from "aos";
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
 import { useEffect } from "react";
 import { HomeMetaData } from "../../core/constants";
-import { TimeInSeconds, TranslationFiles } from "../../core/core";
-import { PathsType } from "../../core/types";
+import { PagesUrls, TranslationFiles } from "../../core/core";
 import { PostLinksDto } from "../../features/customers/services/post-links/models/post-links-dto";
+import { PostLinksParams } from "../../features/customers/services/post-links/models/post-links-params.models";
 import { postLinksServices } from "../../features/customers/services/post-links/post-links.services";
 import Home from "../../features/home/view/home.components";
 import styles from "../../styles/Home.module.css";
 
 interface PostLinksPageProps {
   postLinksInfo: PostLinksDto;
+  urlParams: PostLinksParams;
 }
-const PostLinksPage: NextPage<PostLinksPageProps> = ({ postLinksInfo }) => {
+const PostLinksPage: NextPage<PostLinksPageProps> = ({
+  postLinksInfo,
+  urlParams,
+}) => {
   const { t } = useTranslation(TranslationFiles.HOME);
 
   useEffect(() => {
@@ -25,9 +29,12 @@ const PostLinksPage: NextPage<PostLinksPageProps> = ({ postLinksInfo }) => {
     <>
       <Head>
         <title>{t("paprika")}</title>
-        <meta property="og:url" content={HomeMetaData.url} />
+        <meta
+          property="og:url"
+          content={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.Post}/${urlParams.postId}`}
+        />
         <meta property="og:site_name" content={HomeMetaData.siteName} />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
         <meta property="og:title" content={postLinksInfo.title} />
         <meta property="og:description" content={postLinksInfo.description} />
         <meta property="og:image" content={postLinksInfo.imageUrl} />
@@ -42,20 +49,7 @@ const PostLinksPage: NextPage<PostLinksPageProps> = ({ postLinksInfo }) => {
     </>
   );
 };
-
-export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
-  const paths: PathsType = [];
-
-  locales?.forEach((locale) => {
-    paths.push({
-      params: { postId: "7" },
-      locale: locale,
-    });
-  });
-  return { paths: paths, fallback: true };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const postLinksInfo = (
     await postLinksServices.getForPost({
       postId: Number(params?.postId),
@@ -65,8 +59,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       postLinksInfo: postLinksInfo,
+      urlParams: { postId: params?.postId },
     },
-    revalidate: TimeInSeconds.DAY,
   };
 };
 

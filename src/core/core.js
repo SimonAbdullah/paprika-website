@@ -5,6 +5,7 @@ const PagesUrls = {
   LOGIN: "/auth/login",
   EVENT: "/event",
   Post: "/post",
+  Meal: "/meal",
 };
 
 const TranslationFiles = {

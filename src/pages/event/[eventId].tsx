@@ -1,20 +1,24 @@
 import Aos from "aos";
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
 import { useEffect } from "react";
 import { HomeMetaData } from "../../core/constants";
-import { TimeInSeconds, TranslationFiles } from "../../core/core";
-import { PathsType } from "../../core/types";
+import { PagesUrls, TranslationFiles } from "../../core/core";
 import { eventLinksServices } from "../../features/customers/services/event-links/event-links.services";
 import { EventLinksDto } from "../../features/customers/services/event-links/models/event-links-dto";
+import { EventLinksParams } from "../../features/customers/services/event-links/models/event-links-params.models";
 import Home from "../../features/home/view/home.components";
 import styles from "../../styles/Home.module.css";
 
 interface EventLinksPageProps {
   eventLinksInfo: EventLinksDto;
+  urlParams: EventLinksParams;
 }
-const EventLinksPage: NextPage<EventLinksPageProps> = ({ eventLinksInfo }) => {
+const EventLinksPage: NextPage<EventLinksPageProps> = ({
+  eventLinksInfo,
+  urlParams,
+}) => {
   const { t } = useTranslation(TranslationFiles.HOME);
 
   useEffect(() => {
@@ -25,9 +29,12 @@ const EventLinksPage: NextPage<EventLinksPageProps> = ({ eventLinksInfo }) => {
     <>
       <Head>
         <title>{t("paprika")}</title>
-        <meta property="og:url" content={HomeMetaData.url} />
+        <meta
+          property="og:url"
+          content={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.EVENT}/${urlParams.eventId}`}
+        />
         <meta property="og:site_name" content={HomeMetaData.siteName} />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
         <meta property="og:title" content={eventLinksInfo.title} />
         <meta property="og:description" content={eventLinksInfo.description} />
         <meta property="og:image" content={eventLinksInfo.imageUrl} />
@@ -43,19 +50,7 @@ const EventLinksPage: NextPage<EventLinksPageProps> = ({ eventLinksInfo }) => {
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
-  const paths: PathsType = [];
-
-  locales?.forEach((locale) => {
-    paths.push({
-      params: { eventId: "1" },
-      locale: locale,
-    });
-  });
-  return { paths: paths, fallback: true };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const eventLinksInfo = (
     await eventLinksServices.getForEvent({
       eventId: Number(params?.eventId),
@@ -65,8 +60,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       eventLinksInfo: eventLinksInfo,
+      urlParams: { eventId: params?.eventId },
     },
-    revalidate: TimeInSeconds.DAY,
   };
 };
 
