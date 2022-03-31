@@ -3,6 +3,8 @@ const PagesUrls = {
   RESTAURANTS: "/restaurants",
   AUTH: "/auth",
   LOGIN: "/auth/login",
+  EVENT: "/event",
+  Post: "/post",
 };
 
 const TranslationFiles = {
