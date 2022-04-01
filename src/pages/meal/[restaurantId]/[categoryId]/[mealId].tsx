@@ -36,7 +36,7 @@ const MealLinksPage: NextPage<MealLinksPageProps> = ({
         <title>{t("paprika")}</title>
         <meta
           property="og:url"
-          content={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.Meal}/${urlParams.restaurantId}/${urlParams.categoryId}/${urlParams.mealId}`}
+          content={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.MEAL}/${urlParams.restaurantId}/${urlParams.categoryId}/${urlParams.mealId}`}
         />
         <meta property="og:site_name" content={HomeMetaData.siteName} />
         <meta property="og:type" content="article" />

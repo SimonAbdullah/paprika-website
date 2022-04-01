@@ -31,7 +31,7 @@ const PostLinksPage: NextPage<PostLinksPageProps> = ({
         <title>{t("paprika")}</title>
         <meta
           property="og:url"
-          content={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.Post}/${urlParams.postId}`}
+          content={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.POST}/${urlParams.postId}`}
         />
         <meta property="og:site_name" content={HomeMetaData.siteName} />
         <meta property="og:type" content="article" />

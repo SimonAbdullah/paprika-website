@@ -4,8 +4,8 @@ const PagesUrls = {
   AUTH: "/auth",
   LOGIN: "/auth/login",
   EVENT: "/event",
-  Post: "/post",
-  Meal: "/meal",
+  POST: "/post",
+  MEAL: "/meal",
 };
 
 const TranslationFiles = {

@@ -11,8 +11,8 @@ module.exports = {
       TranslationFiles.RESTAURANT,
     ],
     [`${PagesUrls.EVENT}/[eventId]`]: [TranslationFiles.HOME],
-    [`${PagesUrls.Post}/[postId]`]: [TranslationFiles.HOME],
-    [`${PagesUrls.Meal}/[restaurantId]/[categoryId]/[mealId]`]: [
+    [`${PagesUrls.POST}/[postId]`]: [TranslationFiles.HOME],
+    [`${PagesUrls.MEAL}/[restaurantId]/[categoryId]/[mealId]`]: [
       TranslationFiles.HOME,
     ],
   },
