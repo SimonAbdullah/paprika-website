@@ -2,7 +2,7 @@ import { Col, Row } from "antd";
 import type { GetStaticProps, NextPage } from "next";
 import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
-import { PagesUrls, TimeInSeconds, TranslationFiles } from "../../core/core";
+import { TimeInSeconds, TranslationFiles } from "../../core/core";
 import { RESTAURANTS_INITIAL_PLACES_API_PARAMS } from "../../features/restaurants/constants/restaurants.constants";
 import RestaurantsListContextProvider from "../../features/restaurants/contexts/restaurants-list.contexts";
 import { useInfinityPlaces } from "../../features/restaurants/hooks/places.hooks";
@@ -17,7 +17,6 @@ import { customerConfigurationServices } from "../../features/customers/services
 import { InitializationDto } from "../../features/customers/services/customer-configuration/models/initialization-dto.models";
 import { useCustomerConfiguration } from "../../features/customers/hooks/customer-configuration.hooks";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
-import { useRouter } from "next/dist/client/router";
 
 interface RestaurantsPageProps {
   places: PagedResultDto<RestaurantSummaryDto>;
@@ -31,8 +30,6 @@ const RestaurantsPage: NextPage<RestaurantsPageProps> = ({
   const { t } = useTranslation(TranslationFiles.RESTAURANTS);
 
   const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
-
-  const { locale } = useRouter();
 
   const { lg } = useBreakpoint();
 
@@ -56,30 +53,6 @@ const RestaurantsPage: NextPage<RestaurantsPageProps> = ({
     <>
       <Head>
         <title>{`${t("restaurants")} | ${tCommon("paprika")}`}</title>
-        <meta
-          property="og:url"
-          content={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.RESTAURANTS}`}
-        />
-        <meta property="og:site_name" content={tCommon("paprika")} />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:title"
-          content={`${t("restaurants")} | ${tCommon("paprika")}`}
-        />
-        <meta property="og:description" content={tCommon("metaDescription")} />
-        <meta
-          property="og:image"
-          content={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}/images/logo/paprika.png`}
-        />
-        <meta
-          property="og:image:secure_url"
-          content={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}/images/logo/paprika.png`}
-        />
-        <meta property="og:image:alt" content={tCommon("paprika")} />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:width" content="600" />
-        <meta property="og:image:height" content="600" />
-        <meta property="og:locale" content={locale} />
       </Head>
       <RestaurantsListContextProvider>
         <div className={styles.container}>

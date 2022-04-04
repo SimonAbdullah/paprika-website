@@ -10,6 +10,11 @@ module.exports = {
     [`${PagesUrls.RESTAURANTS}/[restaurantName]`]: [
       TranslationFiles.RESTAURANT,
     ],
+    [`${PagesUrls.EVENT}/[eventId]`]: [TranslationFiles.HOME],
+    [`${PagesUrls.POST}/[postId]`]: [TranslationFiles.HOME],
+    [`${PagesUrls.MEAL}/[restaurantId]/[categoryId]/[mealId]`]: [
+      TranslationFiles.HOME,
+    ],
   },
   loadLocaleFrom: (lang, ns) =>
     import(`./src/utils/locales/${lang}/${ns}.json`).then((m) => m.default),

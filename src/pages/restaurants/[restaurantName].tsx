@@ -16,7 +16,6 @@ import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useState } from "react";
 import { isDataEmpty } from "../../core/functions";
 import useTranslation from "next-translate/useTranslation";
-import { useRouter } from "next/dist/client/router";
 
 interface RestaurantPageProps {
   restaurant: RestaurantHomeDto;
@@ -27,8 +26,6 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
 
   const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
 
-  const { locale } = useRouter();
-
   const { data, galleryItems, hasReservation } = useRestaurantDetails(
     {},
     { initialData: restaurant }
@@ -38,6 +35,12 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
 
   const [reservationModalVisible, setReservationModalVisible] = useState(false);
 
+  let ogDescription = "";
+  if (data?.country?.name) ogDescription += data?.country?.name + ", ";
+  if (data?.city?.name) ogDescription += data?.city?.name + ", ";
+  if (data?.region?.name) ogDescription += data?.region?.name + ", ";
+  if (data?.address) ogDescription += data?.address + ".";
+
   return (
     <>
       <Head>
@@ -46,20 +49,14 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
           property="og:url"
           content={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.RESTAURANTS}/${data?.name}`}
         />
-        <meta property="og:site_name" content={tCommon("paprika")} />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:title"
-          content={`${data?.name} | ${tCommon("paprika")}`}
-        />
-        <meta property="og:description" content={data?.description} />
+        <meta property="og:site_name" content={"Paprika"} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={`${data?.name} | Paprika`} />
+        <meta property="og:description" content={ogDescription} />
         <meta property="og:image" content={data?.logoImage} />
-        <meta property="og:image:secure_url" content={data?.logoImage} />
-        <meta property="og:image:alt" content={data?.name} />
         <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:width" content="600" />
-        <meta property="og:image:height" content="600" />
-        <meta property="og:locale" content={locale} />
+        <meta property="og:image:width" content="480" />
+        <meta property="og:image:height" content="360" />
       </Head>
       <div className={styles.container}>
         <Row className={styles.row} justify="center" gutter={[0, 16]}>
@@ -139,12 +136,16 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const restaurant = await customerRestaurantServices.getDetails({
-    tenancyName: String(params?.restaurantName),
-  });
+  const restaurant = (
+    await customerRestaurantServices.getDetails({
+      tenancyName: String(params?.restaurantName),
+    })
+  ).result;
 
   return {
-    props: { restaurant: restaurant.result },
+    props: {
+      restaurant: restaurant,
+    },
     revalidate: TimeInSeconds.DAY,
   };
 };
