@@ -15,7 +15,9 @@
     "first-title-2": "Hot Menus and Ingredients",
     "first-description-2": "View restaurants' menus, with images, description, prices, and customer rates.",
     "first-title-3": "Salty Time",
-    "first-description-3": "With Paprika Inside, you will have a much better time when visiting you favorite restaurant."
+    "first-description-3": "With Paprika Inside, you will have a much better time when visiting you favorite restaurant.",
+    "search-button": "Lat's Go",
+    "placeholder-search": "Type Something..."
   },
   "second": {
     "topRestaurants": "Top Restaurants",

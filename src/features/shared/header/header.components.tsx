@@ -12,6 +12,7 @@ import HeaderLanguageButton from "./end/header-language.components";
 import HeaderRegisterRestaurantButton from "./end/header-register-restaurant.components";
 import HeaderLinks from "./start/header-links.components";
 import HeaderDownloadBanner from "./download-banner/header-download-banner.components";
+import HeaderWebsiteButton from "./website-button/header-website-button.components";
 
 interface HeaderProps {}
 
@@ -31,6 +32,7 @@ const Header: FunctionComponent<HeaderProps> = () => {
   return (
     <>
       <HeaderDownloadBanner />
+      <HeaderWebsiteButton />
       <Head className={classes.head}>
         {lg ? (
           <>
