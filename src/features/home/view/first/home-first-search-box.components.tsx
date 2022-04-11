@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../../core/app/app.context";
 import { PagesUrls, TranslationFiles } from "../../../../core/core";
+import { SearchResultsRestaurants } from "../../../restaurants/services/restaurants/models/search-results-restaurants.models";
 import { restaurantsServices } from "../../../restaurants/services/restaurants/restaurants.services";
 import useDebounce from "../../../shared/hooks/debounce.hooks";
 import classes from "./style.module.css";
@@ -17,7 +18,12 @@ const HomeFirstSearchBox = () => {
 
   const [restaurantName, setRestaurantName] = useState("");
 
-  const debouncedSearchTerm = useDebounce(restaurantName, 2000);
+  const [searchResultsForRestaurants, setSearchResultsForRestaurants] =
+    useState<SearchResultsRestaurants[]>([]);
+
+  const [options, setOptions] = useState<any>([]);
+
+  const debouncedSearchTerm = useDebounce(restaurantName, 500);
 
   const { push } = useRouter();
 
@@ -31,25 +37,71 @@ const HomeFirstSearchBox = () => {
     try {
       let result = await restaurantsServices.getAll({
         size: 5,
-        query: { fuzzy: { keywords: { vlaue: value } } },
+        query: { fuzzy: { keywords: { value: value } } },
       });
-      console.log(result);
+      setSearchResultsForRestaurants(result.hits.hits);
     } catch (error) {
       console.error(error);
     }
   };
 
+  const searchResults = () => {
+    let option: any[] = [];
+    searchResultsForRestaurants.map((item: SearchResultsRestaurants) => {
+      option.push({
+        value: item._source.name,
+        label: (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            <span>{item._source.name}</span>
+            <span>
+              <Button
+                type="ghost"
+                onClick={() => {
+                  push(`${PagesUrls.RESTAURANTS}/${item._source.name}`);
+                }}
+              >
+                {t("first.show-restaurant")}
+              </Button>
+            </span>
+          </div>
+        ),
+      });
+    });
+    return option;
+  };
+
+  useEffect(() => {
+    if (searchResultsForRestaurants.length > 0) {
+      setOptions(searchResults());
+    } else {
+      setOptions([
+        {
+          value: "restaurantIsNotAvailable",
+          label: (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <span>{t("first.The-restaurant-is-not-available")}</span>
+            </div>
+          ),
+        },
+      ]);
+    }
+  }, [searchResultsForRestaurants]);
+
   const handleSearch = (value: any) => {
-    console.log("handleSearch", value);
     setRestaurantName(value);
   };
 
-  const onSelect = (value: any) => {
-    console.log("onSelect", value);
-  };
-
   const handleSubmit = () => {
-    console.log("handleSubmit", restaurantName);
     push({
       pathname: `${PagesUrls.RESTAURANTS}`,
       query: { RestaurantName: restaurantName },
@@ -67,8 +119,8 @@ const HomeFirstSearchBox = () => {
             <Form.Item className={classes.searchField} name="restaurantName">
               <AutoComplete
                 dropdownMatchSelectWidth={252}
-                onSelect={onSelect}
                 onSearch={handleSearch}
+                options={options}
               >
                 <Input
                   className={

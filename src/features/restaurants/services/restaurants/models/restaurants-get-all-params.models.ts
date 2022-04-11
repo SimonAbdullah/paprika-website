@@ -12,5 +12,5 @@ export interface keywordsRestaurants {
 }
 
 export interface ValueRestaurants {
-  vlaue: string;
+  value: string;
 }

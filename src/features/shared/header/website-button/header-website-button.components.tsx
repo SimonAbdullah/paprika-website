@@ -24,7 +24,7 @@ const HeaderWebsiteButton: FunctionComponent<HeaderWebsiteButtonProps> = () => {
           window.location.href = `${UrlInApp.paprikaUrlInApp}${pathname}`;
         }}
       >
-        {t("OpenWebsiteInPaprikaApp")}
+        {t("OpenPaprikaApp")}
       </Button>
     </Row>
   ) : null;

@@ -3,6 +3,7 @@ import {
   AuthorizationElasticSearchTesting,
 } from "../../../../core/constants";
 import ApiService from "../../../../utils/base-api/api-service";
+import { BaseApiSearchResponse } from "./models/base-api-search-response.models";
 import { RestaurantsGetAllParams } from "./models/restaurants-get-all-params.models";
 
 class RestaurantsServices extends ApiService {
@@ -27,7 +28,9 @@ class RestaurantsServices extends ApiService {
     });
   }
 
-  public getAll(params?: RestaurantsGetAllParams) {
+  public getAll(
+    params?: RestaurantsGetAllParams
+  ): Promise<BaseApiSearchResponse> {
     return this.post("/_search", params);
   }
 }
