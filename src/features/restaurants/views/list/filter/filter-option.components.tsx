@@ -22,9 +22,9 @@ const FilterOption: React.FC<FilterOptionProps> = ({
 }) => {
   const { push, pathname } = useRouter();
 
-  const { options, setOptions } = useContext(RestaurantsListContext);
-
-  const { options1, setOptions1 } = useContext(RestaurantsListContext);
+  const { options, setOptions, options1, setOptions1 } = useContext(
+    RestaurantsListContext
+  );
 
   const onCheckboxChange = (e: CheckboxChangeEvent) => {
     if (e.target.checked) {

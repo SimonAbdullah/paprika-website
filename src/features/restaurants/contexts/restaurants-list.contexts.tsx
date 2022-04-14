@@ -51,8 +51,23 @@ const RestaurantsListContextProvider: FunctionComponent<
         ...(query.cityId ? { cityId: Number(query.cityId) } : {}),
         ...(query.regionId ? { regionId: Number(query.regionId) } : {}),
       };
-
       setOptions(result);
+
+      const optionsResult = Object.entries(query).map(([key, value]) => {
+        if (key === "RestaurantName") {
+          return {
+            match: {
+              keywords: {
+                query: value,
+                fuzziness: "AUTO",
+              },
+            },
+          };
+        }
+        return { term: { [key]: value } };
+      });
+
+      setOptions1(optionsResult);
     }
   }, [query]);
 

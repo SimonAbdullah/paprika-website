@@ -19,9 +19,9 @@ const FilterLocation: FunctionComponent<FilterLocationProps> = () => {
 
   const { push, pathname } = useRouter();
 
-  const { options, setOptions } = useContext(RestaurantsListContext);
-
-  const { options1, setOptions1 } = useContext(RestaurantsListContext);
+  const { options, setOptions, options1, setOptions1 } = useContext(
+    RestaurantsListContext
+  );
 
   const { countries } = useCustomerConfiguration();
 
@@ -82,7 +82,6 @@ const FilterLocation: FunctionComponent<FilterLocationProps> = () => {
               options1.splice(countryIndex, 1);
             }
 
-            //const test = { ["countryId"]: value };
             delete result.cityId;
             delete result.regionId;
 

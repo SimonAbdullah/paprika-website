@@ -1,4 +1,3 @@
-import { useRouter } from "next/dist/client/router";
 import { useContext } from "react";
 import {
   useInfiniteQuery,
@@ -12,6 +11,7 @@ import { RestaurantsListContext } from "../contexts/restaurants-list.contexts";
 import { PlacesGetAllParams } from "../services/places/models/places-get-all-params.models";
 import { RestaurantSummaryDto } from "../services/places/models/restaurant-summary-dto.models";
 import { placesServices } from "../services/places/places.services";
+import { BaseApiSearchResponse } from "../services/restaurants/models/base-api-search-response.models";
 import { restaurantsServices } from "../services/restaurants/restaurants.services";
 
 export const useFeaturedPlaces = (
@@ -22,59 +22,45 @@ export const useFeaturedPlaces = (
     PagedResultDto<RestaurantSummaryDto>
   >
 ) => {
-  const result = useQuery(
+  return useQuery(
     "featuredPlaces",
     async () =>
       (await placesServices.getAll({ isFeatured: true, ...params })).result,
     options
   );
-
-  return result;
 };
 
 export const useInfinityPlaces = (
-  params?: PlacesGetAllParams,
   options?: UseInfiniteQueryOptions<
-    PagedResultDto<RestaurantSummaryDto>,
+    BaseApiSearchResponse,
     unknown,
-    PagedResultDto<RestaurantSummaryDto>
+    BaseApiSearchResponse
   >
 ) => {
-  const { query } = useRouter();
   const { options1 } = useContext(RestaurantsListContext);
 
-  const result = useInfiniteQuery(
-    ["infinityPlaces", query],
+  return useInfiniteQuery(
+    ["infinityPlaces", options1],
     async ({ pageParam }) => {
       const skip =
         !pageParam || pageParam === 1
           ? 0
           : (pageParam - 1) *
             RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage;
-      console.log("query", query);
-      console.log("options1", options1);
-      const result = await placesServices.getAll({
-        skipCount: skip,
-        maxResultCount:
-          RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage,
-        ...query,
-        ...params,
-      });
-      let restaurants = await restaurantsServices.getAll({
+
+      return await restaurantsServices.getAll({
         size: RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage,
         query: {
           bool: {
             must: options1,
           },
         },
-        from: RESTAURANTS_INITIAL_PLACES_API_PARAMS.StartFromRestaurant,
+        from: skip,
       });
-      console.log(restaurants.hits.hits);
-      return result.result;
     },
     {
       getNextPageParam: (lastPage, allPages) => {
-        return lastPage.totalCount >
+        return lastPage.hits.total.value >
           allPages.length *
             RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage
           ? allPages.length + 1
@@ -86,6 +72,4 @@ export const useInfinityPlaces = (
       ...options,
     }
   );
-
-  return result;
 };

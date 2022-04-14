@@ -21,21 +21,33 @@ const FilterBoolean: FunctionComponent<FilterBooleanProps> = ({
 
   const { push, pathname } = useRouter();
 
-  const { options, setOptions } = useContext(RestaurantsListContext);
+  const { options, setOptions, options1, setOptions1 } = useContext(
+    RestaurantsListContext
+  );
 
-  const { options1, setOptions1 } = useContext(RestaurantsListContext);
-
-  const onCheckboxChange = (e: CheckboxChangeEvent, name: string) => {
+  const onCheckboxChange = (e: CheckboxChangeEvent, attributeName: string) => {
     if (e.target.checked) {
-      const result = { ...options, [name]: true };
+      const result = { ...options, [attributeName]: true };
 
-      const optionsResults = [...options1, { term: { [name]: true } }];
-      setOptions1(optionsResults);
+      const index = options1.findIndex((emp) => emp.term?.[attributeName]);
+      if (index !== -1) {
+        const optionsResults = options1;
+        optionsResults.splice(index, 1, { term: { [attributeName]: true } });
+        setOptions1(optionsResults);
+      } else {
+        const optionsResults = [
+          ...options1,
+          { term: { [attributeName]: true } },
+        ];
+        setOptions1(optionsResults);
+      }
+
       setOptions(result);
 
       push({ pathname: pathname, query: { ...result } });
     } else {
-      const { [name]: _, ...optionsWithoutOptionName } = options as any;
+      const { [attributeName]: _, ...optionsWithoutOptionName } =
+        options as any;
 
       const result = { ...(optionsWithoutOptionName || {}) };
 

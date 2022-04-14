@@ -20,41 +20,65 @@ const FilterRestaurantName: FunctionComponent<
 
   const [restaurantName, setRestaurantName] = useState("");
 
-  const { query } = useRouter();
+  const { query, push, pathname } = useRouter();
 
   const [form] = Form.useForm();
 
-  const { options1, setOptions1 } = useContext(RestaurantsListContext);
+  const { options, setOptions, options1, setOptions1 } = useContext(
+    RestaurantsListContext
+  );
 
   useEffect(() => {
     if (query) setRestaurantName(query.RestaurantName as string);
   }, [query, form]);
 
-  const handleSubmit = () => {
-    console.log("handleSubmit", restaurantName);
-    const index = options1.findIndex((emp) => emp.match?.keywords["query"]);
-    if (index !== -1) {
-      options1.splice(index, 1, {
-        match: {
-          keywords: {
-            query: restaurantName,
-            fuzziness: "AUTO",
-          },
-        },
-      });
-    } else {
-      const optionsResults = [
-        ...options1,
-        {
+  const handleSubmit = (values: any) => {
+    if (values.searchBox) {
+      const index = options1.findIndex((emp) => emp.match?.keywords["query"]);
+      if (index !== -1) {
+        const optionsResults = options1;
+        optionsResults.splice(index, 1, {
           match: {
             keywords: {
               query: restaurantName,
               fuzziness: "AUTO",
             },
           },
-        },
-      ];
-      setOptions1(optionsResults);
+        });
+        setOptions1(optionsResults);
+      } else {
+        const optionsResults = [
+          ...options1,
+          {
+            match: {
+              keywords: {
+                query: restaurantName,
+                fuzziness: "AUTO",
+              },
+            },
+          },
+        ];
+        setOptions1(optionsResults);
+      }
+
+      setOptions({ ...options, RestaurantName: restaurantName });
+
+      push({
+        pathname: pathname,
+        query: { ...options, RestaurantName: values.searchBox },
+      });
+    } else {
+      const { RestaurantName: _, ...optionsWithoutRestaurantName } =
+        options as any;
+
+      const result = { ...(optionsWithoutRestaurantName || {}) };
+
+      setOptions(result);
+
+      push({
+        pathname: pathname,
+        query: { ...optionsWithoutRestaurantName },
+      });
     }
   };
   return (
@@ -71,8 +95,16 @@ const FilterRestaurantName: FunctionComponent<
         {t("restaurantName")}
       </Text>
 
-      <Form form={form} onSubmitCapture={handleSubmit}>
-        <Form.Item style={{ display: "inline-block", width: "80%" }}>
+      <Form
+        form={form}
+        onFinish={handleSubmit}
+        onValuesChange={(v) => setRestaurantName(v.searchBox)}
+      >
+        <Form.Item
+          name="searchBox"
+          style={{ display: "inline-block", width: "80%" }}
+          getValueProps={(value) => value}
+        >
           <Input
             className={
               direction === "ltr"
@@ -81,9 +113,6 @@ const FilterRestaurantName: FunctionComponent<
             }
             placeholder={t("restaurantName")}
             value={restaurantName}
-            onChange={(e) => {
-              setRestaurantName(e.target.value);
-            }}
           />
         </Form.Item>
         <Button

@@ -30,8 +30,22 @@ export interface SourceSearchResultsRestaurants {
   name: string;
   nameinbrand: string;
   parkingtypes: number;
-  rank: null;
+  rank: number;
   regionid: number;
   restauranttypes: number;
   status: number;
+  ambiance_rate: number;
+  brandid: number;
+  coverimage: string;
+  featuredsequence: number;
+  food_rate: number;
+  managerid: number;
+  noise_level: number;
+  phonenumber: string;
+  rated_by: number;
+  restaurant_rate: number;
+  service_rate: number;
+  services: Array<string>;
+  shisha_rate: number;
+  tel: string;
 }
