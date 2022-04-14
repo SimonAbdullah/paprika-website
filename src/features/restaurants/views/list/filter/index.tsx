@@ -1,5 +1,5 @@
 import { Button, Col, Row, Space } from "antd";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useContext } from "react";
 import useTranslation from "next-translate/useTranslation";
 import { TranslationFiles } from "../../../../../core/core";
 import { useRouter } from "next/dist/client/router";
@@ -8,6 +8,7 @@ import { otherData, servicesData } from "./data";
 import FilterLocation from "./filter-location.components";
 import FilterOptions from "./filter-options.components";
 import FilterRestaurantName from "./filter-restaurant-name.components";
+import { RestaurantsListContext } from "../../../contexts/restaurants-list.contexts";
 
 interface RestaurantsFilterProps {}
 
@@ -15,6 +16,8 @@ const RestaurantsFilter: FunctionComponent<RestaurantsFilterProps> = () => {
   const { t } = useTranslation(TranslationFiles.RESTAURANTS);
 
   const { push, pathname } = useRouter();
+
+  const { setOptions1 } = useContext(RestaurantsListContext);
 
   return (
     <aside style={{ backgroundColor: "#fff" }}>
@@ -58,6 +61,7 @@ const RestaurantsFilter: FunctionComponent<RestaurantsFilterProps> = () => {
             <Button
               onClick={() => {
                 push(pathname);
+                setOptions1([]);
               }}
             >
               {t("reset")}

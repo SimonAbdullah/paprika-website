@@ -7,6 +7,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { useRouter } from "next/router";
 import { AppContext } from "../../../../../core/app/app.context";
 import classes from "./style.module.css";
+import { RestaurantsListContext } from "../../../contexts/restaurants-list.contexts";
 
 interface FilterRestaurantNameProps {}
 
@@ -23,12 +24,38 @@ const FilterRestaurantName: FunctionComponent<
 
   const [form] = Form.useForm();
 
+  const { options1, setOptions1 } = useContext(RestaurantsListContext);
+
   useEffect(() => {
     if (query) setRestaurantName(query.RestaurantName as string);
   }, [query, form]);
 
   const handleSubmit = () => {
     console.log("handleSubmit", restaurantName);
+    const index = options1.findIndex((emp) => emp.match?.keywords["query"]);
+    if (index !== -1) {
+      options1.splice(index, 1, {
+        match: {
+          keywords: {
+            query: restaurantName,
+            fuzziness: "AUTO",
+          },
+        },
+      });
+    } else {
+      const optionsResults = [
+        ...options1,
+        {
+          match: {
+            keywords: {
+              query: restaurantName,
+              fuzziness: "AUTO",
+            },
+          },
+        },
+      ];
+      setOptions1(optionsResults);
+    }
   };
   return (
     <>

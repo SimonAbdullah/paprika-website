@@ -21,6 +21,8 @@ const FilterLocation: FunctionComponent<FilterLocationProps> = () => {
 
   const { options, setOptions } = useContext(RestaurantsListContext);
 
+  const { options1, setOptions1 } = useContext(RestaurantsListContext);
+
   const { countries } = useCustomerConfiguration();
 
   const { cities } = useCities(options.countryId);
@@ -51,10 +53,36 @@ const FilterLocation: FunctionComponent<FilterLocationProps> = () => {
               countryId: value,
             };
 
+            const countryIndex = options1.findIndex(
+              (emp) => emp.term?.["countryId"]
+            );
+
+            const cityIndex = options1.findIndex((emp) => emp.term?.["cityId"]);
+
+            options1.splice(cityIndex, 1);
+
+            const regionIndex = options1.findIndex(
+              (emp) => emp.term?.["regionId"]
+            );
+            options1.splice(regionIndex, 1);
+
+            if (countryIndex !== -1) {
+              options1.splice(countryIndex, 1, {
+                term: { ["countryId"]: value },
+              });
+            } else {
+              const optionsResults = [
+                ...options1,
+                { term: { ["countryId"]: value } },
+              ];
+              setOptions1(optionsResults);
+            }
             if (!value) {
               delete result.countryId;
+              options1.splice(countryIndex, 1);
             }
 
+            //const test = { ["countryId"]: value };
             delete result.cityId;
             delete result.regionId;
 
@@ -80,7 +108,25 @@ const FilterLocation: FunctionComponent<FilterLocationProps> = () => {
               cityId: value,
             };
 
+            const cityIndex = options1.findIndex((emp) => emp.term?.["cityId"]);
+            const regionIndex = options1.findIndex(
+              (emp) => emp.term?.["regionId"]
+            );
+            if (cityIndex !== -1) {
+              options1.splice(regionIndex, 1);
+              options1.splice(cityIndex, 1, {
+                term: { ["cityId"]: value },
+              });
+            } else {
+              const optionsResults = [
+                ...options1,
+                { term: { ["cityId"]: value } },
+              ];
+              setOptions1(optionsResults);
+            }
+
             if (!value) {
+              options1.splice(cityIndex, 1);
               delete result.cityId;
             }
 
@@ -105,7 +151,23 @@ const FilterLocation: FunctionComponent<FilterLocationProps> = () => {
           onChange={(value) => {
             const result = { ...options, regionId: value };
 
+            const regionIndex = options1.findIndex(
+              (emp) => emp.term?.["regionId"]
+            );
+
+            if (regionIndex !== -1) {
+              options1.splice(regionIndex, 1, {
+                term: { ["regionId"]: value },
+              });
+            } else {
+              const optionsResults = [
+                ...options1,
+                { term: { ["regionId"]: value } },
+              ];
+              setOptions1(optionsResults);
+            }
             if (!value) {
+              options1.splice(regionIndex, 1);
               delete result.regionId;
             }
 

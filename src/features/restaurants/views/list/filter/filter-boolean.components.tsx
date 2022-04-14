@@ -23,10 +23,14 @@ const FilterBoolean: FunctionComponent<FilterBooleanProps> = ({
 
   const { options, setOptions } = useContext(RestaurantsListContext);
 
+  const { options1, setOptions1 } = useContext(RestaurantsListContext);
+
   const onCheckboxChange = (e: CheckboxChangeEvent, name: string) => {
     if (e.target.checked) {
       const result = { ...options, [name]: true };
 
+      const optionsResults = [...options1, { term: { [name]: true } }];
+      setOptions1(optionsResults);
       setOptions(result);
 
       push({ pathname: pathname, query: { ...result } });

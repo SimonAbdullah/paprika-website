@@ -1,4 +1,5 @@
 import { useRouter } from "next/dist/client/router";
+import { useContext } from "react";
 import {
   useInfiniteQuery,
   UseInfiniteQueryOptions,
@@ -7,9 +8,11 @@ import {
 } from "react-query";
 import { PagedResultDto } from "../../../utils/base-api/api-provider";
 import { RESTAURANTS_INITIAL_PLACES_API_PARAMS } from "../constants/restaurants.constants";
+import { RestaurantsListContext } from "../contexts/restaurants-list.contexts";
 import { PlacesGetAllParams } from "../services/places/models/places-get-all-params.models";
 import { RestaurantSummaryDto } from "../services/places/models/restaurant-summary-dto.models";
 import { placesServices } from "../services/places/places.services";
+import { restaurantsServices } from "../services/restaurants/restaurants.services";
 
 export const useFeaturedPlaces = (
   params?: PlacesGetAllParams,
@@ -38,6 +41,7 @@ export const useInfinityPlaces = (
   >
 ) => {
   const { query } = useRouter();
+  const { options1 } = useContext(RestaurantsListContext);
 
   const result = useInfiniteQuery(
     ["infinityPlaces", query],
@@ -47,7 +51,8 @@ export const useInfinityPlaces = (
           ? 0
           : (pageParam - 1) *
             RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage;
-
+      console.log("query", query);
+      console.log("options1", options1);
       const result = await placesServices.getAll({
         skipCount: skip,
         maxResultCount:
@@ -55,7 +60,16 @@ export const useInfinityPlaces = (
         ...query,
         ...params,
       });
-
+      let restaurants = await restaurantsServices.getAll({
+        size: RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage,
+        query: {
+          bool: {
+            must: options1,
+          },
+        },
+        from: RESTAURANTS_INITIAL_PLACES_API_PARAMS.StartFromRestaurant,
+      });
+      console.log(restaurants.hits.hits);
       return result.result;
     },
     {

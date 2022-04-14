@@ -9,12 +9,15 @@ import {
 } from "react";
 import { INIT_FUNCTION } from "../../../core/app/app.constants";
 import { PlacesGetAllParams } from "../services/places/models/places-get-all-params.models";
+import { MustElasticSearchRestaurants } from "../services/restaurants/models/bool-elastic-search-restaurants.models";
 
 interface RestaurantsListContextProps {
   isGridView: boolean;
   setIsGridView: Dispatch<SetStateAction<boolean>>;
   options: PlacesGetAllParams;
   setOptions: Dispatch<SetStateAction<PlacesGetAllParams>>;
+  options1: MustElasticSearchRestaurants[];
+  setOptions1: Dispatch<SetStateAction<MustElasticSearchRestaurants[]>>;
 }
 
 export const RestaurantsListContext =
@@ -23,6 +26,8 @@ export const RestaurantsListContext =
     setIsGridView: INIT_FUNCTION,
     setOptions: INIT_FUNCTION,
     options: {},
+    setOptions1: INIT_FUNCTION,
+    options1: [],
   });
 
 interface RestaurantsListContextProviderProps {}
@@ -35,6 +40,8 @@ const RestaurantsListContextProvider: FunctionComponent<
   const [isGridView, setIsGridView] = useState(true);
 
   const [options, setOptions] = useState<PlacesGetAllParams>({});
+
+  const [options1, setOptions1] = useState<MustElasticSearchRestaurants[]>([]);
 
   useEffect(() => {
     if (query) {
@@ -56,6 +63,8 @@ const RestaurantsListContextProvider: FunctionComponent<
         setIsGridView: setIsGridView,
         options: options,
         setOptions: setOptions,
+        options1: options1,
+        setOptions1: setOptions1,
       }}
     >
       {props.children}

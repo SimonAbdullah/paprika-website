@@ -17,21 +17,30 @@ import { customerConfigurationServices } from "../../features/customers/services
 import { InitializationDto } from "../../features/customers/services/customer-configuration/models/initialization-dto.models";
 import { useCustomerConfiguration } from "../../features/customers/hooks/customer-configuration.hooks";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
+import { useEffect } from "react";
+import { restaurantsServices } from "../../features/restaurants/services/restaurants/restaurants.services";
+import { BaseApiSearchResponse } from "../../features/restaurants/services/restaurants/models/base-api-search-response.models";
 
 interface RestaurantsPageProps {
   places: PagedResultDto<RestaurantSummaryDto>;
   configurations: InitializationDto;
+  restaurants: BaseApiSearchResponse;
 }
 
 const RestaurantsPage: NextPage<RestaurantsPageProps> = ({
   places,
   configurations,
+  restaurants,
 }) => {
   const { t } = useTranslation(TranslationFiles.RESTAURANTS);
 
   const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
 
   const { lg } = useBreakpoint();
+
+  useEffect(() => {
+    console.log(restaurants);
+  }, []);
 
   useInfinityPlaces(
     {
@@ -81,11 +90,25 @@ export const getStaticProps: GetStaticProps = async () => {
     maxResultCount: RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage,
   });
 
+  let restaurants = await restaurantsServices.getAll({
+    size: RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage,
+    query: {
+      bool: {
+        must: [],
+      },
+    },
+    from: RESTAURANTS_INITIAL_PLACES_API_PARAMS.StartFromRestaurant,
+  });
+
   const configurations =
     await customerConfigurationServices.getInitialConfigurations();
 
   return {
-    props: { places: places.result, configurations: configurations.result },
+    props: {
+      places: places.result,
+      configurations: configurations.result,
+      restaurants: restaurants,
+    },
     revalidate: TimeInSeconds.DAY,
   };
 };
