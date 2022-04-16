@@ -17,14 +17,6 @@ export const HomeMetaData = {
   imageWidth: "480",
   imageHeight: "360",
 };
-export const AuthorizationElasticSearchTesting = {
-  userName: "audit_user",
-  password: "Pa-P8w6gAUDipbBy6g8x",
-};
-export const AuthorizationElasticSearchProduction = {
-  userName: "elastic",
-  password: "Hz-P8w6gXNLipbBy6g7n",
-};
 export const UrlInApp = {
   paprikaUrlInApp: "paprika://paprika-sy.com",
 };

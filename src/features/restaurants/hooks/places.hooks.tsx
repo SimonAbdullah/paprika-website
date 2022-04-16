@@ -37,10 +37,10 @@ export const useInfinityPlaces = (
     BaseApiSearchResponse
   >
 ) => {
-  const { options1 } = useContext(RestaurantsListContext);
+  const { elasticSearchOptions } = useContext(RestaurantsListContext);
 
   return useInfiniteQuery(
-    ["infinityPlaces", options1],
+    ["infinityPlaces", elasticSearchOptions],
     async ({ pageParam }) => {
       const skip =
         !pageParam || pageParam === 1
@@ -52,7 +52,7 @@ export const useInfinityPlaces = (
         size: RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage,
         query: {
           bool: {
-            must: options1,
+            must: elasticSearchOptions,
           },
         },
         from: skip,

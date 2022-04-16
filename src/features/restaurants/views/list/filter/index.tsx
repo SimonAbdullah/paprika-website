@@ -9,6 +9,7 @@ import FilterLocation from "./filter-location.components";
 import FilterOptions from "./filter-options.components";
 import FilterRestaurantName from "./filter-restaurant-name.components";
 import { RestaurantsListContext } from "../../../contexts/restaurants-list.contexts";
+import FilterServices from "./filter-services.components";
 
 interface RestaurantsFilterProps {}
 
@@ -17,7 +18,7 @@ const RestaurantsFilter: FunctionComponent<RestaurantsFilterProps> = () => {
 
   const { push, pathname } = useRouter();
 
-  const { setOptions1 } = useContext(RestaurantsListContext);
+  const { setElasticSearchOptions } = useContext(RestaurantsListContext);
 
   return (
     <aside style={{ backgroundColor: "#fff" }}>
@@ -30,7 +31,7 @@ const RestaurantsFilter: FunctionComponent<RestaurantsFilterProps> = () => {
           <FilterRestaurantName />
         </Col>
         <Col span={20}>
-          <FilterBoolean name={t("services")} data={servicesData} />
+          <FilterServices name={t("services")} data={servicesData} />
         </Col>
         <Col span={20}>
           <FilterLocation />
@@ -61,7 +62,7 @@ const RestaurantsFilter: FunctionComponent<RestaurantsFilterProps> = () => {
             <Button
               onClick={() => {
                 push(pathname);
-                setOptions1([]);
+                setElasticSearchOptions([]);
               }}
             >
               {t("reset")}

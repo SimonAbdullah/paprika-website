@@ -1,4 +1,4 @@
-import { AutoComplete, Button, Form, Input } from "antd";
+import { AutoComplete, Button, Form, Input, Rate, Spin } from "antd";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
@@ -26,6 +26,7 @@ const HomeFirstSearchBox = () => {
   const debouncedSearchTerm = useDebounce(restaurantName, 500);
 
   const { push } = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (debouncedSearchTerm) {
@@ -34,6 +35,7 @@ const HomeFirstSearchBox = () => {
   }, [debouncedSearchTerm]);
 
   const getRestaurants = async (value: any) => {
+    setIsLoading(true);
     try {
       let result = await restaurantsServices.getAll({
         size: 5,
@@ -42,6 +44,8 @@ const HomeFirstSearchBox = () => {
       setSearchResultsForRestaurants(result.hits.hits);
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -59,6 +63,14 @@ const HomeFirstSearchBox = () => {
           >
             <span>{item._source.name}</span>
             <span>
+              <span style={{ margin: "0px 15px" }}>
+                <Rate
+                  disabled
+                  style={{ fontSize: "18px" }}
+                  value={item._source.rated_by}
+                  allowHalf={true}
+                />
+              </span>
               <Button
                 type="ghost"
                 onClick={() => {
@@ -76,27 +88,12 @@ const HomeFirstSearchBox = () => {
   };
 
   useEffect(() => {
-    if (searchResultsForRestaurants.length > 0) {
-      setOptions(searchResults());
-    } else {
-      setOptions([
-        {
-          value: "restaurantIsNotAvailable",
-          label: (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <span>{t("first.The-restaurant-is-not-available")}</span>
-            </div>
-          ),
-        },
-      ]);
-    }
+    setOptions(searchResults());
   }, [searchResultsForRestaurants]);
 
+  const handleSelect = (value: any) => {
+    setRestaurantName(value);
+  };
   const handleSearch = (value: any) => {
     setRestaurantName(value);
   };
@@ -120,6 +117,8 @@ const HomeFirstSearchBox = () => {
               <AutoComplete
                 dropdownMatchSelectWidth={252}
                 onSearch={handleSearch}
+                onSelect={handleSelect}
+                notFoundContent={isLoading ? <Spin size="small" /> : null}
                 options={options}
               >
                 <Input

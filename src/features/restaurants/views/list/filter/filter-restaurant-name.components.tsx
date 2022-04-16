@@ -24,7 +24,7 @@ const FilterRestaurantName: FunctionComponent<
 
   const [form] = Form.useForm();
 
-  const { options, setOptions, options1, setOptions1 } = useContext(
+  const { options, setOptions, elasticSearchOptions } = useContext(
     RestaurantsListContext
   );
 
@@ -34,10 +34,11 @@ const FilterRestaurantName: FunctionComponent<
 
   const handleSubmit = (values: any) => {
     if (values.searchBox) {
-      const index = options1.findIndex((emp) => emp.match?.keywords["query"]);
+      const index = elasticSearchOptions.findIndex(
+        (emp) => emp.match?.keywords["query"]
+      );
       if (index !== -1) {
-        const optionsResults = options1;
-        optionsResults.splice(index, 1, {
+        elasticSearchOptions.splice(index, 1, {
           match: {
             keywords: {
               query: restaurantName,
@@ -45,20 +46,6 @@ const FilterRestaurantName: FunctionComponent<
             },
           },
         });
-        setOptions1(optionsResults);
-      } else {
-        const optionsResults = [
-          ...options1,
-          {
-            match: {
-              keywords: {
-                query: restaurantName,
-                fuzziness: "AUTO",
-              },
-            },
-          },
-        ];
-        setOptions1(optionsResults);
       }
 
       setOptions({ ...options, RestaurantName: restaurantName });
@@ -102,7 +89,7 @@ const FilterRestaurantName: FunctionComponent<
       >
         <Form.Item
           name="searchBox"
-          style={{ display: "inline-block", width: "80%" }}
+          style={{ display: "inline-block", width: "80%", margin: "0" }}
           getValueProps={(value) => value}
         >
           <Input

@@ -22,7 +22,7 @@ export interface SourceSearchResultsRestaurants {
   isalcoholfree: true;
   isfeatured: true;
   issmokefree: true;
-  keywords: string[];
+  keywords: Array<string>;
   latitude: number;
   logoimage: string;
   longitude: number;

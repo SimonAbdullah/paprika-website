@@ -36,6 +36,7 @@
   font-weight: bold;
   letter-spacing: 0.01em;
   margin-bottom: 0.3rem;
+  margin-top: -3em;
 }
 
 .text {
@@ -48,7 +49,7 @@
   left: 6.5%;
   position: absolute;
   z-index: 10;
-  margin-top: 15vh;
+  margin-top: 2em;
   width: 35%;
 }
 
@@ -56,7 +57,7 @@
   right: 6.5%;
   position: absolute;
   z-index: 10;
-  margin-top: 10%;
+  margin-top: 2em;
   width: 35%;
 }
 
@@ -95,7 +96,7 @@
 
   .searchBoxLeft,
   .searchBoxRight {
-    margin-top: 16%;
+    margin-top: 7em;
     width: 50%;
   }
 }
@@ -129,15 +130,17 @@
   }
   .searchBoxLeft,
   .searchBoxRight {
-    margin-top: 15%;
+    margin: 3em;
     width: 75%;
+    margin-top: 3em;
   }
 }
 
 @media only screen and (max-width: 500px) {
   .searchBoxLeft,
   .searchBoxRight {
-    margin-top: 25%;
+    margin: 0px;
+    margin-top: 5em;
     width: 85%;
   }
 
