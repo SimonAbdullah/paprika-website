@@ -13,7 +13,7 @@ interface FooterMiddleProps {}
 const FooterMiddle: FunctionComponent<FooterMiddleProps> = () => {
   const { t } = useTranslation(TranslationFiles.COMMON);
 
-  const { locale } = useRouter();
+  const { locale, pathname } = useRouter();
 
   return (
     <Row gutter={[16, 16]}>
@@ -62,17 +62,20 @@ const FooterMiddle: FunctionComponent<FooterMiddleProps> = () => {
               {process?.env?.NEXT_PUBLIC_EMAIL_ADDRESS}
             </LinkComponent>
           </li>
-          <li dir="ltr">
-            <LinkComponent
-              linkProps={{
-                href: `tel:${process?.env?.NEXT_PUBLIC_PHONE_NUMBER}`,
-                locale: locale,
-              }}
-              anchorProps={{ className: classes.listLink }}
-            >
-              {process?.env?.NEXT_PUBLIC_PHONE_NUMBER}
-            </LinkComponent>
-          </li>
+          {/* Don't show phone number in support page because it's accessed by Apple App Review Team. */}
+          {pathname !== "/support" && (
+            <li dir="ltr">
+              <LinkComponent
+                linkProps={{
+                  href: `tel:${process?.env?.NEXT_PUBLIC_PHONE_NUMBER}`,
+                  locale: locale,
+                }}
+                anchorProps={{ className: classes.listLink }}
+              >
+                {process?.env?.NEXT_PUBLIC_PHONE_NUMBER}
+              </LinkComponent>
+            </li>
+          )}
         </ul>
       </Col>
       <Col xs={24} sm={8}>
