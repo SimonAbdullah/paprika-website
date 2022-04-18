@@ -9,7 +9,7 @@ class RestaurantsServices extends ApiService {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Basic ${Buffer.from(
-          `${process.env.NEXT_PUBLIC_USERNAME_ELASTICSEARCH}:${process.env.NEXT_PUBLIC_PASSWORD_ELASTICSEARCH}`
+          `${process.env.NEXT_PUBLIC_ELASTICSEARCH_USERNAME}:${process.env.NEXT_PUBLIC_ELASTICSEARCH_PASSWORD}`
         ).toString("base64")}`,
       },
     });

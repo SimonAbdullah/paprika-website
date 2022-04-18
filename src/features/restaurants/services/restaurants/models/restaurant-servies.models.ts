@@ -1,7 +1,7 @@
 enum RestaurantServies {
-  Reservation = 1,
-  Delivery = 2,
-  Pickup = 3,
-  Inside = 5,
+  Reservation = "reservation",
+  Delivery = "delivery",
+  Pickup = "pickup",
+  Inside = "inside",
 }
 export default RestaurantServies;
