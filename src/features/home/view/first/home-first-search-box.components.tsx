@@ -1,4 +1,5 @@
 import { AutoComplete, Button, Form, Input, Rate, Spin } from "antd";
+import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
@@ -27,7 +28,10 @@ const HomeFirstSearchBox = () => {
   const debouncedSearchTerm = useDebounce(restaurantName, 500);
 
   const { push } = useRouter();
+
   const [isLoading, setIsLoading] = useState(false);
+
+  const { sm, xs } = useBreakpoint();
 
   useEffect(() => {
     if (debouncedSearchTerm) {
@@ -97,10 +101,16 @@ const HomeFirstSearchBox = () => {
   };
 
   const handleSubmit = () => {
-    push({
-      pathname: `${PagesUrls.RESTAURANTS}`,
-      query: { RestaurantName: restaurantName },
-    });
+    if (restaurantName)
+      push({
+        pathname: `${PagesUrls.RESTAURANTS}`,
+        query: { RestaurantName: restaurantName },
+      });
+    else {
+      push({
+        pathname: `${PagesUrls.RESTAURANTS}`,
+      });
+    }
   };
   return (
     <>
@@ -113,7 +123,7 @@ const HomeFirstSearchBox = () => {
           <Form form={form} onSubmitCapture={handleSubmit}>
             <Form.Item className={classes.searchField} name="restaurantName">
               <AutoComplete
-                dropdownMatchSelectWidth={252}
+                dropdownMatchSelectWidth={sm ? 300 : xs ? 325 : 300}
                 onSearch={handleSearch}
                 onSelect={handleSelect}
                 notFoundContent={isLoading ? <Spin size="small" /> : null}
