@@ -31,9 +31,9 @@ const HomeFirstSearchBox = () => {
 
   useEffect(() => {
     if (debouncedSearchTerm) {
-      getRestaurants(restaurantName);
+      getRestaurants(debouncedSearchTerm);
     }
-  }, [debouncedSearchTerm, restaurantName]);
+  }, [debouncedSearchTerm]);
 
   const getRestaurants = async (value: any) => {
     setIsLoading(true);
