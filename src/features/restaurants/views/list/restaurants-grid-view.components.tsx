@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useMemo } from "react";
 import { Button, List, Row } from "antd";
 import PagesNumber from "../../../shared/pages-number/pages-number.components";
 import ItemsCount from "../../../shared/items-count/items-count.components";
@@ -20,7 +20,10 @@ const RestaurantGridView: FunctionComponent<RestaurantGridViewProps> = () => {
 
   const { data, fetchNextPage, hasNextPage, isFetching } = useInfinityPlaces();
 
-  const dataSource = data?.pages?.flatMap((page) => page.items);
+  const dataSource = useMemo(
+    () => data?.pages?.flatMap((page) => page.hits.hits),
+    [data]
+  );
 
   return (
     <List
@@ -32,7 +35,7 @@ const RestaurantGridView: FunctionComponent<RestaurantGridViewProps> = () => {
           justify="space-between"
         >
           <PagesNumber
-            itemsTotalCount={data?.pages?.[0].totalCount || 0}
+            itemsTotalCount={data?.pages?.[0].hits.total.value || 0}
             itemsPerPage={
               RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage
             }
@@ -52,7 +55,7 @@ const RestaurantGridView: FunctionComponent<RestaurantGridViewProps> = () => {
           </Button>
           {sm && (
             <ItemsCount
-              count={data?.pages?.[0].totalCount}
+              count={data?.pages?.[0].hits.total.value}
               text={t("restaurants")}
             />
           )}
@@ -69,8 +72,8 @@ const RestaurantGridView: FunctionComponent<RestaurantGridViewProps> = () => {
         xs: 1,
       }}
       renderItem={(restaurant) => (
-        <List.Item key={restaurant.id}>
-          <RestaurantCard restaurant={restaurant} />
+        <List.Item key={restaurant._source.id}>
+          <RestaurantCard restaurant={restaurant._source} />
         </List.Item>
       )}
     />

@@ -20,3 +20,7 @@ export const DEFAULT_MAP_VALUES = {
   },
   ZOOM: 14,
 };
+
+export const SORT_IN_ELASTICSEARCH = {
+  SORT: "featuredsequence",
+};

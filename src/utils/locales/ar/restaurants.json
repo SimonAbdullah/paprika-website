@@ -26,5 +26,6 @@
   "location": "الموقع",
   "country": "البلد",
   "city": "المدينة",
-  "region": "المنطقة"
+  "region": "المنطقة",
+  "restaurantName": "اسم المطعم"
 }

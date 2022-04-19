@@ -4,8 +4,6 @@ import Head from "next/head";
 import { TimeInSeconds, TranslationFiles } from "../core/core";
 import Home from "../features/home/view/home.components";
 import { useFeaturedPlaces } from "../features/restaurants/hooks/places.hooks";
-import { RestaurantSummaryDto } from "../features/restaurants/services/places/models/restaurant-summary-dto.models";
-import { placesServices } from "../features/restaurants/services/places/places.services";
 import styles from "../styles/Home.module.css";
 import { PagedResultDto } from "../utils/base-api/api-provider";
 import { useEffect } from "react";
@@ -18,21 +16,21 @@ import {
 import { CustomerEventDto } from "../features/customers/services/customer-event/models/customer-event-dto.models";
 import { useUpcomingEvents } from "../features/customers/hooks/customer-event.hooks";
 import { HomeMetaData } from "../core/constants";
+import { restaurantsServices } from "../features/restaurants/services/restaurants/restaurants.services";
+import { BaseApiSearchResponse } from "../features/restaurants/services/restaurants/models/base-api-search-response.models";
+import { SORT_IN_ELASTICSEARCH } from "../features/restaurants/constants/restaurants.constants";
 
 interface HomePageProps {
-  places: PagedResultDto<RestaurantSummaryDto>;
+  restaurants: BaseApiSearchResponse;
   upComingEvents: PagedResultDto<CustomerEventDto>;
 }
 
-const HomePage: NextPage<HomePageProps> = ({ places, upComingEvents }) => {
+const HomePage: NextPage<HomePageProps> = ({ restaurants, upComingEvents }) => {
   const { t } = useTranslation(TranslationFiles.HOME);
 
-  useFeaturedPlaces(
-    {},
-    {
-      initialData: places,
-    }
-  );
+  useFeaturedPlaces({
+    initialData: restaurants,
+  });
 
   useUpcomingEvents({}, { initialData: upComingEvents });
 
@@ -62,15 +60,31 @@ const HomePage: NextPage<HomePageProps> = ({ places, upComingEvents }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const places = await placesServices.getAll({ isFeatured: true });
-
   const upComingEvents = await customerEventServices.getAllUpcomingEvent({
     SkipCount: InitialUpcomingEventNumber,
     MaxResultCount: NumberOfUpcomingEventToShow,
   });
 
+  let restaurants = await restaurantsServices.getAll({
+    sort: [SORT_IN_ELASTICSEARCH.SORT],
+    query: {
+      bool: {
+        must: [
+          {
+            term: {
+              isfeatured: true,
+            },
+          },
+        ],
+      },
+    },
+  });
+
   return {
-    props: { places: places.result, upComingEvents: upComingEvents.result },
+    props: {
+      restaurants: restaurants,
+      upComingEvents: upComingEvents.result,
+    },
     revalidate: TimeInSeconds.DAY,
   };
 };

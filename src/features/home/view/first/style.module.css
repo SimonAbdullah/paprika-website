@@ -36,6 +36,7 @@
   font-weight: bold;
   letter-spacing: 0.01em;
   margin-bottom: 0.3rem;
+  margin-top: -3em;
 }
 
 .text {
@@ -44,9 +45,59 @@
   letter-spacing: 0.01em;
 }
 
+.searchBoxLeft {
+  left: 6.5%;
+  position: absolute;
+  z-index: 10;
+  margin-top: 2em;
+  width: 35%;
+}
+
+.searchBoxRight {
+  right: 6.5%;
+  position: absolute;
+  z-index: 10;
+  margin-top: 2em;
+  width: 35%;
+}
+
+.searchField {
+  width: 80%;
+  display: inline-block;
+}
+
+.searchInputAr {
+  border-radius: 0px 5px 5px 0px;
+  width: 100%;
+  height: 40px;
+}
+
+.searchInputEn {
+  border-radius: 5px 0px 0px 5px;
+  width: 100%;
+  height: 40px;
+}
+
+.searchButtonEn {
+  border-radius: 0px 5px 5px 0px;
+  width: 20%;
+  height: 40px;
+}
+
+.searchButtonAr {
+  border-radius: 5px 0px 0px 5px;
+  width: 20%;
+  height: 40px;
+}
 @media only screen and (max-width: 991px) {
   .column {
     width: 20%;
+  }
+
+  .searchBoxLeft,
+  .searchBoxRight {
+    margin-top: 7em;
+    width: 50%;
   }
 }
 
@@ -76,5 +127,29 @@
 
   .text {
     color: #323232;
+  }
+  .searchBoxLeft,
+  .searchBoxRight {
+    margin: 3em;
+    width: 75%;
+    margin-top: 3em;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .searchBoxLeft,
+  .searchBoxRight {
+    margin: 0px;
+    margin-top: 5em;
+    width: 85%;
+  }
+
+  .searchField {
+    width: 70%;
+  }
+
+  .searchButtonAr,
+  .searchButtonEn {
+    width: 30%;
   }
 }

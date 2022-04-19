@@ -1,8 +1,8 @@
 export const servicesData = ["HasReservation", "HasDelivery", "HasPickup"];
 
 export const otherData = [
-  "Is24Hour",
-  "HasOutdoor",
-  "IsAlcoholFree",
-  "IsSmokeFree",
+  "is24hour",
+  "hasoutdoor",
+  "isalcoholfree",
+  "issmokefree",
 ];

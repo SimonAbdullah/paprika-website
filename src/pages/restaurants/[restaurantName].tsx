@@ -2,7 +2,6 @@ import { Button, Col, Modal, Row } from "antd";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { PagesUrls, TimeInSeconds, TranslationFiles } from "../../core/core";
-import { placesServices } from "../../features/restaurants/services/places/places.services";
 import styles from "../../styles/Restaurant.module.css";
 import { PathsType } from "../../core/types";
 import { customerRestaurantServices } from "../../features/customers/services/customer-restaurant/customer-restaurant.services";
@@ -16,6 +15,8 @@ import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useState } from "react";
 import { isDataEmpty } from "../../core/functions";
 import useTranslation from "next-translate/useTranslation";
+import { restaurantsServices } from "../../features/restaurants/services/restaurants/restaurants.services";
+import { SORT_IN_ELASTICSEARCH } from "../../features/restaurants/constants/restaurants.constants";
 
 interface RestaurantPageProps {
   restaurant: RestaurantHomeDto;
@@ -119,14 +120,22 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
-  const restaurants = await placesServices.getAll({ maxResultCount: 1000 });
+  let restaurants = await restaurantsServices.getAll({
+    sort: [SORT_IN_ELASTICSEARCH.SORT],
+    size: 1000,
+    query: {
+      bool: {
+        must: [],
+      },
+    },
+  });
 
   const paths: PathsType = [];
 
-  restaurants.result.items.forEach((item) => {
+  restaurants.hits.hits.forEach((item) => {
     locales?.forEach((locale) => {
       paths.push({
-        params: { restaurantName: item.name },
+        params: { restaurantName: item._source.name },
         locale: locale,
       });
     });

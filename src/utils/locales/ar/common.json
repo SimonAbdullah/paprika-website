@@ -43,5 +43,7 @@
     "rightArrow": "سهم يميني",
     "leftArrow": "سهم يساري",
     "location": "المكان"
-  }
+  },
+  "OpenInApp": "فتح التطبيق",
+  "ifYouHavePaprikaOnYourDevice": "اذا كنت تمتلك بابريكا على جهازك..."
 }

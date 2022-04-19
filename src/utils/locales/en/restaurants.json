@@ -18,13 +18,14 @@
   "HasPickup": "Pickup",
   "HasReservation": "Reservation",
   "other": "Other",
-  "HasOutdoor": "Outdoor",
-  "IsSmokeFree": "Smoke Free",
-  "IsAlcoholFree": "Alcohol Free",
-  "Is24Hour": "24/7",
+  "hasoutdoor": "Outdoor",
+  "issmokefree": "Smoke Free",
+  "isalcoholfree": "Alcohol Free",
+  "is24hour": "24/7",
   "filter": "Filter",
   "location": "Location",
   "country": "Country",
   "city": "City",
-  "region": "Region"
+  "region": "Region",
+  "restaurantName": "Restaurant Name"
 }

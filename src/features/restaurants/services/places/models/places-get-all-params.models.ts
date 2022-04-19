@@ -21,4 +21,5 @@ export interface PlacesGetAllParams {
   regionId?: number;
   skipCount?: number;
   maxResultCount?: number;
+  RestaurantName?: string;
 }

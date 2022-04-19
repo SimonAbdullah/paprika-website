@@ -3,29 +3,31 @@ import type { GetStaticProps, NextPage } from "next";
 import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
 import { TimeInSeconds, TranslationFiles } from "../../core/core";
-import { RESTAURANTS_INITIAL_PLACES_API_PARAMS } from "../../features/restaurants/constants/restaurants.constants";
+import {
+  RESTAURANTS_INITIAL_PLACES_API_PARAMS,
+  SORT_IN_ELASTICSEARCH,
+} from "../../features/restaurants/constants/restaurants.constants";
 import RestaurantsListContextProvider from "../../features/restaurants/contexts/restaurants-list.contexts";
 import { useInfinityPlaces } from "../../features/restaurants/hooks/places.hooks";
-import { RestaurantSummaryDto } from "../../features/restaurants/services/places/models/restaurant-summary-dto.models";
-import { placesServices } from "../../features/restaurants/services/places/places.services";
 import RestaurantsFilter from "../../features/restaurants/views/list/filter";
 import RestaurantsListHeader from "../../features/restaurants/views/list/header";
 import RestaurantList from "../../features/restaurants/views/list";
 import styles from "../../styles/Restaurants.module.css";
-import { PagedResultDto } from "../../utils/base-api/api-provider";
 import { customerConfigurationServices } from "../../features/customers/services/customer-configuration/customer-configuration.services";
 import { InitializationDto } from "../../features/customers/services/customer-configuration/models/initialization-dto.models";
 import { useCustomerConfiguration } from "../../features/customers/hooks/customer-configuration.hooks";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
+import { restaurantsServices } from "../../features/restaurants/services/restaurants/restaurants.services";
+import { BaseApiSearchResponse } from "../../features/restaurants/services/restaurants/models/base-api-search-response.models";
 
 interface RestaurantsPageProps {
-  places: PagedResultDto<RestaurantSummaryDto>;
   configurations: InitializationDto;
+  restaurants: BaseApiSearchResponse;
 }
 
 const RestaurantsPage: NextPage<RestaurantsPageProps> = ({
-  places,
   configurations,
+  restaurants,
 }) => {
   const { t } = useTranslation(TranslationFiles.RESTAURANTS);
 
@@ -33,19 +35,12 @@ const RestaurantsPage: NextPage<RestaurantsPageProps> = ({
 
   const { lg } = useBreakpoint();
 
-  useInfinityPlaces(
-    {
-      skipCount: RESTAURANTS_INITIAL_PLACES_API_PARAMS.StartFromRestaurant,
-      maxResultCount:
-        RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage,
-    },
-    {
-      initialData: () => ({
-        pages: [places],
-        pageParams: [1],
-      }),
-    }
-  );
+  useInfinityPlaces({
+    initialData: () => ({
+      pages: [restaurants],
+      pageParams: [1],
+    }),
+  });
 
   useCustomerConfiguration({}, { initialData: configurations });
 
@@ -76,16 +71,25 @@ const RestaurantsPage: NextPage<RestaurantsPageProps> = ({
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const places = await placesServices.getAll({
-    skipCount: RESTAURANTS_INITIAL_PLACES_API_PARAMS.StartFromRestaurant,
-    maxResultCount: RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage,
+  let restaurants = await restaurantsServices.getAll({
+    sort: [SORT_IN_ELASTICSEARCH.SORT],
+    size: RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage,
+    query: {
+      bool: {
+        must: [],
+      },
+    },
+    from: RESTAURANTS_INITIAL_PLACES_API_PARAMS.StartFromRestaurant,
   });
 
   const configurations =
     await customerConfigurationServices.getInitialConfigurations();
 
   return {
-    props: { places: places.result, configurations: configurations.result },
+    props: {
+      configurations: configurations.result,
+      restaurants: restaurants,
+    },
     revalidate: TimeInSeconds.DAY,
   };
 };

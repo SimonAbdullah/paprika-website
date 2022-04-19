@@ -1,5 +1,5 @@
 import { Button, Col, Row, Space } from "antd";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useContext } from "react";
 import useTranslation from "next-translate/useTranslation";
 import { TranslationFiles } from "../../../../../core/core";
 import { useRouter } from "next/dist/client/router";
@@ -7,6 +7,9 @@ import FilterBoolean from "./filter-boolean.components";
 import { otherData, servicesData } from "./data";
 import FilterLocation from "./filter-location.components";
 import FilterOptions from "./filter-options.components";
+import FilterRestaurantName from "./filter-restaurant-name.components";
+import { RestaurantsListContext } from "../../../contexts/restaurants-list.contexts";
+import FilterServices from "./filter-services.components";
 
 interface RestaurantsFilterProps {}
 
@@ -14,6 +17,8 @@ const RestaurantsFilter: FunctionComponent<RestaurantsFilterProps> = () => {
   const { t } = useTranslation(TranslationFiles.RESTAURANTS);
 
   const { push, pathname } = useRouter();
+
+  const { setElasticSearchOptions } = useContext(RestaurantsListContext);
 
   return (
     <aside style={{ backgroundColor: "#fff" }}>
@@ -23,7 +28,10 @@ const RestaurantsFilter: FunctionComponent<RestaurantsFilterProps> = () => {
         style={{ padding: "1rem 0" }}
       >
         <Col span={20}>
-          <FilterBoolean name={t("services")} data={servicesData} />
+          <FilterRestaurantName />
+        </Col>
+        <Col span={20}>
+          <FilterServices name={t("services")} data={servicesData} />
         </Col>
         <Col span={20}>
           <FilterLocation />
@@ -54,6 +62,7 @@ const RestaurantsFilter: FunctionComponent<RestaurantsFilterProps> = () => {
             <Button
               onClick={() => {
                 push(pathname);
+                setElasticSearchOptions([]);
               }}
             >
               {t("reset")}

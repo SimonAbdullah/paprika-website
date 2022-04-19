@@ -20,7 +20,7 @@ const RestaurantListView: FunctionComponent<RestaurantListViewProps> = () => {
 
   const { data, fetchNextPage, hasNextPage, isFetching } = useInfinityPlaces();
 
-  const dataSource = data?.pages?.flatMap((page) => page.items);
+  const dataSource = data?.pages?.flatMap((page) => page.hits.hits);
   return (
     <List
       dataSource={dataSource}
@@ -31,7 +31,7 @@ const RestaurantListView: FunctionComponent<RestaurantListViewProps> = () => {
           justify="space-between"
         >
           <PagesNumber
-            itemsTotalCount={data?.pages?.[0].totalCount || 0}
+            itemsTotalCount={data?.pages?.[0].hits.total.value || 0}
             itemsPerPage={
               RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage
             }
@@ -51,7 +51,7 @@ const RestaurantListView: FunctionComponent<RestaurantListViewProps> = () => {
           </Button>
           {sm && (
             <ItemsCount
-              count={data?.pages?.[0].totalCount}
+              count={data?.pages?.[0].hits.total.value}
               text={t("restaurants")}
             />
           )}
@@ -68,7 +68,10 @@ const RestaurantListView: FunctionComponent<RestaurantListViewProps> = () => {
         xs: 1,
       }}
       renderItem={(restaurant) => (
-        <RestaurantListItem key={restaurant.id} restaurant={restaurant} />
+        <RestaurantListItem
+          key={restaurant._source.id}
+          restaurant={restaurant}
+        />
       )}
     />
   );

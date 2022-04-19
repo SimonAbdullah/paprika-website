@@ -14,12 +14,15 @@ const HomeSecond: FunctionComponent<HomeSecondProps> = () => {
 
   const { data: upComingEvents } = useUpcomingEvents();
 
-  if (isDataEmpty(featuredPlaces?.items) && isDataEmpty(upComingEvents?.items))
+  if (
+    isDataEmpty(featuredPlaces?.hits.hits) &&
+    isDataEmpty(upComingEvents?.items)
+  )
     return null;
 
   return (
     <Row justify="center">
-      {!isDataEmpty(featuredPlaces?.items) && (
+      {!isDataEmpty(featuredPlaces?.hits.hits) && (
         <Col span={24} className={classes.firstColumn}>
           <div data-aos="flip-right" data-aos-duration="600">
             <HomeSecondTopRestaurants />

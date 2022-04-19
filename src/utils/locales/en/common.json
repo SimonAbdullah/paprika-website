@@ -43,5 +43,7 @@
     "rightArrow": "Right Arrow",
     "leftArrow": "Left Arrow",
     "location": "Location"
-  }
+  },
+  "OpenInApp": "Open in App",
+  "ifYouHavePaprikaOnYourDevice": "If you have Paprika on your device"
 }

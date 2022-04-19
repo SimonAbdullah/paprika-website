@@ -3,15 +3,15 @@ import Text from "antd/lib/typography/Text";
 import { FunctionComponent } from "react";
 import { LocationBlackIcon } from "../../../../shared/icons/icons.components";
 import Image from "next/image";
-import { RestaurantSummaryDto } from "../../../services/places/models/restaurant-summary-dto.models";
 import classes from "./style.module.css";
 import useTranslation from "next-translate/useTranslation";
 import { PagesUrls, TranslationFiles } from "../../../../../core/core";
 import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
+import { SourceSearchResultsRestaurants } from "../../../services/restaurants/models/search-results-restaurants.models";
 
 interface RestaurantCardProps {
-  restaurant: RestaurantSummaryDto;
+  restaurant: SourceSearchResultsRestaurants;
 }
 
 const RestaurantCard: FunctionComponent<RestaurantCardProps> = ({
@@ -29,14 +29,14 @@ const RestaurantCard: FunctionComponent<RestaurantCardProps> = ({
           size="small"
           cover={
             <Image
-              src={restaurant?.logoImage || "/images/home/fallback-image.png"}
+              src={restaurant?.logoimage || "/images/home/fallback-image.png"}
               alt={restaurant?.name}
               layout="responsive"
               width="100%"
               height="60%"
               objectFit="cover"
-              {...(restaurant?.logoImage
-                ? { blurDataURL: restaurant?.logoImage, placeholder: "blur" }
+              {...(restaurant?.logoimage
+                ? { blurDataURL: restaurant?.logoimage, placeholder: "blur" }
                 : {})}
             />
           }
@@ -67,12 +67,12 @@ const RestaurantCard: FunctionComponent<RestaurantCardProps> = ({
                 <Text>
                   <Rate
                     className={classes.rating}
-                    value={restaurant?.restaurantRate}
+                    value={restaurant?.restaurant_rate}
                     allowHalf
                     disabled
                   />
                   <Text className={classes.reviews}>
-                    {t("ratedBy")} {restaurant?.totalRestaurantRatersCount}
+                    {t("ratedBy")} {restaurant?.rated_by}
                   </Text>
                 </Text>
               </Space>
