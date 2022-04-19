@@ -24,8 +24,7 @@ const HeaderDownloadBanner: FunctionComponent<
 
   const { asPath } = useRouter();
 
-  return (process.env.NODE_ENV === "production" && isMobile && visible) ||
-    (process.env.NODE_ENV === "development" && isBrowser && xs && visible) ? (
+  return (isMobile && visible) || (isBrowser && xs && visible) ? (
     <>
       <Row justify="center" className={classes.container}>
         <Button
