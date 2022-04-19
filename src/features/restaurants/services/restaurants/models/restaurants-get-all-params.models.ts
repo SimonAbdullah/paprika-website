@@ -1,7 +1,8 @@
 import { BoolElasticSearchRestaurants } from "./bool-elastic-search-restaurants.models";
 
 export interface RestaurantsGetAllParams {
-  size: number;
+  sort?: Array<string>;
+  size?: number;
   from?: number;
   query: QueryElasticSearchRestaurants;
 }

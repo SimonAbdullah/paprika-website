@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../../core/app/app.context";
 import { PagesUrls, TranslationFiles } from "../../../../core/core";
+import { SORT_IN_ELASTICSEARCH } from "../../../restaurants/constants/restaurants.constants";
 import { SearchResultsRestaurants } from "../../../restaurants/services/restaurants/models/search-results-restaurants.models";
 import { restaurantsServices } from "../../../restaurants/services/restaurants/restaurants.services";
 import useDebounce from "../../../shared/hooks/debounce.hooks";
@@ -32,12 +33,13 @@ const HomeFirstSearchBox = () => {
     if (debouncedSearchTerm) {
       getRestaurants(restaurantName);
     }
-  }, [debouncedSearchTerm]);
+  }, [debouncedSearchTerm, restaurantName]);
 
   const getRestaurants = async (value: any) => {
     setIsLoading(true);
     try {
       let result = await restaurantsServices.getAll({
+        sort: [SORT_IN_ELASTICSEARCH.SORT],
         size: 5,
         query: { fuzzy: { keywords: { value: value } } },
       });
@@ -49,9 +51,9 @@ const HomeFirstSearchBox = () => {
     }
   };
 
-  const searchResults = () => {
+  useEffect(() => {
     let option: any[] = [];
-    searchResultsForRestaurants.map((item: SearchResultsRestaurants) => {
+    searchResultsForRestaurants.forEach((item: SearchResultsRestaurants) => {
       option.push({
         value: item._source.name,
         label: (
@@ -84,11 +86,7 @@ const HomeFirstSearchBox = () => {
         ),
       });
     });
-    return option;
-  };
-
-  useEffect(() => {
-    setOptions(searchResults());
+    setOptions(option);
   }, [searchResultsForRestaurants]);
 
   const handleSelect = (value: any) => {

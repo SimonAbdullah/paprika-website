@@ -17,7 +17,7 @@ const HomeSecondTopRestaurants: FunctionComponent<
 
   const { data } = useFeaturedPlaces();
 
-  if (isDataEmpty(data?.items)) return null;
+  if (isDataEmpty(data?.hits.hits)) return null;
 
   return (
     <>
@@ -25,10 +25,10 @@ const HomeSecondTopRestaurants: FunctionComponent<
         {t("second.topRestaurants")}
       </Title>
       <CardList
-        dataSource={data?.items}
-        itemKey={(item) => item.id}
+        dataSource={data?.hits.hits}
+        itemKey={(item) => item._id}
         renderItem={(item) => (
-          <HomeCardRestaurant key={item.id} restaurant={item} />
+          <HomeCardRestaurant key={item._id} restaurant={item._source} />
         )}
       />
     </>

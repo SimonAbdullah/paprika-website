@@ -3,7 +3,10 @@ import type { GetStaticProps, NextPage } from "next";
 import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
 import { TimeInSeconds, TranslationFiles } from "../../core/core";
-import { RESTAURANTS_INITIAL_PLACES_API_PARAMS } from "../../features/restaurants/constants/restaurants.constants";
+import {
+  RESTAURANTS_INITIAL_PLACES_API_PARAMS,
+  SORT_IN_ELASTICSEARCH,
+} from "../../features/restaurants/constants/restaurants.constants";
 import RestaurantsListContextProvider from "../../features/restaurants/contexts/restaurants-list.contexts";
 import { useInfinityPlaces } from "../../features/restaurants/hooks/places.hooks";
 import RestaurantsFilter from "../../features/restaurants/views/list/filter";
@@ -69,6 +72,7 @@ const RestaurantsPage: NextPage<RestaurantsPageProps> = ({
 
 export const getStaticProps: GetStaticProps = async () => {
   let restaurants = await restaurantsServices.getAll({
+    sort: [SORT_IN_ELASTICSEARCH.SORT],
     size: RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage,
     query: {
       bool: {
