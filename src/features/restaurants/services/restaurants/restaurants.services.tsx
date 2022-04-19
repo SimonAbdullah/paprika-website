@@ -5,7 +5,7 @@ import { RestaurantsGetAllParams } from "./models/restaurants-get-all-params.mod
 class RestaurantsServices extends ApiService {
   constructor() {
     super({
-      baseURL: `${process.env.NEXT_PUBLIC_BASE_Elastic_Search}`,
+      baseURL: `${process.env.NEXT_PUBLIC_BASE_ELASTIC_SEARCH}`,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Basic ${Buffer.from(
