@@ -63,12 +63,22 @@ const HomeFirstSearchBox = () => {
         label: (
           <div
             style={{
-              display: "flex",
-              justifyContent: "space-between",
+              display: "block",
             }}
           >
-            <span>{item._source.name}</span>
-            <span>
+            <span
+              style={{
+                display: "block",
+              }}
+            >
+              {item._source.name}
+            </span>
+            <span
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
               <span style={{ margin: "0px 15px" }}>
                 <Rate
                   disabled
