@@ -25,6 +25,8 @@ interface RestaurantPageProps {
 const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
 
+  const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
+
   const { data, galleryItems, hasReservation } = useRestaurantDetails(
     {},
     { initialData: restaurant }
@@ -43,7 +45,7 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
   return (
     <>
       <PaprikaHead
-        restaurantName={data?.name}
+        pageTitle={`${data?.name} | ${tCommon("paprika")}`}
         ogUrl={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.RESTAURANTS}/${data?.name}`}
         ogTitle={`${data?.name} | Paprika`}
         ogDescription={ogDescription}

@@ -1,7 +1,8 @@
 import Aos from "aos";
 import { GetServerSideProps, NextPage } from "next";
+import useTranslation from "next-translate/useTranslation";
 import { useEffect } from "react";
-import { PagesUrls } from "../../../../core/core";
+import { PagesUrls, TranslationFiles } from "../../../../core/core";
 import { mealLinksServices } from "../../../../features/customers/services/meal-links/meal-links.services";
 import { MealLinksDto } from "../../../../features/customers/services/meal-links/models/meal-links-dto";
 import Home from "../../../../features/home/view/home.components";
@@ -22,6 +23,8 @@ const MealLinksPage: NextPage<MealLinksPageProps> = ({
   mealLinksInfo,
   urlParams,
 }) => {
+  const { t } = useTranslation(TranslationFiles.HOME);
+
   useEffect(() => {
     Aos.init({ once: true, disable: "mobile" });
   }, []);
@@ -29,6 +32,7 @@ const MealLinksPage: NextPage<MealLinksPageProps> = ({
   return (
     <>
       <PaprikaHead
+        pageTitle={t("paprika")}
         ogUrl={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.MEAL}/${urlParams.restaurantId}/${urlParams.categoryId}/${urlParams.mealId}`}
         ogTitle={mealLinksInfo.title}
         ogDescription={mealLinksInfo.description}

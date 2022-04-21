@@ -1,5 +1,5 @@
 import type { GetStaticProps, NextPage } from "next";
-import { TimeInSeconds } from "../core/core";
+import { TimeInSeconds, TranslationFiles } from "../core/core";
 import Home from "../features/home/view/home.components";
 import { useFeaturedPlaces } from "../features/restaurants/hooks/places.hooks";
 import styles from "../styles/Home.module.css";
@@ -18,6 +18,7 @@ import { restaurantsServices } from "../features/restaurants/services/restaurant
 import { BaseApiSearchResponse } from "../features/restaurants/services/restaurants/models/base-api-search-response.models";
 import { SORT_IN_ELASTICSEARCH } from "../features/restaurants/constants/restaurants.constants";
 import PaprikaHead from "../features/shared/head/paprika-head.components";
+import useTranslation from "next-translate/useTranslation";
 
 interface HomePageProps {
   restaurants: BaseApiSearchResponse;
@@ -25,6 +26,8 @@ interface HomePageProps {
 }
 
 const HomePage: NextPage<HomePageProps> = ({ restaurants, upComingEvents }) => {
+  const { t } = useTranslation(TranslationFiles.HOME);
+
   useFeaturedPlaces({
     initialData: restaurants,
   });
@@ -38,6 +41,7 @@ const HomePage: NextPage<HomePageProps> = ({ restaurants, upComingEvents }) => {
   return (
     <>
       <PaprikaHead
+        pageTitle={t("paprika")}
         ogUrl={HomeMetaData.url!}
         ogTitle={HomeMetaData.title}
         ogDescription={HomeMetaData.description}

@@ -1,7 +1,8 @@
 import Aos from "aos";
 import { GetServerSideProps, NextPage } from "next";
+import useTranslation from "next-translate/useTranslation";
 import { useEffect } from "react";
-import { PagesUrls } from "../../core/core";
+import { PagesUrls, TranslationFiles } from "../../core/core";
 import { eventLinksServices } from "../../features/customers/services/event-links/event-links.services";
 import { EventLinksDto } from "../../features/customers/services/event-links/models/event-links-dto";
 import { EventLinksParams } from "../../features/customers/services/event-links/models/event-links-params.models";
@@ -17,6 +18,8 @@ const EventLinksPage: NextPage<EventLinksPageProps> = ({
   eventLinksInfo,
   urlParams,
 }) => {
+  const { t } = useTranslation(TranslationFiles.HOME);
+
   useEffect(() => {
     Aos.init({ once: true, disable: "mobile" });
   }, []);
@@ -24,6 +27,7 @@ const EventLinksPage: NextPage<EventLinksPageProps> = ({
   return (
     <>
       <PaprikaHead
+        pageTitle={t("paprika")}
         ogUrl={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.EVENT}/${urlParams.eventId}`}
         ogTitle={eventLinksInfo.title}
         ogDescription={eventLinksInfo.description}

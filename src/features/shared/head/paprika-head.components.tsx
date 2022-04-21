@@ -5,7 +5,7 @@ import { HomeMetaData } from "../../../core/constants";
 import { TranslationFiles } from "../../../core/core";
 
 interface PaprikaHeadProps {
-  restaurantName?: string;
+  pageTitle: string;
   ogUrl: string;
   ogTitle: string;
   ogDescription: string;
@@ -13,14 +13,12 @@ interface PaprikaHeadProps {
 }
 
 const PaprikaHead: FunctionComponent<PaprikaHeadProps> = ({
-  restaurantName,
+  pageTitle,
   ogUrl,
   ogTitle,
   ogDescription,
   ogImage,
 }) => {
-  const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
-
   const { t } = useTranslation(TranslationFiles.HOME);
 
   const extractDimensionsFromImageURL = (url: string) => {
@@ -38,11 +36,7 @@ const PaprikaHead: FunctionComponent<PaprikaHeadProps> = ({
 
   return (
     <Head>
-      <title>
-        {restaurantName
-          ? `${restaurantName} | ${tCommon("paprika")}`
-          : t("paprika")}
-      </title>
+      <title>{pageTitle ? pageTitle : t("paprika")}</title>
       <meta property="og:url" content={ogUrl} />
       <meta property="og:site_name" content={HomeMetaData.siteName} />
       <meta property="og:type" content={"website"} />

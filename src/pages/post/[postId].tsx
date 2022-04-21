@@ -1,7 +1,8 @@
 import Aos from "aos";
 import { GetServerSideProps, NextPage } from "next";
+import useTranslation from "next-translate/useTranslation";
 import { useEffect } from "react";
-import { PagesUrls } from "../../core/core";
+import { PagesUrls, TranslationFiles } from "../../core/core";
 import { PostLinksDto } from "../../features/customers/services/post-links/models/post-links-dto";
 import { PostLinksParams } from "../../features/customers/services/post-links/models/post-links-params.models";
 import { postLinksServices } from "../../features/customers/services/post-links/post-links.services";
@@ -17,6 +18,8 @@ const PostLinksPage: NextPage<PostLinksPageProps> = ({
   postLinksInfo,
   urlParams,
 }) => {
+  const { t } = useTranslation(TranslationFiles.HOME);
+
   useEffect(() => {
     Aos.init({ once: true, disable: "mobile" });
   }, []);
@@ -24,6 +27,7 @@ const PostLinksPage: NextPage<PostLinksPageProps> = ({
   return (
     <>
       <PaprikaHead
+        pageTitle={t("paprika")}
         ogUrl={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.POST}/${urlParams.postId}`}
         ogTitle={postLinksInfo.title}
         ogDescription={postLinksInfo.description}
