@@ -1,6 +1,5 @@
 import { Button, Col, Modal, Row } from "antd";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import Head from "next/head";
 import { PagesUrls, TimeInSeconds, TranslationFiles } from "../../core/core";
 import styles from "../../styles/Restaurant.module.css";
 import { PathsType } from "../../core/types";
@@ -17,6 +16,7 @@ import { isDataEmpty } from "../../core/functions";
 import useTranslation from "next-translate/useTranslation";
 import { restaurantsServices } from "../../features/restaurants/services/restaurants/restaurants.services";
 import { SORT_IN_ELASTICSEARCH } from "../../features/restaurants/constants/restaurants.constants";
+import PaprikaHead from "../../features/shared/head/paprika-head.components";
 
 interface RestaurantPageProps {
   restaurant: RestaurantHomeDto;
@@ -24,8 +24,6 @@ interface RestaurantPageProps {
 
 const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
-
-  const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
 
   const { data, galleryItems, hasReservation } = useRestaurantDetails(
     {},
@@ -44,21 +42,14 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
 
   return (
     <>
-      <Head>
-        <title>{`${data?.name} | ${tCommon("paprika")}`}</title>
-        <meta
-          property="og:url"
-          content={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.RESTAURANTS}/${data?.name}`}
-        />
-        <meta property="og:site_name" content={"Paprika"} />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={`${data?.name} | Paprika`} />
-        <meta property="og:description" content={ogDescription} />
-        <meta property="og:image" content={data?.logoImage} />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:width" content="480" />
-        <meta property="og:image:height" content="360" />
-      </Head>
+      <PaprikaHead
+        restaurantInfo={data}
+        ogUrl={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.RESTAURANTS}/${data?.name}`}
+        ogTitle={`${data?.name} | Paprika`}
+        isHome={false}
+        ogDescription={ogDescription}
+        ogImage={data?.logoImage!}
+      />
       <div className={styles.container}>
         <Row className={styles.row} justify="center" gutter={[0, 16]}>
           <Col span={24}>
