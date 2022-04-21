@@ -43,10 +43,9 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
   return (
     <>
       <PaprikaHead
-        restaurantInfo={data}
+        restaurantName={data?.name}
         ogUrl={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.RESTAURANTS}/${data?.name}`}
         ogTitle={`${data?.name} | Paprika`}
-        isHome={false}
         ogDescription={ogDescription}
         ogImage={data?.logoImage!}
       />

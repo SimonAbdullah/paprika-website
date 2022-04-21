@@ -31,7 +31,6 @@ const MealLinksPage: NextPage<MealLinksPageProps> = ({
       <PaprikaHead
         ogUrl={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.MEAL}/${urlParams.restaurantId}/${urlParams.categoryId}/${urlParams.mealId}`}
         ogTitle={mealLinksInfo.title}
-        isHome={false}
         ogDescription={mealLinksInfo.description}
         ogImage={mealLinksInfo.imageUrl}
       />

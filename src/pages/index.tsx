@@ -40,7 +40,6 @@ const HomePage: NextPage<HomePageProps> = ({ restaurants, upComingEvents }) => {
       <PaprikaHead
         ogUrl={HomeMetaData.url!}
         ogTitle={HomeMetaData.title}
-        isHome={true}
         ogDescription={HomeMetaData.description}
         ogImage={HomeMetaData.image}
       />

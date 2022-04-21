@@ -26,7 +26,6 @@ const PostLinksPage: NextPage<PostLinksPageProps> = ({
       <PaprikaHead
         ogUrl={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.POST}/${urlParams.postId}`}
         ogTitle={postLinksInfo.title}
-        isHome={false}
         ogDescription={postLinksInfo.description}
         ogImage={postLinksInfo.imageUrl}
       />

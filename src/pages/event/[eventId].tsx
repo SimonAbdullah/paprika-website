@@ -26,7 +26,6 @@ const EventLinksPage: NextPage<EventLinksPageProps> = ({
       <PaprikaHead
         ogUrl={`${process.env.NEXT_PUBLIC_BASE_CLIENT_URL}${PagesUrls.EVENT}/${urlParams.eventId}`}
         ogTitle={eventLinksInfo.title}
-        isHome={false}
         ogDescription={eventLinksInfo.description}
         ogImage={eventLinksInfo.imageUrl}
       />
