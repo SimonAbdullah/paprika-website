@@ -1,6 +1,4 @@
 import type { GetStaticProps, NextPage } from "next";
-import useTranslation from "next-translate/useTranslation";
-import Head from "next/head";
 import { TimeInSeconds, TranslationFiles } from "../core/core";
 import Home from "../features/home/view/home.components";
 import { useFeaturedPlaces } from "../features/restaurants/hooks/places.hooks";
@@ -19,6 +17,8 @@ import { HomeMetaData } from "../core/constants";
 import { restaurantsServices } from "../features/restaurants/services/restaurants/restaurants.services";
 import { BaseApiSearchResponse } from "../features/restaurants/services/restaurants/models/base-api-search-response.models";
 import { SORT_IN_ELASTICSEARCH } from "../features/restaurants/constants/restaurants.constants";
+import PaprikaHead from "../features/shared/head/paprika-head.components";
+import useTranslation from "next-translate/useTranslation";
 
 interface HomePageProps {
   restaurants: BaseApiSearchResponse;
@@ -40,18 +40,13 @@ const HomePage: NextPage<HomePageProps> = ({ restaurants, upComingEvents }) => {
 
   return (
     <>
-      <Head>
-        <title>{t("paprika")}</title>
-        <meta property="og:url" content={HomeMetaData.url} />
-        <meta property="og:site_name" content={HomeMetaData.siteName} />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={HomeMetaData.title} />
-        <meta property="og:description" content={HomeMetaData.description} />
-        <meta property="og:image" content={HomeMetaData.image} />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:width" content={HomeMetaData.imageWidth} />
-        <meta property="og:image:height" content={HomeMetaData.imageHeight} />
-      </Head>
+      <PaprikaHead
+        pageTitle={t("paprika")}
+        ogUrl={HomeMetaData.url!}
+        ogTitle={HomeMetaData.title}
+        ogDescription={HomeMetaData.description}
+        ogImage={HomeMetaData.image}
+      />
       <div className={styles.container}>
         <Home />
       </div>
