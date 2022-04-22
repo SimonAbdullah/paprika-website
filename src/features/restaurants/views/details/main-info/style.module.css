@@ -2,19 +2,26 @@
   font-size: 3rem;
   font-weight: bold;
   color: #000000;
-  margin-inline-end: 10rem;
+  margin-inline-end: 2rem;
+}
+
+.followers {
+  font-size: 1.5rem;
+  color: #25272b;
+  margin-bottom: 0;
+}
+
+.followersText {
+  font-weight: bold;
+  font-size: 1.8rem;
+  margin-inline-end: 0.5rem;
+  color: #25272b;
 }
 
 .avatar {
   width: 64px;
   height: 64px;
   margin-inline-end: 0.5em;
-}
-
-.rateContainer {
-  position: absolute;
-  inset-inline-end: 0;
-  inset-block-start: 0.5rem;
 }
 
 .ourRate {
@@ -52,7 +59,8 @@
     margin-inline-end: 0;
   }
 
-  .rateContainer {
-    position: relative;
+  .followersText,
+  .rateText {
+    font-size: 1.5rem;
   }
 }
