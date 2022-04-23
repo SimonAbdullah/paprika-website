@@ -49,21 +49,6 @@ const RestaurantMainInfo: FunctionComponent<RestaurantMainInfoProps> = () => {
       </Row>
       <Row justify="center">
         <Col sm={7} xs={12}>
-          <div className={classes.followersContainer}>
-            <Title level={5} className={classes.followers}>
-              {t("followers")}
-            </Title>
-            <Text className={classes.followersText}>
-              {data?.statistics?.followedBy !== undefined &&
-              data?.statistics?.followedBy !== null
-                ? numberFormat(data?.statistics?.followedBy)
-                : 0}
-            </Text>
-            <HeartOutlined className={classes.followersIcon} />
-          </div>
-        </Col>
-
-        <Col sm={7} xs={12}>
           <div className={classes.viewsContainer}>
             <Title level={5} className={classes.views}>
               {t("Views")}
@@ -75,6 +60,21 @@ const RestaurantMainInfo: FunctionComponent<RestaurantMainInfoProps> = () => {
                 : 0}
             </Text>
             <EyeOutlined className={classes.viewsIcon} />
+          </div>
+        </Col>
+
+        <Col sm={7} xs={12}>
+          <div className={classes.followersContainer}>
+            <Title level={5} className={classes.followers}>
+              {t("followers")}
+            </Title>
+            <Text className={classes.followersText}>
+              {data?.statistics?.followedBy !== undefined &&
+              data?.statistics?.followedBy !== null
+                ? numberFormat(data?.statistics?.followedBy)
+                : 0}
+            </Text>
+            <HeartOutlined className={classes.followersIcon} />
           </div>
         </Col>
 
