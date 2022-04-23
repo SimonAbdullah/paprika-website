@@ -7,6 +7,7 @@ import { RestaurantEventDto } from "./restaurantEventDto";
 import { RestaurantLatestOfferDto } from "./restaurantLatestOfferDto";
 import { RestaurantRatersDto } from "./restaurantRatersDto";
 import { RestaurantSettingsDto } from "./restaurantSettingsDto";
+import { RestaurantStatisticsDto } from "./restaurantStatisticsDto";
 
 export interface RestaurantHomeDto {
   restaurantRate?: number;
@@ -25,6 +26,7 @@ export interface RestaurantHomeDto {
   restaurantRaters?: RestaurantRatersDto;
   settings?: RestaurantSettingsDto;
   latestOffer?: RestaurantLatestOfferDto;
+  statistics?: RestaurantStatisticsDto;
   name?: string;
   longitude?: number;
   latitude?: number;

@@ -2,19 +2,45 @@
   font-size: 3rem;
   font-weight: bold;
   color: #000000;
-  margin-inline-end: 10rem;
+  margin-inline-end: 2rem;
+}
+
+.followersContainer,
+.viewsContainer,
+.rateContainer {
+  text-align: center;
+}
+
+.followers,
+.views {
+  font-size: 1.5rem;
+  color: #25272b;
+  margin-bottom: 0;
+}
+
+.followersText,
+.viewsText {
+  font-weight: bold;
+  font-size: 1.8rem;
+  margin-inline-end: 0.5rem;
+  color: #25272b;
+}
+
+.followersIcon {
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #ce4c42;
+}
+
+.viewsIcon {
+  display: inline-block;
+  font-size: 1.5rem;
 }
 
 .avatar {
   width: 64px;
   height: 64px;
   margin-inline-end: 0.5em;
-}
-
-.rateContainer {
-  position: absolute;
-  inset-inline-end: 0;
-  inset-block-start: 0.5rem;
 }
 
 .ourRate {
@@ -53,6 +79,23 @@
   }
 
   .rateContainer {
-    position: relative;
+    margin-top: 1rem;
+  }
+
+  .followers,
+  .views,
+  .ourRate {
+    font-size: 1.3rem;
+  }
+
+  .followersIcon,
+  .viewsIcon {
+    font-size: 1.2rem;
+  }
+
+  .followersText,
+  .viewsText,
+  .rateText {
+    font-size: 1.2rem;
   }
 }
