@@ -16,39 +16,47 @@ const RestaurantDetails: FunctionComponent<RestaurantDetailsProps> = () => {
 
   return (
     <Row justify="center" gutter={[0, 16]}>
-      <Col span={22}>
-        <RestaurantServices />
-      </Col>
       {data?.restaurantTypes ===
-      RestaurantHomeDto.RestaurantTypesEnum.CHEF ? null : (
+        RestaurantHomeDto.RestaurantTypesEnum.BLOGGER ||
+      data?.restaurantTypes === RestaurantHomeDto.RestaurantTypesEnum.CHEF ||
+      data?.restaurantTypes ===
+        RestaurantHomeDto.RestaurantTypesEnum.INFLUENCER ? (
         <>
+          <Col span={22}>
+            <RestaurantGallery />
+          </Col>
+          <Divider />
+          <Col span={22}>
+            <RestaurantReviewsAndRate />
+          </Col>
+        </>
+      ) : (
+        <>
+          <Col span={22}>
+            <RestaurantServices />
+          </Col>
           <Divider />
           <Col span={22}>
             <RestaurantSchedule />
           </Col>
-        </>
-      )}
-      {data?.restaurantTypes ===
-      RestaurantHomeDto.RestaurantTypesEnum.CHEF ? null : (
-        <>
           <Divider />
           <Col span={22}>
             <RestaurantMenu />
           </Col>
+          <Divider />
+          <Col span={22}>
+            <RestaurantGallery />
+          </Col>
+          <Divider />
+          <Col span={22}>
+            <LocationComponent />
+          </Col>
+          <Divider />
+          <Col span={22}>
+            <RestaurantReviewsAndRate />
+          </Col>
         </>
       )}
-      <Divider />
-      <Col span={22}>
-        <RestaurantGallery />
-      </Col>
-      <Divider />
-      <Col span={22}>
-        <LocationComponent />
-      </Col>
-      <Divider />
-      <Col span={22}>
-        <RestaurantReviewsAndRate />
-      </Col>
     </Row>
   );
 };
