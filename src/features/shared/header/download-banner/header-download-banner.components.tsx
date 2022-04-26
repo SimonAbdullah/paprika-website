@@ -105,9 +105,13 @@ const HeaderDownloadBanner: FunctionComponent<
           </Text>
         </div>
         <Button
-          type="link"
+          type="default"
           size="large"
-          style={{ fontSize: "20px", fontWeight: 600, padding: "0px" }}
+          style={{
+            fontSize: "16px",
+            color: "#db7569",
+            margin: "0.5rem 0",
+          }}
           onClick={() => {
             window.open(`${UrlInApp.paprikaUrlInApp}${asPath}`, "_blank");
           }}
