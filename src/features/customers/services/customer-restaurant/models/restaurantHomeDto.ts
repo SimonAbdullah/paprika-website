@@ -78,7 +78,18 @@ export namespace RestaurantHomeDto {
     FAMILIAL: 8 as AmbianceTypesEnum,
     FOLK: 15 as AmbianceTypesEnum,
   };
-  export type RestaurantTypesEnum = 1 | 2 | 4 | 8 | 16 | 32 | 64 | 128;
+  export type RestaurantTypesEnum =
+    | 1
+    | 2
+    | 4
+    | 8
+    | 16
+    | 32
+    | 64
+    | 128
+    | 256
+    | 512
+    | 1024;
   export const RestaurantTypesEnum = {
     PIZZA_HOUSE: 1 as RestaurantTypesEnum,
     RESTAURANT: 2 as RestaurantTypesEnum,
@@ -88,6 +99,9 @@ export namespace RestaurantHomeDto {
     SWEETS: 32 as RestaurantTypesEnum,
     PATISSERIE: 64 as RestaurantTypesEnum,
     BAR: 128 as RestaurantTypesEnum,
+    BLOGGER: 256 as RestaurantTypesEnum,
+    CHEF: 512 as RestaurantTypesEnum,
+    INFLUENCER: 1024 as RestaurantTypesEnum,
   };
   export type MusicTypesEnum = 1 | 2 | 4 | 8;
   export const MusicTypesEnum = {
