@@ -109,6 +109,7 @@ const HeaderDownloadBanner: FunctionComponent<
           size="large"
           style={{
             fontSize: "16px",
+            fontWeight: "bold",
             color: "#db7569",
             margin: "0.5rem 0",
           }}
