@@ -35,6 +35,7 @@ const RestaurantCard: FunctionComponent<RestaurantCardProps> = ({
               width="100%"
               height="60%"
               objectFit="cover"
+              priority={true}
               {...(restaurant?.logoimage
                 ? { blurDataURL: restaurant?.logoimage, placeholder: "blur" }
                 : {})}

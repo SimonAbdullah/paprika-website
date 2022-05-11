@@ -74,6 +74,7 @@ const HomeFourthServiceCard: FunctionComponent<HomeFourthServiceCardProps> = ({
                 className={classes.cardImage}
                 src={data.backgroundImage.src}
                 alt={data.backgroundImage.alt}
+                priority={true}
                 layout="fill"
                 objectFit="contain"
                 objectPosition="center"

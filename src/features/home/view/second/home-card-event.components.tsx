@@ -34,6 +34,7 @@ const HomeCardEvent: FunctionComponent<HomeCardEventProps> = ({ event }) => {
               src={event?.image || "/images/home/fallback-image.png"}
               alt={event?.name}
               layout="fill"
+              priority={true}
               objectFit="cover"
               objectPosition="center"
               onClick={() => setVisible(true)}

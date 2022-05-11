@@ -37,6 +37,7 @@ const HomeFourthServiceColumn: FunctionComponent<
             width="80px"
             height="80px"
             objectPosition="center"
+            priority={true}
           />
           <Paragraph className={`${classes.paragraph} ${classes.title}`}>
             {title}

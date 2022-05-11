@@ -41,6 +41,7 @@ const HomeEventModal: FunctionComponent<HomeEventModalProps> = ({
             alt={event?.name}
             layout="fill"
             objectFit="cover"
+            priority={true}
             objectPosition="center"
             {...(event?.thumbnailImage
               ? { blurDataURL: event?.thumbnailImage, placeholder: "blur" }

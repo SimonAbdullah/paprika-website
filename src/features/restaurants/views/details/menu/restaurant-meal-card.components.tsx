@@ -28,6 +28,7 @@ const RestaurantMealCard: FunctionComponent<RestaurantMealCardProps> = ({
                 className={classes.image}
                 src={meal?.image || "/images/home/fallback-image.png"}
                 alt={meal?.name}
+                priority={true}
                 layout="fill"
                 objectFit="cover"
                 objectPosition="center"
