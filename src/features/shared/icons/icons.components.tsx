@@ -21,6 +21,7 @@ const RightArrow: FunctionComponent<IconProps> = ({ className }) => {
       height="80px"
       objectPosition="center"
       className={className}
+      priority={true}
     />
   );
 };
@@ -35,6 +36,7 @@ const LeftArrow: FunctionComponent<IconProps> = ({ className }) => {
       height="80px"
       objectPosition="center"
       className={className}
+      priority={true}
     />
   );
 };
@@ -49,6 +51,7 @@ const RightArrowBlack: FunctionComponent<IconProps> = ({ className }) => {
       height="80px"
       objectPosition="center"
       className={className}
+      priority={true}
     />
   );
 };
@@ -63,6 +66,7 @@ const LeftArrowBlack: FunctionComponent<IconProps> = ({ className }) => {
       height="80px"
       objectPosition="center"
       className={className}
+      priority={true}
     />
   );
 };
@@ -77,7 +81,7 @@ const ListRightArrow: FunctionComponent<IconProps> = ({ className }) => {
       height="64px"
       objectFit="contain"
       objectPosition="center"
-      priority
+      priority={true}
       className={className}
     />
   );
@@ -93,7 +97,7 @@ const ListLeftArrow: FunctionComponent<IconProps> = ({ className }) => {
       height="64px"
       objectFit="contain"
       objectPosition="center"
-      priority
+      priority={true}
       className={className}
     />
   );
@@ -110,6 +114,7 @@ const LocationIcon: FunctionComponent<IconProps> = ({ className }) => {
       objectFit="contain"
       objectPosition="center"
       className={className}
+      priority={true}
     />
   );
 };
@@ -125,6 +130,7 @@ const LocationBlackIcon: FunctionComponent<IconProps> = ({ className }) => {
       objectFit="contain"
       objectPosition="center"
       className={className}
+      priority={true}
     />
   );
 };
@@ -146,6 +152,7 @@ const LocationRedIcon: FunctionComponent<IconProps> = ({
       objectFit="contain"
       objectPosition="center"
       className={className}
+      priority={true}
     />
   );
 };

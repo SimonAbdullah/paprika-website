@@ -42,6 +42,7 @@ const RestaurantServices: FunctionComponent<RestaurantServicesProps> = () => {
                 height="38px"
                 objectFit="contain"
                 objectPosition="center"
+                priority={true}
               />
               <Text className={classes.itemTitle}>{item.title}</Text>
               <Text className={classes.itemDescription}>
