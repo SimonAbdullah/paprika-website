@@ -1,15 +1,15 @@
 import { Button, Col, Form, Input, Modal, notification, Row } from "antd";
 import useTranslation from "next-translate/useTranslation";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useContext, useState } from "react";
 import { TranslationFiles } from "../../../../core/core";
 import classes from "./style.module.css";
 import Image from "next/image";
 import Title from "antd/lib/typography/Title";
 import Text from "antd/lib/typography/Text";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
+import { AppContext } from "../../../../core/app/app.context";
 import { customerVisitorServices } from "../../../customers/services/customer-visitor/services/customer-visitor.services";
 import { useForm } from "antd/lib/form/Form";
-import { useRouter } from "next/router";
 
 interface HomeFifthProps {}
 
@@ -20,7 +20,7 @@ const HomeFifth: FunctionComponent<HomeFifthProps> = () => {
 
   const { lg } = useBreakpoint();
 
-  const { locale } = useRouter();
+  const { direction } = useContext(AppContext);
 
   const [loading, setLoading] = useState(false);
 
@@ -42,7 +42,6 @@ const HomeFifth: FunctionComponent<HomeFifthProps> = () => {
                   alt={t("fifth.alt.openImage")}
                   width="80px"
                   height="80px"
-                  priority={true}
                 />
               </Col>
               <Col>
@@ -148,13 +147,12 @@ const HomeFifth: FunctionComponent<HomeFifthProps> = () => {
         <Image
           className={classes.chefWomanImage}
           src={`/images/home/fifth-group-picture${
-            locale === "en" ? "" : "-reverse"
+            direction === "rtl" ? "-reverse" : ""
           }.png`}
           alt={t("fifth.alt.groupImage")}
           layout="fill"
           objectFit="contain"
           objectPosition="center"
-          priority={true}
         />
       </Col>
     </Row>

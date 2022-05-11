@@ -19,7 +19,6 @@ import {
   RightArrowBlack,
 } from "../../../shared/icons/icons.components";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
-import { useRouter } from "next/router";
 
 interface HomeFirstBackgroundProps {
   carouselRef: RefObject<Carousel>;
@@ -35,8 +34,6 @@ const HomeFirstBackground: FunctionComponent<HomeFirstBackgroundProps> = ({
   const { md } = useBreakpoint();
 
   const { direction } = useContext(AppContext);
-
-  const { locale } = useRouter();
 
   const NextArrow = () => {
     return (
@@ -115,13 +112,12 @@ const HomeFirstBackground: FunctionComponent<HomeFirstBackgroundProps> = ({
       </div>
       <Image
         src={`/images/home/first-background${
-          locale === "en" ? "" : "-reverse"
+          direction === "ltr" ? "" : "-reverse"
         }.png`}
         alt={t("alt.backgroundImage")}
         layout="fill"
         objectFit={md ? "fill" : "cover"}
         objectPosition="center"
-        priority={true}
       />
     </>
   );

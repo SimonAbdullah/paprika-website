@@ -48,7 +48,6 @@ const HomeFirstCarousel: FunctionComponent<HomeFirstCarouselProps> = ({
           <Col span={10}>
             <Image
               src={`/images/home/first-dish-${index}.png`}
-              priority={true}
               alt={t("alt.dishImage")}
               layout="responsive"
               width="1rem"

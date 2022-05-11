@@ -1,10 +1,11 @@
 import { Button, Col, Row } from "antd";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useContext } from "react";
 import Image from "next/image";
 import useTranslation from "next-translate/useTranslation";
 import { PagesUrls, TranslationFiles } from "../../../../core/core";
 import classes from "./style.module.css";
 import Text from "antd/lib/typography/Text";
+import { AppContext } from "../../../../core/app/app.context";
 import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
 
@@ -15,15 +16,16 @@ const HomeSixth: FunctionComponent<HomeSixthProps> = () => {
 
   const { locale } = useRouter();
 
+  const { direction } = useContext(AppContext);
+
   return (
     <Row justify="center" align="middle" className={classes.sixthContainer}>
       <Col span={22} style={{ position: "relative" }}>
         <Image
           className={classes.backgroundImage}
           src={`/images/home/sixth-background${
-            locale === "ar" ? "-reverse" : ""
+            direction === "rtl" ? "-reverse" : ""
           }.png`}
-          priority={true}
           alt={t("alt.backgroundImage")}
           layout="fill"
           objectFit="fill"

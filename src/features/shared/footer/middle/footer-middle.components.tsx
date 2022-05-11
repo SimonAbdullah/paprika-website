@@ -95,7 +95,6 @@ const FooterMiddle: FunctionComponent<FooterMiddleProps> = () => {
                   width="32px"
                   height="32px"
                   layout="fixed"
-                  priority={true}
                 />
               </a>
               <a
@@ -110,7 +109,6 @@ const FooterMiddle: FunctionComponent<FooterMiddleProps> = () => {
                   width="32px"
                   height="32px"
                   layout="fixed"
-                  priority={true}
                 />
               </a>
             </Space>

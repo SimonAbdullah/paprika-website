@@ -82,7 +82,6 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
                         height="36px"
                         objectFit="contain"
                         objectPosition="center"
-                        priority={true}
                       />
                     </div>
                   )}

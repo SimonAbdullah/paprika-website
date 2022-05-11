@@ -28,7 +28,6 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
                 width="120px"
                 height="40px"
                 layout="fixed"
-                priority={true}
               />
             </a>
           </div>
@@ -44,7 +43,6 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
                 width="120px"
                 height="40px"
                 layout="fixed"
-                priority={true}
               />
             </a>
           </div>
@@ -60,7 +58,6 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
                 width="120px"
                 height="40px"
                 layout="fixed"
-                priority={true}
               />
             </a>
           </div>
