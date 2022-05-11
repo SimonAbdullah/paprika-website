@@ -37,7 +37,6 @@ const RestaurantMainGallery: FunctionComponent<
           objectPosition="center"
           onClick={() => handleImageClick(0)}
           className={classes.image}
-          priority={true}
         />
       </Col>
       <Col span={8} style={{ paddingInlineStart: "0.3rem" }}>
@@ -63,7 +62,6 @@ const RestaurantMainGallery: FunctionComponent<
                 objectPosition="center"
                 onClick={() => handleImageClick(index + 1)}
                 className={classes.image}
-                priority={true}
               />
             </Col>
           ))}

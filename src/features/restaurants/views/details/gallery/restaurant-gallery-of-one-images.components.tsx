@@ -20,7 +20,6 @@ const RestaurantGalleryOfOneImages: FunctionComponent<
       src={galleryItems?.[0]?.image!}
       alt={galleryItems?.[0]?.title}
       blurDataURL={galleryItems?.[0]?.thumbnailImage}
-      priority={true}
       placeholder="blur"
       layout="fill"
       objectFit="cover"

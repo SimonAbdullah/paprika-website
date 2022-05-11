@@ -34,7 +34,6 @@ const RestaurantGalleryOfTwoImages: FunctionComponent<
           src={galleryItems?.[0]?.image!}
           alt={galleryItems?.[0]?.title}
           blurDataURL={galleryItems?.[0]?.thumbnailImage}
-          priority={true}
           placeholder="blur"
           layout="fill"
           objectFit="cover"
@@ -49,7 +48,6 @@ const RestaurantGalleryOfTwoImages: FunctionComponent<
             src={galleryItems?.[1]?.image!}
             alt={galleryItems?.[1]?.title}
             blurDataURL={galleryItems?.[1]?.thumbnailImage}
-            priority={true}
             placeholder="blur"
             layout="fill"
             objectFit="cover"

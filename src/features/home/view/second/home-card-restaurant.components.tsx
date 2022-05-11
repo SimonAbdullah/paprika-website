@@ -39,7 +39,6 @@ const HomeCardRestaurant: FunctionComponent<HomeCardRestaurantProps> = ({
                 layout="fill"
                 objectFit="cover"
                 objectPosition="center"
-                priority={true}
                 {...(restaurant?.logoimage
                   ? { blurDataURL: restaurant?.logoimage, placeholder: "blur" }
                   : {})}

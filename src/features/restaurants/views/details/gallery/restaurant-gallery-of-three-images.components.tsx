@@ -47,7 +47,6 @@ const RestaurantGalleryOfThreeImages: FunctionComponent<
               src={galleryItems?.[0]?.image!}
               alt={galleryItems?.[0]?.title}
               blurDataURL={galleryItems?.[0]?.thumbnailImage}
-              priority={true}
               placeholder="blur"
               layout="fill"
               objectFit="cover"
@@ -62,7 +61,6 @@ const RestaurantGalleryOfThreeImages: FunctionComponent<
                 src={galleryItems?.[1]?.image!}
                 alt={galleryItems?.[1]?.title}
                 blurDataURL={galleryItems?.[1]?.thumbnailImage}
-                priority={true}
                 placeholder="blur"
                 layout="fill"
                 objectFit="cover"
@@ -80,7 +78,6 @@ const RestaurantGalleryOfThreeImages: FunctionComponent<
             src={galleryItems?.[2]?.image!}
             alt={galleryItems?.[2]?.title}
             blurDataURL={galleryItems?.[2]?.thumbnailImage}
-            priority={true}
             placeholder="blur"
             layout="fill"
             objectFit="cover"
