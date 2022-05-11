@@ -26,7 +26,6 @@ const HomeThird: FunctionComponent<HomeThirdProps> = () => {
         layout="fill"
         objectFit="cover"
         objectPosition="center"
-        priority={true}
       />
       <Col xs={24} lg={12} className={classes.dishContainer}>
         <div
@@ -43,7 +42,6 @@ const HomeThird: FunctionComponent<HomeThirdProps> = () => {
             layout="fill"
             objectFit="contain"
             objectPosition="center"
-            priority={true}
           />
         </div>
       </Col>
@@ -78,7 +76,6 @@ const HomeThird: FunctionComponent<HomeThirdProps> = () => {
                     height="32px"
                     layout="fixed"
                     className={classes.icon}
-                    priority={true}
                   />
                 </a>
                 <a
@@ -94,7 +91,6 @@ const HomeThird: FunctionComponent<HomeThirdProps> = () => {
                     height="32px"
                     layout="fixed"
                     className={classes.icon}
-                    priority={true}
                   />
                 </a>
               </Space>

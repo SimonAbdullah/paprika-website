@@ -57,7 +57,6 @@ const HeaderDownloadBanner: FunctionComponent<
                 height="54px"
                 layout="fixed"
                 className={classes.image}
-                priority={true}
               />
             </a>
           </div>
@@ -74,7 +73,6 @@ const HeaderDownloadBanner: FunctionComponent<
                 height="54px"
                 layout="fixed"
                 className={classes.image}
-                priority={true}
               />
             </a>
           </div>
@@ -91,7 +89,6 @@ const HeaderDownloadBanner: FunctionComponent<
                 height="54px"
                 layout="fixed"
                 className={classes.image}
-                priority={true}
               />
             </a>
           </div>
