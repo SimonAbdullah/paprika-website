@@ -18,7 +18,7 @@
 .secondColumn {
   min-height: 26rem;
   padding: 0 2rem;
-  margin-top: -2rem;
+  margin-top: 0rem;
 }
 
 /* Restaurant Card */
@@ -50,6 +50,7 @@
   position: relative;
   border-end-start-radius: 5px;
   border-end-end-radius: 5px;
+  text-align: start;
 }
 
 .cardTitle {

@@ -27,4 +27,17 @@ module.exports = {
       "prodapi.paprika-sy.com",
     ],
   },
+  async headers() {
+    return [
+      {
+        source: "/images(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=30758400, must-revalidate",
+          },
+        ],
+      },
+    ];
+  },
 };
