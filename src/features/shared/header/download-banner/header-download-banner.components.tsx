@@ -10,6 +10,7 @@ import { CloseOutlined } from "@ant-design/icons";
 import { useRouter } from "next/router";
 import { UrlInApp } from "../../../../core/constants";
 import { isMobile, isBrowser } from "react-device-detect";
+import urlJoin from "url-join";
 
 interface HeaderDownloadBannerProps {}
 
@@ -114,7 +115,7 @@ const HeaderDownloadBanner: FunctionComponent<
             margin: "0.5rem 0",
           }}
           onClick={() => {
-            window.open(`${UrlInApp.paprikaUrlInApp}${asPath}`, "_blank");
+            window.open(urlJoin(UrlInApp.paprikaUrlInApp, asPath), "_blank");
           }}
         >
           {t("OpenInApp")}

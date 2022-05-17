@@ -18,5 +18,5 @@ export const HomeMetaData = {
   imageHeight: "360",
 };
 export const UrlInApp = {
-  paprikaUrlInApp: "paprika://paprika-sy.com",
+  paprikaUrlInApp: "paprika://",
 };
