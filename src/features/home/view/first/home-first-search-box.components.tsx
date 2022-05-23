@@ -1,5 +1,6 @@
-import { AutoComplete, Button, Form, Input, Rate, Spin } from "antd";
+import { AutoComplete, Button, Form, Input, Rate, Space, Spin } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
+import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
@@ -61,42 +62,49 @@ const HomeFirstSearchBox = () => {
       option.push({
         value: item._source.name,
         label: (
-          <div
-            style={{
-              display: "block",
-            }}
-          >
-            <span
+          <Space direction="vertical" size={3} style={{ width: "100%" }}>
+            <div
               style={{
-                display: "block",
+                width: "100%",
               }}
             >
-              {item._source.name}
-            </span>
-            <span
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <span style={{ margin: "0px 15px" }}>
+              <Text
+                style={{
+                  width: "60%",
+                  display: "inline-flex",
+                  fontSize: "1rem",
+                }}
+                ellipsis={{ tooltip: item._source.name }}
+              >
+                {item._source.name}
+              </Text>
+
+              <Text
+                style={{
+                  width: "40%",
+                  display: "inline-flex",
+                  textAlign: "end",
+                }}
+              >
                 <Rate
                   disabled
-                  style={{ fontSize: "18px" }}
+                  style={{ fontSize: "1rem", width: "100%" }}
                   value={item._source.rated_by}
                   allowHalf={true}
                 />
-              </span>
-              <Button
-                type="ghost"
-                onClick={() => {
-                  push(`${PagesUrls.RESTAURANTS}/${item._source.name}`);
-                }}
-              >
-                {t("first.show-restaurant")}
-              </Button>
-            </span>
-          </div>
+              </Text>
+            </div>
+            <Text
+              style={{
+                width: "100%",
+                display: "inline-flex",
+                fontSize: "0.8rem",
+              }}
+              ellipsis={{ tooltip: item._source.address }}
+            >
+              {item._source.address}
+            </Text>
+          </Space>
         ),
       });
     });
@@ -105,6 +113,7 @@ const HomeFirstSearchBox = () => {
 
   const handleSelect = (value: any) => {
     setRestaurantName(value);
+    push(`${PagesUrls.RESTAURANTS}/${value}`);
   };
   const handleSearch = (value: any) => {
     setRestaurantName(value);
