@@ -1,7 +1,7 @@
 import { Button, Row, Space } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import Text from "antd/lib/typography/Text";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import Image from "next/image";
 import classes from "./style.module.css";
 import useTranslation from "next-translate/useTranslation";
@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import { UrlInApp } from "../../../../core/constants";
 import { isMobile, isBrowser } from "react-device-detect";
 import urlJoin from "url-join";
+import { customerDownloadLinkServices } from "../../../customers/services/customer-download-link/customer-download-link.services";
 
 interface HeaderDownloadBannerProps {}
 
@@ -24,6 +25,15 @@ const HeaderDownloadBanner: FunctionComponent<
   const [visible, setVisible] = useState(true);
 
   const { asPath } = useRouter();
+
+  const [customerDownloadLink, setCustomerDownloadLink] = useState("");
+
+  useEffect(() => {
+    (async() => {
+      let result = await customerDownloadLinkServices.getCustomerDownloadLink();
+      setCustomerDownloadLink(result.paprikaDownloadLink);
+    })();
+  },[]);
 
   return (isMobile && visible) || (isBrowser && xs && visible) ? (
     <>
@@ -79,7 +89,7 @@ const HeaderDownloadBanner: FunctionComponent<
           </div>
           <div className={classes.directLinkContainer}>
             <a
-              href={`https://paprika-sy.com/paprika-customer.prod.v${process.env.NEXT_PUBLIC_APP_VERSION}.apk`}
+              href={customerDownloadLink}
               target="_blank"
               rel="noopener noreferrer"
             >

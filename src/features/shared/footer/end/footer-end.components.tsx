@@ -1,16 +1,25 @@
 import { Row, Space } from "antd";
 import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { TranslationFiles } from "../../../../core/core";
 import Image from "next/image";
 import classes from "../style.module.css";
+import { customerDownloadLinkServices } from "../../../customers/services/customer-download-link/customer-download-link.services";
 
 interface FooterEndProps {}
 
 const FooterEnd: FunctionComponent<FooterEndProps> = () => {
   const { t } = useTranslation(TranslationFiles.COMMON);
 
+  const [customerDownloadLink, setCustomerDownloadLink] = useState("");
+
+  useEffect(() => {
+    (async() => {
+      let result = await customerDownloadLinkServices.getCustomerDownloadLink();
+      setCustomerDownloadLink(result.paprikaDownloadLink);
+    })();
+  },[]);
   return (
     <Row>
       <Space direction="vertical" size="middle">
@@ -48,7 +57,7 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
           </div>
           <div className={classes.directLinkContainer}>
             <a
-              href={`https://paprika-sy.com/paprika-customer.prod.v${process.env.NEXT_PUBLIC_APP_VERSION}.apk`}
+              href={customerDownloadLink}
               target="_blank"
               rel="noopener noreferrer"
             >
