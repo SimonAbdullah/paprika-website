@@ -1,7 +1,7 @@
-import { Row, Space } from "antd";
+import { Button, Row, Space } from "antd";
 import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import { TranslationFiles } from "../../../../core/core";
 import Image from "next/image";
 import classes from "../style.module.css";
@@ -12,9 +12,18 @@ interface FooterEndProps {}
 const FooterEnd: FunctionComponent<FooterEndProps> = () => {
   const { t } = useTranslation(TranslationFiles.COMMON);
 
+  const [isDisabled, setIsDisabled] = useState(false);
+  
   const getPaprikaDownloadLink = async () => {
-    const result = await customerDownloadLinkServices.getCustomerDownloadLink();
-    window.open(result.result.paprikaDownloadLink, "_blank");
+    try {
+      setIsDisabled(true);
+      const result = await customerDownloadLinkServices.getCustomerDownloadLink();
+      window.open(result.result.paprikaDownloadLink, "_blank");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsDisabled(false);
+    }
   };
 
   return (
@@ -53,9 +62,10 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
             </a>
           </div>
           <div className={classes.directLinkContainer}>
-            <a
+            <Button
+              style={{padding: "0px", background: "none", border: "none"}}
               onClick={() => getPaprikaDownloadLink()}
-              rel="noopener noreferrer"
+              disabled={isDisabled}
             >
               <Image
                 src={`/icons/direct-link.svg`}
@@ -64,7 +74,7 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
                 height="40px"
                 layout="fixed"
               />
-            </a>
+            </Button>
           </div>
         </Row>
       </Space>
