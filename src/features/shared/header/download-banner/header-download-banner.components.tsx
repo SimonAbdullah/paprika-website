@@ -1,4 +1,4 @@
-import { Button, Row, Space } from "antd";
+import { Button, message, Row, Space } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import Text from "antd/lib/typography/Text";
 import { FunctionComponent, useState } from "react";
@@ -34,7 +34,7 @@ const HeaderDownloadBanner: FunctionComponent<
       const result = await customerDownloadLinkServices.getCustomerDownloadLink();
       window.open(result.result.paprikaDownloadLink, "_blank");
     } catch (error) {
-      console.error(error);
+      message.error(t("anErrorOccurredWhileDownloading"));
     } finally {
       setIsDisabled(false);
     }

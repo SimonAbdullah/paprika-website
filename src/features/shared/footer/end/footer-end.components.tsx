@@ -1,4 +1,4 @@
-import { Button, Row, Space } from "antd";
+import { Button, message, Row, Space } from "antd";
 import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent, useState } from "react";
@@ -20,7 +20,7 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
       const result = await customerDownloadLinkServices.getCustomerDownloadLink();
       window.open(result.result.paprikaDownloadLink, "_blank");
     } catch (error) {
-      console.error(error);
+      message.error(t("anErrorOccurredWhileDownloading"));
     } finally {
       setIsDisabled(false);
     }

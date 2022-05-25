@@ -45,5 +45,6 @@
     "location": "Location"
   },
   "OpenInApp": "Open in App",
-  "ifYouHavePaprikaOnYourDevice": "If you have Paprika on your device"
+  "ifYouHavePaprikaOnYourDevice": "If you have Paprika on your device",
+  "anErrorOccurredWhileDownloading": "An error occurred while downloading."
 }

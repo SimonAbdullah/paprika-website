@@ -45,5 +45,6 @@
     "location": "المكان"
   },
   "OpenInApp": "فتح التطبيق",
-  "ifYouHavePaprikaOnYourDevice": "اذا كنت تمتلك بابريكا على جهازك..."
+  "ifYouHavePaprikaOnYourDevice": "اذا كنت تمتلك بابريكا على جهازك...",
+  "anErrorOccurredWhileDownloading": "حدث خطأ أثناء التنزيل."
 }
