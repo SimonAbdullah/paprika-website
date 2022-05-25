@@ -5,6 +5,7 @@ import { FunctionComponent, useState } from "react";
 import { TranslationFiles } from "../../../../core/core";
 import Image from "next/image";
 import classes from "../style.module.css";
+import { generateUuid } from "../../../../core/functions";
 import { customerDownloadLinkServices } from "../../../customers/services/customer-download-link/customer-download-link.services";
 
 interface FooterEndProps {}
@@ -17,7 +18,10 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
   const getPaprikaDownloadLink = async () => {
     try {
       setIsDisabled(true);
-      const result = await customerDownloadLinkServices.getCustomerDownloadLink();
+      if(!localStorage.getItem("downloadToken")) {
+        localStorage.setItem("downloadToken", generateUuid());
+      }
+      const result = await customerDownloadLinkServices.getCustomerDownloadLink({downloadToken: localStorage.getItem("downloadToken")!});
       window.open(result.result.paprikaDownloadLink, "_blank");
     } catch (error) {
       message.error(t("anErrorOccurredWhileDownloading"));

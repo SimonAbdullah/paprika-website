@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import { UrlInApp } from "../../../../core/constants";
 import { isMobile, isBrowser } from "react-device-detect";
 import urlJoin from "url-join";
+import { generateUuid } from "../../../../core/functions";
 import { customerDownloadLinkServices } from "../../../customers/services/customer-download-link/customer-download-link.services";
 
 interface HeaderDownloadBannerProps {}
@@ -31,7 +32,10 @@ const HeaderDownloadBanner: FunctionComponent<
   const getPaprikaDownloadLink = async () => {
     try {
       setIsDisabled(true);
-      const result = await customerDownloadLinkServices.getCustomerDownloadLink();
+      if(!localStorage.getItem("downloadToken")) {
+        localStorage.setItem("downloadToken", generateUuid());
+      }
+      const result = await customerDownloadLinkServices.getCustomerDownloadLink({downloadToken: localStorage.getItem("downloadToken")!});
       window.open(result.result.paprikaDownloadLink, "_blank");
     } catch (error) {
       message.error(t("anErrorOccurredWhileDownloading"));
