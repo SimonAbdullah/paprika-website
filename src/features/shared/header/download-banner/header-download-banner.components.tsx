@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import { UrlInApp } from "../../../../core/constants";
 import { isMobile, isBrowser } from "react-device-detect";
 import urlJoin from "url-join";
-import { usePaprikaDownloadLink } from "../../../customers/hooks/customer-download-link.hooks";
+import { customerDownloadLinkServices } from "../../../customers/services/customer-download-link/customer-download-link.services";
 
 interface HeaderDownloadBannerProps {}
 
@@ -25,9 +25,11 @@ const HeaderDownloadBanner: FunctionComponent<
   const [visible, setVisible] = useState(true);
 
   const { asPath } = useRouter();
-
-  const { data } = usePaprikaDownloadLink();
-
+  
+  const getPaprikaDownloadLink = async () => {
+    const result = await customerDownloadLinkServices.getCustomerDownloadLink();
+    window.open(result.result.paprikaDownloadLink, "_blank");
+  };
 
   return (isMobile && visible) || (isBrowser && xs && visible) ? (
     <>
@@ -83,8 +85,7 @@ const HeaderDownloadBanner: FunctionComponent<
           </div>
           <div className={classes.directLinkContainer}>
             <a
-              href={data?.paprikaDownloadLink}
-              target="_blank"
+              onClick={() => getPaprikaDownloadLink()}
               rel="noopener noreferrer"
             >
               <Image
