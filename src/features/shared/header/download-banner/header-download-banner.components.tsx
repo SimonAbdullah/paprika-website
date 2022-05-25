@@ -1,4 +1,4 @@
-import { Button, Row, Space } from "antd";
+import { Button, message, Row, Space } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import Text from "antd/lib/typography/Text";
 import { FunctionComponent, useState } from "react";
@@ -26,9 +26,18 @@ const HeaderDownloadBanner: FunctionComponent<
 
   const { asPath } = useRouter();
   
+  const [isDisabled, setIsDisabled] = useState(false);
+  
   const getPaprikaDownloadLink = async () => {
-    const result = await customerDownloadLinkServices.getCustomerDownloadLink();
-    window.open(result.result.paprikaDownloadLink, "_blank");
+    try {
+      setIsDisabled(true);
+      const result = await customerDownloadLinkServices.getCustomerDownloadLink();
+      window.open(result.result.paprikaDownloadLink, "_blank");
+    } catch (error) {
+      message.error(t("anErrorOccurredWhileDownloading"));
+    } finally {
+      setIsDisabled(false);
+    }
   };
 
   return (isMobile && visible) || (isBrowser && xs && visible) ? (
@@ -84,9 +93,10 @@ const HeaderDownloadBanner: FunctionComponent<
             </a>
           </div>
           <div className={classes.directLinkContainer}>
-            <a
+            <Button
+              style={{padding: "0px", background: "none", border: "none"}}
               onClick={() => getPaprikaDownloadLink()}
-              rel="noopener noreferrer"
+              disabled={isDisabled}
             >
               <Image
                 src={`/icons/direct-link-circle.png`}
@@ -96,7 +106,7 @@ const HeaderDownloadBanner: FunctionComponent<
                 layout="fixed"
                 className={classes.image}
               />
-            </a>
+            </Button>
           </div>
         </Space>
       </Row>
