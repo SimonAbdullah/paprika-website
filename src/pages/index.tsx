@@ -19,13 +19,17 @@ import { BaseApiSearchResponse } from "../features/restaurants/services/restaura
 import { SORT_IN_ELASTICSEARCH } from "../features/restaurants/constants/restaurants.constants";
 import PaprikaHead from "../features/shared/head/paprika-head.components";
 import useTranslation from "next-translate/useTranslation";
+import { customerDownloadLinkServices } from "../features/customers/services/customer-download-link/customer-download-link.services";
+import { CustomerDownloadLinkDto } from "../features/customers/services/customer-download-link/models/customer-download-link-dto.models";
+import { usePaprikaDownloadLink } from "../features/customers/hooks/customer-download-link.hooks";
 
 interface HomePageProps {
   restaurants: BaseApiSearchResponse;
   upComingEvents: PagedResultDto<CustomerEventDto>;
+  paprikaDownloadLink: CustomerDownloadLinkDto;
 }
 
-const HomePage: NextPage<HomePageProps> = ({ restaurants, upComingEvents }) => {
+const HomePage: NextPage<HomePageProps> = ({ restaurants, upComingEvents, paprikaDownloadLink }) => {
   const { t } = useTranslation(TranslationFiles.HOME);
 
   useFeaturedPlaces({
@@ -33,6 +37,10 @@ const HomePage: NextPage<HomePageProps> = ({ restaurants, upComingEvents }) => {
   });
 
   useUpcomingEvents({}, { initialData: upComingEvents });
+
+  usePaprikaDownloadLink({
+    initialData: paprikaDownloadLink,
+  });
 
   useEffect(() => {
     AOS.init({ once: true, disable: "mobile" });
@@ -75,10 +83,13 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   });
 
+  const paprikaDownloadLink = await customerDownloadLinkServices.getCustomerDownloadLink();
+
   return {
     props: {
       restaurants: restaurants,
       upComingEvents: upComingEvents.result,
+      paprikaDownloadLink: paprikaDownloadLink.result,
     },
     revalidate: TimeInSeconds.DAY,
   };

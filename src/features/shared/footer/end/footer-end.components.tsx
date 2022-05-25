@@ -5,11 +5,14 @@ import { FunctionComponent } from "react";
 import { TranslationFiles } from "../../../../core/core";
 import Image from "next/image";
 import classes from "../style.module.css";
+import { usePaprikaDownloadLink } from "../../../customers/hooks/customer-download-link.hooks";
 
 interface FooterEndProps {}
 
 const FooterEnd: FunctionComponent<FooterEndProps> = () => {
   const { t } = useTranslation(TranslationFiles.COMMON);
+
+  const { data } = usePaprikaDownloadLink();
 
   return (
     <Row>
@@ -48,7 +51,7 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
           </div>
           <div className={classes.directLinkContainer}>
             <a
-              href={`https://paprika-sy.com/paprika-customer.prod.v${process.env.NEXT_PUBLIC_APP_VERSION}.apk`}
+              href={data?.paprikaDownloadLink}
               target="_blank"
               rel="noopener noreferrer"
             >
