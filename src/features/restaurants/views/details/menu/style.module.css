@@ -39,8 +39,7 @@
   background-color: var(--primary-color);
   opacity: 0.8;
   mix-blend-mode: normal;
-  font-family: "Poppins";
-  padding: 0.5rem;
+  padding: 0.3rem 0.5rem;
   position: absolute;
   bottom: 0;
   border-end-start-radius: 5px;
