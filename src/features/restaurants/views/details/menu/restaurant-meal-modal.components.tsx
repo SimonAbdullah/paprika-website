@@ -47,9 +47,9 @@ const RestaurantMealModal: FunctionComponent<RestaurantMealModalProps> = ({
           />
         </Col>
         <Col span={24}>
-          <Space direction="vertical">
+          <Space direction="vertical" style={{width: "100%"}}>
             <div>
-              <Space>
+              <Space className={classes.modalTitleContent}>
                 <Text className={classes.modalTitle}>{meal?.name}</Text>
                 {meal?.price && (
                   <Text className={classes.mealPrice}>
