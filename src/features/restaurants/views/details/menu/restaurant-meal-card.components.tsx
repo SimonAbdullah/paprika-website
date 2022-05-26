@@ -1,10 +1,12 @@
 import { Card } from "antd";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useContext, useState } from "react";
 import Image from "next/image";
 import classes from "./style.module.css";
 import Text from "antd/lib/typography/Text";
 import RestaurantMealModal from "./restaurant-meal-modal.components";
 import { MealDto } from "../../../../customers/services/customer-menu/models/meal-dto.models";
+import { currencyFormatter } from "../../../../../core/functions";
+import { AppContext } from "../../../../../core/app/app.context";
 
 interface RestaurantMealCardProps {
   meal: MealDto;
@@ -14,6 +16,8 @@ const RestaurantMealCard: FunctionComponent<RestaurantMealCardProps> = ({
   meal,
 }) => {
   const [visible, setVisible] = useState(false);
+
+  const { direction } = useContext(AppContext);
 
   return (
     <>
@@ -43,6 +47,13 @@ const RestaurantMealCard: FunctionComponent<RestaurantMealCardProps> = ({
               >
                 {meal?.name}
               </Text>
+              {meal?.price && (
+                <Text className={classes.cardMealPrice}>
+                  {currencyFormatter(
+                    direction === "ltr" ? "en-SY" : "ar-SY"
+                  ).format(meal.price)}
+                </Text>
+              )}
             </div>
           </div>
         }

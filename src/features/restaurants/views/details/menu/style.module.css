@@ -45,13 +45,22 @@
   bottom: 0;
   border-end-start-radius: 5px;
   border-end-end-radius: 5px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .cardTitle {
   color: var(--home-card-title-color);
   font-size: 1rem;
   font-weight: bold;
-  display: block;
+}
+
+.cardMealPrice{
+  color: var(--home-card-title-color);
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0.5em;
 }
 
 .showMoreButton {
@@ -70,6 +79,12 @@
   height: 20rem;
 }
 
+.modalTitleContent{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .modalTitle {
   font-size: 1rem;
   font-weight: bold;
@@ -80,7 +95,6 @@
   font-size: 1rem;
   font-weight: bold;
   margin-top: 0;
-  margin-bottom: 0.5em;
   display: block;
 }
 
