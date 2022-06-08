@@ -20,7 +20,7 @@ const LocationComponent: FunctionComponent<LocationComponentProps> = () => {
 
   return (
     <>
-      <div className={classes.textContainer} id="ourLocation">
+      <div className={classes.textContainer} id="location">
         <Text className={classes.title}>{t("ourLocation")}</Text>
         <Row align="middle" className={classes.details}>
           <LocationRedIcon width="24px" height="24px" />

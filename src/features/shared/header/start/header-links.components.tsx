@@ -31,7 +31,7 @@ const HeaderLinks: FunctionComponent<HeaderLinksProps> = ({ setVisible }) => {
       </LinkComponent>
       <LinkComponent
         anchorProps={{ className: classes.headerLinks, onClick: onAnchorClick }}
-        linkProps={{ href: `${PagesUrls.HOME}#aboutUs`, locale: locale }}
+        linkProps={{ href: `${PagesUrls.HOME}#about-us`, locale: locale }}
       >
         {t("aboutUs")}
       </LinkComponent>

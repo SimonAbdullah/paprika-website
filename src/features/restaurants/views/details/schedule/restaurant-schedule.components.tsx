@@ -3,11 +3,8 @@ import { message } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
-import { useRouter } from "next/router";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
-import urlJoin from "url-join";
-import { paprikaUrl } from "../../../../../core/constants";
 import { TranslationFiles } from "../../../../../core/core";
 import { isDataEmpty } from "../../../../../core/functions";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
@@ -24,15 +21,19 @@ const RestaurantSchedule: FunctionComponent<RestaurantScheduleProps> = () => {
 
   const { md } = useBreakpoint();
 
-  const { asPath } = useRouter();
-
   const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
+
+  const [restaurantURL, setRestaurantURL] = useState("");
+
+  useEffect(() => {
+    setRestaurantURL(window.location.href);
+  },[]);
 
   return (
     <>
-      <Text className={classes.title} id="ourSchedule">{t("ourSchedule")}</Text>
+      <Text className={classes.title} id="working-hours">{t("ourSchedule")}</Text>
       <CopyToClipboard
-        text={`${urlJoin(`${paprikaUrl.paprikaWebsiteUrl}`, asPath)}#ourSchedule`} 
+        text={`${restaurantURL}#working-hours`} 
         onCopy={() => message.success(tCommon("linkCopied"))}
       >
         <LinkOutlined style={{margin: "0 1rem", fontSize: "1.2rem"}}/>

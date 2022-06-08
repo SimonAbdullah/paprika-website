@@ -46,7 +46,7 @@ const RestaurantGallery: FunctionComponent<RestaurantGalleryProps> = () => {
 
   return (
     <>
-      <Text className={classes.title} id="ourGallery">{t("ourGallery")}</Text>
+      <Text className={classes.title} id="gallery">{t("ourGallery")}</Text>
       <List
         split={false}
         dataSource={data}

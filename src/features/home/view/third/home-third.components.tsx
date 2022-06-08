@@ -18,7 +18,7 @@ const HomeThird: FunctionComponent<HomeThirdProps> = () => {
   const { direction } = useContext(AppContext);
 
   return (
-    <Row className={classes.thirdContainer} justify="center" id="aboutUs">
+    <Row className={classes.thirdContainer} justify="center" id="about-us">
       <Image
         className={classes.backgroundImage}
         src="/images/home/third-background.png"

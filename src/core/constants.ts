@@ -17,9 +17,6 @@ export const HomeMetaData = {
   imageWidth: "480",
   imageHeight: "360",
 };
-export const paprikaUrl = {
-  paprikaWebsiteUrl: process.env.NEXT_PUBLIC_BASE_CLIENT_URL
-}
 export const UrlInApp = {
   paprikaUrlInApp: "paprika://",
 };
