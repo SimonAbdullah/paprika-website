@@ -49,7 +49,7 @@ const RestaurantDetails: FunctionComponent<RestaurantDetailsProps> = () => {
             <RestaurantMenu />
           </Col>
           <Divider />
-          {isDataEmpty(galleryItems) && (
+          {!isDataEmpty(galleryItems) && (
             <>
               <Col span={22}>
                 <RestaurantGallery />
