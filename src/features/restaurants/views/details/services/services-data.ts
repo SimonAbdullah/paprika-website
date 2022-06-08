@@ -25,14 +25,14 @@ export const useServicesData = () => {
       alt: t("phone"),
       description: data?.tel ? data.tel : t("notAvailable"),
     },
-    {
-      logo: "/images/restaurant/chair.svg",
-      title: t("capacity"),
-      alt: t("capacity"),
-      description: data?.settings?.maxPeopleAllowed
-        ? `${t("upTo")} ${data.settings.maxPeopleAllowed} ${t("seats")}`
-        : t("notAvailable"),
-    },
+    // {
+    //   logo: "/images/restaurant/chair.svg",
+    //   title: t("capacity"),
+    //   alt: t("capacity"),
+    //   description: data?.settings?.maxPeopleAllowed
+    //     ? `${t("upTo")} ${data.settings.maxPeopleAllowed} ${t("seats")}`
+    //     : t("notAvailable"),
+    // },
     {
       logo: "/images/restaurant/clock.svg",
       title: t("schedule"),
