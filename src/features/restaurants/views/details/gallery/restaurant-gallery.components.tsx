@@ -1,7 +1,7 @@
-import { Row, List, Button } from "antd";
+import { Row, List, Button, message } from "antd";
 import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { TranslationFiles } from "../../../../../core/core";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 import classes from "./style.module.css";
@@ -9,11 +9,15 @@ import RestaurantGalleryItem from "./restaurant-gallery-item.components";
 import { GalleryItemDto } from "../../../../customers/services/customer-restaurant/models/galleryItemDto";
 import { GALLERY } from "../../../constants/restaurants.constants";
 import ImagesPreview from "../../../../shared/images-preview/images-preview.components";
+import CopyToClipboard from "react-copy-to-clipboard";
+import { LinkOutlined } from "@ant-design/icons";
 
 interface RestaurantGalleryProps {}
 
 const RestaurantGallery: FunctionComponent<RestaurantGalleryProps> = () => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
+
+  const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
 
   const { galleryItems, isLoading } = useRestaurantDetails();
 
@@ -23,6 +27,13 @@ const RestaurantGallery: FunctionComponent<RestaurantGalleryProps> = () => {
 
   const [numberOfGalleryRowsToShow, setNumberOfGalleryRowsToShow] =
     useState<number>(GALLERY.NUMBER_OF_ROWS_TO_SHOW);
+
+  const [restaurantURL, setRestaurantURL] = useState("");
+
+  useEffect(() => {
+    setRestaurantURL(window.location.href);
+  },[]);
+
 
   const galleryRows: { [key: string]: GalleryItemDto[] } = {};
 
@@ -47,6 +58,12 @@ const RestaurantGallery: FunctionComponent<RestaurantGalleryProps> = () => {
   return (
     <>
       <Text className={classes.title} id="gallery">{t("ourGallery")}</Text>
+      <CopyToClipboard
+        text={`${restaurantURL}#gallery`} 
+        onCopy={() => message.success(tCommon("linkCopied"))}
+      >
+        <LinkOutlined style={{margin: "0 1rem", fontSize: "1.2rem"}}/>
+      </CopyToClipboard>
       <List
         split={false}
         dataSource={data}

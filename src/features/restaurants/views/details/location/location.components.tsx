@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useContext, useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 import LocationMarker from "./location-marker.components";
@@ -9,19 +9,38 @@ import useTranslation from "next-translate/useTranslation";
 import { TranslationFiles } from "../../../../../core/core";
 import { restaurantAddressDetails } from "../../../functions/restaurant.functions";
 import { LocationRedIcon } from "../../../../shared/icons/icons.components";
-import { Row } from "antd";
+import { message, Row } from "antd";
+import CopyToClipboard from "react-copy-to-clipboard";
+import { LinkOutlined } from "@ant-design/icons";
+import { AppContext } from "../../../../../core/app/app.context";
 
 interface LocationComponentProps {}
 
 const LocationComponent: FunctionComponent<LocationComponentProps> = () => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
 
+  const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
+
   const { data } = useRestaurantDetails();
+
+  const [restaurantURL, setRestaurantURL] = useState("");
+
+  const { direction } = useContext(AppContext);
+
+  useEffect(() => {
+    setRestaurantURL(window.location.href);
+  },[]);
 
   return (
     <>
       <div className={classes.textContainer} id="location">
         <Text className={classes.title}>{t("ourLocation")}</Text>
+        <CopyToClipboard
+          text={`${restaurantURL}#location`} 
+          onCopy={() => message.success(tCommon("linkCopied"))}
+        >
+          <LinkOutlined className={direction === "rtl" ? classes.rightIcon : classes.leftIcon} />
+        </CopyToClipboard>
         <Row align="middle" className={classes.details}>
           <LocationRedIcon width="24px" height="24px" />
           <Text className={classes.text}>

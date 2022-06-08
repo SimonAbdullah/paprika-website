@@ -17,3 +17,17 @@
 .text {
   margin-inline-start: 0.5rem;
 }
+.rightIcon
+{
+  position: absolute;
+  font-size: 1.2rem;
+  top: 0.5rem;
+  right: 5rem;
+}
+.leftIcon
+{
+  position: absolute;
+  font-size: 1.2rem;
+  top: 0.5rem;
+  left: 5rem;
+}
