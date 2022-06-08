@@ -40,8 +40,8 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
   const [reservationModalVisible, setReservationModalVisible] = useState(false);
 
   useEffect(() => {
-   replace(`${PagesUrls.RESTAURANTS}/${restaurant.name}`, undefined, { shallow: true });
-  },[restaurant.name]);
+   replace(`${PagesUrls.RESTAURANTS}/${data?.name}`, undefined, { shallow: true });
+  },[replace, data?.name]);
   
   let ogDescription = "";
   if (data?.country?.name) ogDescription += data?.country?.name + ", ";
