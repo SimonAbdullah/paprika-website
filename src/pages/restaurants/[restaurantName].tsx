@@ -11,12 +11,13 @@ import RestaurantDetails from "../../features/restaurants/views/details/restaura
 import RestaurantMainInfo from "../../features/restaurants/views/details/main-info/restaurant-main-info.components";
 import RestaurantReservationBox from "../../features/restaurants/views/details/reservation-box/restaurant-reservation-box.components";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { isDataEmpty } from "../../core/functions";
 import useTranslation from "next-translate/useTranslation";
 import { restaurantsServices } from "../../features/restaurants/services/restaurants/restaurants.services";
 import { SORT_IN_ELASTICSEARCH } from "../../features/restaurants/constants/restaurants.constants";
 import PaprikaHead from "../../features/shared/head/paprika-head.components";
+import { useRouter } from "next/router";
 
 interface RestaurantPageProps {
   restaurant: RestaurantHomeDto;
@@ -27,6 +28,8 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
 
   const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
 
+  const { replace } = useRouter();
+
   const { data, galleryItems, hasReservation } = useRestaurantDetails(
     {},
     { initialData: restaurant }
@@ -36,6 +39,10 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
 
   const [reservationModalVisible, setReservationModalVisible] = useState(false);
 
+  useEffect(() => {
+   replace(`${PagesUrls.RESTAURANTS}/${restaurant.name}`, undefined, { shallow: true });
+  },[restaurant.name]);
+  
   let ogDescription = "";
   if (data?.country?.name) ogDescription += data?.country?.name + ", ";
   if (data?.city?.name) ogDescription += data?.city?.name + ", ";

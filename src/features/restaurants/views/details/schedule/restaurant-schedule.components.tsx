@@ -1,7 +1,10 @@
+import { LinkOutlined } from "@ant-design/icons";
+import { message } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
+import CopyToClipboard from "react-copy-to-clipboard";
 import { TranslationFiles } from "../../../../../core/core";
 import { isDataEmpty } from "../../../../../core/functions";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
@@ -14,30 +17,42 @@ interface RestaurantScheduleProps {}
 const RestaurantSchedule: FunctionComponent<RestaurantScheduleProps> = () => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
 
-  const { openingTimes, data } = useRestaurantDetails();
+  const { openingTimes } = useRestaurantDetails();
 
   const { md } = useBreakpoint();
 
-  if (data?.is24Hour) return null;
+  const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
 
-  if (isDataEmpty(openingTimes))
-    return (
-      <>
-        <Text className={classes.title}>{t("ourSchedule")}</Text>{" "}
-        <Text>{t("notAvailable")}</Text>
-      </>
-    );
+  const [restaurantURL, setRestaurantURL] = useState("");
+
+  useEffect(() => {
+    setRestaurantURL(window.location.href);
+  },[]);
 
   return (
     <>
-      <Text className={classes.title}>{t("ourSchedule")}</Text>
-      <div className={classes.tableContainer}>
-        {md ? (
-          <RestaurantScheduleDesktopTable />
-        ) : (
-          <RestaurantScheduleMobileTable />
-        )}
-      </div>
+      <Text className={classes.title} id="working-hours">{t("ourSchedule")}</Text>
+      <CopyToClipboard
+        text={`${restaurantURL}#working-hours`} 
+        onCopy={() => message.success(tCommon("linkCopied"))}
+      >
+        <LinkOutlined style={{margin: "0 1rem", fontSize: "1.2rem"}}/>
+      </CopyToClipboard>
+      { isDataEmpty(openingTimes) ? 
+        (
+          <>
+            {" "}<Text>{t("notAvailable")}</Text>
+          </>
+        )
+      :
+        <div className={classes.tableContainer}>
+          {md ? (
+            <RestaurantScheduleDesktopTable />
+          ) : (
+            <RestaurantScheduleMobileTable />
+          )}
+        </div>
+      }
     </>
   );
 };

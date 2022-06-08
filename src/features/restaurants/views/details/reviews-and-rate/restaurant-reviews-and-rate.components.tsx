@@ -19,7 +19,7 @@ const RestaurantReviewsAndRate: FunctionComponent<
   const { data } = useRestaurantDetails();
 
   return (
-    <div id="reviewsAndRate">
+    <div id="reviews-and-rate">
       {data?.restaurantTypes ===
         RestaurantHomeDto.RestaurantTypesEnum.BLOGGER ||
       data?.restaurantTypes === RestaurantHomeDto.RestaurantTypesEnum.CHEF ||

@@ -46,5 +46,6 @@
   },
   "OpenInApp": "Open in App",
   "ifYouHavePaprikaOnYourDevice": "If you have Paprika on your device",
-  "anErrorOccurredWhileDownloading": "An error occurred while downloading."
+  "anErrorOccurredWhileDownloading": "An error occurred while downloading.",
+  "linkCopied": "Link Copied"
 }

@@ -92,7 +92,7 @@ const RestaurantMainInfo: FunctionComponent<RestaurantMainInfoProps> = () => {
                 rate={data.restaurantRate / 5}
               />
               <Link
-                href={`${PagesUrls.RESTAURANTS}/${data.name}#reviewsAndRate`}
+                href={`${PagesUrls.RESTAURANTS}/${data.name}#reviews-and-rate`}
               >
                 <a className={classes.reviews}>
                   <Text>
