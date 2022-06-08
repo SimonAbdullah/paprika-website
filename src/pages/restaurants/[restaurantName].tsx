@@ -28,7 +28,7 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
 
   const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
 
-  const { replace } = useRouter();
+  const { query, replace } = useRouter();
 
   const { data, galleryItems, hasReservation } = useRestaurantDetails(
     {},
@@ -40,8 +40,10 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
   const [reservationModalVisible, setReservationModalVisible] = useState(false);
 
   useEffect(() => {
-   replace(`${PagesUrls.RESTAURANTS}/${restaurant.name}`, undefined, { shallow: true });
-  },[restaurant.name]);
+    if(query["inside-token"]){
+      replace(`${PagesUrls.RESTAURANTS}/${data?.name}`, undefined, { shallow: true });
+    }
+  },[query, replace, data?.name]);
   
   let ogDescription = "";
   if (data?.country?.name) ogDescription += data?.country?.name + ", ";
