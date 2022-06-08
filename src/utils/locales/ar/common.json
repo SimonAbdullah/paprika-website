@@ -46,5 +46,6 @@
   },
   "OpenInApp": "فتح التطبيق",
   "ifYouHavePaprikaOnYourDevice": "اذا كنت تمتلك بابريكا على جهازك...",
-  "anErrorOccurredWhileDownloading": "حدث خطأ أثناء التحميل."
+  "anErrorOccurredWhileDownloading": "حدث خطأ أثناء التحميل.",
+  "linkCopied": "تم نسخ الرابط"
 }

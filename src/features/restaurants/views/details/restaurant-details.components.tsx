@@ -1,5 +1,6 @@
 import { Col, Divider, Row } from "antd";
 import { FunctionComponent } from "react";
+import { isDataEmpty } from "../../../../core/functions";
 import { useRestaurantDetails } from "../../../customers/hooks/customer-restaurant.hooks";
 import { RestaurantHomeDto } from "../../../customers/services/customer-restaurant/models/restaurantHomeDto";
 import RestaurantGallery from "./gallery/restaurant-gallery.components";
@@ -12,7 +13,7 @@ import RestaurantServices from "./services/restaurant-services.components";
 interface RestaurantDetailsProps {}
 
 const RestaurantDetails: FunctionComponent<RestaurantDetailsProps> = () => {
-  const { data } = useRestaurantDetails();
+  const { data, galleryItems } = useRestaurantDetails();
 
   return (
     <Row justify="center" gutter={[0, 16]}>
@@ -36,18 +37,26 @@ const RestaurantDetails: FunctionComponent<RestaurantDetailsProps> = () => {
             <RestaurantServices />
           </Col>
           <Divider />
-          <Col span={22}>
-            <RestaurantSchedule />
-          </Col>
-          <Divider />
+          {!data?.is24Hour && (
+            <>
+              <Col span={22}>
+                <RestaurantSchedule />
+              </Col>
+              <Divider />
+            </>
+          )}
           <Col span={22}>
             <RestaurantMenu />
           </Col>
           <Divider />
-          <Col span={22}>
-            <RestaurantGallery />
-          </Col>
-          <Divider />
+          {isDataEmpty(galleryItems) && (
+            <>
+              <Col span={22}>
+                <RestaurantGallery />
+              </Col>
+              <Divider />
+            </>
+          )}
           <Col span={22}>
             <LocationComponent />
           </Col>

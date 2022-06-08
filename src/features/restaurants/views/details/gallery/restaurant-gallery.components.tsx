@@ -7,7 +7,6 @@ import { useRestaurantDetails } from "../../../../customers/hooks/customer-resta
 import classes from "./style.module.css";
 import RestaurantGalleryItem from "./restaurant-gallery-item.components";
 import { GalleryItemDto } from "../../../../customers/services/customer-restaurant/models/galleryItemDto";
-import { isDataEmpty } from "../../../../../core/functions";
 import { GALLERY } from "../../../constants/restaurants.constants";
 import ImagesPreview from "../../../../shared/images-preview/images-preview.components";
 
@@ -45,11 +44,9 @@ const RestaurantGallery: FunctionComponent<RestaurantGalleryProps> = () => {
 
   const data = Object.entries(galleryRows);
 
-  if (isDataEmpty(galleryItems)) return null;
-
   return (
     <>
-      <Text className={classes.title}>{t("ourGallery")}</Text>
+      <Text className={classes.title} id="ourGallery">{t("ourGallery")}</Text>
       <List
         split={false}
         dataSource={data}
