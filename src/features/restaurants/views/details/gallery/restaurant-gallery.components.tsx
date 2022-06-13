@@ -2,7 +2,7 @@ import { Row, List, Button, message } from "antd";
 import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent, useEffect, useState } from "react";
-import { TranslationFiles } from "../../../../../core/core";
+import { PagesUrls, TranslationFiles } from "../../../../../core/core";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 import classes from "./style.module.css";
 import RestaurantGalleryItem from "./restaurant-gallery-item.components";
@@ -11,6 +11,7 @@ import { GALLERY } from "../../../constants/restaurants.constants";
 import ImagesPreview from "../../../../shared/images-preview/images-preview.components";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { LinkOutlined } from "@ant-design/icons";
+import urlJoin from "url-join";
 
 interface RestaurantGalleryProps {}
 
@@ -19,7 +20,7 @@ const RestaurantGallery: FunctionComponent<RestaurantGalleryProps> = () => {
 
   const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
 
-  const { galleryItems, isLoading } = useRestaurantDetails();
+  const { data: restaurantDetails, galleryItems, isLoading } = useRestaurantDetails();
 
   const [visible, setVisible] = useState<boolean>(false);
 
@@ -31,8 +32,8 @@ const RestaurantGallery: FunctionComponent<RestaurantGalleryProps> = () => {
   const [restaurantURL, setRestaurantURL] = useState("");
 
   useEffect(() => {
-    setRestaurantURL(window.location.href);
-  },[]);
+    setRestaurantURL(urlJoin(window.location.origin, PagesUrls.RESTAURANTS, restaurantDetails?.name ?? ""));
+  },[restaurantDetails?.name]);
 
 
   const galleryRows: { [key: string]: GalleryItemDto[] } = {};

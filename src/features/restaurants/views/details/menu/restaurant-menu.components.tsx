@@ -3,13 +3,15 @@ import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent, useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../../../core/app/app.context";
-import { TranslationFiles } from "../../../../../core/core";
+import { PagesUrls, TranslationFiles } from "../../../../../core/core";
 import { isDataEmpty } from "../../../../../core/functions";
 import { useRestaurantCategories } from "../../../../customers/hooks/customer-menu.hooks";
 import RestaurantCategoryMenu from "./restaurant-category-menu.components";
 import classes from "./style.module.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { LinkOutlined } from "@ant-design/icons";
+import urlJoin from "url-join";
+import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 
 interface RestaurantMenuProps {}
 
@@ -24,9 +26,11 @@ const RestaurantMenu: FunctionComponent<RestaurantMenuProps> = () => {
 
   const [restaurantURL, setRestaurantURL] = useState("");
 
+  const { data: restaurantDetails} = useRestaurantDetails();
+
   useEffect(() => {
-    setRestaurantURL(window.location.href);
-  },[]);
+    setRestaurantURL(urlJoin(window.location.origin, PagesUrls.RESTAURANTS, restaurantDetails?.name ?? ""));
+  },[restaurantDetails?.name]);
 
   return (
     <>

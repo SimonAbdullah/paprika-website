@@ -47,5 +47,8 @@
   "OpenInApp": "Open in App",
   "ifYouHavePaprikaOnYourDevice": "If you have Paprika on your device",
   "anErrorOccurredWhileDownloading": "An error occurred while downloading.",
-  "linkCopied": "Link Copied"
+  "linkCopied": "Link Copied",
+  "thankYouForUsingPaprikaQR": "Thank you for using Paprika QR.",
+  "pleaseScanQRFromApp": "This restaurant has the Inside service activated. Please scan the same QR with Paprika app for a better experience.",
+  "closeAndContinueHere": "Close and Continue here"
 }

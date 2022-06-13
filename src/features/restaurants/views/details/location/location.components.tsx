@@ -6,13 +6,14 @@ import { DEFAULT_MAP_VALUES } from "../../../constants/restaurants.constants";
 import Text from "antd/lib/typography/Text";
 import classes from "./style.module.css";
 import useTranslation from "next-translate/useTranslation";
-import { TranslationFiles } from "../../../../../core/core";
+import { PagesUrls, TranslationFiles } from "../../../../../core/core";
 import { restaurantAddressDetails } from "../../../functions/restaurant.functions";
 import { LocationRedIcon } from "../../../../shared/icons/icons.components";
 import { message, Row } from "antd";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { LinkOutlined } from "@ant-design/icons";
 import { AppContext } from "../../../../../core/app/app.context";
+import urlJoin from "url-join";
 
 interface LocationComponentProps {}
 
@@ -28,8 +29,8 @@ const LocationComponent: FunctionComponent<LocationComponentProps> = () => {
   const { direction } = useContext(AppContext);
 
   useEffect(() => {
-    setRestaurantURL(window.location.href);
-  },[]);
+    setRestaurantURL(urlJoin(window.location.origin, PagesUrls.RESTAURANTS, data?.name ?? ""));
+  },[data?.name]);
 
   return (
     <>

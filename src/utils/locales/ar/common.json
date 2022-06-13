@@ -47,5 +47,9 @@
   "OpenInApp": "فتح التطبيق",
   "ifYouHavePaprikaOnYourDevice": "اذا كنت تمتلك بابريكا على جهازك...",
   "anErrorOccurredWhileDownloading": "حدث خطأ أثناء التحميل.",
-  "linkCopied": "تم نسخ الرابط"
+  "linkCopied": "تم نسخ الرابط",
+  "thankYouForUsingPaprikaQR": "شكراً لك لاستخدام رمز بابريكا.",
+  "pleaseScanQRFromApp": "يمكنك إدارة طاولتك على تطبيق بابريكا وذلك بقراءة الرمز ذاته باستخدام التطبيق.",
+  "closeAndContinueHere": "أفضل المتابعة هنا"
+
 }
