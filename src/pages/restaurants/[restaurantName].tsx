@@ -125,19 +125,20 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
           visible={openModal}
           destroyOnClose={true}
           width={400}
-          okText={tCommon("continueHere")}
-          onOk={()=> setOpenModal(false)}
-          cancelButtonProps= {{ hidden: true }}
+          cancelText={tCommon("continueHere")}
+          onCancel={()=> setOpenModal(false)}
+          cancelButtonProps= {{ type: "primary" }}
+          okButtonProps= {{ hidden: true }}
         >
-          <div style={{margin: "0 0.5rem", textAlign: "center"}}>
+          <div style={{margin: "0 0.5rem", textAlign: "center", fontSize: "1rem"}}>
             <Image 
               src="/images/logo/paprika.png"
               alt="Paprika Logo"
-              width={100}
-              height={100}
+              width={130}
+              height={130}
               preview={false}
             />
-            <div>
+            <div style={{marginTop: "0.7rem"}}>
               {tCommon("thankYouForUsingPaprikaQR")}
             </div>
             <div style={{margin: "0.3rem 0"}}>
