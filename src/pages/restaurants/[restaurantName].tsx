@@ -1,4 +1,4 @@
-import { Button, Col, Modal, Row } from "antd";
+import { Button, Col, Image, Modal, Row } from "antd";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { PagesUrls, TimeInSeconds, TranslationFiles } from "../../core/core";
 import styles from "../../styles/Restaurant.module.css";
@@ -11,14 +11,13 @@ import RestaurantDetails from "../../features/restaurants/views/details/restaura
 import RestaurantMainInfo from "../../features/restaurants/views/details/main-info/restaurant-main-info.components";
 import RestaurantReservationBox from "../../features/restaurants/views/details/reservation-box/restaurant-reservation-box.components";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { isDataEmpty } from "../../core/functions";
 import useTranslation from "next-translate/useTranslation";
 import { restaurantsServices } from "../../features/restaurants/services/restaurants/restaurants.services";
 import { SORT_IN_ELASTICSEARCH } from "../../features/restaurants/constants/restaurants.constants";
 import PaprikaHead from "../../features/shared/head/paprika-head.components";
 import { useRouter } from "next/router";
-import { AppContext } from "../../core/app/app.context";
 
 interface RestaurantPageProps {
   restaurant: RestaurantHomeDto;
@@ -40,25 +39,12 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
 
   const [reservationModalVisible, setReservationModalVisible] = useState(false);
 
-  const { direction } = useContext(AppContext);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     if(query["inside-token"]){
       replace(`${PagesUrls.RESTAURANTS}/${data?.name}`, undefined, { shallow: true });
-      Modal.info({
-        title: tCommon("thankYouForUsingPaprikaQR"),
-        content: (
-          <>
-            <div>
-              {tCommon("pleaseScanQRFromApp")}
-            </div>
-            <div style={{marginTop: "1rem"}}>
-              {tCommon("closeAndContinueHere")}
-            </div>
-          </>
-        ),
-        bodyStyle: {direction: direction === "ltr" ? "ltr" : "rtl"},
-      });
+      setOpenModal(true);
     }
   },[query, replace, data?.name]);
   
@@ -133,6 +119,36 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
           )}
         </Row>
       </div>
+
+      <Modal 
+        visible={openModal}
+        destroyOnClose={true}
+        width={400}
+        footer={[
+          <Button
+            type="primary"
+            onClick={() => setOpenModal(false)}
+          >
+            {tCommon("continueHere")}
+          </Button>
+        ]}
+      >
+        <div style={{margin: "0 0.5rem", textAlign: "center"}}>
+          <Image 
+            src="/images/logo/paprika.png"
+            alt="Paprika Logo"
+            width={100}
+            height={100}
+            preview={false}
+          />
+          <div>
+            {tCommon("thankYouForUsingPaprikaQR")}
+          </div>
+          <div style={{margin: "0.3rem 0"}}>
+            {tCommon("pleaseScanQRFromApp")}
+          </div>
+        </div>
+      </Modal>  
     </>
   );
 };
