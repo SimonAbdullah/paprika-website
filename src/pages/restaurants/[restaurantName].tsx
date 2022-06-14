@@ -120,35 +120,32 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
         </Row>
       </div>
 
-      <Modal 
-        visible={openModal}
-        destroyOnClose={true}
-        width={400}
-        footer={[
-          <Button
-            type="primary"
-            onClick={() => setOpenModal(false)}
-          >
-            {tCommon("continueHere")}
-          </Button>
-        ]}
-      >
-        <div style={{margin: "0 0.5rem", textAlign: "center"}}>
-          <Image 
-            src="/images/logo/paprika.png"
-            alt="Paprika Logo"
-            width={100}
-            height={100}
-            preview={false}
-          />
-          <div>
-            {tCommon("thankYouForUsingPaprikaQR")}
+      {openModal && (
+        <Modal 
+          visible={openModal}
+          destroyOnClose={true}
+          width={400}
+          okText={tCommon("continueHere")}
+          onOk={()=> setOpenModal(false)}
+          cancelButtonProps= {{ hidden: true }}
+        >
+          <div style={{margin: "0 0.5rem", textAlign: "center"}}>
+            <Image 
+              src="/images/logo/paprika.png"
+              alt="Paprika Logo"
+              width={100}
+              height={100}
+              preview={false}
+            />
+            <div>
+              {tCommon("thankYouForUsingPaprikaQR")}
+            </div>
+            <div style={{margin: "0.3rem 0"}}>
+              {tCommon("pleaseScanQRFromApp")}
+            </div>
           </div>
-          <div style={{margin: "0.3rem 0"}}>
-            {tCommon("pleaseScanQRFromApp")}
-          </div>
-        </div>
-      </Modal>  
+        </Modal>  
+      )} 
     </>
   );
 };
