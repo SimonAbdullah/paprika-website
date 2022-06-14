@@ -5,7 +5,8 @@ import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent, useEffect, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
-import { TranslationFiles } from "../../../../../core/core";
+import urlJoin from "url-join";
+import { PagesUrls, TranslationFiles } from "../../../../../core/core";
 import { isDataEmpty } from "../../../../../core/functions";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 import RestaurantScheduleDesktopTable from "./restaurant-schedule-desktop-table.components";
@@ -17,7 +18,7 @@ interface RestaurantScheduleProps {}
 const RestaurantSchedule: FunctionComponent<RestaurantScheduleProps> = () => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
 
-  const { openingTimes } = useRestaurantDetails();
+  const { data: restaurantDetails, openingTimes } = useRestaurantDetails();
 
   const { md } = useBreakpoint();
 
@@ -26,8 +27,8 @@ const RestaurantSchedule: FunctionComponent<RestaurantScheduleProps> = () => {
   const [restaurantURL, setRestaurantURL] = useState("");
 
   useEffect(() => {
-    setRestaurantURL(window.location.href);
-  },[]);
+    setRestaurantURL(urlJoin(window.location.origin, PagesUrls.RESTAURANTS, restaurantDetails?.name ?? ""));
+  },[restaurantDetails?.name]);
 
   return (
     <>

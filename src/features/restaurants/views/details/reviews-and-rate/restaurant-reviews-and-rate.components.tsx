@@ -4,7 +4,8 @@ import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent, useEffect, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
-import { TranslationFiles } from "../../../../../core/core";
+import urlJoin from "url-join";
+import { PagesUrls, TranslationFiles } from "../../../../../core/core";
 import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 import { RestaurantHomeDto } from "../../../../customers/services/customer-restaurant/models/restaurantHomeDto";
 import RestaurantRate from "./restaurant-rate.components";
@@ -26,8 +27,8 @@ const RestaurantReviewsAndRate: FunctionComponent<
   const [restaurantURL, setRestaurantURL] = useState("");
 
   useEffect(() => {
-    setRestaurantURL(window.location.href);
-  },[]);
+    setRestaurantURL(urlJoin(window.location.origin, PagesUrls.RESTAURANTS, data?.name ?? ""));
+  },[data?.name]);
 
   return (
     <div id="reviews-and-rate">

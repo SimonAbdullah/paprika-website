@@ -1,4 +1,4 @@
-import { Button, Col, Modal, Row } from "antd";
+import { Button, Col, Image, Modal, Row } from "antd";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { PagesUrls, TimeInSeconds, TranslationFiles } from "../../core/core";
 import styles from "../../styles/Restaurant.module.css";
@@ -39,9 +39,12 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
 
   const [reservationModalVisible, setReservationModalVisible] = useState(false);
 
+  const [openModal, setOpenModal] = useState(false);
+
   useEffect(() => {
     if(query["inside-token"]){
       replace(`${PagesUrls.RESTAURANTS}/${data?.name}`, undefined, { shallow: true });
+      setOpenModal(true);
     }
   },[query, replace, data?.name]);
   
@@ -116,6 +119,36 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
           )}
         </Row>
       </div>
+
+      <Modal 
+        visible={openModal}
+        destroyOnClose={true}
+        width={400}
+        footer={[
+          <Button
+            type="primary"
+            onClick={() => setOpenModal(false)}
+          >
+            {tCommon("continueHere")}
+          </Button>
+        ]}
+      >
+        <div style={{margin: "0 0.5rem", textAlign: "center"}}>
+          <Image 
+            src="/images/logo/paprika.png"
+            alt="Paprika Logo"
+            width={100}
+            height={100}
+            preview={false}
+          />
+          <div>
+            {tCommon("thankYouForUsingPaprikaQR")}
+          </div>
+          <div style={{margin: "0.3rem 0"}}>
+            {tCommon("pleaseScanQRFromApp")}
+          </div>
+        </div>
+      </Modal>  
     </>
   );
 };
