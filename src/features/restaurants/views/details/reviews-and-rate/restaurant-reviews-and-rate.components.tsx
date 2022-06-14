@@ -52,7 +52,7 @@ const RestaurantReviewsAndRate: FunctionComponent<
         <>
           <Text className={classes.title}>{t("reviewsAndRate")}</Text>
           <CopyToClipboard
-            text={`${restaurantURL}#menu`} 
+            text={`${restaurantURL}#reviews-and-rate`} 
             onCopy={() => message.success(tCommon("linkCopied"))}
           >
             <LinkOutlined style={{margin: "0 1rem", fontSize: "1.2rem"}}/>
