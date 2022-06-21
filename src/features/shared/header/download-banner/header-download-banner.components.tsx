@@ -1,4 +1,4 @@
-import { Button, message, Modal, Row, Space } from "antd";
+import { Button, Modal, Row } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import Text from "antd/lib/typography/Text";
 import { FunctionComponent, useState } from "react";
@@ -11,8 +11,7 @@ import { useRouter } from "next/router";
 import { UrlInApp } from "../../../../core/constants";
 import { isMobile, isBrowser } from "react-device-detect";
 import urlJoin from "url-join";
-import { generateUuid } from "../../../../core/functions";
-import { customerDownloadLinkServices } from "../../../customers/services/customer-download-link/customer-download-link.services";
+import DownloadIcons from "../../download-icons/download-icons.components";
 
 interface HeaderDownloadBannerProps {}
 
@@ -26,27 +25,10 @@ const HeaderDownloadBanner: FunctionComponent<
   const [visible, setVisible] = useState(true);
 
   const { asPath } = useRouter();
-  
-  const [isDisabled, setIsDisabled] = useState(false);
-  
+    
   const [openDownloadAppModal, setOpenDownloadAppModal] = useState(false);
 
   const [openInAppLoading, setOpenInAppLoading] = useState(false);
-  
-  const getPaprikaDownloadLink = async () => {
-    try {
-      setIsDisabled(true);
-      if(!localStorage.getItem("downloadToken")) {
-        localStorage.setItem("downloadToken", generateUuid());
-      }
-      const result = await customerDownloadLinkServices.getCustomerDownloadLink({downloadToken: localStorage.getItem("downloadToken")!});
-      window.open(result.result.paprikaDownloadLink, "_blank");
-    } catch (error) {
-      message.error(t("anErrorOccurredWhileDownloading"));
-    } finally {
-      setIsDisabled(false);
-    }
-  };
 
   return (isMobile && visible) || (isBrowser && xs && visible) ? (
     <>
@@ -67,56 +49,7 @@ const HeaderDownloadBanner: FunctionComponent<
           <br />
           <Text className={classes.title}>{t("downloadNow")}</Text>
         </div>
-        <Space className={classes.imagesContainer}>
-          <div className={classes.googlePlayContainer}>
-            <a
-              href="https://play.google.com/store/apps/details?id=com.paprika_sy.customer"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                src={`/icons/google-play-circle.png`}
-                alt={t("googlePlay")}
-                width="54px"
-                height="54px"
-                layout="fixed"
-                className={classes.image}
-              />
-            </a>
-          </div>
-          <div className={classes.appStoreContainer}>
-            <a
-              href="https://apps.apple.com/us/app/%D8%A8%D8%A7%D8%A8%D8%B1%D9%8A%D9%83%D8%A7/id1566120897#?platform=iphone"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                src={`/icons/app-store-circle.png`}
-                alt={t("appStore")}
-                width="54px"
-                height="54px"
-                layout="fixed"
-                className={classes.image}
-              />
-            </a>
-          </div>
-          <div className={classes.directLinkContainer}>
-            <Button
-              style={{padding: "0px", background: "none", border: "none"}}
-              onClick={() => getPaprikaDownloadLink()}
-              disabled={isDisabled}
-            >
-              <Image
-                src={`/icons/direct-link-circle.png`}
-                alt={t("directLink")}
-                width="54px"
-                height="54px"
-                layout="fixed"
-                className={classes.image}
-              />
-            </Button>
-          </div>
-        </Space>
+        <DownloadIcons />
       </Row>
       <Row
         justify="center"
@@ -176,57 +109,10 @@ const HeaderDownloadBanner: FunctionComponent<
             <div style={{marginTop: "0.7rem"}}>
               {t("itSeemsThatYouDontHavePaprikaInstalledOnYouDevice")}
             </div>
-            <Row>
-              <Space style={{margin: "2rem auto"}}>
-                <div className={classes.googlePlayContainer}>
-                  <a
-                    href="https://play.google.com/store/apps/details?id=com.paprika_sy.customer"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      src={`/icons/google-play-circle.png`}
-                      alt={t("googlePlay")}
-                      width="54px"
-                      height="54px"
-                      layout="fixed"
-                      className={classes.image}
-                    />
-                  </a>
-                </div>
-                <div className={classes.appStoreContainer}>
-                  <a
-                    href="https://apps.apple.com/us/app/%D8%A8%D8%A7%D8%A8%D8%B1%D9%8A%D9%83%D8%A7/id1566120897#?platform=iphone"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      src={`/icons/app-store-circle.png`}
-                      alt={t("appStore")}
-                      width="54px"
-                      height="54px"
-                      layout="fixed"
-                      className={classes.image}
-                    />
-                  </a>
-                </div>
-                <div className={classes.directLinkContainer}>
-                  <Button
-                    style={{padding: "0px", background: "none", border: "none"}}
-                    onClick={() => getPaprikaDownloadLink()}
-                    disabled={isDisabled}
-                  >
-                    <Image
-                      src={`/icons/direct-link-circle.png`}
-                      alt={t("directLink")}
-                      width="54px"
-                      height="54px"
-                      layout="fixed"
-                      className={classes.image}
-                    />
-                  </Button>
-                </div>
-              </Space>
+            <Row justify="center">
+              <div style={{marginTop: "2rem"}}>
+                <DownloadIcons />
+              </div>
             </Row>
           </div>
         </Modal>  

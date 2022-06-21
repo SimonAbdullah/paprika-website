@@ -1,4 +1,4 @@
-import { Button, Col, message, Modal, Row, Space } from "antd";
+import { Button, Col, Modal, Row } from "antd";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { PagesUrls, TimeInSeconds, TranslationFiles } from "../../core/core";
 import styles from "../../styles/Restaurant.module.css";
@@ -12,7 +12,7 @@ import RestaurantMainInfo from "../../features/restaurants/views/details/main-in
 import RestaurantReservationBox from "../../features/restaurants/views/details/reservation-box/restaurant-reservation-box.components";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useEffect, useState } from "react";
-import { generateUuid, isDataEmpty } from "../../core/functions";
+import { isDataEmpty } from "../../core/functions";
 import useTranslation from "next-translate/useTranslation";
 import { restaurantsServices } from "../../features/restaurants/services/restaurants/restaurants.services";
 import { SORT_IN_ELASTICSEARCH } from "../../features/restaurants/constants/restaurants.constants";
@@ -21,8 +21,8 @@ import { useRouter } from "next/router";
 import urlJoin from "url-join";
 import { UrlInsideApp } from "../../core/constants";
 import Image from "next/image";
-import { customerDownloadLinkServices } from "../../features/customers/services/customer-download-link/customer-download-link.services";
 import { isMobile } from "react-device-detect";
+import DownloadIcons from "../../features/shared/download-icons/download-icons.components";
 
 interface RestaurantPageProps {
   restaurant: RestaurantHomeDto;
@@ -52,8 +52,6 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
 
   const [openInAppLoading, setOpenInAppLoading] = useState(false);
   
-  const [buttonDownloadDisabled, setButtonDownloadDisabled] = useState(false);
-
   useEffect(() => {
     if(query["inside-token"]){
       setPathInsideApp(asPath);
@@ -67,21 +65,6 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
   if (data?.city?.name) ogDescription += data?.city?.name + ", ";
   if (data?.region?.name) ogDescription += data?.region?.name + ", ";
   if (data?.address) ogDescription += data?.address + ".";
-
-  const getPaprikaDownloadLink = async () => {
-    try {
-      setButtonDownloadDisabled(true);
-      if(!localStorage.getItem("downloadToken")) {
-        localStorage.setItem("downloadToken", generateUuid());
-      }
-      const result = await customerDownloadLinkServices.getCustomerDownloadLink({downloadToken: localStorage.getItem("downloadToken")!});
-      window.open(result.result.paprikaDownloadLink, "_blank");
-    } catch (error) {
-      message.error(t("anErrorOccurredWhileDownloading"));
-    } finally {
-      setButtonDownloadDisabled(false);
-    }
-  };
 
   return (
     <>
@@ -214,57 +197,10 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
             <div style={{margin: "0.3rem 0"}}>
               {tCommon("pleaseInstallItAndScanTheQRAgainFromTheAppAgain")}
             </div>
-            <Row>
-              <Space style={{margin: "1.5rem auto"}}>
-                <div className={styles.googlePlayContainer}>
-                  <a
-                    href="https://play.google.com/store/apps/details?id=com.paprika_sy.customer"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      src={`/icons/google-play-circle.png`}
-                      alt={t("googlePlay")}
-                      width="54px"
-                      height="54px"
-                      layout="fixed"
-                      className={styles.image}
-                    />
-                  </a>
-                </div>
-                <div className={styles.appStoreContainer}>
-                  <a
-                    href="https://apps.apple.com/us/app/%D8%A8%D8%A7%D8%A8%D8%B1%D9%8A%D9%83%D8%A7/id1566120897#?platform=iphone"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      src={`/icons/app-store-circle.png`}
-                      alt={t("appStore")}
-                      width="54px"
-                      height="54px"
-                      layout="fixed"
-                      className={styles.image}
-                    />
-                  </a>
-                </div>
-                <div className={styles.directLinkContainer}>
-                  <Button
-                    style={{padding: "0px", background: "none", border: "none"}}
-                    onClick={() => getPaprikaDownloadLink()}
-                    disabled={buttonDownloadDisabled}
-                  >
-                    <Image
-                      src={`/icons/direct-link-circle.png`}
-                      alt={t("directLink")}
-                      width="54px"
-                      height="54px"
-                      layout="fixed"
-                      className={styles.image}
-                    />
-                  </Button>
-                </div>
-              </Space>
+            <Row justify="center">
+              <div style={{marginTop: "1.5rem"}}>
+                <DownloadIcons />
+              </div>
             </Row>
           </div>
         </Modal>  
