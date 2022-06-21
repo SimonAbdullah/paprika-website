@@ -20,3 +20,7 @@ export const HomeMetaData = {
 export const UrlInApp = {
   paprikaUrlInApp: "paprika://",
 };
+
+export const UrlInsideApp = {
+  paprikaUrlInsideApp: "paprika://paprika",
+};

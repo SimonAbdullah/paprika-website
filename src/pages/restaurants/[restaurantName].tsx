@@ -1,4 +1,4 @@
-import { Button, Col, Image, Modal, Row } from "antd";
+import { Button, Col, Modal, Row } from "antd";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { PagesUrls, TimeInSeconds, TranslationFiles } from "../../core/core";
 import styles from "../../styles/Restaurant.module.css";
@@ -18,6 +18,11 @@ import { restaurantsServices } from "../../features/restaurants/services/restaur
 import { SORT_IN_ELASTICSEARCH } from "../../features/restaurants/constants/restaurants.constants";
 import PaprikaHead from "../../features/shared/head/paprika-head.components";
 import { useRouter } from "next/router";
+import urlJoin from "url-join";
+import { UrlInsideApp } from "../../core/constants";
+import Image from "next/image";
+import { isMobile } from "react-device-detect";
+import DownloadIcons from "../../features/shared/download-icons/download-icons.components";
 
 interface RestaurantPageProps {
   restaurant: RestaurantHomeDto;
@@ -28,7 +33,7 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
 
   const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
 
-  const { query, replace } = useRouter();
+  const { query, replace, asPath } = useRouter();
 
   const { data, galleryItems, hasReservation } = useRestaurantDetails(
     {},
@@ -41,13 +46,20 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
+  const [pathInsideApp, setPathInsideApp] = useState("");
+
+  const [openDownloadAppModal, setOpenDownloadAppModal] = useState(false);
+
+  const [openInAppLoading, setOpenInAppLoading] = useState(false);
+  
   useEffect(() => {
     if(query["inside-token"]){
+      setPathInsideApp(asPath);
       replace(`${PagesUrls.RESTAURANTS}/${data?.name}`, undefined, { shallow: true });
       setOpenModal(true);
     }
-  },[query, replace, data?.name]);
-  
+  },[query, asPath, replace, data?.name]);
+
   let ogDescription = "";
   if (data?.country?.name) ogDescription += data?.country?.name + ", ";
   if (data?.city?.name) ogDescription += data?.city?.name + ", ";
@@ -120,15 +132,30 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
         </Row>
       </div>
 
-      {openModal && (
+      {openModal && isMobile && (
         <Modal 
           visible={openModal}
           destroyOnClose={true}
           width={400}
           cancelText={tCommon("continueHere")}
           onCancel={()=> setOpenModal(false)}
-          cancelButtonProps= {{ type: "primary" }}
-          okButtonProps= {{ hidden: true }}
+          okText={tCommon("OpenInApp")}
+          onOk={() => {
+            setOpenInAppLoading(true);
+            window.location.href = `${urlJoin(UrlInsideApp.paprikaUrlInsideApp, pathInsideApp)}`;
+            setTimeout(() => {
+              const state = document.visibilityState;
+              if(state === "visible"){
+                setOpenModal(false);
+                setOpenInAppLoading(false);
+                setOpenDownloadAppModal(true);
+              } else {
+                setOpenInAppLoading(false);
+                setOpenModal(false);
+              }
+            }, 5000);
+          }}
+          okButtonProps= {{loading: openInAppLoading}}
         >
           <div style={{margin: "0 0.5rem", textAlign: "center", fontSize: "1rem"}}>
             <Image 
@@ -136,7 +163,6 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
               alt="Paprika Logo"
               width={130}
               height={130}
-              preview={false}
             />
             <div style={{marginTop: "0.7rem"}}>
               {tCommon("thankYouForUsingPaprikaQR")}
@@ -147,6 +173,38 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
           </div>
         </Modal>  
       )} 
+
+      { isMobile && (
+        <Modal 
+          visible={openDownloadAppModal}
+          destroyOnClose={true}
+          width={400}
+          cancelText={tCommon("continueHere")}
+          onCancel={()=> setOpenDownloadAppModal(false)}
+          cancelButtonProps= {{ type: "primary" }}
+          okButtonProps={{ hidden: true }}
+        >
+          <div style={{margin: "0 0.5rem", textAlign: "center", fontSize: "1rem"}}>
+            <Image 
+              src="/images/logo/paprika.png"
+              alt="Paprika Logo"
+              width={130}
+              height={130}
+            />
+            <div style={{marginTop: "0.7rem"}}>
+              {tCommon("itSeemsThatYouDontHavePaprikaInstalledOnYouDevice")}
+            </div>
+            <div style={{margin: "0.3rem 0"}}>
+              {tCommon("pleaseInstallItAndScanTheQRAgainFromTheAppAgain")}
+            </div>
+            <Row justify="center">
+              <div style={{marginTop: "1.5rem"}}>
+                <DownloadIcons />
+              </div>
+            </Row>
+          </div>
+        </Modal>  
+      )}
     </>
   );
 };

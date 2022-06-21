@@ -50,5 +50,7 @@
   "linkCopied": "تم نسخ الرابط",
   "thankYouForUsingPaprikaQR": "شكراً لك لاستخدام رمز بابريكا.",
   "pleaseScanQRFromApp": "يمكنك إدارة طاولتك على تطبيق بابريكا وذلك بقراءة الرمز ذاته باستخدام التطبيق.",
-  "continueHere": "المتابعة هنا"
+  "continueHere": "المتابعة هنا",
+  "itSeemsThatYouDontHavePaprikaInstalledOnYouDevice": "يبدو أن تطبيق بابريكا غير موجود على جهازك.",
+  "pleaseInstallItAndScanTheQRAgainFromTheAppAgain": "الرجاء تحميل التطبيق ومسح الرمز مرة أخرى من داخل التطبيق."
 }
