@@ -1,4 +1,4 @@
-import { Button, Col, Image, Modal, Row } from "antd";
+import { Button, Col, message, Modal, Row, Space } from "antd";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { PagesUrls, TimeInSeconds, TranslationFiles } from "../../core/core";
 import styles from "../../styles/Restaurant.module.css";
@@ -12,12 +12,17 @@ import RestaurantMainInfo from "../../features/restaurants/views/details/main-in
 import RestaurantReservationBox from "../../features/restaurants/views/details/reservation-box/restaurant-reservation-box.components";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useEffect, useState } from "react";
-import { isDataEmpty } from "../../core/functions";
+import { generateUuid, isDataEmpty } from "../../core/functions";
 import useTranslation from "next-translate/useTranslation";
 import { restaurantsServices } from "../../features/restaurants/services/restaurants/restaurants.services";
 import { SORT_IN_ELASTICSEARCH } from "../../features/restaurants/constants/restaurants.constants";
 import PaprikaHead from "../../features/shared/head/paprika-head.components";
 import { useRouter } from "next/router";
+import urlJoin from "url-join";
+import { UrlInsideApp } from "../../core/constants";
+import Image from "next/image";
+import { customerDownloadLinkServices } from "../../features/customers/services/customer-download-link/customer-download-link.services";
+import { isMobile } from "react-device-detect";
 
 interface RestaurantPageProps {
   restaurant: RestaurantHomeDto;
@@ -28,7 +33,7 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
 
   const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
 
-  const { query, replace } = useRouter();
+  const { query, replace, asPath } = useRouter();
 
   const { data, galleryItems, hasReservation } = useRestaurantDetails(
     {},
@@ -41,18 +46,42 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
+  const [pathInsideApp, setPathInsideApp] = useState("");
+
+  const [openDownloadAppModal, setOpenDownloadAppModal] = useState(false);
+
+  const [openInAppLoading, setOpenInAppLoading] = useState(false);
+  
+  const [buttonDownloadDisabled, setButtonDownloadDisabled] = useState(false);
+
   useEffect(() => {
     if(query["inside-token"]){
+      setPathInsideApp(asPath);
       replace(`${PagesUrls.RESTAURANTS}/${data?.name}`, undefined, { shallow: true });
       setOpenModal(true);
     }
-  },[query, replace, data?.name]);
-  
+  },[query, asPath, replace, data?.name]);
+
   let ogDescription = "";
   if (data?.country?.name) ogDescription += data?.country?.name + ", ";
   if (data?.city?.name) ogDescription += data?.city?.name + ", ";
   if (data?.region?.name) ogDescription += data?.region?.name + ", ";
   if (data?.address) ogDescription += data?.address + ".";
+
+  const getPaprikaDownloadLink = async () => {
+    try {
+      setButtonDownloadDisabled(true);
+      if(!localStorage.getItem("downloadToken")) {
+        localStorage.setItem("downloadToken", generateUuid());
+      }
+      const result = await customerDownloadLinkServices.getCustomerDownloadLink({downloadToken: localStorage.getItem("downloadToken")!});
+      window.open(result.result.paprikaDownloadLink, "_blank");
+    } catch (error) {
+      message.error(t("anErrorOccurredWhileDownloading"));
+    } finally {
+      setButtonDownloadDisabled(false);
+    }
+  };
 
   return (
     <>
@@ -120,15 +149,30 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
         </Row>
       </div>
 
-      {openModal && (
+      {openModal && isMobile && (
         <Modal 
           visible={openModal}
           destroyOnClose={true}
           width={400}
           cancelText={tCommon("continueHere")}
           onCancel={()=> setOpenModal(false)}
-          cancelButtonProps= {{ type: "primary" }}
-          okButtonProps= {{ hidden: true }}
+          okText={tCommon("OpenInApp")}
+          onOk={() => {
+            setOpenInAppLoading(true);
+            window.location.href = `${urlJoin(UrlInsideApp.paprikaUrlInsideApp, pathInsideApp)}`;
+            setTimeout(() => {
+              const state = document.visibilityState;
+              if(state === "visible"){
+                setOpenModal(false);
+                setOpenInAppLoading(false);
+                setOpenDownloadAppModal(true);
+              } else {
+                setOpenInAppLoading(false);
+                setOpenModal(false);
+              }
+            }, 5000);
+          }}
+          okButtonProps= {{loading: openInAppLoading}}
         >
           <div style={{margin: "0 0.5rem", textAlign: "center", fontSize: "1rem"}}>
             <Image 
@@ -136,7 +180,6 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
               alt="Paprika Logo"
               width={130}
               height={130}
-              preview={false}
             />
             <div style={{marginTop: "0.7rem"}}>
               {tCommon("thankYouForUsingPaprikaQR")}
@@ -147,6 +190,85 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
           </div>
         </Modal>  
       )} 
+
+      { isMobile && (
+        <Modal 
+          visible={openDownloadAppModal}
+          destroyOnClose={true}
+          width={400}
+          cancelText={tCommon("continueHere")}
+          onCancel={()=> setOpenDownloadAppModal(false)}
+          cancelButtonProps= {{ type: "primary" }}
+          okButtonProps={{ hidden: true }}
+        >
+          <div style={{margin: "0 0.5rem", textAlign: "center", fontSize: "1rem"}}>
+            <Image 
+              src="/images/logo/paprika.png"
+              alt="Paprika Logo"
+              width={130}
+              height={130}
+            />
+            <div style={{marginTop: "0.7rem"}}>
+              {tCommon("itSeemsThatYouDontHavePaprikaInstalledOnYouDevice")}
+            </div>
+            <div style={{margin: "0.3rem 0"}}>
+              {tCommon("pleaseInstallItAndScanTheQRAgainFromTheAppAgain")}
+            </div>
+            <Row>
+              <Space style={{margin: "1.5rem auto"}}>
+                <div className={styles.googlePlayContainer}>
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.paprika_sy.customer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src={`/icons/google-play-circle.png`}
+                      alt={t("googlePlay")}
+                      width="54px"
+                      height="54px"
+                      layout="fixed"
+                      className={styles.image}
+                    />
+                  </a>
+                </div>
+                <div className={styles.appStoreContainer}>
+                  <a
+                    href="https://apps.apple.com/us/app/%D8%A8%D8%A7%D8%A8%D8%B1%D9%8A%D9%83%D8%A7/id1566120897#?platform=iphone"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src={`/icons/app-store-circle.png`}
+                      alt={t("appStore")}
+                      width="54px"
+                      height="54px"
+                      layout="fixed"
+                      className={styles.image}
+                    />
+                  </a>
+                </div>
+                <div className={styles.directLinkContainer}>
+                  <Button
+                    style={{padding: "0px", background: "none", border: "none"}}
+                    onClick={() => getPaprikaDownloadLink()}
+                    disabled={buttonDownloadDisabled}
+                  >
+                    <Image
+                      src={`/icons/direct-link-circle.png`}
+                      alt={t("directLink")}
+                      width="54px"
+                      height="54px"
+                      layout="fixed"
+                      className={styles.image}
+                    />
+                  </Button>
+                </div>
+              </Space>
+            </Row>
+          </div>
+        </Modal>  
+      )}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { Button, message, Row, Space } from "antd";
+import { Button, message, Modal, Row, Space } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import Text from "antd/lib/typography/Text";
 import { FunctionComponent, useState } from "react";
@@ -28,6 +28,10 @@ const HeaderDownloadBanner: FunctionComponent<
   const { asPath } = useRouter();
   
   const [isDisabled, setIsDisabled] = useState(false);
+  
+  const [openDownloadAppModal, setOpenDownloadAppModal] = useState(false);
+
+  const [openInAppLoading, setOpenInAppLoading] = useState(false);
   
   const getPaprikaDownloadLink = async () => {
     try {
@@ -134,12 +138,99 @@ const HeaderDownloadBanner: FunctionComponent<
             margin: "0.5rem 0",
           }}
           onClick={() => {
-            window.open(urlJoin(UrlInApp.paprikaUrlInApp, asPath), "_blank");
+            setOpenInAppLoading(true);
+            window.location.href = `${urlJoin(UrlInApp.paprikaUrlInApp, asPath)}`;
+            setTimeout(() => {
+              const state = document.visibilityState;
+              if(state === "visible"){
+                setOpenInAppLoading(false);
+                setOpenDownloadAppModal(true);
+              } else {
+                setOpenInAppLoading(false);
+              }
+            }, 5000);
           }}
+          loading={openInAppLoading}
         >
           {t("OpenInApp")}
         </Button>
       </Row>
+
+      { isMobile && (
+        <Modal 
+          visible={openDownloadAppModal}
+          destroyOnClose={true}
+          width={400}
+          cancelText={t("continueHere")}
+          onCancel={()=> setOpenDownloadAppModal(false)}
+          cancelButtonProps= {{ type: "primary" }}
+          okButtonProps={{ hidden: true }}
+        >
+          <div style={{margin: "0 0.5rem", textAlign: "center", fontSize: "1rem"}}>
+            <Image 
+              src="/images/logo/paprika.png"
+              alt="Paprika Logo"
+              width={130}
+              height={130}
+            />
+            <div style={{marginTop: "0.7rem"}}>
+              {t("itSeemsThatYouDontHavePaprikaInstalledOnYouDevice")}
+            </div>
+            <Row>
+              <Space style={{margin: "2rem auto"}}>
+                <div className={classes.googlePlayContainer}>
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.paprika_sy.customer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src={`/icons/google-play-circle.png`}
+                      alt={t("googlePlay")}
+                      width="54px"
+                      height="54px"
+                      layout="fixed"
+                      className={classes.image}
+                    />
+                  </a>
+                </div>
+                <div className={classes.appStoreContainer}>
+                  <a
+                    href="https://apps.apple.com/us/app/%D8%A8%D8%A7%D8%A8%D8%B1%D9%8A%D9%83%D8%A7/id1566120897#?platform=iphone"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src={`/icons/app-store-circle.png`}
+                      alt={t("appStore")}
+                      width="54px"
+                      height="54px"
+                      layout="fixed"
+                      className={classes.image}
+                    />
+                  </a>
+                </div>
+                <div className={classes.directLinkContainer}>
+                  <Button
+                    style={{padding: "0px", background: "none", border: "none"}}
+                    onClick={() => getPaprikaDownloadLink()}
+                    disabled={isDisabled}
+                  >
+                    <Image
+                      src={`/icons/direct-link-circle.png`}
+                      alt={t("directLink")}
+                      width="54px"
+                      height="54px"
+                      layout="fixed"
+                      className={classes.image}
+                    />
+                  </Button>
+                </div>
+              </Space>
+            </Row>
+          </div>
+        </Modal>  
+      )}
     </>
   ) : null;
 };

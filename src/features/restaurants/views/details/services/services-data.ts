@@ -2,6 +2,7 @@ import useTranslation from "next-translate/useTranslation";
 import { TranslationFiles } from "../../../../../core/core";
 import { bitwiseAnd } from "../../../../../core/functions";
 import {
+  AmenityType,
   CuisineType,
   MusicType,
   ParkingType,
@@ -66,6 +67,19 @@ export const useServicesData = () => {
         : t("notAvailable"),
     },
     {
+      logo: "/images/restaurant/bed.svg",
+      title: t("amenities"),
+      alt: t("amenities"),
+      description: data?.amenityTypes
+        ? Object.entries(AmenityType)
+            .filter(([key]: any) => {
+              return bitwiseAnd(key, data?.amenityTypes!) > 0;
+            })
+            .map(([_, value]) => t(value))
+            .join(", ")
+        : t("notAvailable"),
+    },
+    { 
       logo: "/images/restaurant/car.svg",
       title: t("parking"),
       alt: t("parking"),

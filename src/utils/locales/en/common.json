@@ -50,5 +50,7 @@
   "linkCopied": "Link Copied",
   "thankYouForUsingPaprikaQR": "Thank you for using Paprika QR.",
   "pleaseScanQRFromApp": "This restaurant has the Inside service activated. Please scan the same QR with Paprika app for a better experience.",
-  "continueHere": "Continue here"
+  "continueHere": "Continue here",
+  "itSeemsThatYouDontHavePaprikaInstalledOnYouDevice": "It seems that you don't have Paprika installed on you device.",
+  "pleaseInstallItAndScanTheQRAgainFromTheAppAgain": "Please install it and scan the QR again from the App again."
 }
