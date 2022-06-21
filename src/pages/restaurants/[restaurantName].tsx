@@ -198,7 +198,7 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
               {tCommon("pleaseInstallItAndScanTheQRAgainFromTheAppAgain")}
             </div>
             <Row justify="center">
-              <div style={{marginTop: "1.5rem"}}>
+              <div style={{marginTop: "0.5rem"}}>
                 <DownloadIcons />
               </div>
             </Row>

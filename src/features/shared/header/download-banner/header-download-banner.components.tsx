@@ -46,8 +46,6 @@ const HeaderDownloadBanner: FunctionComponent<
           <Text className={classes.text}>
             {t("dontHavePaprikaOnYourDevice")}
           </Text>
-          <br />
-          <Text className={classes.title}>{t("downloadNow")}</Text>
         </div>
         <DownloadIcons />
       </Row>
@@ -64,12 +62,7 @@ const HeaderDownloadBanner: FunctionComponent<
         <Button
           type="default"
           size="large"
-          style={{
-            fontSize: "16px",
-            fontWeight: "bold",
-            color: "#db7569",
-            margin: "0.5rem 0",
-          }}
+          className={classes.openInAppBtn}
           onClick={() => {
             setOpenInAppLoading(true);
             window.location.href = `${urlJoin(UrlInApp.paprikaUrlInApp, asPath)}`;
@@ -110,7 +103,7 @@ const HeaderDownloadBanner: FunctionComponent<
               {t("itSeemsThatYouDontHavePaprikaInstalledOnYouDevice")}
             </div>
             <Row justify="center">
-              <div style={{marginTop: "2rem"}}>
+              <div style={{marginTop: "0.5rem"}}>
                 <DownloadIcons />
               </div>
             </Row>
