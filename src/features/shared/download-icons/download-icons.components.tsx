@@ -1,4 +1,5 @@
 import { Button, message, Space } from "antd";
+import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";
 import Image from "next/image";
 import { FunctionComponent, useState } from "react";
@@ -31,6 +32,9 @@ const DownloadIcons: FunctionComponent<DownloadIconsProps> = () => {
       };
     return(
         <>
+            <div className={classes.textContainer}>
+                <Text className={classes.title}>{t("downloadNow")}</Text>
+            </div>
             <Space className={classes.imagesContainer}>
                 <div className={classes.googlePlayContainer}>
                     <a
