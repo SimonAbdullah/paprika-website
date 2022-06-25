@@ -192,7 +192,7 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
               height={130}
             />
             <div style={{marginTop: "0.7rem"}}>
-              {tCommon("itSeemsThatYouDontHavePaprikaInstalledOnYouDevice")}
+              {tCommon("itSeemsThatYouDontHavePaprikaInstalledOnYourDevice")}
             </div>
             <div style={{margin: "0.3rem 0"}}>
               {tCommon("pleaseInstallItAndScanTheQRAgainFromTheAppAgain")}

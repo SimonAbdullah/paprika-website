@@ -100,7 +100,7 @@ const HeaderDownloadBanner: FunctionComponent<
               height={130}
             />
             <div style={{marginTop: "0.7rem"}}>
-              {t("itSeemsThatYouDontHavePaprikaInstalledOnYouDevice")}
+              {t("itSeemsThatYouDontHavePaprikaInstalledOnYourDevice")}
             </div>
             <Row justify="center">
               <div style={{marginTop: "0.5rem"}}>
