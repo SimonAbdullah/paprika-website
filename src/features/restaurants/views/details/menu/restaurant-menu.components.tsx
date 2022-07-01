@@ -26,7 +26,7 @@ const RestaurantMenu: FunctionComponent<RestaurantMenuProps> = () => {
 
   const [restaurantURL, setRestaurantURL] = useState("");
 
-  const { data: restaurantDetails} = useRestaurantDetails();
+  const { data: restaurantDetails, hasReservation} = useRestaurantDetails();
 
   useEffect(() => {
     setRestaurantURL(urlJoin(window.location.origin, PagesUrls.RESTAURANTS, restaurantDetails?.name ?? ""));
@@ -56,7 +56,7 @@ const RestaurantMenu: FunctionComponent<RestaurantMenuProps> = () => {
           {data?.map((category) => {
             return (
               <Tabs.TabPane tab={category.name} key={String(category.id)}>
-                <RestaurantCategoryMenu category={category} />
+                <RestaurantCategoryMenu category={category} hasReservation={hasReservation}/>
               </Tabs.TabPane>
             );
           })}

@@ -18,22 +18,22 @@ import {
   aesEncodeWithBase64AndKeyConcat,
   disabledDate,
 } from "../../../../../core/functions";
-import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 import { CreateReservationForGuestDto } from "../../../../customers/services/customer-reservation/models/create-reservation-for-guest-dto.models";
+import { RestaurantHomeDto } from "../../../../customers/services/customer-restaurant/models/restaurantHomeDto";
 import { sendAndResendVerificationCode } from "../../../../guest/functions";
 import ReservationVerificationCodeModal from "./reservation-verification-code-modal.components";
 import classes from "./style.module.css";
 
-interface RestaurantReservationBoxProps {}
+interface RestaurantReservationBoxProps {
+  restaurantDetails: RestaurantHomeDto;
+}
 
 const RestaurantReservationBox: FunctionComponent<
   RestaurantReservationBoxProps
-> = () => {
+> = ({restaurantDetails}) => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
 
   const { t: tCommon } = useTranslation(TranslationFiles.COMMON);
-
-  const { data } = useRestaurantDetails();
 
   const [form] = useForm<CreateReservationForGuestDto>();
 
@@ -109,7 +109,7 @@ const RestaurantReservationBox: FunctionComponent<
             >
               <Select>
                 {Array.from({
-                  length: data?.settings?.maxPeopleAllowed || 0,
+                  length: restaurantDetails?.settings?.maxPeopleAllowed || 0,
                 }).map((_, index) => (
                   <Select.Option key={index} value={index + 1}>
                     {index + 1}
