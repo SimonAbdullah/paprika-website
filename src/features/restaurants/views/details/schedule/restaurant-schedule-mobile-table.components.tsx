@@ -3,17 +3,17 @@ import useTranslation from "next-translate/useTranslation";
 import { FunctionComponent } from "react";
 import { DaysOfWeek } from "../../../../../core/constants";
 import { TranslationFiles } from "../../../../../core/core";
-import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
+import { OpeningTimeDto } from "../../../../customers/services/customer-restaurant/models/openingTimeDto";
 import classes from "./style.module.css";
 
-interface RestaurantScheduleMobileTableProps {}
+interface RestaurantScheduleMobileTableProps {
+  openingTimes: OpeningTimeDto[];
+}
 
 const RestaurantScheduleMobileTable: FunctionComponent<
   RestaurantScheduleMobileTableProps
-> = () => {
+> = ({ openingTimes}) => {
   const { t } = useTranslation(TranslationFiles.RESTAURANT);
-
-  const { openingTimes } = useRestaurantDetails();
 
   return (
     <table cellPadding={"12rem"} className={classes.table}>

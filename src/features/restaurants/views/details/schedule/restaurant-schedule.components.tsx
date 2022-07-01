@@ -48,9 +48,9 @@ const RestaurantSchedule: FunctionComponent<RestaurantScheduleProps> = () => {
       :
         <div className={classes.tableContainer}>
           {md ? (
-            <RestaurantScheduleDesktopTable />
+            <RestaurantScheduleDesktopTable openingTimes={openingTimes!} />
           ) : (
-            <RestaurantScheduleMobileTable />
+            <RestaurantScheduleMobileTable openingTimes={openingTimes!}/>
           )}
         </div>
       }

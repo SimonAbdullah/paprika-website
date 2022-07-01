@@ -7,20 +7,19 @@ import useTranslation from "next-translate/useTranslation";
 import { TranslationFiles } from "../../../../../core/core";
 import { NUMBER_OF_MEALS_TO_SHOW } from "../../../constants/restaurants.constants";
 import RestaurantMealCard from "./restaurant-meal-card.components";
-import { useRestaurantDetails } from "../../../../customers/hooks/customer-restaurant.hooks";
 import { isDataEmpty } from "../../../../../core/functions";
 
 interface RestaurantCategoryMenuProps {
   category: CategoryDto;
+  hasReservation: boolean;
 }
 
 const RestaurantCategoryMenu: FunctionComponent<RestaurantCategoryMenuProps> =
-  ({ category }) => {
+  ({ category, hasReservation }) => {
     const { t } = useTranslation(TranslationFiles.RESTAURANT);
 
     const { data, isLoading } = useRestaurantCategoryMeals({ Id: category.id });
 
-    const { hasReservation } = useRestaurantDetails();
 
     const [numberOfMealsToShow, setNumberOfMealsToShow] = useState<
       number | undefined

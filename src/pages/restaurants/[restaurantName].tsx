@@ -1,6 +1,6 @@
 import { Button, Col, Modal, Row } from "antd";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { PagesUrls, TimeInSeconds, TranslationFiles } from "../../core/core";
+import { PagesUrls, TranslationFiles } from "../../core/core";
 import styles from "../../styles/Restaurant.module.css";
 import { PathsType } from "../../core/types";
 import { customerRestaurantServices } from "../../features/customers/services/customer-restaurant/customer-restaurant.services";
@@ -106,7 +106,7 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
               >
                 <Col xs={24} lg={22}>
                   {lg ? (
-                    <RestaurantReservationBox />
+                    <RestaurantReservationBox restaurantDetails={data!} />
                   ) : (
                     <>
                       <Button
@@ -121,7 +121,7 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
                         onCancel={() => setReservationModalVisible(false)}
                         footer={null}
                       >
-                        <RestaurantReservationBox />
+                        <RestaurantReservationBox restaurantDetails={data!}/>
                       </Modal>
                     </>
                   )}
@@ -245,7 +245,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       restaurant: restaurant,
     },
-    revalidate: TimeInSeconds.DAY,
   };
 };
 
