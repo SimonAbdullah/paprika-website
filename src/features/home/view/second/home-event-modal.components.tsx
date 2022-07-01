@@ -74,15 +74,17 @@ const HomeEventModal: FunctionComponent<HomeEventModalProps> = ({
                   <Text>{event?.restaurantName}</Text>
                 </a>
               </Link>
+              <Text className={classes.modalTime}>
+                {moment(event?.time).format("YYYY/MM/DD hh:mm a")}
+              </Text>
             </div>
           </Space>
-          <Text className={classes.modalTime}>
-            {moment(event?.time).format("YYYY/MM/DD hh:mm a")}
-          </Text>
         </Col>
         <Col span={24}>
-          <Title level={3}>{t("second.description")}</Title>
-          <Text>{event?.description}</Text>
+          <div style={{marginTop: "0.8rem"}}>
+            <Title level={3}>{t("second.description")}</Title>
+            <Text>{event?.description}</Text>
+          </div>
         </Col>
       </Row>
     </Modal>

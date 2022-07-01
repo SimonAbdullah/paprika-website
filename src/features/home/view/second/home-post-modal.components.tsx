@@ -64,7 +64,6 @@ const HomePostModal: FunctionComponent<HomePostModalProps> = ({
               </a>
             </Link>
             <div>
-              <Text className={classes.at}>{t("second.at")} </Text>
               <Link
                 href={`${PagesUrls.RESTAURANTS}/${post?.restaurantName}`}
                 locale={locale}
@@ -73,15 +72,17 @@ const HomePostModal: FunctionComponent<HomePostModalProps> = ({
                   <Text>{post?.restaurantName}</Text>
                 </a>
               </Link>
+              <Text className={classes.modalTime}>
+                {moment(post?.creationTime).format("YYYY/MM/DD hh:mm a")}
+              </Text>
             </div>
           </Space>
-          <Text className={classes.modalTime}>
-            {moment(post?.creationTime).format("YYYY/MM/DD hh:mm a")}
-          </Text>
         </Col>
         <Col span={24}>
-          <Title level={3}>{t("second.description")}</Title>
-          <Text>{post?.description}</Text>
+          <div style={{marginTop: "0.8rem"}}>
+            <Title level={3}>{t("second.description")}</Title>
+            <Text>{post?.description}</Text>
+          </div>
         </Col>
       </Row>
     </Modal>
