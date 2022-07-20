@@ -83,7 +83,7 @@ const HomeEventModal: FunctionComponent<HomeEventModalProps> = ({
         <Col span={24}>
           <div style={{marginTop: "0.8rem"}}>
             <Title level={3}>{t("second.description")}</Title>
-            <Text>{event?.description}</Text>
+            <div dangerouslySetInnerHTML={{ __html: event?.richDescription ?? "" }} />
           </div>
         </Col>
       </Row>
