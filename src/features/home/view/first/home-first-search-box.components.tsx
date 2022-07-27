@@ -1,4 +1,4 @@
-import { AutoComplete, Button, Form, Input, Rate, Space, Spin } from "antd";
+import { AutoComplete, Button, Form, Input, Rate, Space, Spin } from "paprika-design";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import Text from "antd/lib/typography/Text";
 import useTranslation from "next-translate/useTranslation";

@@ -4,6 +4,10 @@ const nextTranslate = require("next-translate");
 
 const withAntdLess = require("next-plugin-antd-less");
 
+const withPlugins = require('next-compose-plugins');
+
+const withTM = require('next-transpile-modules')(['paprika-design']);
+
 const config = nextTranslate(
   withAntdLess({
     modifyVars: {
@@ -17,7 +21,7 @@ const config = nextTranslate(
   })
 );
 
-module.exports = {
+module.exports = withPlugins([withTM], {
   ...config,
   reactStrictMode: true,
   images: {
@@ -40,4 +44,4 @@ module.exports = {
       },
     ];
   },
-};
+});
