@@ -9,7 +9,6 @@ import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
 import Text from "antd/lib/typography/Text";
 import moment from "moment";
-import Title from "antd/lib/typography/Title";
 
 interface HomeEventModalProps {
   event?: CustomerEventDto;
@@ -82,7 +81,6 @@ const HomeEventModal: FunctionComponent<HomeEventModalProps> = ({
         </Col>
         <Col span={24}>
           <div style={{marginTop: "0.8rem"}}>
-            <Title level={3}>{t("second.description")}</Title>
             <div dangerouslySetInnerHTML={{ __html: event?.richDescription ?? "" }} />
           </div>
         </Col>
