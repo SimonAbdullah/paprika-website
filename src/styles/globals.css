@@ -31,3 +31,8 @@ a {
   scroll-behavior: smooth;
   box-sizing: border-box;
 }
+
+.ql-direction-rtl {
+  text-align: right;
+  direction: rtl;
+}

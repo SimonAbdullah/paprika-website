@@ -20,5 +20,6 @@ export interface CustomerEventDto {
   time?: Date;
   isReservable?: boolean;
   maxPeopleAllowed?: number;
+  richDescription?: string;
   id?: number;
 }

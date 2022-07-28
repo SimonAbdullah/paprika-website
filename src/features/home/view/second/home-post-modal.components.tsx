@@ -81,7 +81,7 @@ const HomePostModal: FunctionComponent<HomePostModalProps> = ({
         <Col span={24}>
           <div style={{marginTop: "0.8rem"}}>
             <Title level={3}>{t("second.description")}</Title>
-            <Text>{post?.description}</Text>
+            <div dangerouslySetInnerHTML={{ __html: post?.richDescription ?? "" }} />
           </div>
         </Col>
       </Row>
