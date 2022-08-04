@@ -8,7 +8,6 @@ import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
 import Text from "antd/lib/typography/Text";
 import moment from "moment";
-import Title from "antd/lib/typography/Title";
 import { CustomerPostDto } from "../../../customers/services/customer-post/models/customer-post-dto.models";
 
 interface HomePostModalProps {
@@ -80,7 +79,6 @@ const HomePostModal: FunctionComponent<HomePostModalProps> = ({
         </Col>
         <Col span={24}>
           <div style={{marginTop: "0.8rem"}}>
-            <Title level={3}>{t("second.description")}</Title>
             <div dangerouslySetInnerHTML={{ __html: post?.richDescription ?? "" }} />
           </div>
         </Col>
