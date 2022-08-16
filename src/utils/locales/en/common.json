@@ -52,5 +52,8 @@
   "pleaseScanQRFromApp": "This restaurant has the Inside service activated. Please scan the same QR with Paprika app for a better experience.",
   "continueHere": "Continue here",
   "itSeemsThatYouDontHavePaprikaInstalledOnYourDevice": "It seems that you don't have Paprika installed on your device.",
-  "pleaseInstallItAndScanTheQRAgainFromTheAppAgain": "Please install it and scan the QR again from the App again."
+  "pleaseInstallItAndScanTheQRAgainFromTheAppAgain": "Please install it and scan the QR again from the App again.",
+  "restaurantNotFound": "Restaurant not found",
+  "doYouMean": "Do you mean",
+  "seeMore": "See more"
 }

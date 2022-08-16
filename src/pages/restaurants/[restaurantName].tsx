@@ -231,21 +231,35 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
     });
   });
 
-  return { paths: paths, fallback: true };
+  return { paths: paths, fallback: "blocking" };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const restaurant = (
-    await customerRestaurantServices.getDetails({
-      tenancyName: String(params?.restaurantName),
-    })
-  ).result;
+export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
+  try {
+    const restaurant = (
+      await customerRestaurantServices.getDetails({
+        tenancyName: String(params?.restaurantName),
+      })
+    );
 
-  return {
-    props: {
-      restaurant: restaurant,
-    },
-  };
+    if (restaurant.error) {
+      throw restaurant.error;
+    }
+
+    return {
+      props: {
+        restaurant: restaurant.result,
+      },
+    };
+
+  } catch (error) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: `${locale === "ar" ? `/${locale}` : ""}/${PagesUrls.RestaurantNotFound}?restaurantName=${params?.restaurantName}`,
+      },
+    };
+  }
 };
 
 export default RestaurantPage;
