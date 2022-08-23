@@ -5,6 +5,7 @@ export interface BoolElasticSearchRestaurants {
 export interface MustElasticSearchRestaurants {
   match?: keywordsElasticSearchRestaurants;
   term?: any;
+  terms?: any;
 }
 
 export interface keywordsElasticSearchRestaurants {
