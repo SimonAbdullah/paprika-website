@@ -6,6 +6,7 @@ const PagesUrls = {
   EVENT: "/event",
   POST: "/post",
   MEAL: "/meal",
+  RestaurantNotFound: "/restaurant-not-found"
 };
 
 const TranslationFiles = {
