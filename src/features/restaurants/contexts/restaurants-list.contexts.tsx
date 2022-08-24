@@ -102,6 +102,17 @@ const RestaurantsListContextProvider: FunctionComponent<
             optionsResult.push(hasPickup);
             return;
 
+          case "countryId":
+          case "cityId":
+          case "regionId":
+            const locationType = {
+              term: {
+                [key.toLowerCase()]: Number(value),
+              },
+            };
+            optionsResult.push(locationType);
+            return;
+
           default:
             break;
         }
