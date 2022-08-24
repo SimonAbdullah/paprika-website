@@ -52,5 +52,8 @@
   "pleaseScanQRFromApp": "يمكنك إدارة طاولتك على تطبيق بابريكا وذلك بقراءة الرمز ذاته باستخدام التطبيق.",
   "continueHere": "المتابعة هنا",
   "itSeemsThatYouDontHavePaprikaInstalledOnYourDevice": "يبدو أن تطبيق بابريكا غير موجود على جهازك.",
-  "pleaseInstallItAndScanTheQRAgainFromTheAppAgain": "الرجاء تحميل التطبيق ومسح الرمز مرة أخرى من داخل التطبيق."
+  "pleaseInstallItAndScanTheQRAgainFromTheAppAgain": "الرجاء تحميل التطبيق ومسح الرمز مرة أخرى من داخل التطبيق.",
+  "restaurantNotFound": "المطعم غير موجود",
+  "doYouMean": "هل تقصد",
+  "seeMore": "رؤية المزيد"
 }
