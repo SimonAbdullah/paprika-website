@@ -65,6 +65,17 @@ export const bitwiseAnd = (number1: number, number2: number) => {
   return number1 & number2;
 };
 
+export const arrayDecimalsForBinaryNumber = (num: string) => {
+  let arrayDecimals = [];
+  for (let i = 0; i < num.length; i++) {
+    if (num[num.length - (i + 1)] === "1") {
+      let decimalNumber = 2 ** i;
+      arrayDecimals.push(decimalNumber);
+    }
+  }
+  return arrayDecimals;
+};
+
 export const generateUuid = () => {
   return uuidV4();
 };

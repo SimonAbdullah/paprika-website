@@ -86,7 +86,7 @@ const RestaurantNotFoundPage: FunctionComponent<
                   {tCommon("restaurantNotFound")}
                   {searchResultsForRestaurants &&
                   searchResultsForRestaurants?.length !== 0
-                    ? `, ${tCommon("doYouMean")}`
+                    ? ` ${tCommon("doYouMean")}`
                     : ""}
                 </Title>
               </Col>

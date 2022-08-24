@@ -8,9 +8,11 @@ import {
   useState,
 } from "react";
 import { INIT_FUNCTION } from "../../../core/app/app.constants";
+import { arrayDecimalsForBinaryNumber } from "../../../core/functions";
 import { PlacesGetAllParams } from "../services/places/models/places-get-all-params.models";
 import { MustElasticSearchRestaurants } from "../services/restaurants/models/bool-elastic-search-restaurants.models";
 import RestaurantServies from "../services/restaurants/models/restaurant-servies.models";
+import { otherData } from "../views/list/filter/data";
 
 interface RestaurantsListContextProps {
   isGridView: boolean;
@@ -58,9 +60,10 @@ const RestaurantsListContextProvider: FunctionComponent<
       };
       setOptions(result);
 
-      const optionsResult = Object.entries(query).map(([key, value]) => {
+      let optionsResult: any[] = [];
+      Object.entries(query).map(([key, value]) => {
         if (key === "RestaurantName") {
-          return {
+          const restaurantName = {
             match: {
               keywords: {
                 query: value,
@@ -68,35 +71,68 @@ const RestaurantsListContextProvider: FunctionComponent<
               },
             },
           };
+          optionsResult.push(restaurantName);
+          return;
         }
         switch (key) {
           case "HasReservation":
-            return {
+            const hasReservation = {
               term: {
                 services: RestaurantServies.Reservation,
               },
             };
+            optionsResult.push(hasReservation);
+            return;
 
           case "HasDelivery":
-            return {
+            const hasDelivery = {
               term: {
                 services: RestaurantServies.Delivery,
               },
             };
+            optionsResult.push(hasDelivery);
+            return;
 
           case "HasPickup":
-            return {
+            const hasPickup = {
               term: {
                 services: RestaurantServies.Pickup,
               },
             };
+            optionsResult.push(hasPickup);
+            return;
+
+          case "countryId":
+          case "cityId":
+          case "regionId":
+            const locationType = {
+              term: {
+                [key.toLowerCase()]: Number(value),
+              },
+            };
+            optionsResult.push(locationType);
+            return;
 
           default:
             break;
         }
-        return { term: { [key]: value } };
+        if (!otherData.find((item) => item === key)) {
+          const typesArray = arrayDecimalsForBinaryNumber(
+            (Number(value) >>> 0).toString(2)
+          );
+          typesArray.forEach((item) => {
+            const itemType = {
+              terms: {
+                [key]: [item],
+              },
+            };
+            optionsResult.push(itemType);
+          });
+          return;
+        }
+        optionsResult.push({ term: { [key]: value } });
+        return;
       });
-
       setElasticSearchOptions(optionsResult);
     }
   }, [query]);
