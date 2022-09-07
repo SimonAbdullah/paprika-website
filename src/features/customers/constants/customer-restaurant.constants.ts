@@ -15,7 +15,8 @@ export const AmbianceType = {
   2: "classic",
   4: "modern",
   8: "familial",
-  15: "folk",
+  16: "folk",
+  32: "dimashqi",
 };
 
 export const RestaurantType = {
@@ -44,4 +45,6 @@ export const CuisineType = {
 export const AmenityType = {
   1: "swings",
   2: "swimmingPool",
+  4: "childrenSeats",
+  8: "prayerRoom",
 };

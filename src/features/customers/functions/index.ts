@@ -7,28 +7,28 @@ type CustomerConfigurationTypesDtoKeys =
   | "restaurantTypes";
 
 type GetAllPlacesParamsKeys =
-  | "parkingtypes"
-  | "ambiancetypes"
-  | "musictypes"
-  | "cuisinetypes"
-  | "amenitytypes"
-  | "restauranttypes";
+  | "parkingtypesarray"
+  | "ambiancetypesarray"
+  | "musictypesarray"
+  | "cuisinetypesarray"
+  | "amenitytypesarray"
+  | "restauranttypesarray";
 
 export const mapFromCustomerConfigurationTypesDtoToGetAllPlacesParamsDto = (
   types: CustomerConfigurationTypesDtoKeys
 ): GetAllPlacesParamsKeys => {
   switch (types) {
     case "ambianceTypes":
-      return "ambiancetypes";
+      return "ambiancetypesarray";
     case "amenityTypes":
-      return "amenitytypes";
+      return "amenitytypesarray";
     case "cuisineTypes":
-      return "cuisinetypes";
+      return "cuisinetypesarray";
     case "musicTypes":
-      return "musictypes";
+      return "musictypesarray";
     case "parkingTypes":
-      return "parkingtypes";
+      return "parkingtypesarray";
     case "restaurantTypes":
-      return "restauranttypes";
+      return "restauranttypesarray";
   }
 };
