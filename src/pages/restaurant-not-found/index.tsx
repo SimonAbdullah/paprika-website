@@ -33,42 +33,46 @@ const RestaurantNotFoundPage: FunctionComponent<
     useState(false);
 
   useEffect(() => {
-    (async () => {
-      setIsRestaurantsLoading(true);
-      try {
-        let result = await restaurantsServices.getAll({
-          sort: [SORT_IN_ELASTICSEARCH.SORT],
-          query: {
-            bool: {
-              must: [
-                {
-                  match: {
-                    keywords: {
-                      query: `${query?.restaurantName}`,
-                      fuzziness: "AUTO",
+    if (query?.restaurantName) {
+      (async () => {
+        setIsRestaurantsLoading(true);
+        try {
+          let result = await restaurantsServices.getAll({
+            sort: [SORT_IN_ELASTICSEARCH.SORT],
+            query: {
+              bool: {
+                must: [
+                  {
+                    match: {
+                      keywords: {
+                        query: `${query?.restaurantName}`,
+                        fuzziness: "AUTO",
+                      },
                     },
                   },
-                },
-              ],
+                ],
+              },
             },
-          },
-        });
-        if (result.hits.hits?.length > 5) {
-          setSeeMoreRestaurants(true);
+          });
+          if (result.hits.hits?.length > 5) {
+            setSeeMoreRestaurants(true);
+          }
+          setSearchResultsForRestaurants(result.hits.hits.slice(0, 5));
+        } catch (error) {
+          console.error(error);
+        } finally {
+          setIsRestaurantsLoading(false);
         }
-        setSearchResultsForRestaurants(result.hits.hits.slice(0, 5));
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setIsRestaurantsLoading(false);
-      }
-    })();
+      })();
+    }
   }, [query?.restaurantName]);
 
   return (
     <>
       <Head>
-        <title>{`${query?.restaurantName} | ${tCommon("paprika")}`}</title>
+        <title>{`${query?.restaurantName ?? ""} | ${tCommon(
+          "paprika"
+        )}`}</title>
       </Head>
       <Spin spinning={isRestaurantsLoading}>
         <div className={classes.firstContainer}>

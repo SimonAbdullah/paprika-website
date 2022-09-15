@@ -51,14 +51,16 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
   const [openDownloadAppModal, setOpenDownloadAppModal] = useState(false);
 
   const [openInAppLoading, setOpenInAppLoading] = useState(false);
-  
+
   useEffect(() => {
-    if(query["inside-token"]){
+    if (query["inside-token"]) {
       setPathInsideApp(asPath);
-      replace(`${PagesUrls.RESTAURANTS}/${data?.name}`, undefined, { shallow: true });
+      replace(`${PagesUrls.RESTAURANTS}/${data?.name}`, undefined, {
+        shallow: true,
+      });
       setOpenModal(true);
     }
-  },[query, asPath, replace, data?.name]);
+  }, [query, asPath, replace, data?.name]);
 
   let ogDescription = "";
   if (data?.country?.name) ogDescription += data?.country?.name + ", ";
@@ -121,7 +123,7 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
                         onCancel={() => setReservationModalVisible(false)}
                         footer={null}
                       >
-                        <RestaurantReservationBox restaurantDetails={data!}/>
+                        <RestaurantReservationBox restaurantDetails={data!} />
                       </Modal>
                     </>
                   )}
@@ -133,19 +135,22 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
       </div>
 
       {openModal && isMobile && (
-        <Modal 
+        <Modal
           visible={openModal}
           destroyOnClose={true}
           width={400}
           cancelText={tCommon("continueHere")}
-          onCancel={()=> setOpenModal(false)}
+          onCancel={() => setOpenModal(false)}
           okText={tCommon("OpenInApp")}
           onOk={() => {
             setOpenInAppLoading(true);
-            window.location.href = `${urlJoin(UrlInsideApp.paprikaUrlInsideApp, pathInsideApp)}`;
+            window.location.href = `${urlJoin(
+              UrlInsideApp.paprikaUrlInsideApp,
+              pathInsideApp
+            )}`;
             setTimeout(() => {
               const state = document.visibilityState;
-              if(state === "visible"){
+              if (state === "visible") {
                 setOpenModal(false);
                 setOpenInAppLoading(false);
                 setOpenDownloadAppModal(true);
@@ -155,55 +160,67 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
               }
             }, 5000);
           }}
-          okButtonProps= {{loading: openInAppLoading}}
+          okButtonProps={{ loading: openInAppLoading }}
         >
-          <div style={{margin: "0 0.5rem", textAlign: "center", fontSize: "1rem"}}>
-            <Image 
+          <div
+            style={{
+              margin: "0 0.5rem",
+              textAlign: "center",
+              fontSize: "1rem",
+            }}
+          >
+            <Image
               src="/images/logo/paprika.png"
               alt="Paprika Logo"
               width={130}
               height={130}
             />
-            <div style={{marginTop: "0.7rem"}}>
+            <div style={{ marginTop: "0.7rem" }}>
               {tCommon("thankYouForUsingPaprikaQR")}
             </div>
-            <div style={{margin: "0.3rem 0"}}>
+            <div style={{ margin: "0.3rem 0" }}>
               {tCommon("pleaseScanQRFromApp")}
             </div>
           </div>
-        </Modal>  
-      )} 
+        </Modal>
+      )}
 
-      { isMobile && (
-        <Modal 
+      {isMobile && (
+        <Modal
           visible={openDownloadAppModal}
           destroyOnClose={true}
           width={400}
           cancelText={tCommon("continueHere")}
-          onCancel={()=> setOpenDownloadAppModal(false)}
-          cancelButtonProps= {{ type: "primary" }}
+          onCancel={() => setOpenDownloadAppModal(false)}
+          cancelButtonProps={{ type: "primary" }}
           okButtonProps={{ hidden: true }}
         >
-          <div style={{margin: "0 0.5rem", textAlign: "center", fontSize: "1rem"}}>
-            <Image 
+          <div
+            style={{
+              margin: "0 0.5rem",
+              textAlign: "center",
+              fontSize: "1rem",
+            }}
+          >
+            <Image
               src="/images/logo/paprika.png"
               alt="Paprika Logo"
               width={130}
               height={130}
             />
-            <div style={{marginTop: "0.7rem"}}>
+            <div style={{ marginTop: "0.7rem" }}>
               {tCommon("itSeemsThatYouDontHavePaprikaInstalledOnYourDevice")}
             </div>
-            <div style={{margin: "0.3rem 0"}}>
+            <div style={{ margin: "0.3rem 0" }}>
               {tCommon("pleaseInstallItAndScanTheQRAgainFromTheAppAgain")}
             </div>
             <Row justify="center">
-              <div style={{marginTop: "0.5rem"}}>
+              <div style={{ marginTop: "0.5rem" }}>
                 <DownloadIcons />
               </div>
             </Row>
           </div>
-        </Modal>  
+        </Modal>
       )}
     </>
   );
@@ -236,11 +253,9 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 
 export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   try {
-    const restaurant = (
-      await customerRestaurantServices.getDetails({
-        tenancyName: String(params?.restaurantName),
-      })
-    );
+    const restaurant = await customerRestaurantServices.getDetails({
+      tenancyName: String(params?.restaurantName),
+    });
 
     if (restaurant.error) {
       throw restaurant.error;
@@ -251,12 +266,13 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
         restaurant: restaurant.result,
       },
     };
-
   } catch (error) {
     return {
       redirect: {
         permanent: false,
-        destination: `${locale === "ar" ? `/${locale}` : ""}/${PagesUrls.RestaurantNotFound}?restaurantName=${params?.restaurantName}`,
+        destination: `${locale === "ar" ? `/${locale}` : ""}${
+          PagesUrls.RestaurantNotFound
+        }?restaurantName=${encodeURI(String(params?.restaurantName))}`,
       },
     };
   }
