@@ -19,10 +19,10 @@ import { SORT_IN_ELASTICSEARCH } from "../../features/restaurants/constants/rest
 import PaprikaHead from "../../features/shared/head/paprika-head.components";
 import { useRouter } from "next/router";
 import urlJoin from "url-join";
-import { UrlInsideApp } from "../../core/constants";
 import Image from "next/image";
 import { isMobile } from "react-device-detect";
 import DownloadIcons from "../../features/shared/download-icons/download-icons.components";
+import { UrlInApp } from "../../core/constants";
 
 interface RestaurantPageProps {
   restaurant: RestaurantHomeDto;
@@ -145,7 +145,7 @@ const RestaurantPage: NextPage<RestaurantPageProps> = ({ restaurant }) => {
           onOk={() => {
             setOpenInAppLoading(true);
             window.location.href = `${urlJoin(
-              UrlInsideApp.paprikaUrlInsideApp,
+              UrlInApp.paprikaUrlInApp,
               pathInsideApp
             )}`;
             setTimeout(() => {
