@@ -60,7 +60,6 @@ export const useInfinityPlaces = (
             RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage;
 
       return await restaurantsServices.getAll({
-        sort: [SORT_IN_ELASTICSEARCH.SORT],
         size: RESTAURANTS_INITIAL_PLACES_API_PARAMS.MaxRestaurantsPerPage,
         query: {
           bool: {

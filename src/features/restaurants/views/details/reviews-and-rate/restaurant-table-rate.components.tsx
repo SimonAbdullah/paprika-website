@@ -24,7 +24,7 @@ const RestaurantTableRate: FunctionComponent<RestaurantTableRateProps> = () => {
               <tr>
                 <th>{t("food")}</th>
                 <th>{t("service")}</th>
-                <th>{t("shisha")}</th>
+                {data?.hasShisha && <th>{t("shisha")}</th>}
                 <th>{t("ambiance")}</th>
                 <th>{t("noiseLevel")}</th>
               </tr>
@@ -33,7 +33,7 @@ const RestaurantTableRate: FunctionComponent<RestaurantTableRateProps> = () => {
               <tr>
                 <td>{data?.foodRate}</td>
                 <td>{data?.serviceRate}</td>
-                <td>{data?.shishaRate}</td>
+                {data?.hasShisha && <td>{data?.shishaRate}</td>}
                 <td>{data?.ambianceRate}</td>
                 <td>
                   {data?.noiseLevel
@@ -55,10 +55,12 @@ const RestaurantTableRate: FunctionComponent<RestaurantTableRateProps> = () => {
 
                 <td>{data?.serviceRate}</td>
               </tr>
-              <tr>
-                <th>{t("shisha")}</th>
-                <td>{data?.shishaRate}</td>
-              </tr>
+              {data?.hasShisha && (
+                <tr>
+                  <th>{t("shisha")}</th>
+                  <td>{data?.shishaRate}</td>
+                </tr>
+              )}
               <tr>
                 <th>{t("ambiance")}</th>
                 <td>{data?.ambianceRate}</td>
