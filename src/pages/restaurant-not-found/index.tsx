@@ -8,7 +8,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { FunctionComponent, useEffect, useState } from "react";
 import { PagesUrls, TranslationFiles } from "../../core/core";
-import { SORT_IN_ELASTICSEARCH } from "../../features/restaurants/constants/restaurants.constants";
 import { SearchResultsRestaurants } from "../../features/restaurants/services/restaurants/models/search-results-restaurants.models";
 import { restaurantsServices } from "../../features/restaurants/services/restaurants/restaurants.services";
 import classes from "../../styles/RestaurantNotFound.module.css";
@@ -38,7 +37,6 @@ const RestaurantNotFoundPage: FunctionComponent<
         setIsRestaurantsLoading(true);
         try {
           let result = await restaurantsServices.getAll({
-            sort: [SORT_IN_ELASTICSEARCH.SORT],
             query: {
               bool: {
                 must: [
