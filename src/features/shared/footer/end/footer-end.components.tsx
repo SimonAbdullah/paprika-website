@@ -14,14 +14,16 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
   const { t } = useTranslation(TranslationFiles.COMMON);
 
   const [isDisabled, setIsDisabled] = useState(false);
-  
+
   const getPaprikaDownloadLink = async () => {
     try {
       setIsDisabled(true);
-      if(!localStorage.getItem("downloadToken")) {
+      if (!localStorage.getItem("downloadToken")) {
         localStorage.setItem("downloadToken", generateUuid());
       }
-      const result = await customerDownloadLinkServices.getCustomerDownloadLink({downloadToken: localStorage.getItem("downloadToken")!});
+      const result = await customerDownloadLinkServices.getCustomerDownloadLink(
+        { downloadToken: localStorage.getItem("downloadToken")! }
+      );
       window.open(result.result.paprikaDownloadLink, "_blank");
     } catch (error) {
       message.error(t("anErrorOccurredWhileDownloading"));
@@ -50,6 +52,7 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
               />
             </a>
           </div>
+          {/*
           <div className={classes.appStoreContainer}>
             <a
               href="https://apps.apple.com/us/app/%D8%A8%D8%A7%D8%A8%D8%B1%D9%8A%D9%83%D8%A7/id1566120897#?platform=iphone"
@@ -65,9 +68,10 @@ const FooterEnd: FunctionComponent<FooterEndProps> = () => {
               />
             </a>
           </div>
+          */}
           <div className={classes.directLinkContainer}>
             <Button
-              style={{padding: "0px", background: "none", border: "none"}}
+              style={{ padding: "0px", background: "none", border: "none" }}
               onClick={() => getPaprikaDownloadLink()}
               disabled={isDisabled}
             >
