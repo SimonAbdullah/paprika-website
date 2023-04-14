@@ -81,4 +81,6 @@ const PrivacyPolicyPage: FunctionComponent<
   );
 };
 
+
+
 export default PrivacyPolicyPage;
