@@ -22,7 +22,7 @@ const FooterMiddle: FunctionComponent<FooterMiddleProps> = () => {
           <Text className={classes.listTitle}>{t("aboutPaprika")}</Text>
           <li>
             <a
-              href="https://paprika-sy.com/paprika-privacy-policy.pdf"
+              href="https://paprika-rest.sy/paprika-privacy-policy.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className={classes.listLink}

@@ -21,7 +21,7 @@ const RestaurantsPage: NextPage = () => {
           <h1>Paprika Support Team</h1>
           <p>
             For any support needed, please reach us on{" "}
-            <a href="mailto:support@paprika-sy.com">support@paprika-sy.com</a>.
+            <a href="mailto:support@paprika-rest.sy">support@paprika-rest.sy</a>.
           </p>
           <p>
             We’ll get back to you about your order as soon as possible. Feel

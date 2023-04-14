@@ -24,7 +24,7 @@ module.exports = {
     domains: [
       "api.paprika.inter.itland-sy.com",
       "paprika-testing-api.azurewebsites.net",
-      "prodapi.paprika-sy.com",
+      "prodapi.paprika-rest.sy",
     ],
   },
   async headers() {
